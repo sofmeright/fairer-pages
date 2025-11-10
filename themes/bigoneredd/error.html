@@ -130,10 +130,13 @@
         .cop-box {
             flex: 1;
             min-width: 250px;
+            max-width: 100%;
             padding: 15px;
             border-radius: 10px;
             border: 4px solid;
             position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .cop-box::before {
@@ -145,6 +148,7 @@
             font-weight: 900;
             font-size: 12px;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .black-cop {
@@ -159,10 +163,12 @@
         }
 
         .cop-speech {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             line-height: 1.5;
             color: #2c1810;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .white-cop {
@@ -174,6 +180,42 @@
             content: '👮 OFFICER SMITH';
             background: #8b7355;
             color: #fff;
+        }
+
+        .fred-box {
+            background: rgba(139, 0, 0, 0.2);
+            border: 4px solid #8b0000;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .fred-box::before {
+            content: '❤️ FRED SANFORD';
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            background: #8b0000;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .fred-speech {
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #2c1810;
+            font-style: italic;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .error-code {
@@ -292,11 +334,11 @@
             }
 
             .cop-speech {
-                font-size: 18px;
+                font-size: 16px;
             }
 
-            .elizabeth {
-                font-size: 20px;
+            .fred-speech {
+                font-size: 17px;
             }
 
             .heart-attack {
@@ -341,15 +383,16 @@
                 </div>
 
                 <div class="cop-box white-cop">
-                    <div class="cop-speech">
-                        That's error code <span id="code-display">000</span>, sir. Technical difficulties.
+                    <div class="cop-speech" id="tech-speak">
+                        The HTTP protocol indicates a 404 status code, signifying the requested resource cannot be located in the server directory structure.
                     </div>
                 </div>
             </div>
 
-            <div class="elizabeth">
-                "This is the big one, Elizabeth!<br>
-                I'm coming to join you, honey!"
+            <div class="fred-box">
+                <div class="fred-speech" id="fred-speak">
+                    "This is the big one, Elizabeth! I'm coming to join you, honey!"
+                </div>
             </div>
 
             <div class="buttons">
@@ -409,22 +452,60 @@
         };
 
         const streetSpeak = {
-            400: "Man, you sending us some whack info that don't make no sense!",
-            401: "Hold up - you ain't got no badge to be here, partner!",
-            402: "Yo, you gotta pay the toll before crossing this bridge, homie!",
-            403: "Nah man, this area's off limits - can't let you through!",
-            404: "Listen here - that page done disappeared like my lunch break!",
-            405: "Yo, you trying to do something we don't allow around here!",
-            406: "We can't give you what you asking for in that format, dig?",
-            408: "Man, you taking too long - we ain't got all day!",
-            409: "Hold up, there's some conflict going on here, we got problems!",
-            410: "That page gone, baby - ain't coming back no more!",
-            413: "Whoa, that package way too big to handle, slow down!",
-            429: "Yo, you knocking on that door too many times, chill out!",
-            500: "Aw man, something broke on our end - this ain't good!",
-            502: "The middleman messed up the message, straight up!",
-            503: "We closed for business right now, come back later!",
-            504: "Man, we been waiting too long for a response - time's up!"
+            400: "Aight look, you typed something wrong, like writing the wrong address on a letter - ain't nobody gonna find it!",
+            401: "Man, you trying to get in without showing your ID - you gotta prove who you are first, feel me?",
+            402: "This like a toll road, homie - you gotta drop some coins before you can roll through!",
+            403: "Yo, you see that 'No Trespassing' sign? That means YOU can't come in here, even if you know it's there!",
+            404: "That page is GONE, man - like when you looking for your car keys, they just vanished into thin air!",
+            405: "You trying to push a door that says 'PULL' - wrong move, brother!",
+            406: "It's like asking for soul food and they only got Chinese - they can't give it to you the way you want it!",
+            408: "You took too long to answer, like standing at the counter not knowing what you want - NEXT!",
+            409: "Two people trying to use the same parking spot - we got beef, somebody gotta back up!",
+            410: "That page is DEAD and BURIED - ain't no bringing it back, it's gone for good!",
+            413: "You trying to fit a whole couch through a cat door - that thing way too BIG!",
+            429: "Stop ringing that doorbell so many times! We HEARD you already, slow your roll!",
+            500: "Our whole system just broke down - like when the transmission falls out the truck!",
+            502: "The messenger got lost and brought back the wrong message - communication breakdown!",
+            503: "We closed right now, be back later - like when the store sign says 'Back in 5 minutes'!",
+            504: "We been waiting on a call back forever - they ain't picking up, time ran out!"
+        };
+
+        const techSpeak = {
+            400: "The HTTP request syntax is malformed or invalid, resulting in the server's inability to parse and process the client's query parameters.",
+            401: "Authentication credentials are required but were not provided. The client must supply valid authorization headers to access this protected resource.",
+            402: "Payment is required to access this resource. This status code is reserved for future digital payment systems implementation.",
+            403: "The server understands the request but refuses to authorize it. The client lacks sufficient permissions to access the requested resource.",
+            404: "The requested URI does not exist in the server's directory structure. The resource may have been moved, deleted, or never existed.",
+            405: "The HTTP method specified in the request is not permitted for the target resource endpoint.",
+            406: "The server cannot produce a response matching the list of acceptable values defined in the request's proactive content negotiation headers.",
+            408: "The client failed to send a complete request within the server's timeout period. Connection will be terminated.",
+            409: "The request conflicts with the current state of the target resource. Resolution requires client intervention.",
+            410: "The requested resource is permanently unavailable and no forwarding address is known. This condition is considered permanent.",
+            413: "The request entity exceeds the server's maximum payload size limit. The request body is too large to process.",
+            429: "The client has exceeded the rate limit threshold. Too many requests were sent in a given time frame.",
+            500: "An unexpected internal server error occurred. The server encountered an exception while processing the request.",
+            502: "The gateway or proxy server received an invalid response from the upstream server while attempting to fulfill the request.",
+            503: "The server is temporarily unable to handle requests due to maintenance or capacity constraints. Service should resume shortly.",
+            504: "The gateway or proxy server did not receive a timely response from the upstream server while attempting to complete the request."
+        };
+
+        const fredSpeak = {
+            400: "You hear what they saying?! This is like that time Julio brought me a transmission from a Pinto for my Ford! Wrong parts, Elizabeth!",
+            401: "No ID?! That's like when Grady tried to sneak into the back room to grab my good whiskey - YOU AIN'T AUTHORIZED!",
+            402: "Elizabeth, you hearing this?! They want me to PAY?! I'm having the big one! My heart can't take this financial burden!",
+            403: "FORBIDDEN?! This is worse than when Aunt Esther banned me from the church social! The pain, Elizabeth, the PAIN!",
+            404: "Gone? DISAPPEARED?! Just like my hairline and my first three wives! Everything I love just VANISHES!",
+            405: "Wrong method?! That's like using a hammer to fix a watch - Lamont, you see what I'm dealing with here?!",
+            406: "Can't serve it that way? This is like asking Aunt Esther to cook with flavor - IT AIN'T HAPPENING! I'm coming Elizabeth!",
+            408: "Too slow?! Elizabeth, they rushing me! You know I got a bad ticker - I can't be RUSHED! This is the big one!",
+            409: "Conflict?! Oh Lord, this is like when Donna and all my ex-wives showed up at the same time! My heart, Elizabeth!",
+            410: "Gone FOREVER?! Just like my youth, my hair, and my dreams of being rich! Everything's leaving me, Elizabeth!",
+            413: "Too big?! That's like when I tried to fit all of Aunt Esther's personality in one room - IT DON'T FIT! The pressure!",
+            429: "Too many requests?! This is like when all them bill collectors keep calling! Leave me alone, I got a bad heart!",
+            500: "Their system broke?! Elizabeth! This is WORSE than the big one! The whole world is falling apart! I'm coming to join you!",
+            502: "Bad gateway? That's like Grady delivering my messages - everything gets MESSED UP! My chest, Elizabeth!",
+            503: "Unavailable?! Just like my luck, my money, and my patience! Everything's unavailable when I need it! This is it!",
+            504: "Timeout?! Elizabeth, they're timing me out! Like my time on this earth, it's running out! I'm having the big one!"
         };
 
         // Get error code from URL path
@@ -432,13 +513,16 @@
         const match = path.match(/\/(\d+)\.html$/);
         const errorCode = match ? parseInt(match[1]) : 404;
         const errorMessage = errorMessages[errorCode] || "Unknown Error";
-        const streetMessage = streetSpeak[errorCode] || "Yo, something ain't right here, but I can't quite put my finger on it!";
+        const streetMessage = streetSpeak[errorCode] || "Something ain't right here - it's all messed up, but I can't explain it in street terms, dig?";
+        const techMessage = techSpeak[errorCode] || "An unspecified error condition has occurred within the system architecture, requiring further diagnostic analysis.";
+        const fredMessage = fredSpeak[errorCode] || "This is the big one, Elizabeth! I'm coming to join you, honey!";
 
         // Update page content
         document.getElementById('error-code').textContent = errorCode;
-        document.getElementById('code-display').textContent = errorCode;
         document.getElementById('error-message').textContent = errorMessage;
         document.getElementById('street-speak').textContent = streetMessage;
+        document.getElementById('tech-speak').textContent = techMessage;
+        document.getElementById('fred-speak').textContent = fredMessage;
         document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
 
         // Fix resource paths for internal error redirects
