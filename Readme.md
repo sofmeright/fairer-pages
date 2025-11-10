@@ -31,6 +31,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **shaninblake** | Pastel 70s manifestation and spiritual vibes with floral particles | [Preview](/shaninblake/404.html) | [Preview](/shaninblake/403.html) | [Preview](/shaninblake/500.html) |
 | **reddressgirl** | Distracted boyfriend meme - caught looking at the wrong page | [Preview](/reddressgirl/404.html) | [Preview](/reddressgirl/403.html) | [Preview](/reddressgirl/500.html) |
 | **wanderer** | Tolkien-inspired fantasy journey - "Not all who wander are lost, but you are!" | [Preview](/wanderer/404.html) | [Preview](/wanderer/403.html) | [Preview](/wanderer/500.html) |
+| **mk-yoshi-banana** | Mario Kart banana slip - Yoshi racing with banana peel hazards | [Preview](/mk-yoshi-banana/404.html) | [Preview](/mk-yoshi-banana/403.html) | [Preview](/mk-yoshi-banana/500.html) |
 
 ### Supported Error Codes
 
