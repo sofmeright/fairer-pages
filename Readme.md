@@ -12,13 +12,61 @@ Access error pages via: `http://host:port/<theme>/<errorcode>.html`
 - `http://localhost/back2thefuture/403.html` - 403 Forbidden page
 - `http://localhost/back2thefuture/400.html` - 400 Bad Request page
 
-### Supported Error Codes (back2thefuture theme)
+### Available Themes
 
-**All HTTP 4xx and 5xx error codes are supported dynamically!**
+All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme uses a single dynamic error page that automatically displays the correct error code and message for any HTTP error (400-599).
 
-The theme uses a single dynamic error page that automatically displays the correct error code and message for any HTTP error (400-599).
+#### 1. **back2thefuture** - Retro Pixel Art
+Classic 80s pixel art style with Back to the Future vibes. Features the DeLorean and retro gaming aesthetics.
 
-Common examples:
+**Preview:**
+- [404 Error](/back2thefuture/404.html)
+- [403 Forbidden](/back2thefuture/403.html)
+- [500 Internal Server Error](/back2thefuture/500.html)
+
+#### 2. **MegumiTokoroOwo** - Cute Anime Style
+Beautiful anime aesthetic with Megumi Tokoro artwork, purple gradients, and floating particle effects.
+
+**Preview:**
+- [404 Error](/MegumiTokoroOwo/404.html)
+- [403 Forbidden](/MegumiTokoroOwo/403.html)
+- [500 Internal Server Error](/MegumiTokoroOwo/500.html)
+
+#### 3. **hideyodawg** - Classic Warning Meme
+Antoine Dodson "Hide Yo Kids, Hide Yo Wife" meme style with warning stripes and bold Impact font.
+
+**Preview:**
+- [404 Error](/hideyodawg/404.html)
+- [403 Forbidden](/hideyodawg/403.html)
+- [500 Internal Server Error](/hideyodawg/500.html)
+
+#### 4. **leggoohno** - Breakfast Waffle Chaos
+Falling waffle with golden breakfast gradients, syrup drips, and Bangers font for that cereal box energy.
+
+**Preview:**
+- [404 Error](/leggoohno/404.html)
+- [403 Forbidden](/leggoohno/403.html)
+- [500 Internal Server Error](/leggoohno/500.html)
+
+#### 5. **catastrotypcic** - Manic Terminal Cat
+Matrix-style terminal with a cat typing frantically, glitch effects, and falling code rain.
+
+**Preview:**
+- [404 Error](/catastrotypcic/404.html)
+- [403 Forbidden](/catastrotypcic/403.html)
+- [500 Internal Server Error](/catastrotypcic/500.html)
+
+#### 6. **upsidedown** - Stranger Things Atmosphere
+Eerie Upside Down dimension from Stranger Things with flickering lights, floating spores, and dark atmosphere.
+
+**Preview:**
+- [404 Error](/upsidedown/404.html)
+- [403 Forbidden](/upsidedown/403.html)
+- [500 Internal Server Error](/upsidedown/500.html)
+
+### Supported Error Codes
+
+Common error codes (all supported):
 - 400 - Bad Request
 - 401 - Unauthorized
 - 403 - Forbidden
@@ -29,7 +77,7 @@ Common examples:
 - 502 - Bad Gateway
 - 503 - Service Unavailable
 
-...and many more!
+...and many more (all 4xx and 5xx codes)!
 
 ## Integration with Nginx
 
