@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Patrick Hand', cursive;
+            background: linear-gradient(135deg, #263238 0%, #37474f 50%, #263238 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Fire embers floating */
+        .ember {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ff6f00;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff6f00;
+            animation: ember-rise 10s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes ember-rise {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Smokey background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 111, 0, 0.15) 0%, transparent 70%);
+            animation: smoke-drift 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes smoke-drift {
+            0%, 100% { opacity: 0.3; transform: translateX(0); }
+            50% { opacity: 0.5; transform: translateX(20px); }
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 20px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+
+        .burnt-box {
+            background: rgba(55, 71, 79, 0.9);
+            border: 5px dashed #ff6f00;
+            border-radius: 15px;
+            padding: 35px 30px;
+            box-shadow: 0 0 60px rgba(255, 111, 0, 0.5),
+                        inset 0 0 40px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        .burnt-box::before {
+            content: '🔥 CANINE CATASTROPHE 🔥';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6f00;
+            color: #000;
+            padding: 10px 30px;
+            font-weight: 900;
+            font-size: 15px;
+            letter-spacing: 3px;
+            border: 4px solid #bf360c;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(255, 111, 0, 0.8);
+            font-family: 'Cabin Sketch', cursive;
+        }
+
+        .excuse-title {
+            font-family: 'Cabin Sketch', cursive;
+            font-size: 42px;
+            color: #ffab40;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 0 #bf360c,
+                         0 0 30px rgba(255, 111, 0, 0.7);
+            line-height: 1.2;
+        }
+
+        .dog-img {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            border: 5px solid #ff6f00;
+            border-radius: 10px;
+            margin: 20px auto;
+            box-shadow: 0 0 50px rgba(255, 111, 0, 0.6);
+        }
+
+        .error-code {
+            font-family: 'Cabin Sketch', cursive;
+            font-size: 90px;
+            font-weight: bold;
+            color: #ff6f00;
+            text-shadow: 4px 4px 0 #bf360c,
+                         0 0 40px rgba(255, 111, 0, 0.8);
+            margin: 20px 0;
+            line-height: 1;
+            animation: flicker-text 3s infinite;
+        }
+
+        @keyframes flicker-text {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+            75% { opacity: 0.95; }
+        }
+
+        .error-message {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffcc80;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .apology-text {
+            font-size: 32px;
+            color: #ffab40;
+            margin: 25px 0;
+            line-height: 1.5;
+            font-weight: bold;
+        }
+
+        .sheepish {
+            font-size: 24px;
+            color: #90a4ae;
+            margin: 20px 0;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .shrug {
+            font-size: 60px;
+            margin: 20px 0;
+            animation: shrug-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes shrug-bounce {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 24px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Cabin Sketch', cursive;
+            text-transform: uppercase;
+            border: 4px solid;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: #ff6f00;
+            color: #000;
+            border-color: #bf360c;
+            box-shadow: 0 8px 0 #bf360c,
+                        0 0 30px rgba(255, 111, 0, 0.5);
+        }
+
+        .btn-primary:hover {
+            background: #ff9800;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #bf360c,
+                        0 0 40px rgba(255, 111, 0, 0.7);
+        }
+
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #bf360c,
+                        0 0 20px rgba(255, 111, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffab40;
+            border-color: #ff6f00;
+            box-shadow: 0 8px 0 rgba(191, 54, 12, 0.5),
+                        0 0 30px rgba(255, 111, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 111, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 rgba(191, 54, 12, 0.5),
+                        0 0 40px rgba(255, 111, 0, 0.5);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(191, 54, 12, 0.5),
+                        0 0 20px rgba(255, 111, 0, 0.3);
+        }
+
+        .footer-text {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: #78909c;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .excuse-title {
+                font-size: 32px;
+            }
+
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-message {
+                font-size: 22px;
+            }
+
+            .apology-text {
+                font-size: 26px;
+            }
+
+            .sheepish {
+                font-size: 20px;
+            }
+
+            .shrug {
+                font-size: 50px;
+            }
+
+            .btn {
+                padding: 14px 32px;
+                font-size: 20px;
+            }
+
+            .burnt-box {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="burnt-box">
+            <div class="excuse-title">
+                My Dog Ate<br>
+                This Page!
+            </div>
+
+            <img src="resources/dog.jpg" alt="Robot dog with flamethrower" class="dog-img">
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="apology-text">
+                I'm sorry, this page was amazing<br>
+                but my dog got into things...
+            </div>
+
+            <div class="shrug">¯\_(ツ)_/¯</div>
+
+            <div class="sheepish">
+                It's quite unfortunate sometimes.<br>
+                He has a bit of a... fire problem.
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Go Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+
+            <div class="footer-text">Bad dog! Bad!</div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            // 4xx Client Errors
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            407: "Proxy Authentication Required",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            411: "Length Required",
+            412: "Precondition Failed",
+            413: "Payload Too Large",
+            414: "URI Too Long",
+            415: "Unsupported Media Type",
+            416: "Range Not Satisfiable",
+            417: "Expectation Failed",
+            418: "I'm a teapot",
+            421: "Misdirected Request",
+            422: "Unprocessable Entity",
+            423: "Locked",
+            424: "Failed Dependency",
+            425: "Too Early",
+            426: "Upgrade Required",
+            428: "Precondition Required",
+            429: "Too Many Requests",
+            431: "Request Header Fields Too Large",
+            451: "Unavailable For Legal Reasons",
+
+            // 5xx Server Errors
+            500: "Internal Server Error",
+            501: "Not Implemented",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout",
+            505: "HTTP Version Not Supported",
+            506: "Variant Also Negotiates",
+            507: "Insufficient Storage",
+            508: "Loop Detected",
+            510: "Not Extended",
+            511: "Network Authentication Required"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'dogatemypage';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+
+        // Create floating embers
+        for (let i = 0; i < 25; i++) {
+            const ember = document.createElement('div');
+            ember.className = 'ember';
+            ember.style.left = Math.random() * 100 + '%';
+            ember.style.animationDelay = Math.random() * 10 + 's';
+            ember.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            const size = Math.random() * 6 + 4;
+            ember.style.width = size + 'px';
+            ember.style.height = size + 'px';
+            document.body.appendChild(ember);
+        }
+    </script>
+</body>
+</html>
