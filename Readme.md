@@ -14,13 +14,22 @@ Access error pages via: `http://host:port/<theme>/<errorcode>.html`
 
 ### Supported Error Codes (back2thefuture theme)
 
+**All HTTP 4xx and 5xx error codes are supported dynamically!**
+
+The theme uses a single dynamic error page that automatically displays the correct error code and message for any HTTP error (400-599).
+
+Common examples:
 - 400 - Bad Request
 - 401 - Unauthorized
-- 402 - Payment Required
 - 403 - Forbidden
 - 404 - Not Found
 - 405 - Method Not Allowed
-- 406 - Not Acceptable
+- 429 - Too Many Requests
+- 500 - Internal Server Error
+- 502 - Bad Gateway
+- 503 - Service Unavailable
+
+...and many more!
 
 ## Integration with Nginx
 
