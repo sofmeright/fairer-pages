@@ -24,6 +24,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **leggoohno** | Falling waffle with breakfast gradients and syrup drips | [Preview](/leggoohno/404.html) | [Preview](/leggoohno/403.html) | [Preview](/leggoohno/500.html) |
 | **catastrotypcic** | Matrix terminal with manic cat typing and glitch effects | [Preview](/catastrotypcic/404.html) | [Preview](/catastrotypcic/403.html) | [Preview](/catastrotypcic/500.html) |
 | **upsidedown** | Stranger Things Upside Down with flickering lights | [Preview](/upsidedown/404.html) | [Preview](/upsidedown/403.html) | [Preview](/upsidedown/500.html) |
+| **gettodachopper** | Arnold action movie extraction - military tactical style | [Preview](/gettodachopper/404.html) | [Preview](/gettodachopper/403.html) | [Preview](/gettodachopper/500.html) |
 
 ### Supported Error Codes
 
