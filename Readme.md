@@ -37,6 +37,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **anisorry** | Apologetic crying anime girl - "I'm so sorry! Please forgive me!" | [Preview](/anisorry/404.html) | [Preview](/anisorry/403.html) | [Preview](/anisorry/500.html) |
 | **dogatemypage** | Robot dog with flamethrower - "My dog ate this page! ¯\_(ツ)_/¯" | [Preview](/dogatemypage/404.html) | [Preview](/dogatemypage/403.html) | [Preview](/dogatemypage/500.html) |
 | **zelda-mastersword** | Legend of Zelda adventure - "It's dangerous to go alone!" with Master Sword | [Preview](/zelda-mastersword/404.html) | [Preview](/zelda-mastersword/403.html) | [Preview](/zelda-mastersword/500.html) |
+| **rushhour** | Action buddy cop comedy - "Do you understand this error message?" | [Preview](/rushhour/404.html) | [Preview](/rushhour/403.html) | [Preview](/rushhour/500.html) |
 
 ### Supported Error Codes
 
