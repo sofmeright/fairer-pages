@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ecf0f1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* VHS scanlines effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 2px,
+                transparent 2px,
+                transparent 4px
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 20px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+
+        .video-store-box {
+            background: rgba(44, 62, 80, 0.9);
+            border: 6px solid #e74c3c;
+            border-radius: 10px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 50px rgba(231, 76, 60, 0.5),
+                        inset 0 0 0 3px #f39c12;
+            position: relative;
+        }
+
+        .video-store-box::before {
+            content: '🎬 RST VIDEO 🎬';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e74c3c;
+            color: #fff;
+            padding: 10px 30px;
+            font-weight: 900;
+            font-size: 16px;
+            letter-spacing: 3px;
+            border: 4px solid #f39c12;
+            border-radius: 5px;
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        .slacker-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 42px;
+            color: #f39c12;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 #e74c3c,
+                         5px 5px 10px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+
+        .video-img {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            border: 5px solid #f39c12;
+            border-radius: 8px;
+            margin: 20px auto;
+            box-shadow: 0 10px 40px rgba(243, 156, 18, 0.4);
+        }
+
+        .error-code {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 95px;
+            font-weight: bold;
+            color: #e74c3c;
+            text-shadow: 4px 4px 0 #f39c12,
+                         7px 7px 0 rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 30px;
+            font-weight: 900;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .commentary {
+            font-size: 28px;
+            color: #f39c12;
+            margin: 25px 0;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .store-hours {
+            font-size: 20px;
+            color: #95a5a6;
+            margin: 20px 0;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 24px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Permanent Marker', cursive;
+            text-transform: uppercase;
+            border: 4px solid;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: #fff;
+            border-color: #c0392b;
+            box-shadow: 0 8px 0 #c0392b,
+                        0 12px 30px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #ec7063;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #c0392b,
+                        0 16px 35px rgba(231, 76, 60, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #c0392b,
+                        0 8px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f39c12;
+            color: #000;
+            border-color: #d68910;
+            box-shadow: 0 8px 0 #d68910,
+                        0 12px 30px rgba(243, 156, 18, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: #f5b041;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #d68910,
+                        0 16px 35px rgba(243, 156, 18, 0.5);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #d68910,
+                        0 8px 20px rgba(243, 156, 18, 0.3);
+        }
+
+        .footer-text {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .slacker-title {
+                font-size: 32px;
+            }
+
+            .error-code {
+                font-size: 75px;
+            }
+
+            .error-message {
+                font-size: 24px;
+            }
+
+            .commentary {
+                font-size: 22px;
+            }
+
+            .store-hours {
+                font-size: 18px;
+            }
+
+            .btn {
+                padding: 14px 32px;
+                font-size: 20px;
+            }
+
+            .video-store-box {
+                padding: 35px 25px;
+            }
+
+            .video-store-box::before {
+                font-size: 13px;
+                padding: 8px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="video-store-box">
+            <div class="slacker-title">
+                YO, THIS PAGE<br>
+                AIN'T HERE!
+            </div>
+
+            <img src="resources/video-store.png" alt="Outside the video store" class="video-img">
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="commentary">
+                Looks like you're in the<br>
+                wrong section, dude!
+            </div>
+
+            <div class="store-hours">
+                Maybe try checkin' the main entrance<br>
+                instead of hanging around back here...
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">GO HOME</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">GO BACK</a>
+            </div>
+
+            <div class="footer-text">Snootchie Bootchies</div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            // 4xx Client Errors
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            407: "Proxy Authentication Required",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            411: "Length Required",
+            412: "Precondition Failed",
+            413: "Payload Too Large",
+            414: "URI Too Long",
+            415: "Unsupported Media Type",
+            416: "Range Not Satisfiable",
+            417: "Expectation Failed",
+            418: "I'm a teapot",
+            421: "Misdirected Request",
+            422: "Unprocessable Entity",
+            423: "Locked",
+            424: "Failed Dependency",
+            425: "Too Early",
+            426: "Upgrade Required",
+            428: "Precondition Required",
+            429: "Too Many Requests",
+            431: "Request Header Fields Too Large",
+            451: "Unavailable For Legal Reasons",
+
+            // 5xx Server Errors
+            500: "Internal Server Error",
+            501: "Not Implemented",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout",
+            505: "HTTP Version Not Supported",
+            506: "Variant Also Negotiates",
+            507: "Insufficient Storage",
+            508: "Loop Detected",
+            510: "Not Extended",
+            511: "Network Authentication Required"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'jayandsilentbob';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
