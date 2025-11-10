@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "type": "rich",
+  "version": "1.0",
+  "provider_name": "CodePen",
+  "provider_url": "https://codepen.io",
+  "title": "404 - Not Found",
+  "author_name": "JSON.girlify",
+  "author_url": "https://codepen.io/honeybadger2788",
+  "height": "300",
+  "width": "800",
+  "thumbnail_width": "384",
+  "thumbnail_height": "225",
+  "thumbnail_url": "https://assets.codepen.io/5647096/internal/screenshots/pens/oNzKzvy.custom.png?version=1611841996",
+  "html": "<iframe id=\"cp_embed_oNzKzvy\" src=\"https://codepen.io/honeybadger2788/embed/preview/oNzKzvy?default-tabs=css%2Cresult&amp;height=300&amp;host=https%3A%2F%2Fcodepen.io&amp;slug-hash=oNzKzvy\" title=\"404 - Not Found\" scrolling=\"no\" frameborder=\"0\" height=\"300\" allowtransparency=\"true\" class=\"cp_embed_iframe\" style=\"width: 100%; overflow: hidden;\"></iframe>"
+}
