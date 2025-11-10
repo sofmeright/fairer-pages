@@ -28,6 +28,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **sanfordandson** | 1970s Sanford & Son junkyard salvage with Fred's classic lines | [Preview](/sanfordandson/404.html) | [Preview](/sanfordandson/403.html) | [Preview](/sanfordandson/500.html) |
 | **trollface** | Classic rage comic internet meme - "Problem?" | [Preview](/trollface/404.html) | [Preview](/trollface/403.html) | [Preview](/trollface/500.html) |
 | **leavealone** | Leave Britney Alone dramatic emotional meme aesthetic | [Preview](/leavealone/404.html) | [Preview](/leavealone/403.html) | [Preview](/leavealone/500.html) |
+| **shaninblake** | Pastel 70s manifestation and spiritual vibes with floral particles | [Preview](/shaninblake/404.html) | [Preview](/shaninblake/403.html) | [Preview](/shaninblake/500.html) |
 
 ### Supported Error Codes
 
