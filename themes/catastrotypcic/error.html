@@ -80,17 +80,19 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            padding: 40px;
-            max-width: 1000px;
+            padding: 20px;
+            max-width: 900px;
             width: 90%;
             animation: glitch 0.3s infinite;
+            max-height: 95vh;
+            overflow-y: auto;
         }
 
         .terminal-box {
             background: rgba(0, 0, 0, 0.95);
             border: 4px solid #0f0;
             border-radius: 10px;
-            padding: 40px;
+            padding: 30px 20px;
             box-shadow: 0 0 50px rgba(0, 255, 0, 0.5),
                         inset 0 0 30px rgba(0, 255, 0, 0.1);
             position: relative;
@@ -124,11 +126,11 @@
         }
 
         .panic-title {
-            font-size: 56px;
+            font-size: 42px;
             color: #ff0000;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px #ff0000,
                          0 0 20px #ff0000;
             animation: blink 0.5s infinite, shake-title 0.2s infinite;
@@ -154,23 +156,23 @@
 
         .cat-gif {
             width: 100%;
-            max-width: 500px;
+            max-width: 350px;
             height: auto;
             border: 4px solid #0f0;
             border-radius: 10px;
-            margin: 30px auto;
+            margin: 15px auto;
             box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
             background: #000;
         }
 
         .error-code {
-            font-size: 140px;
+            font-size: 100px;
             font-weight: bold;
             color: #ff0000;
             text-shadow: 0 0 20px #ff0000,
                          0 0 40px #ff0000,
                          3px 3px 0 #0f0;
-            margin: 20px 0;
+            margin: 15px 0;
             line-height: 1;
             animation: glitch-text 0.5s infinite;
         }
@@ -199,21 +201,21 @@
         }
 
         .error-message {
-            font-size: 42px;
+            font-size: 32px;
             font-weight: bold;
             color: #0f0;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px #0f0;
         }
 
         .typing-text {
-            font-size: 38px;
+            font-size: 28px;
             color: #ffff00;
             font-weight: bold;
-            margin: 25px 0;
+            margin: 15px 0;
             text-transform: uppercase;
             text-shadow: 0 0 15px #ffff00;
-            line-height: 1.4;
+            line-height: 1.3;
             animation: color-cycle 1s infinite;
         }
 
@@ -225,21 +227,21 @@
         }
 
         .keyboard-spam {
-            font-size: 20px;
+            font-size: 16px;
             color: #0f0;
-            margin: 20px 0;
+            margin: 10px 0;
             font-family: 'Courier Prime', monospace;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             opacity: 0.8;
         }
 
         .typing-cursor {
             display: inline-block;
-            width: 12px;
-            height: 30px;
+            width: 10px;
+            height: 22px;
             background: #0f0;
             animation: cursor-blink 0.3s infinite;
-            margin-left: 5px;
+            margin-left: 3px;
         }
 
         @keyframes cursor-blink {
@@ -249,16 +251,16 @@
 
         .buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 35px;
+            margin-top: 20px;
         }
 
         .btn {
             display: inline-block;
-            padding: 18px 40px;
-            font-size: 28px;
+            padding: 12px 30px;
+            font-size: 24px;
             font-weight: bold;
             text-decoration: none;
             border-radius: 5px;
