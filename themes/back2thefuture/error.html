@@ -171,6 +171,12 @@ div.text a:hover {
         document.getElementById('error-code').textContent = errorCode;
         document.getElementById('error-message').textContent = errorMessage;
         document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = path.split('/')[1];
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
     </script>
 </body>
 </html>
