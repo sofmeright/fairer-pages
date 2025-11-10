@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Benguiat+Pro:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Special Elite', cursive;
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Dark atmospheric background */
+        .upside-down-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #1a0000 0%, #000000 70%);
+            z-index: 0;
+        }
+
+        /* Floating particles/spores */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float-particle 20s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Flickering light effect */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            2%, 8%, 12% { opacity: 0.4; }
+            4%, 10% { opacity: 0.9; }
+            6% { opacity: 0.2; }
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 30px;
+            max-width: 900px;
+            width: 90%;
+            animation: flicker 4s infinite;
+        }
+
+        .strange-box {
+            background: rgba(0, 0, 0, 0.85);
+            border: 3px solid #8b0000;
+            border-radius: 5px;
+            padding: 40px 30px;
+            box-shadow: 0 0 60px rgba(139, 0, 0, 0.6),
+                        inset 0 0 40px rgba(139, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .strange-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="noise"><feTurbulence baseFrequency="0.9"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .title {
+            font-family: 'Special Elite', cursive;
+            font-size: 48px;
+            color: #ff0000;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #ff0000,
+                         0 0 40px #ff0000,
+                         0 0 60px #8b0000;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px #ff0000,
+                             0 0 40px #ff0000,
+                             0 0 60px #8b0000;
+            }
+            to {
+                text-shadow: 0 0 30px #ff0000,
+                             0 0 60px #ff0000,
+                             0 0 90px #8b0000;
+            }
+        }
+
+        .upside-down-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border: 3px solid #8b0000;
+            border-radius: 5px;
+            margin: 25px auto;
+            box-shadow: 0 0 40px rgba(139, 0, 0, 0.5);
+            filter: brightness(0.7) contrast(1.2);
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 20px #ff0000,
+                         0 0 40px #8b0000;
+            margin: 20px 0;
+            line-height: 1;
+            font-family: 'Special Elite', cursive;
+        }
+
+        .error-message {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ddd;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .strange-text {
+            font-size: 28px;
+            color: #ff6666;
+            margin: 25px 0;
+            line-height: 1.5;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            font-style: italic;
+        }
+
+        .warning {
+            font-size: 18px;
+            color: #999;
+            margin: 15px 0;
+            letter-spacing: 2px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            font-family: 'Special Elite', cursive;
+            text-transform: uppercase;
+            border: 2px solid;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: #ff0000;
+            border-color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #ff0000;
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #8b0000;
+            border-color: #8b0000;
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #8b0000;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 32px;
+                letter-spacing: 4px;
+            }
+
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-message {
+                font-size: 28px;
+            }
+
+            .strange-text {
+                font-size: 22px;
+            }
+
+            .warning {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 18px;
+            }
+
+            .strange-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="upside-down-bg" id="particles"></div>
+
+    <div class="error-container">
+        <div class="strange-box">
+            <div class="title">THE UPSIDE DOWN</div>
+
+            <img src="resources/upside-down.jpg" alt="The Upside Down" class="upside-down-img">
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="strange-text">
+                This might not be where<br>
+                you intended to travel?
+            </div>
+
+            <div class="warning">
+                ⚠ DANGER: ALTERNATE DIMENSION DETECTED ⚠
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Return Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            // 4xx Client Errors
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            407: "Proxy Authentication Required",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            411: "Length Required",
+            412: "Precondition Failed",
+            413: "Payload Too Large",
+            414: "URI Too Long",
+            415: "Unsupported Media Type",
+            416: "Range Not Satisfiable",
+            417: "Expectation Failed",
+            418: "I'm a teapot",
+            421: "Misdirected Request",
+            422: "Unprocessable Entity",
+            423: "Locked",
+            424: "Failed Dependency",
+            425: "Too Early",
+            426: "Upgrade Required",
+            428: "Precondition Required",
+            429: "Too Many Requests",
+            431: "Request Header Fields Too Large",
+            451: "Unavailable For Legal Reasons",
+
+            // 5xx Server Errors
+            500: "Internal Server Error",
+            501: "Not Implemented",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout",
+            505: "HTTP Version Not Supported",
+            506: "Variant Also Negotiates",
+            507: "Insufficient Storage",
+            508: "Loop Detected",
+            510: "Not Extended",
+            511: "Network Authentication Required"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'upsidedown';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.bottom = '-50px';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
