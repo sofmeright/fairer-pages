@@ -27,31 +27,45 @@ section.notFound {
     align-items: center;
     margin: 0 5%;
     height: 100vh;
-    flex-wrap: wrap;
+    gap: 50px;
 }
 
 section.notFound .img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
+    flex: 1;
+}
+
+section.notFound .img img {
+    max-width: 100%;
+    height: auto;
+}
+
+section.notFound .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
 }
 
 section.notFound h1 {
     color: red;
     font-size: 100px;
+    margin-bottom: 20px;
 }
 
 section.notFound h2 {
     font-size: 50px;
-}
-
-section.notFound h1, h2, h3 {
     margin-bottom: 40px;
+    line-height: 1.2;
 }
 
-div.text {
-    height: 50vh;
+section.notFound h3 {
+    margin-bottom: 30px;
 }
 
 div.text a {
