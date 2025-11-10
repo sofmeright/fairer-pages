@@ -34,6 +34,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **mk-yoshi-banana** | Mario Kart banana slip - Yoshi racing with banana peel hazards | [Preview](/mk-yoshi-banana/404.html) | [Preview](/mk-yoshi-banana/403.html) | [Preview](/mk-yoshi-banana/500.html) |
 | **strangepresence** | Supernatural séance - "We sense a presence... something will happen soon" | [Preview](/strangepresence/404.html) | [Preview](/strangepresence/403.html) | [Preview](/strangepresence/500.html) |
 | **jayandsilentbob** | 90s video store slacker comedy - hanging outside RST Video | [Preview](/jayandsilentbob/404.html) | [Preview](/jayandsilentbob/403.html) | [Preview](/jayandsilentbob/500.html) |
+| **anisorry** | Apologetic crying anime girl - "I'm so sorry! Please forgive me!" | [Preview](/anisorry/404.html) | [Preview](/anisorry/403.html) | [Preview](/anisorry/500.html) |
 
 ### Supported Error Codes
 
