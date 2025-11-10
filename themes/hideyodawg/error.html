@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Impact&family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Impact', 'Anton', sans-serif;
+            background: linear-gradient(45deg, #1a1a1a 0%, #2d0a0a 50%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Warning stripes background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 0, 0, 0.1) 0px,
+                rgba(255, 0, 0, 0.1) 50px,
+                rgba(0, 0, 0, 0.1) 50px,
+                rgba(0, 0, 0, 0.1) 100px
+            );
+            animation: slide 20s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px;
+            max-width: 900px;
+            width: 90%;
+        }
+
+        .warning-box {
+            background: rgba(0, 0, 0, 0.9);
+            border: 5px solid #ff0000;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.5),
+                        inset 0 0 20px rgba(255, 0, 0, 0.2);
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% {
+                border-color: #ff0000;
+                box-shadow: 0 0 40px rgba(255, 0, 0, 0.5),
+                            inset 0 0 20px rgba(255, 0, 0, 0.2);
+            }
+            50% {
+                border-color: #ff3333;
+                box-shadow: 0 0 60px rgba(255, 0, 0, 0.8),
+                            inset 0 0 30px rgba(255, 0, 0, 0.3);
+            }
+        }
+
+        .warning-title {
+            font-size: 48px;
+            color: #ff0000;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0000,
+                         0 0 20px #ff0000,
+                         3px 3px 0 #000;
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            41%, 43% { opacity: 0.8; }
+            45%, 47% { opacity: 1; }
+        }
+
+        .meme-gif {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border: 5px solid #fff;
+            border-radius: 10px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 20px #ff0000,
+                         0 0 40px #ff0000,
+                         5px 5px 0 #000;
+            margin: 20px 0;
+            line-height: 1;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .error-message {
+            font-size: 40px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 #000,
+                         0 0 10px #ff0000;
+        }
+
+        .meme-text {
+            font-size: 32px;
+            color: #ffff00;
+            font-weight: bold;
+            margin: 20px 0;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 #000,
+                         0 0 15px #ffff00;
+            line-height: 1.4;
+        }
+
+        .warning-message {
+            font-size: 20px;
+            color: #ff6666;
+            margin: 20px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'Impact', 'Anton', sans-serif;
+            text-transform: uppercase;
+            border: 3px solid;
+        }
+
+        .btn-primary {
+            background: #ff0000;
+            color: white;
+            border-color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #cc0000;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: #ffff00;
+            color: #000;
+            border-color: #000;
+        }
+
+        .btn-secondary:hover {
+            background: #cccc00;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 255, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .warning-title {
+                font-size: 32px;
+            }
+
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-message {
+                font-size: 28px;
+            }
+
+            .meme-text {
+                font-size: 24px;
+            }
+
+            .btn {
+                padding: 14px 30px;
+                font-size: 20px;
+            }
+
+            .warning-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="warning-box">
+            <div class="warning-title">⚠️ WARNING ⚠️</div>
+
+            <img src="resources/antoine.gif" alt="Antoine Dodson" class="meme-gif">
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="meme-text">
+                HIDE YO KIDS!<br>
+                HIDE YO WIFE!<br>
+                AND HIDE YO HUSBAND!
+            </div>
+
+            <div class="warning-message">
+                'Cause they erroring everybody out here!
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Get Out!</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Run Back!</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            // 4xx Client Errors
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            407: "Proxy Authentication Required",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            411: "Length Required",
+            412: "Precondition Failed",
+            413: "Payload Too Large",
+            414: "URI Too Long",
+            415: "Unsupported Media Type",
+            416: "Range Not Satisfiable",
+            417: "Expectation Failed",
+            418: "I'm a teapot",
+            421: "Misdirected Request",
+            422: "Unprocessable Entity",
+            423: "Locked",
+            424: "Failed Dependency",
+            425: "Too Early",
+            426: "Upgrade Required",
+            428: "Precondition Required",
+            429: "Too Many Requests",
+            431: "Request Header Fields Too Large",
+            451: "Unavailable For Legal Reasons",
+
+            // 5xx Server Errors
+            500: "Internal Server Error",
+            501: "Not Implemented",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout",
+            505: "HTTP Version Not Supported",
+            506: "Variant Also Negotiates",
+            507: "Insufficient Storage",
+            508: "Loop Detected",
+            510: "Not Extended",
+            511: "Network Authentication Required"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+    </script>
+</body>
+</html>
