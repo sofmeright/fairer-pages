@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Righteous', cursive;
+            background: linear-gradient(135deg, #ffd89b 0%, #ff8a00 50%, #8b4513 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4a2c00;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Syrup drips animation */
+        .syrup-drip {
+            position: absolute;
+            width: 20px;
+            height: 100px;
+            background: linear-gradient(180deg, rgba(139, 69, 19, 0.7) 0%, transparent 100%);
+            border-radius: 10px;
+            animation: drip 3s ease-in infinite;
+            opacity: 0;
+        }
+
+        @keyframes drip {
+            0% {
+                top: -100px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px;
+            max-width: 900px;
+            width: 90%;
+        }
+
+        .waffle-box {
+            background: rgba(255, 248, 220, 0.95);
+            border: 10px solid #8b4513;
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(139, 69, 19, 0.4),
+                        inset 0 0 30px rgba(255, 215, 0, 0.3);
+            position: relative;
+        }
+
+        .waffle-box::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
+            border-radius: 33px;
+            z-index: -1;
+            animation: golden-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes golden-glow {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02);
+            }
+        }
+
+        .breakfast-title {
+            font-family: 'Bangers', cursive;
+            font-size: 56px;
+            color: #ff8c00;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 #8b4513,
+                         0 0 20px rgba(255, 140, 0, 0.5);
+            animation: wiggle 1s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% {
+                transform: rotate(-2deg);
+            }
+            50% {
+                transform: rotate(2deg);
+            }
+        }
+
+        .waffle-gif {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border: 8px solid #8b4513;
+            border-radius: 20px;
+            margin: 30px auto;
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4);
+            background: #fff;
+        }
+
+        .error-code {
+            font-family: 'Bangers', cursive;
+            font-size: 140px;
+            font-weight: bold;
+            color: #8b4513;
+            text-shadow: 4px 4px 0 #ffd700,
+                         0 0 30px rgba(255, 215, 0, 0.8);
+            margin: 20px 0;
+            line-height: 1;
+            animation: bounce-rotate 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce-rotate {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .error-message {
+            font-family: 'Righteous', cursive;
+            font-size: 42px;
+            font-weight: bold;
+            color: #d2691e;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 0 rgba(139, 69, 19, 0.3);
+        }
+
+        .waffle-text {
+            font-family: 'Bangers', cursive;
+            font-size: 48px;
+            color: #ff6b00;
+            font-weight: bold;
+            margin: 25px 0;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 #8b4513,
+                         0 0 15px rgba(255, 107, 0, 0.5);
+            line-height: 1.2;
+        }
+
+        .subtext {
+            font-size: 22px;
+            color: #8b4513;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 45px;
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+            font-family: 'Bangers', cursive;
+            text-transform: uppercase;
+            border: 4px solid;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+            color: white;
+            border-color: #8b4513;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ff6b00 0%, #ff4500 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 107, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #8b4513;
+            border-color: #8b4513;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .breakfast-title {
+                font-size: 38px;
+            }
+
+            .error-code {
+                font-size: 90px;
+            }
+
+            .error-message {
+                font-size: 30px;
+            }
+
+            .waffle-text {
+                font-size: 32px;
+            }
+
+            .subtext {
+                font-size: 18px;
+            }
+
+            .btn {
+                padding: 16px 35px;
+                font-size: 22px;
+            }
+
+            .waffle-box {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="waffle-box">
+            <div class="breakfast-title">🧇 LEGGO OH NO! 🧇</div>
+
+            <img src="resources/waffle-fall.gif" alt="Waffle Falling" class="waffle-gif">
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="waffle-text">
+                WAFFLE DOWN!<br>
+                WAFFLE DOWN!
+            </div>
+
+            <div class="subtext">
+                This page has fallen off the plate! 🍽️
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Back to Kitchen</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Try Again</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            // 4xx Client Errors
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            407: "Proxy Authentication Required",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            411: "Length Required",
+            412: "Precondition Failed",
+            413: "Payload Too Large",
+            414: "URI Too Long",
+            415: "Unsupported Media Type",
+            416: "Range Not Satisfiable",
+            417: "Expectation Failed",
+            418: "I'm a teapot",
+            421: "Misdirected Request",
+            422: "Unprocessable Entity",
+            423: "Locked",
+            424: "Failed Dependency",
+            425: "Too Early",
+            426: "Upgrade Required",
+            428: "Precondition Required",
+            429: "Too Many Requests",
+            431: "Request Header Fields Too Large",
+            451: "Unavailable For Legal Reasons",
+
+            // 5xx Server Errors
+            500: "Internal Server Error",
+            501: "Not Implemented",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout",
+            505: "HTTP Version Not Supported",
+            506: "Variant Also Negotiates",
+            507: "Insufficient Storage",
+            508: "Loop Detected",
+            510: "Not Extended",
+            511: "Network Authentication Required"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Create syrup drips
+        for (let i = 0; i < 20; i++) {
+            const drip = document.createElement('div');
+            drip.className = 'syrup-drip';
+            drip.style.left = Math.random() * 100 + '%';
+            drip.style.animationDelay = Math.random() * 3 + 's';
+            drip.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(drip);
+        }
+    </script>
+</body>
+</html>
