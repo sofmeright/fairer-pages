@@ -263,7 +263,7 @@
         document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
 
         // Fix resource paths for internal error redirects
-        const themeName = path.split('/')[1];
+        const themeName = 'MegumiTokoroOwo';
         document.querySelectorAll('img[src^="resources/"]').forEach(img => {
             img.src = '/' + themeName + '/' + img.getAttribute('src');
         });
