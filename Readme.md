@@ -1,4 +1,4 @@
-# Fairer Pages - Error Page Hub
+# Fairer Pages
 
 A containerized error page service supporting multiple themes and error codes.
 
