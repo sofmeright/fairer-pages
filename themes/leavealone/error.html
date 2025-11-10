@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #c71585 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sparkle/glitter effect */
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 3s infinite;
+            pointer-events: none;
+        }
+
+        /* Dramatic curtain effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.05) 0px,
+                    transparent 2px,
+                    transparent 4px,
+                    rgba(255, 255, 255, 0.05) 6px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 30px;
+            max-width: 900px;
+            width: 90%;
+        }
+
+        .dramatic-box {
+            background: rgba(0, 0, 0, 0.7);
+            border: 6px solid #ff69b4;
+            border-radius: 20px;
+            padding: 50px 35px;
+            box-shadow: 0 0 60px rgba(255, 105, 180, 0.8),
+                        inset 0 0 40px rgba(255, 20, 147, 0.3);
+            position: relative;
+        }
+
+        .dramatic-box::before {
+            content: '✨ EMOTIONAL BREAKDOWN ✨';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff1493;
+            color: #fff;
+            padding: 8px 25px;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 3px;
+            border: 4px solid #ff69b4;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .plea-title {
+            font-family: 'Passion One', cursive;
+            font-size: 64px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px #ff1493,
+                         0 0 40px #ff69b4,
+                         4px 4px 0 rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            animation: dramatic-pulse 2s infinite;
+        }
+
+        @keyframes dramatic-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .leave-alone-gif {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border: 6px solid #ff69b4;
+            border-radius: 15px;
+            margin: 30px auto;
+            box-shadow: 0 10px 50px rgba(255, 20, 147, 0.6);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .error-code {
+            font-family: 'Passion One', cursive;
+            font-size: 120px;
+            font-weight: 900;
+            color: #ff69b4;
+            text-shadow: 0 0 30px #ff1493,
+                         5px 5px 0 rgba(0, 0, 0, 0.5);
+            margin: 25px 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffe4e1;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .dramatic-cry {
+            font-family: 'Passion One', cursive;
+            font-size: 48px;
+            color: #fff;
+            margin: 30px 0;
+            line-height: 1.4;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px #ff1493,
+                         3px 3px 0 rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .sob-text {
+            font-size: 22px;
+            color: #ffe4e1;
+            margin: 20px 0;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            font-size: 26px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Passion One', cursive;
+            text-transform: uppercase;
+            border: 4px solid;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: #ff69b4;
+            color: #000;
+            border-color: #fff;
+            box-shadow: 0 6px 25px rgba(255, 105, 180, 0.6);
+        }
+
+        .btn-primary:hover {
+            background: #ff1493;
+            color: #fff;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 35px rgba(255, 20, 147, 0.8);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ff69b4;
+            border-color: #ff69b4;
+            box-shadow: 0 6px 25px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: #ff69b4;
+            color: #000;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 35px rgba(255, 105, 180, 0.8);
+        }
+
+        .tears {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .plea-title {
+                font-size: 42px;
+            }
+
+            .error-code {
+                font-size: 90px;
+            }
+
+            .error-message {
+                font-size: 28px;
+            }
+
+            .dramatic-cry {
+                font-size: 36px;
+            }
+
+            .sob-text {
+                font-size: 20px;
+            }
+
+            .btn {
+                padding: 14px 35px;
+                font-size: 22px;
+            }
+
+            .dramatic-box {
+                padding: 40px 25px;
+            }
+
+            .dramatic-box::before {
+                font-size: 11px;
+                padding: 6px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="dramatic-box">
+            <div class="plea-title">
+                LEAVE THIS<br>PAGE ALONE!
+            </div>
+
+            <img src="resources/leavealone.gif" alt="Leave alone!" class="leave-alone-gif">
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="dramatic-cry">
+                IT'S A HUMAN!<br>
+                THIS PAGE HAS BEEN<br>
+                THROUGH ENOUGH!
+            </div>
+
+            <div class="sob-text">
+                *sobbing dramatically behind a sheet*<br>
+                Why can't you just let it live in peace?!
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">GO HOME</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">LEAVE</a>
+            </div>
+
+            <div class="tears">😭 💔 😭</div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            // 4xx Client Errors
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            407: "Proxy Authentication Required",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            411: "Length Required",
+            412: "Precondition Failed",
+            413: "Payload Too Large",
+            414: "URI Too Long",
+            415: "Unsupported Media Type",
+            416: "Range Not Satisfiable",
+            417: "Expectation Failed",
+            418: "I'm a teapot",
+            421: "Misdirected Request",
+            422: "Unprocessable Entity",
+            423: "Locked",
+            424: "Failed Dependency",
+            425: "Too Early",
+            426: "Upgrade Required",
+            428: "Precondition Required",
+            429: "Too Many Requests",
+            431: "Request Header Fields Too Large",
+            451: "Unavailable For Legal Reasons",
+
+            // 5xx Server Errors
+            500: "Internal Server Error",
+            501: "Not Implemented",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout",
+            505: "HTTP Version Not Supported",
+            506: "Variant Also Negotiates",
+            507: "Insufficient Storage",
+            508: "Loop Detected",
+            510: "Not Extended",
+            511: "Network Authentication Required"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'leavealone';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+
+        // Create sparkles
+        for (let i = 0; i < 20; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(sparkle);
+        }
+    </script>
+</body>
+</html>
