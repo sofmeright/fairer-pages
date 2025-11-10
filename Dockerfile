@@ -7,6 +7,8 @@ RUN mkdir -p /var/cache/nginx /var/run/nginx /etc/nginx/conf.d
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
+COPY index.html /usr/share/nginx/html/index.html
+COPY Readme.md /usr/share/nginx/html/Readme.md
 COPY themes/ /usr/share/nginx/html/themes/
 
 RUN chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx /var/run/nginx
