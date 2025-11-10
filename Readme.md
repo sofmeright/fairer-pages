@@ -33,6 +33,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **wanderer** | Tolkien-inspired fantasy journey - "Not all who wander are lost, but you are!" | [Preview](/wanderer/404.html) | [Preview](/wanderer/403.html) | [Preview](/wanderer/500.html) |
 | **mk-yoshi-banana** | Mario Kart banana slip - Yoshi racing with banana peel hazards | [Preview](/mk-yoshi-banana/404.html) | [Preview](/mk-yoshi-banana/403.html) | [Preview](/mk-yoshi-banana/500.html) |
 | **strangepresence** | Supernatural séance - "We sense a presence... something will happen soon" | [Preview](/strangepresence/404.html) | [Preview](/strangepresence/403.html) | [Preview](/strangepresence/500.html) |
+| **jayandsilentbob** | 90s video store slacker comedy - hanging outside RST Video | [Preview](/jayandsilentbob/404.html) | [Preview](/jayandsilentbob/403.html) | [Preview](/jayandsilentbob/500.html) |
 
 ### Supported Error Codes
 
