@@ -40,6 +40,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **rushhour** | Action buddy cop comedy - "Do you understand this error message?" | [Preview](/rushhour/404.html) | [Preview](/rushhour/403.html) | [Preview](/rushhour/500.html) |
 | **meninblack** | Neuralyzer memory wipe - "You never saw this page" with classified MIB vibes | [Preview](/meninblack/404.html) | [Preview](/meninblack/403.html) | [Preview](/meninblack/500.html) |
 | **bigoneredd** | Sanford and Son buddy cops - street speak meets tech speak, Redd clutches heart | [Preview](/bigoneredd/404.html) | [Preview](/bigoneredd/403.html) | [Preview](/bigoneredd/500.html) |
+| **fakerockyridge** | Movie set facades - "Oops! Wrong side!" revealing empty scaffolding behind | [Preview](/fakerockyridge/404.html) | [Preview](/fakerockyridge/403.html) | [Preview](/fakerockyridge/500.html) |
 
 ### Supported Error Codes
 
