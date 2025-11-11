@@ -232,3 +232,26 @@ curl http://localhost:8023/back2thefuture/404.html
 2. Add error HTML files (400.html, 403.html, 404.html, etc.).
 3. Add theme resources in `themes/<theme>/resources/`.
 4. Follow the steps provided above to build the image with your modifications.
+
+---
+
+## Contributing
+- File issues with steps, logs, and versions.
+- Small, focused PRs are best (typos, error handling, UI polish).
+- Theme contributions are welcome!
+- Security-related PRs and hardening suggestions are especially appreciated if you notice anything that can be improved.
+
+## Support / Sponsorship
+If you’d like to help support this project and others like it, I have this donation link:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T41IT163)
+
+---
+
+## Disclaimer
+
+The Software provided hereunder ("Software") is licensed "as‑is," without warranties of any kind—express, implied, or whispered by mystical wisps. The Softwarer (yes, that's totally a word now) makes no promises about functionality, performance, compatibility, security, or availability—and absolutely no warranty of any sort. The developer shall not be held responsible, even if the software is clearly the reason your 404 page became more entertaining than your actual content, your users spent three hours clicking through every theme instead of buying anything, or your error pages gained sentience and started redirecting to Rick Astley videos.
+
+If using this error page collection leads you down a rabbit hole of obsessive theme customization, breaks your carefully crafted nginx configs, or causes an uprising among your regex location blocks—sorry, still not liable. Also not liable if your random theme selector becomes so addictive it crashes your analytics or if your resource paths multiply like lightning bolts in a DeLorean. The developer likewise claims no credit for anything that actually goes right either. Any positive experiences are owed entirely to the unstoppable force that is the Open Source community.
+
+Just don't blame me when your creative ways to cause errors in your environment for "testing" purposes inevitably backfires.
