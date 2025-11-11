@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2c3e50;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mountain-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0.7),
+                rgba(240, 245, 250, 0.8),
+                rgba(255, 255, 255, 0.7));
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 700px;
+            width: 90%;
+        }
+
+        .lotus-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: lotus-float 4s ease-in-out infinite;
+        }
+
+        @keyframes lotus-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 50px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .error-code {
+            font-size: 90px;
+            font-weight: 300;
+            font-family: 'Noto Serif', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            line-height: 1;
+            letter-spacing: 3px;
+        }
+
+        .error-title {
+            font-size: 28px;
+            font-weight: 400;
+            font-family: 'Noto Serif', serif;
+            color: #4a5568;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .error-message {
+            font-size: 17px;
+            font-weight: 300;
+            color: #718096;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #cbd5e0, transparent);
+            margin: 30px auto;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #a0aec0;
+            font-weight: 300;
+            font-style: italic;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            z-index: 1;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-card {
+                padding: 45px 35px;
+            }
+
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-title {
+                font-size: 24px;
+            }
+
+            .error-message {
+                font-size: 16px;
+            }
+
+            .lotus-icon {
+                font-size: 60px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/mountain.jpg" alt="Mountain" class="mountain-bg">
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <div class="lotus-icon">🪷</div>
+        <div class="content-card">
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">Path Not Found</div>
+            <div class="divider"></div>
+            <div class="error-message" id="error-message">
+                Like a lotus petal on still water, sometimes we drift to places we didn't intend. Let's find your way back to where you meant to be.
+            </div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Return Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+            <div class="footer-text" id="footer-text">
+                Peace is a journey, not a destination
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "Request Unclear",
+            401: "Authentication Needed",
+            402: "Payment Required",
+            403: "Access Denied",
+            404: "Path Not Found",
+            405: "Method Not Allowed",
+            406: "Format Mismatch",
+            408: "Time Passed",
+            409: "Conflict Arose",
+            410: "Resource Departed",
+            413: "Too Much Data",
+            429: "Too Many Requests",
+            500: "Server Meditation",
+            502: "Gateway Issue",
+            503: "Service Resting",
+            504: "Gateway Timeout"
+        };
+
+        const messages = {
+            400: "Your request arrived unclear, like mist in the morning. Perhaps revisit what you're seeking and try once more with clarity.",
+            401: "This path requires authentication, like a garden gate awaiting its key. Please sign in to continue your journey.",
+            402: "This content rests behind a payment gateway. Consider what value it brings before proceeding.",
+            403: "This space is protected, like sacred ground. You may not enter here, but other paths await you.",
+            404: "Like a lotus petal on still water, sometimes we drift to places we didn't intend. Let's find your way back to where you meant to be.",
+            405: "This method is not the way forward here. Like choosing the right tool for meditation, try a different approach.",
+            406: "The format you seek is not available in this moment. Perhaps another form would serve you better.",
+            408: "Time flowed by while waiting for the request. The moment has passed—let's begin again.",
+            409: "A conflict has emerged in the data, like two stones disturbing still water. Refresh and find balance once more.",
+            410: "What you seek has departed permanently, released like a breath into the wind. It is time to let go and move forward.",
+            413: "The data you sent is too vast for this path. Consider sending smaller, more mindful portions.",
+            429: "You're moving too quickly, like rushing water over stones. Pause, breathe, and try again in a moment.",
+            500: "The server is taking a moment to meditate on what went wrong. We'll restore balance shortly.",
+            502: "The connection between gateways is misaligned. Give it a moment to find harmony again.",
+            503: "The service is resting and gathering energy. It will return when ready.",
+            504: "The gateway took too long to respond, like waiting for an echo that never came. Let's try once more."
+        };
+
+        const footerTexts = {
+            400: "Clarity comes with patience",
+            401: "Every gate has its key",
+            402: "Value is subjective",
+            403: "Respect the boundaries",
+            404: "Peace is a journey, not a destination",
+            405: "Flexibility is wisdom",
+            406: "Adaptation is strength",
+            408: "Time waits for no one",
+            409: "Balance restores itself",
+            410: "Letting go is freedom",
+            413: "Less is often more",
+            429: "Haste makes waste",
+            500: "Even servers need rest",
+            502: "All connections require alignment",
+            503: "Rest is productive",
+            504: "Patience through delays"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "Something Happened";
+        const message = messages[errorCode] || "An error occurred. Please breathe and try again.";
+        const footerText = footerTexts[errorCode] || "Find peace in the moment";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('error-message').textContent = message;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'lotus-petal';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+
+        // Create gentle snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            snowflake.style.opacity = Math.random() * 0.3 + 0.1;
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 20000);
+        }
+
+        // Generate occasional snowflakes
+        setInterval(createSnowflake, 800);
+    </script>
+</body>
+</html>
