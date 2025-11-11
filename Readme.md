@@ -44,6 +44,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **salamancas** | Breaking Bad cartel territory - "You're on the wrong turf, ese" dangerous vibes | [Preview](/salamancas/404.html) | [Preview](/salamancas/403.html) | [Preview](/salamancas/500.html) |
 | **jessepinkman** | "Bitch!" appended to everything with chili powder and "Yo, science!" vibes | [Preview](/jessepinkman/404.html) | [Preview](/jessepinkman/403.html) | [Preview](/jessepinkman/500.html) |
 | **readyplayerone** | Ready Player One OASIS terminal with neon cyberpunk and Halliday's Journal quotes | [Preview](/readyplayerone/404.html) | [Preview](/readyplayerone/403.html) | [Preview](/readyplayerone/500.html) |
+| **swordart-aincrad** | Sword Art Online Aincrad - "At least you won't die" with HP bars and floor system | [Preview](/swordart-aincrad/404.html) | [Preview](/swordart-aincrad/403.html) | [Preview](/swordart-aincrad/500.html) |
 
 ### Supported Error Codes
 

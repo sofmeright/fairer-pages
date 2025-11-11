@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(180deg, #87ceeb 0%, #4682b4 50%, #2e5c7a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+            background-image: url('resources/aincrad.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Floating particles */
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 15px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 95vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .aincrad-box {
+            background: rgba(20, 20, 30, 0.92);
+            border: 4px solid #ff0000;
+            border-radius: 8px;
+            padding: 45px 20px 20px 20px;
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.6),
+                        inset 0 0 40px rgba(0, 0, 0, 0.7),
+                        0 0 100px rgba(255, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .aincrad-box::before {
+            content: '⚔️ SYSTEM MESSAGE ⚔️';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: #fff;
+            padding: 8px 18px;
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: 3px;
+            border: 3px solid #990000;
+            border-radius: 5px;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.9);
+            white-space: nowrap;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .hp-bar-container {
+            width: 100%;
+            max-width: 400px;
+            height: 30px;
+            background: rgba(50, 50, 50, 0.8);
+            border: 3px solid #ff0000;
+            border-radius: 5px;
+            margin: 0 auto 15px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hp-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff0000, #ff4444);
+            width: 0%;
+            animation: hp-drain 3s ease-out forwards;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+        }
+
+        @keyframes hp-drain {
+            0% { width: 100%; }
+            100% { width: 25%; }
+        }
+
+        .hp-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: 2px 2px 4px #000;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .floor-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: #ff0000;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 3px 3px 0 #000,
+                         0 0 30px rgba(255, 0, 0, 0.8);
+            line-height: 1.2;
+            letter-spacing: 2px;
+        }
+
+        .error-code {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 65px;
+            font-weight: bold;
+            color: #ff4444;
+            text-shadow: 4px 4px 0 #000,
+                         0 0 40px rgba(255, 0, 0, 0.9);
+            margin: 5px 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffaa00;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .warning-icon {
+            font-size: 38px;
+            margin: 3px 0;
+            animation: pulse-warning 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-warning {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .sao-text {
+            font-size: 22px;
+            color: #fff;
+            margin: 10px 0;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .consolation {
+            font-size: 18px;
+            color: #88ff88;
+            margin: 8px 0;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            font-size: 20px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            border: 4px solid;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff0000, #ff4444);
+            color: #fff;
+            border-color: #990000;
+            box-shadow: 0 8px 0 #990000,
+                        0 0 30px rgba(255, 0, 0, 0.5);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ff4444, #ff6666);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #990000,
+                        0 0 40px rgba(255, 0, 0, 0.7);
+        }
+
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #990000,
+                        0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #4488ff;
+            border-color: #4488ff;
+            box-shadow: 0 8px 0 rgba(0, 68, 136, 0.5),
+                        0 0 30px rgba(68, 136, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(68, 136, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 rgba(0, 68, 136, 0.5),
+                        0 0 40px rgba(68, 136, 255, 0.5);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(0, 68, 136, 0.5),
+                        0 0 20px rgba(68, 136, 255, 0.3);
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #888;
+            font-style: italic;
+            margin-top: 12px;
+            padding-top: 8px;
+        }
+
+        /* Glitch effect */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+
+        @media (max-width: 768px) {
+            .floor-title {
+                font-size: 24px;
+            }
+
+            .error-code {
+                font-size: 55px;
+            }
+
+            .error-message {
+                font-size: 18px;
+            }
+
+            .sao-text {
+                font-size: 20px;
+            }
+
+            .consolation {
+                font-size: 16px;
+            }
+
+            .warning-icon {
+                font-size: 34px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 18px;
+            }
+
+            .aincrad-box {
+                padding: 40px 15px 18px 15px;
+            }
+
+            .aincrad-box::before {
+                font-size: 10px;
+                padding: 7px 12px;
+            }
+
+            .hp-bar-container {
+                max-width: 300px;
+                height: 25px;
+            }
+
+            .hp-text {
+                font-size: 14px;
+            }
+
+            .footer-text {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="aincrad-box">
+            <div class="floor-title" id="floor-title">
+                Floor Not Found
+            </div>
+
+            <div class="hp-bar-container">
+                <div class="hp-bar"></div>
+                <div class="hp-text">CONNECTION HP</div>
+            </div>
+
+            <div class="warning-icon">⚠️</div>
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="sao-text" id="sao-text">
+                You've encountered an error in the system.<br>
+                This floor cannot be accessed.
+            </div>
+
+            <div class="consolation" id="consolation">
+                At least you won't die if you leave without clearing this stage.
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Return to Town</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Teleport Back</a>
+            </div>
+
+            <div class="footer-text" id="footer-text">
+                SAO System - Aincrad Server
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const floorTitles = {
+            400: "Floor 400: Invalid Command",
+            401: "Floor 401: Access Denied",
+            402: "Floor 402: Payment Required",
+            403: "Floor 403: Restricted Area",
+            404: "Floor 404: Not Found",
+            405: "Floor 405: Method Blocked",
+            406: "Floor 406: Incompatible Format",
+            408: "Floor 408: Connection Timeout",
+            409: "Floor 409: Data Conflict",
+            410: "Floor 410: Permanently Deleted",
+            413: "Floor 413: Data Overload",
+            429: "Floor 429: Rate Limit",
+            500: "Floor 500: System Crash",
+            502: "Floor 502: Gateway Error",
+            503: "Floor 503: Server Offline",
+            504: "Floor 504: Timeout"
+        };
+
+        const saoTexts = {
+            400: "Your command syntax is invalid. The system cannot process malformed requests.<br>Check your inputs and try again, player.",
+            401: "You lack the proper credentials to access this area.<br>Authorization required to proceed.",
+            402: "This content is locked behind a payment wall.<br>You'll need Col (currency) to access this zone.",
+            403: "This area is restricted. You don't have permission to enter.<br>Admin access required.",
+            404: "This floor doesn't exist in Aincrad's map database.<br>The path you're looking for cannot be found anywhere.",
+            405: "That action is not allowed on this floor.<br>Try a different approach to proceed.",
+            406: "The system cannot provide data in the format you requested.<br>Your client settings may be incompatible.",
+            408: "Your connection timed out. The server took too long to respond.<br>Check your network and reconnect.",
+            409: "There's a conflict in the data. Someone else may be modifying this resource.<br>Synchronization error detected.",
+            410: "This content has been permanently removed from the game.<br>Not even the Cardinal System can restore it.",
+            413: "Your data payload is too large for the system to handle.<br>Reduce the size and try again.",
+            429: "You're sending too many requests! Slow down or you'll trigger anti-spam measures.<br>The system is rate-limiting you.",
+            500: "Critical system error! Something broke in Aincrad's infrastructure.<br>The Cardinal System is attempting repairs...",
+            502: "Gateway malfunction. The connection between servers failed.<br>The teleport gates may be unstable.",
+            503: "The server is currently unavailable. Too many players online or maintenance in progress.<br>Try logging in later.",
+            504: "Gateway timeout. The server network took too long to respond.<br>Connection to this floor has been lost."
+        };
+
+        const consolations = {
+            400: "At least you won't die if you leave without clearing this stage. Unlike in the real SAO, you can just hit 'back' and try again.",
+            401: "At least you won't die if you leave without clearing this stage. No permadeath here, just mild inconvenience.",
+            402: "At least you won't die if you leave without clearing this stage. In the real game, you'd need to grind for Col. Here? Just go back.",
+            403: "At least you won't die if you leave without clearing this stage. This isn't a boss room - just an error page.",
+            404: "At least you won't die if you leave without clearing this stage. Better to be lost here than on the 75th floor.",
+            405: "At least you won't die if you leave without clearing this stage. No red cursor for trying the wrong method.",
+            406: "At least you won't die if you leave without clearing this stage. Format errors don't trigger trap rooms.",
+            408: "At least you won't die if you leave without clearing this stage. Timeout beats getting hit by a boss's special attack.",
+            409: "At least you won't die if you leave without clearing this stage. Data conflicts are way better than PK conflicts.",
+            410: "At least you won't die if you leave without clearing this stage. Unlike player deaths in SAO, this is just a missing page.",
+            413: "At least you won't die if you leave without clearing this stage. Your file's too big, but your HP bar is fine.",
+            429: "At least you won't die if you leave without clearing this stage. Rate limits are annoying, but they won't kill you.",
+            500: "At least you won't die if you leave without clearing this stage. System crashes are scary, but this one's harmless.",
+            502: "At least you won't die if you leave without clearing this stage. Bad gateways beat bad boss encounters.",
+            503: "At least you won't die if you leave without clearing this stage. Server downtime is better than being trapped forever.",
+            504: "At least you won't die if you leave without clearing this stage. Gateway timeouts won't drop your HP to zero."
+        };
+
+        const footerTexts = {
+            400: "SAO System - Floor 400 - Invalid Request Detected",
+            401: "SAO System - Floor 401 - Authorization Failed",
+            402: "SAO System - Floor 402 - Col Required",
+            403: "SAO System - Floor 403 - Restricted Zone",
+            404: "SAO System - Floor 404 - Location Unknown",
+            405: "SAO System - Floor 405 - Action Prohibited",
+            406: "SAO System - Floor 406 - Format Mismatch",
+            408: "SAO System - Floor 408 - Connection Lost",
+            409: "SAO System - Floor 409 - Conflict Detected",
+            410: "SAO System - Floor 410 - Data Erased",
+            413: "SAO System - Floor 413 - Overload Warning",
+            429: "SAO System - Floor 429 - Spam Prevention Active",
+            500: "SAO System - Floor 500 - Cardinal System Error",
+            502: "SAO System - Floor 502 - Teleport Gate Failure",
+            503: "SAO System - Floor 503 - Server Maintenance",
+            504: "SAO System - Floor 504 - Network Timeout"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const floorTitle = floorTitles[errorCode] || "Floor Not Found";
+        const saoText = saoTexts[errorCode] || "You've encountered an error in the system.<br>This floor cannot be accessed.";
+        const consolation = consolations[errorCode] || "At least you won't die if you leave without clearing this stage.";
+        const footerText = footerTexts[errorCode] || "SAO System - Aincrad Server";
+
+        // Update page content
+        document.getElementById('floor-title').textContent = floorTitle;
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('sao-text').innerHTML = saoText;
+        document.getElementById('consolation').textContent = consolation;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'swordart-aincrad';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
