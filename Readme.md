@@ -26,6 +26,21 @@ Examples:
 - Works with any error code: [Random 500](fairer-pages/random/500.html), [Random 403](fairer-pages/random/403.html), etc.
 - Perfect for keeping error pages fresh and unexpected
 
+#### Overriding the random list to restrict to a custom set of pages:
+If you mount `/usr/share/nginx/html/themes/random/error.html` inside the container to local storage...
+You should be able to edit the lines that look like this below:
+    ```yaml
+        <script>
+            // All available themes
+            const themes = [
+                'back2thefuture',
+                'MegumiTokoroOwo',
+                'hideyodawg',
+                'leggoohno',
+    ```
+                ...
+    Edit this list to match the themes you want to be randomly selected and restart the container. 
+
 ### Supported Error Codes
 
 Common error codes (all supported):
