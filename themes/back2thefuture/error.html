@@ -1,175 +1,304 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" class="pc opera100 js"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title id="page-title">Error</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" type="image/x-icon" href="resources/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Press Start 2P';
-    color: #FFFFFF;
-    text-align: center;
 }
 
 body {
+    font-family: 'Press Start 2P', cursive;
     background-color: #000000;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%23dddcdd' fill-opacity='0.23'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-section.notFound {
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5%;
-    height: 100vh;
-    gap: 50px;
-}
-
-section.notFound .img {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    flex: 1;
+    padding: 20px;
+    color: #FFFFFF;
 }
 
-section.notFound .img img {
-    max-width: 100%;
-    height: auto;
-}
-
-section.notFound .text {
+.container {
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex: 1;
+    gap: 30px;
 }
 
-section.notFound h1 {
-    color: red;
-    font-size: 100px;
+.header {
+    text-align: center;
     margin-bottom: 20px;
 }
 
-section.notFound h2 {
-    font-size: 50px;
-    margin-bottom: 40px;
-    line-height: 1.2;
+.logo-img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.6));
+    animation: glow 2s ease-in-out infinite alternate;
 }
 
-section.notFound h3 {
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.6));
+    }
+    to {
+        filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.9));
+    }
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+}
+
+.delorean-section {
+    flex: 0 0 auto;
+}
+
+.delorean-img {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(0, 200, 255, 0.4));
+}
+
+.error-section {
+    flex: 1;
+    text-align: center;
+    max-width: 500px;
+}
+
+.error-code {
+    color: #FF0000;
+    font-size: 100px;
+    margin-bottom: 20px;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8),
+                 0 0 40px rgba(255, 0, 0, 0.6);
+    animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+    55% { opacity: 1; }
+    57% { opacity: 0.9; }
+}
+
+.error-message {
+    color: #00FFFF;
+    font-size: 28px;
     margin-bottom: 30px;
+    line-height: 1.4;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
 }
 
-div.text a {
+.error-description {
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.question {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
     text-decoration: none;
-    margin-right: 20px;
+    border: 3px solid;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
 }
 
-div.text a:hover {
-    color: red;
-    text-decoration: underline;
+.btn-yes {
+    color: #00FF00;
+    border-color: #00FF00;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
 }
 
-@media only screen and (max-width: 768px) {
-    section.notFound {
+.btn-yes:hover {
+    background: #00FF00;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+    text-shadow: none;
+}
+
+.btn-no {
+    color: #FF0000;
+    border-color: #FF0000;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.btn-no:hover {
+    background: #FF0000;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    text-shadow: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .main-content {
         flex-direction: column;
-        justify-content: space-around;
+        gap: 30px;
     }
-    section.notFound div.img img {
-        width: 70vw;
-        height: auto;
+
+    .delorean-img {
+        max-width: 280px;
     }
-    section.notFound h1 {
+
+    .logo-img {
+        max-width: 300px;
+    }
+
+    .error-code {
+        font-size: 70px;
+    }
+
+    .error-message {
+        font-size: 20px;
+    }
+
+    .error-description {
+        font-size: 12px;
+    }
+
+    .question {
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 12px 30px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .error-code {
         font-size: 50px;
     }
-    section.notFound h2 {
-        font-size: 25px;
+
+    .error-message {
+        font-size: 16px;
     }
-    div.text a:active {
-        color: red;
-        text-decoration: underline;
+
+    .question {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 10px 20px;
     }
 }
 </style>
 </head>
 <body>
-    <section class="notFound">
-        <div class="img">
-            <img src="resources/backToTheHomepage.png" alt="Back to the Homepage"/>
-            <img src="resources/Delorean.png" alt="El Delorean, El Doc y Marty McFly"/>
+    <div class="container">
+        <div class="header">
+            <img src="resources/backToTheHomepage.png" alt="Back to the Homepage" class="logo-img"/>
         </div>
-        <div class="text">
-            <h1 id="error-code">000</h1>
-            <h2 id="error-message">Unknown Error</h2>
-            <h3>BACK TO HOME?</h3>
-            <a href="/" class="yes">YES</a>
-            <a href="https://www.youtube.com/watch?v=G3AfIvJBcGo">NO</a>
+
+        <div class="main-content">
+            <div class="delorean-section">
+                <img src="resources/Delorean.png" alt="DeLorean Time Machine" class="delorean-img"/>
+            </div>
+
+            <div class="error-section">
+                <div class="error-code" id="error-code">404</div>
+                <div class="error-message" id="error-message">NOT FOUND</div>
+                <div class="error-description" id="error-description">
+                    This page doesn't exist in this timeline! Maybe you need to go back to 1985?
+                </div>
+                <div class="question">BACK TO HOME?</div>
+                <div class="buttons">
+                    <a href="/" class="btn btn-yes">YES</a>
+                    <a href="https://www.youtube.com/watch?v=G3AfIvJBcGo" class="btn btn-no">NO</a>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+
     <script>
         const errorMessages = {
-            // 4xx Client Errors
-            400: "Bad Request",
-            401: "Unauthorized",
-            402: "Payment Required",
-            403: "Forbidden",
-            404: "Not Found",
-            405: "Method Not Allowed",
-            406: "Not Acceptable",
-            407: "Proxy Authentication Required",
-            408: "Request Timeout",
-            409: "Conflict",
-            410: "Gone",
-            411: "Length Required",
-            412: "Precondition Failed",
-            413: "Payload Too Large",
-            414: "URI Too Long",
-            415: "Unsupported Media Type",
-            416: "Range Not Satisfiable",
-            417: "Expectation Failed",
-            418: "I'm a teapot",
-            421: "Misdirected Request",
-            422: "Unprocessable Entity",
-            423: "Locked",
-            424: "Failed Dependency",
-            425: "Too Early",
-            426: "Upgrade Required",
-            428: "Precondition Required",
-            429: "Too Many Requests",
-            431: "Request Header Fields Too Large",
-            451: "Unavailable For Legal Reasons",
+            400: "BAD REQUEST",
+            401: "UNAUTHORIZED",
+            402: "PAYMENT REQUIRED",
+            403: "FORBIDDEN",
+            404: "NOT FOUND",
+            405: "METHOD NOT ALLOWED",
+            406: "NOT ACCEPTABLE",
+            408: "REQUEST TIMEOUT",
+            409: "CONFLICT",
+            410: "GONE",
+            413: "PAYLOAD TOO LARGE",
+            429: "TOO MANY REQUESTS",
+            500: "INTERNAL SERVER ERROR",
+            502: "BAD GATEWAY",
+            503: "SERVICE UNAVAILABLE",
+            504: "GATEWAY TIMEOUT"
+        };
 
-            // 5xx Server Errors
-            500: "Internal Server Error",
-            501: "Not Implemented",
-            502: "Bad Gateway",
-            503: "Service Unavailable",
-            504: "Gateway Timeout",
-            505: "HTTP Version Not Supported",
-            506: "Variant Also Negotiates",
-            507: "Insufficient Storage",
-            508: "Loop Detected",
-            510: "Not Extended",
-            511: "Network Authentication Required"
+        const descriptions = {
+            400: "Great Scott! Your request data is corrupted! The flux capacitor can't parse this timeline.",
+            401: "Wait a minute! You need proper credentials to access this. No authentication = no entry!",
+            402: "This content requires 1.21 gigawatts... or payment. Got any plutonium?",
+            403: "Access denied! This area is restricted. Not even the DeLorean can get you in here.",
+            404: "This page doesn't exist in this timeline! Maybe you need to go back to 1985?",
+            405: "Wrong HTTP method! You're trying to POST when you need to GET, or vice versa.",
+            406: "The format you requested isn't available. Try a different Accept header!",
+            408: "Your request took too long! Even slower than the DeLorean going under 88 mph.",
+            409: "Timeline conflict detected! Your request conflicts with the current state.",
+            410: "This resource is gone... erased from existence! Check if you've disrupted the timeline.",
+            413: "Whoa, that's heavy! Your request payload is too large for us to handle.",
+            429: "Slow down there, Marty! You're making too many requests. Take a breather!",
+            500: "The server broke! Something went wrong with the space-time continuum on our end.",
+            502: "Bad gateway! The connection between dimensions failed. Our upstream is broken.",
+            503: "Service temporarily unavailable. We're maintaining the flux capacitor. Try again later!",
+            504: "Gateway timeout! The upstream server took too long. It's like we're stuck at 87 mph."
         };
 
         // Get error code from URL path
         const path = window.location.pathname;
         const match = path.match(/\/(\d+)\.html$/);
         const errorCode = match ? parseInt(match[1]) : 404;
-        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const errorMessage = errorMessages[errorCode] || "UNKNOWN ERROR";
+        const description = descriptions[errorCode] || "Something went wrong in the space-time continuum!";
 
         // Update page content
         document.getElementById('error-code').textContent = errorCode;
         document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('error-description').textContent = description;
         document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
 
         // Fix resource paths for internal error redirects
