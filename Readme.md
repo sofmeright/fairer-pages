@@ -1,4 +1,4 @@
-# Fairer Pages
+![BANNER](fairer-pages-banner.png)
 
 A containerized error page service supporting multiple themes and error codes.
 
