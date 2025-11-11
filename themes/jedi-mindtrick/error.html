@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        /* Starfield background */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        /* Force wave effect */
+        @keyframes force-wave {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .force-wave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            margin: -150px 0 0 -150px;
+            border: 2px solid #4169e1;
+            border-radius: 50%;
+            animation: force-wave 3s ease-out infinite;
+            pointer-events: none;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 15px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 95vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .jedi-box {
+            background: rgba(10, 10, 20, 0.9);
+            border: 4px solid #4169e1;
+            border-radius: 8px;
+            padding: 45px 20px 20px 20px;
+            box-shadow: 0 0 60px rgba(65, 105, 225, 0.6),
+                        inset 0 0 40px rgba(0, 0, 0, 0.7),
+                        0 0 100px rgba(65, 105, 225, 0.3);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .jedi-box::before {
+            content: '✋ JEDI MIND TRICK ✋';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #4169e1, #6495ed);
+            color: #fff;
+            padding: 8px 18px;
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: 3px;
+            border: 3px solid #1e3a8a;
+            border-radius: 5px;
+            box-shadow: 0 0 25px rgba(65, 105, 225, 0.9);
+            white-space: nowrap;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .jedi-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: #4169e1;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 3px 3px 0 #000,
+                         0 0 30px rgba(65, 105, 225, 0.8);
+            line-height: 1.3;
+            letter-spacing: 2px;
+        }
+
+        .jedi-img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border: 4px solid #4169e1;
+            border-radius: 8px;
+            margin: 8px auto 5px auto;
+            box-shadow: 0 0 40px rgba(65, 105, 225, 0.6);
+        }
+
+        .error-code {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 65px;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 4px 4px 0 #000,
+                         0 0 40px rgba(255, 215, 0, 0.9);
+            margin: 5px 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4169e1;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .force-icon {
+            font-size: 38px;
+            margin: 3px 0;
+            animation: pulse-force 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-force {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.6; }
+        }
+
+        .jedi-text {
+            font-size: 22px;
+            color: #fff;
+            margin: 10px 0;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .force-suggestion {
+            font-size: 18px;
+            color: #6495ed;
+            margin: 8px 0;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            font-size: 20px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            border: 4px solid;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4169e1, #6495ed);
+            color: #fff;
+            border-color: #1e3a8a;
+            box-shadow: 0 8px 0 #1e3a8a,
+                        0 0 30px rgba(65, 105, 225, 0.5);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #6495ed, #87ceeb);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #1e3a8a,
+                        0 0 40px rgba(65, 105, 225, 0.7);
+        }
+
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #1e3a8a,
+                        0 0 20px rgba(65, 105, 225, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffd700;
+            border-color: #ffd700;
+            box-shadow: 0 8px 0 rgba(184, 134, 11, 0.5),
+                        0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 rgba(184, 134, 11, 0.5),
+                        0 0 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(184, 134, 11, 0.5),
+                        0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #888;
+            font-style: italic;
+            margin-top: 12px;
+            padding-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .jedi-title {
+                font-size: 24px;
+            }
+
+            .error-code {
+                font-size: 55px;
+            }
+
+            .error-message {
+                font-size: 18px;
+            }
+
+            .jedi-text {
+                font-size: 20px;
+            }
+
+            .force-suggestion {
+                font-size: 16px;
+            }
+
+            .force-icon {
+                font-size: 34px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 18px;
+            }
+
+            .jedi-box {
+                padding: 40px 15px 18px 15px;
+            }
+
+            .jedi-box::before {
+                font-size: 10px;
+                padding: 7px 12px;
+            }
+
+            .jedi-img {
+                max-width: 350px;
+            }
+
+            .footer-text {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="starfield"></div>
+    <div class="force-wave"></div>
+
+    <div class="error-container">
+        <div class="jedi-box">
+            <div class="jedi-title" id="jedi-title">
+                This is not the URL<br>
+                you are looking for
+            </div>
+
+            <img src="resources/jedi.gif" alt="Jedi mind trick" class="jedi-img">
+
+            <div class="force-icon">👋</div>
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="jedi-text" id="jedi-text">
+                *waves hand*<br>
+                You don't need to see this page.
+            </div>
+
+            <div class="force-suggestion" id="force-suggestion">
+                You can go about your business. Move along.
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Use the Force</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Move Along</a>
+            </div>
+
+            <div class="footer-text" id="footer-text">
+                These aren't the errors you're looking for... ✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const jediTitles = {
+            400: "This is not the request\nyou are looking for",
+            401: "These are not the credentials\nyou are looking for",
+            402: "This is not the payment\nyou are looking for",
+            403: "This is not the permission\nyou are looking for",
+            404: "This is not the URL\nyou are looking for",
+            405: "This is not the method\nyou are looking for",
+            406: "This is not the format\nyou are looking for",
+            408: "This is not the timeout\nyou are looking for",
+            409: "This is not the conflict\nyou are looking for",
+            410: "These are not the pages\nyou are looking for",
+            413: "This is not the file size\nyou are looking for",
+            429: "These are not the requests\nyou are looking for",
+            500: "This is not the server\nyou are looking for",
+            502: "This is not the gateway\nyou are looking for",
+            503: "This is not the service\nyou are looking for",
+            504: "This is not the connection\nyou are looking for"
+        };
+
+        const jediTexts = {
+            400: "*waves hand*<br>Your request was malformed. These aren't the parameters the server is looking for.",
+            401: "*waves hand*<br>You don't have authorization. These aren't the credentials you need.",
+            402: "*waves hand*<br>Payment is required to access this. These aren't the free resources you're looking for.",
+            403: "*waves hand*<br>Access is forbidden. You don't need to see this restricted area.",
+            404: "*waves hand*<br>You don't need to see this page. The URL you seek does not exist here.",
+            405: "*waves hand*<br>That HTTP method won't work here. These aren't the verbs you're looking for.",
+            406: "*waves hand*<br>The format you requested isn't available. This isn't the content type you're looking for.",
+            408: "*waves hand*<br>The request took too long. This isn't the timely response you're looking for.",
+            409: "*waves hand*<br>There's a conflict in the data. This isn't the synchronized state you're looking for.",
+            410: "*waves hand*<br>This content is gone forever. These aren't the pages that exist anymore.",
+            413: "*waves hand*<br>Your upload is too large. This isn't the file size the server accepts.",
+            429: "*waves hand*<br>You're making too many requests. This isn't the rate limit you wanted.",
+            500: "*waves hand*<br>The server encountered an error. This isn't the working server you're looking for.",
+            502: "*waves hand*<br>The gateway failed. This isn't the connection path you're looking for.",
+            503: "*waves hand*<br>The service is unavailable. This isn't the online server you're looking for.",
+            504: "*waves hand*<br>The gateway timed out. This isn't the fast connection you're looking for."
+        };
+
+        const forceSuggestions = {
+            400: "You can fix your request syntax. Move along.",
+            401: "You can go get proper credentials. Move along.",
+            402: "You can find the payment portal. Move along.",
+            403: "You can request access from an admin. Move along.",
+            404: "You can go about your business. Move along.",
+            405: "You can try a different HTTP method. Move along.",
+            406: "You can adjust your Accept headers. Move along.",
+            408: "You can retry with a faster connection. Move along.",
+            409: "You can resolve the conflict and retry. Move along.",
+            410: "You can search for alternate content. Move along.",
+            413: "You can reduce your file size. Move along.",
+            429: "You can slow down your requests. Move along.",
+            500: "You can wait for the server to recover. Move along.",
+            502: "You can try a different gateway route. Move along.",
+            503: "You can come back when service resumes. Move along.",
+            504: "You can retry when the gateway responds. Move along."
+        };
+
+        const footerTexts = {
+            400: "These aren't the valid requests you're looking for... ✨",
+            401: "These aren't the authorized users you're looking for... ✨",
+            402: "These aren't the free services you're looking for... ✨",
+            403: "These aren't the accessible pages you're looking for... ✨",
+            404: "These aren't the URLs you're looking for... ✨",
+            405: "These aren't the allowed methods you're looking for... ✨",
+            406: "These aren't the acceptable formats you're looking for... ✨",
+            408: "These aren't the timely responses you're looking for... ✨",
+            409: "These aren't the conflict-free operations you're looking for... ✨",
+            410: "These aren't the existing pages you're looking for... ✨",
+            413: "These aren't the acceptable file sizes you're looking for... ✨",
+            429: "These aren't the unlimited requests you're looking for... ✨",
+            500: "These aren't the working servers you're looking for... ✨",
+            502: "These aren't the functioning gateways you're looking for... ✨",
+            503: "These aren't the available services you're looking for... ✨",
+            504: "These aren't the responsive gateways you're looking for... ✨"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const jediTitle = jediTitles[errorCode] || "This is not the URL\nyou are looking for";
+        const jediText = jediTexts[errorCode] || "*waves hand*<br>You don't need to see this page.";
+        const forceSuggestion = forceSuggestions[errorCode] || "You can go about your business. Move along.";
+        const footerText = footerTexts[errorCode] || "These aren't the errors you're looking for... ✨";
+
+        // Update page content
+        document.getElementById('jedi-title').innerHTML = jediTitle.replace(/\n/g, '<br>');
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('jedi-text').innerHTML = jediText;
+        document.getElementById('force-suggestion').textContent = forceSuggestion;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'jedi-mindtrick';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+
+        // Create starfield
+        const starfield = document.getElementById('starfield');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            starfield.appendChild(star);
+        }
+    </script>
+</body>
+</html>
