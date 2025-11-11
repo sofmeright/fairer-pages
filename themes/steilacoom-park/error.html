@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.85;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(34, 70, 34, 0.3),
+                rgba(50, 80, 100, 0.3));
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 750px;
+            width: 90%;
+        }
+
+        .nature-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .error-card {
+            background: rgba(25, 45, 35, 0.85);
+            backdrop-filter: blur(3px);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(100, 150, 100, 0.3);
+        }
+
+        .error-code {
+            font-size: 80px;
+            font-weight: 300;
+            font-family: 'Merriweather', serif;
+            color: #90c090;
+            margin-bottom: 15px;
+            line-height: 1;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .error-title {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Merriweather', serif;
+            color: #b8d8b8;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .nature-text {
+            font-size: 17px;
+            color: #d0e0d0;
+            line-height: 1.9;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .tranquil-box {
+            background: rgba(100, 150, 100, 0.15);
+            border: 1px solid rgba(100, 150, 100, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 25px 0;
+            font-size: 15px;
+            color: #b8d8b8;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: rgba(100, 150, 100, 0.8);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(100, 150, 100, 0.3);
+            border: 1px solid rgba(100, 150, 100, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: rgba(120, 170, 120, 0.9);
+            box-shadow: 0 6px 20px rgba(100, 150, 100, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #b8d8b8;
+            border: 1px solid rgba(100, 150, 100, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(100, 150, 100, 0.2);
+            border-color: rgba(100, 150, 100, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 13px;
+            color: rgba(200, 220, 200, 0.5);
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 40px 30px;
+            }
+
+            .error-code {
+                font-size: 65px;
+            }
+
+            .error-title {
+                font-size: 24px;
+            }
+
+            .nature-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/park.jpg" alt="Steilacoom Park" class="bg-image">
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <div class="nature-icon">🌲</div>
+        <div class="error-card">
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">Path Not Found</div>
+            <div class="nature-text" id="nature-text">
+                Like a trail that fades into the forest, this page has wandered off the beaten path. Take a moment to breathe in the tranquility, then find your way back.
+            </div>
+            <div class="tranquil-box" id="tranquil-box">
+                🍃 Nature reminds us: not all who wander are lost
+            </div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Return Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+            <div class="footer-text" id="footer-text">
+                Find peace in the journey
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "Invalid Trail",
+            401: "Gate Locked",
+            402: "Entry Fee Required",
+            403: "Restricted Area",
+            404: "Path Not Found",
+            405: "Wrong Route",
+            406: "Incompatible Path",
+            408: "Trail Timeout",
+            409: "Path Conflict",
+            410: "Trail Closed",
+            413: "Pack Too Heavy",
+            429: "Too Many Visitors",
+            500: "Park System Error",
+            502: "Bridge Out",
+            503: "Park Closed",
+            504: "Trail Connection Lost"
+        };
+
+        const natureTexts = {
+            400: "Your request took an unclear path. Like reading a trail map incorrectly, sometimes we need to reassess our direction and try again.",
+            401: "This area requires permission to enter. Some trails are reserved for those with the proper credentials. Seek access first.",
+            402: "Entry to this area requires a park pass. Nature's beauty sometimes asks for our support in return.",
+            403: "This section of the park is off-limits. Respect the boundaries that protect both visitors and nature alike.",
+            404: "Like a trail that fades into the forest, this page has wandered off the beaten path. Take a moment to breathe in the tranquility, then find your way back.",
+            405: "That approach won't work on this trail. Sometimes we need to adjust our method to match the terrain.",
+            406: "Your current equipment isn't suited for this path. Find compatible tools for your journey ahead.",
+            408: "The connection timed out like a sunset over the water. Give it a moment, then try your journey again.",
+            409: "Two paths are crossing in conflict. Nature teaches us to pause, reassess, and find harmony in the confusion.",
+            410: "This trail has been permanently closed. Like seasons changing, some paths end so new ones can begin.",
+            413: "Your pack is too heavy for this trail. Lighten your load and enjoy a more comfortable journey.",
+            429: "The trail is crowded right now. Like wildlife at dawn, sometimes patience and timing make all the difference.",
+            500: "The park system encountered an error. Even in nature, systems need maintenance. Our rangers are working on it.",
+            502: "The bridge between sections is out. Nature's pathways require care and repair. We're working to restore the connection.",
+            503: "The park is temporarily closed for maintenance. Rest assured, the forest will welcome you again soon.",
+            504: "The trail connection was lost. Sometimes signals fade in the wilderness. Try reconnecting with nature again."
+        };
+
+        const tranquilBoxes = {
+            400: "🍃 Clear your path, clear your mind",
+            401: "🍃 Patience opens many gates",
+            402: "🍃 Support sustains the sanctuary",
+            403: "🍃 Boundaries protect beauty",
+            404: "🍃 Nature reminds us: not all who wander are lost",
+            405: "🍃 Adapt like water around stone",
+            406: "🍃 The right tools make the journey easier",
+            408: "🍃 Time flows like a gentle stream",
+            409: "🍃 Harmony emerges from chaos",
+            410: "🍃 Endings make way for new growth",
+            413: "🍃 Travel light, journey far",
+            429: "🍃 Patience rewards the wanderer",
+            500: "🍃 Even forests need tending",
+            502: "🍃 All bridges can be rebuilt",
+            503: "🍃 Rest is part of the cycle",
+            504: "🍃 Reconnect with what matters"
+        };
+
+        const footerTexts = {
+            400: "Find clarity in nature's simplicity",
+            401: "Respect guides the way",
+            402: "Care sustains the sanctuary",
+            403: "Boundaries preserve beauty",
+            404: "Find peace in the journey",
+            405: "Flexibility finds the path",
+            406: "Prepare for the terrain ahead",
+            408: "Timing is everything",
+            409: "Seek balance in all things",
+            410: "Embrace change as nature does",
+            413: "Less is more on the trail",
+            429: "Good things come to those who wait",
+            500: "Trust the restoration process",
+            502: "Pathways will reconnect",
+            503: "Return refreshed",
+            504: "Nature always welcomes you back"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "Path Not Found";
+        const natureText = natureTexts[errorCode] || natureTexts[404];
+        const tranquilBox = tranquilBoxes[errorCode] || tranquilBoxes[404];
+        const footerText = footerTexts[errorCode] || footerTexts[404];
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('nature-text').textContent = natureText;
+        document.getElementById('tranquil-box').textContent = tranquilBox;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'steilacoom-park';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>

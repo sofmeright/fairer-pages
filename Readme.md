@@ -74,6 +74,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **peaceful-waterfalls** | Nature water metaphors - Flow and stream language with calming waterfall imagery and natural wisdom | [Preview](/peaceful-waterfalls/404.html) | [Preview](/peaceful-waterfalls/403.html) | [Preview](/peaceful-waterfalls/500.html) |
 | **frequency-shift** | Barbara Marciniak quote - "Emit your own frequency" with purple wave aesthetics and vibration metaphors | [Preview](/frequency-shift/404.html) | [Preview](/frequency-shift/403.html) | [Preview](/frequency-shift/500.html) |
 | **churchill-courage** | Churchill wisdom - "Courage to continue" quote with elegant serif typography and golden accents | [Preview](/churchill-courage/404.html) | [Preview](/churchill-courage/403.html) | [Preview](/churchill-courage/500.html) |
+| **steilacoom-park** | Tranquil park nature theme - Peaceful forest trails with green tones and nature wisdom metaphors | [Preview](/steilacoom-park/404.html) | [Preview](/steilacoom-park/403.html) | [Preview](/steilacoom-park/500.html) |
 
 ### Random Theme Selector
 
