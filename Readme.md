@@ -61,6 +61,8 @@ Common error codes (all supported):
 
 All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme uses a single dynamic error page that automatically displays the correct error code and message for any HTTP error (400-599).
 
+> Note: The Preview links provided below are **only functional from the WebUI of the docker container**. There's a method to the madness, I promise. Screenshots will be provided soon.
+
 | Theme | Description | 404 | 403 | 500 |
 |-------|-------------|-----|-----|-----|
 | **anisorry** | Apologetic crying anime girl - "I'm so sorry! Please forgive me!" | [Preview](/fairer-pages/anisorry/404.html) | [Preview](/fairer-pages/anisorry/403.html) | [Preview](/fairer-pages/anisorry/500.html) |
