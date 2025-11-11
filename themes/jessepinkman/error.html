@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Anton', sans-serif;
+            background: linear-gradient(135deg, #0a3d0a 0%, #1a5c1a 50%, #0a3d0a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        /* Floating chili powder particles */
+        .powder {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff4400;
+            border-radius: 50%;
+            opacity: 0;
+            animation: powder-float 12s infinite ease-in-out;
+            box-shadow: 0 0 5px #ff4400;
+        }
+
+        @keyframes powder-float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(80px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 15px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 95vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .yo-box {
+            background: rgba(20, 20, 20, 0.95);
+            border: 6px solid #ffdd00;
+            border-radius: 5px;
+            padding: 45px 20px 25px 20px;
+            box-shadow: 0 0 60px rgba(255, 221, 0, 0.5),
+                        inset 0 0 40px rgba(0, 0, 0, 0.9);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .yo-box::before {
+            content: '🌶️ YO, SCIENCE! 🌶️';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ffdd00, #ffaa00);
+            color: #000;
+            padding: 8px 18px;
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: 3px;
+            border: 3px solid #cc8800;
+            border-radius: 5px;
+            box-shadow: 0 0 25px rgba(255, 221, 0, 0.8);
+            white-space: nowrap;
+        }
+
+        .bitch-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 32px;
+            color: #ffdd00;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0 #000,
+                         0 0 30px rgba(255, 221, 0, 0.9);
+            line-height: 1.2;
+        }
+
+        .chili {
+            font-size: 50px;
+            margin: 5px 0;
+            animation: spicy-shake 3s ease-in-out infinite;
+        }
+
+        @keyframes spicy-shake {
+            0%, 100% { transform: rotate(-5deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .error-code {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 75px;
+            font-weight: bold;
+            color: #ffdd00;
+            text-shadow: 4px 4px 0 #000,
+                         0 0 40px rgba(255, 221, 0, 0.9);
+            margin: 8px 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bitch-text {
+            font-size: 26px;
+            color: #ffdd00;
+            margin: 15px 0;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .yo-text {
+            font-size: 20px;
+            color: #ccc;
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            font-size: 22px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            border: 4px solid;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffdd00, #ffaa00);
+            color: #000;
+            border-color: #cc8800;
+            box-shadow: 0 8px 0 #cc8800,
+                        0 0 30px rgba(255, 221, 0, 0.5);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ffee00, #ffdd00);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #cc8800,
+                        0 0 40px rgba(255, 221, 0, 0.7);
+        }
+
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #cc8800,
+                        0 0 20px rgba(255, 221, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffdd00;
+            border-color: #ffdd00;
+            box-shadow: 0 8px 0 rgba(204, 136, 0, 0.5),
+                        0 0 30px rgba(255, 221, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 221, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 rgba(204, 136, 0, 0.5),
+                        0 0 40px rgba(255, 221, 0, 0.5);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(204, 136, 0, 0.5),
+                        0 0 20px rgba(255, 221, 0, 0.3);
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #888;
+            font-style: italic;
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .bitch-title {
+                font-size: 26px;
+            }
+
+            .error-code {
+                font-size: 65px;
+            }
+
+            .error-message {
+                font-size: 20px;
+            }
+
+            .bitch-text {
+                font-size: 22px;
+            }
+
+            .yo-text {
+                font-size: 18px;
+            }
+
+            .chili {
+                font-size: 42px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 20px;
+            }
+
+            .yo-box {
+                padding: 40px 15px 20px 15px;
+            }
+
+            .yo-box::before {
+                font-size: 10px;
+                padding: 7px 12px;
+            }
+
+            .footer-text {
+                font-size: 14px;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="yo-box">
+            <div class="bitch-title" id="main-title">
+                Error, Bitch!
+            </div>
+
+            <div class="chili">🌶️🌶️🌶️</div>
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error, Bitch!</div>
+
+            <div class="bitch-text" id="bitch-message">
+                Yo, this page is all messed up, bitch!
+            </div>
+
+            <div class="yo-text" id="yo-message">
+                Maybe try adding some chili powder?
+                Nah man, that ain't gonna work this time.
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Yo, Go Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Back It Up</a>
+            </div>
+
+            <div class="footer-text">Yeah, science, bitch! 🧪</div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const bitchMessages = {
+            400: "Yo, you sent some bad data, bitch!",
+            401: "You ain't authorized for this, bitch!",
+            402: "Gotta pay up first, bitch!",
+            403: "This area's forbidden, bitch!",
+            404: "Can't find that page anywhere, bitch!",
+            405: "Wrong method, bitch!",
+            406: "Not acceptable, bitch!",
+            408: "Took too long, bitch!",
+            409: "There's a conflict here, bitch!",
+            410: "That page is gone forever, bitch!",
+            413: "File's way too big, bitch!",
+            429: "Too many requests, bitch! Chill!",
+            500: "Server's all broken, bitch!",
+            502: "Bad gateway situation, bitch!",
+            503: "Service unavailable right now, bitch!",
+            504: "Gateway timeout, bitch!"
+        };
+
+        const yoMessages = {
+            400: "Check your inputs, yo. Something's whack.",
+            401: "You need the right credentials and stuff.",
+            402: "Yeah, this ain't free, man.",
+            403: "Yo, you can't access this. Period.",
+            404: "Looked everywhere for that page. It's gone, yo.",
+            405: "Try a different approach, man.",
+            406: "Server can't give you what you want like that.",
+            408: "You were too slow, dude. Timed out.",
+            409: "Things are conflicting. Gotta sort it out.",
+            410: "That content's been deleted. For real.",
+            413: "That upload's massive, yo. Too big.",
+            429: "Whoa, slow down with all those requests!",
+            500: "Something broke on the server side, man.",
+            502: "The gateway's messed up, yo.",
+            503: "Server's taking a break right now.",
+            504: "Gateway took forever and gave up, man."
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const bitchMessage = bitchMessages[errorCode] || "Yo, this page is all messed up, bitch!";
+        const yoMessage = yoMessages[errorCode] || "Maybe try adding some chili powder? Nah man, that ain't gonna work this time.";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage + ", Bitch!";
+        document.getElementById('bitch-message').textContent = bitchMessage;
+        document.getElementById('yo-message').textContent = yoMessage;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Create floating chili powder
+        for (let i = 0; i < 40; i++) {
+            const powder = document.createElement('div');
+            powder.className = 'powder';
+            powder.style.left = Math.random() * 100 + '%';
+            powder.style.animationDelay = Math.random() * 12 + 's';
+            powder.style.animationDuration = (Math.random() * 5 + 10) + 's';
+            const size = Math.random() * 3 + 3;
+            powder.style.width = size + 'px';
+            powder.style.height = size + 'px';
+            document.body.appendChild(powder);
+        }
+    </script>
+</body>
+</html>

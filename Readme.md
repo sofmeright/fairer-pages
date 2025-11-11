@@ -42,6 +42,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **bigoneredd** | Sanford and Son buddy cops - street speak meets tech speak, Redd clutches heart | [Preview](/bigoneredd/404.html) | [Preview](/bigoneredd/403.html) | [Preview](/bigoneredd/500.html) |
 | **fakerockyridge** | Movie set facades - "Oops! Wrong side!" revealing empty scaffolding behind | [Preview](/fakerockyridge/404.html) | [Preview](/fakerockyridge/403.html) | [Preview](/fakerockyridge/500.html) |
 | **salamancas** | Breaking Bad cartel territory - "You're on the wrong turf, ese" dangerous vibes | [Preview](/salamancas/404.html) | [Preview](/salamancas/403.html) | [Preview](/salamancas/500.html) |
+| **jessepinkman** | "Bitch!" appended to everything with chili powder and "Yo, science!" vibes | [Preview](/jessepinkman/404.html) | [Preview](/jessepinkman/403.html) | [Preview](/jessepinkman/500.html) |
 
 ### Supported Error Codes
 
