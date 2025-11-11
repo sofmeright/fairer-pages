@@ -492,7 +492,7 @@
             504: "The checkpoint isn't responding right meow. The gateway timed out. We've been waiting here forever. Maybe something is wrong up ahead right meow."
         };
 
-        const locations = {
+        const errorLocations = {
             400: "Syntax Junction",
             401: "Authentication Avenue",
             402: "Payment Plaza",
@@ -575,7 +575,7 @@
         const errorMessage = errorMessages[errorCode] || "Unknown Error";
         const title = titles[errorCode] || "License And Registration";
         const violation = violations[errorCode] || "Do you know why I pulled you over? Your request was clocked at excessive speeds on the information superhighway.";
-        const location = locations[errorCode] || "Information Superhighway";
+        const errorLocation = errorLocations[errorCode] || "Information Superhighway";
         const status = statuses[errorCode] || "Pulled Over";
         const trooperAdvice = advice[errorCode] || "Littering and... littering and... smoking the reefer.";
         const footer = footers[errorCode] || "The snozberries taste like snozberries";
@@ -585,7 +585,7 @@
         document.getElementById('error-code').textContent = errorCode;
         document.getElementById('error-message').textContent = errorMessage;
         document.getElementById('violation-code').textContent = 'ERROR-' + errorCode;
-        document.getElementById('location').innerHTML = location;
+        document.getElementById('location').innerHTML = errorLocation;
         document.getElementById('status').innerHTML = status;
         document.getElementById('violation-text').innerHTML = violation;
         document.getElementById('trooper-advice').innerHTML = trooperAdvice;
