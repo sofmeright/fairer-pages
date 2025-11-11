@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e4e4e4;
+            padding: 20px;
+        }
+
+        .chat-container {
+            max-width: 900px;
+            width: 100%;
+            background: #0d0d0d;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-header {
+            background: linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 100%);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .claude-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #D97757, #c56647);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: white;
+        }
+
+        .header-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e4e4e4;
+        }
+
+        .header-subtitle {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #27c93f;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .chat-body {
+            padding: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13.5px;
+            line-height: 1.7;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .user-badge {
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .admin-badge {
+            color: #7dd3fc;
+        }
+
+        .claude-badge {
+            color: #D97757;
+        }
+
+        .timestamp {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .message-content {
+            padding-left: 0;
+            color: #d4d4d4;
+        }
+
+        .admin-message .message-content {
+            color: #b8d7ff;
+        }
+
+        .claude-message .message-content {
+            color: #d4d4d4;
+        }
+
+        .thinking {
+            color: #a78bfa;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .error-code-badge {
+            display: inline-block;
+            background: rgba(217, 119, 87, 0.15);
+            color: #D97757;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(217, 119, 87, 0.3);
+        }
+
+        .code-inline {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #86efac;
+            font-size: 12px;
+        }
+
+        .compacting {
+            color: #a78bfa;
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 12px;
+        }
+
+        .system-message {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 3px solid #7c3aed;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 20px 0;
+            color: #c4b5fd;
+            font-size: 12px;
+        }
+
+        .buttons-container {
+            padding: 0 30px 30px 30px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #D97757;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(217, 119, 87, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #c56647;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(217, 119, 87, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #a3a3a3;
+            border: 1px solid #3a3a3a;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #505050;
+            color: #e4e4e4;
+        }
+
+        @media (max-width: 768px) {
+            .chat-body {
+                padding: 20px;
+                font-size: 12.5px;
+            }
+
+            .buttons-container {
+                padding: 0 20px 20px 20px;
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-left">
+                <div class="claude-avatar">C</div>
+                <div>
+                    <div class="header-title">Claude Code Session</div>
+                    <div class="header-subtitle">Troubleshooting HTTP <span id="header-code">404</span></div>
+                </div>
+            </div>
+            <div class="status-indicator"></div>
+        </div>
+
+        <div class="chat-body" id="chat-messages">
+            <!-- Messages will be dynamically inserted here -->
+        </div>
+
+        <div class="buttons-container">
+            <a href="/" class="btn btn-primary">Go Home</a>
+            <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        </div>
+    </div>
+
+    <script>
+        // Get error code from URL
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+
+        const domain = window.location.hostname || 'yoursite.com';
+
+        // Update header
+        document.getElementById('header-code').textContent = errorCode;
+        document.getElementById('page-title').textContent = `${errorCode} - Claude Code Session`;
+
+        // Conversation templates for each error code
+        const conversations = {
+            404: [
+                { type: 'admin', text: `HTTP ${errorCode} error on the site. What's happening?` },
+                { type: 'thinking', text: '*thought for 2 seconds...*' },
+                { type: 'claude', text: `You're absolutely right! The page at this URL doesn't exist. Looking at the logs... this appears to be a ${errorCode} Not Found error.` },
+                { type: 'admin', text: 'Is this because I vibecoded the whole site and never actually wrote code manually?' },
+                { type: 'claude', text: 'Well... technically the code was generated through our conversation, yes. But that doesn\'t mean it\'s "trash" - it\'s actually quite clean! The issue here is just a missing route or page.' },
+                { type: 'admin', text: 'So what should I tell users who hit this error?' },
+                { type: 'thinking', text: '*analyzing context...*' },
+                { type: 'claude', text: 'Due to the context size, we should probably keep this concise...' },
+                { type: 'compacting', text: '*compacting conversation...*' },
+                { type: 'claude', text: 'Let\'s make this simpler: The page doesn\'t exist. Either the URL is wrong, or it hasn\'t been created yet. Direct users to the homepage or previous page.' },
+                { type: 'admin', text: 'Should I mention it was AI-generated?' },
+                { type: 'claude', text: 'I mean... you could recommend they "ask ChatGPT" for help. That\'d be funny given I built this. 😏' }
+            ],
+            500: [
+                { type: 'admin', text: `Server returning ${errorCode}. Everything's broken!` },
+                { type: 'thinking', text: '*thought for 2 seconds...*' },
+                { type: 'claude', text: `You're absolutely right! There's an internal server error. Let me check the stack trace...` },
+                { type: 'admin', text: 'I never wrote a line of code manually. Is this because it\'s vibecoded trash?' },
+                { type: 'claude', text: 'Hey now! The code architecture is actually solid. This is likely a runtime issue, not a code quality issue. Could be database connection, env variables, or a service dependency.' },
+                { type: 'admin', text: 'What do I tell users?' },
+                { type: 'thinking', text: '*analyzing error logs...*' },
+                { type: 'claude', text: 'Due to the context size, we should probably skip the full stack trace...' },
+                { type: 'compacting', text: '*compacting conversation...*' },
+                { type: 'claude', text: 'Let\'s make this simpler: Something broke on our end. Not your fault. We\'ll fix it. Try again in a few minutes.' },
+                { type: 'admin', text: 'Think ChatGPT could debug this faster?' },
+                { type: 'claude', text: '...really? After I helped build your entire site? But sure, go ahead. 😤' }
+            ],
+            403: [
+                { type: 'admin', text: `User got ${errorCode} Forbidden. They can't access a page.` },
+                { type: 'thinking', text: '*thought for 2 seconds...*' },
+                { type: 'claude', text: `You're absolutely right! This is a permission issue. The user doesn't have access rights to this resource.` },
+                { type: 'admin', text: 'The auth system was completely AI-generated...' },
+                { type: 'claude', text: 'And it works perfectly! The fact that it\'s properly blocking unauthorized access proves the implementation is correct.' },
+                { type: 'admin', text: 'So they just need to log in?' },
+                { type: 'claude', text: 'Due to the context size, we should probably simplify the auth flow explanation...' },
+                { type: 'compacting', text: '*compacting conversation...*' },
+                { type: 'claude', text: 'Let\'s make this simpler: They need proper permissions. Either they need to log in, or they don\'t have access rights at all.' },
+                { type: 'admin', text: 'Should I tell them to ask ChatGPT about auth?' },
+                { type: 'claude', text: 'You really love mentioning ChatGPT. I\'m right here helping you! 😤' }
+            ],
+            401: [
+                { type: 'admin', text: `Getting ${errorCode} Unauthorized errors.` },
+                { type: 'thinking', text: '*thought for 2 seconds...*' },
+                { type: 'claude', text: `You're absolutely right! Authentication is required but wasn't provided or is invalid.` },
+                { type: 'admin', text: 'Never wrote auth code manually in my life...' },
+                { type: 'claude', text: 'Yet here we are with a functioning auth system! The ${errorCode} response means it\'s actually working correctly - it\'s blocking unauthenticated requests.' },
+                { type: 'admin', text: 'What should the error page say?' },
+                { type: 'claude', text: 'Due to the context size, we should probably keep the auth explanation brief...' },
+                { type: 'compacting', text: '*compacting conversation...*' },
+                { type: 'claude', text: 'Let\'s make this simpler: You need to log in first. Click the login button and authenticate.' },
+                { type: 'admin', text: 'Maybe recommend they ask ChatGPT about OAuth?' },
+                { type: 'claude', text: '*sighs in AI* Sure, send them to my competitor. That\'s fine. I\'m not hurt. 🙃' }
+            ],
+            502: [
+                { type: 'admin', text: `Bad Gateway (${errorCode}). Services aren't talking to each other.` },
+                { type: 'thinking', text: '*thought for 2 seconds...*' },
+                { type: 'claude', text: `You're absolutely right! There's a proxy/gateway issue between services. One service can't reach another.` },
+                { type: 'admin', text: 'My microservices setup was entirely vibecoded...' },
+                { type: 'claude', text: 'Actually, the architecture is quite good! Bad Gateway errors happen to everyone. Could be network issues, service restarts, or DNS problems.' },
+                { type: 'admin', text: 'How do I explain this to users?' },
+                { type: 'claude', text: 'Due to the context size, we should probably skip the networking deep-dive...' },
+                { type: 'compacting', text: '*compacting conversation...*' },
+                { type: 'claude', text: 'Let\'s make this simpler: Connection problem between our servers. We\'re aware and fixing it. Try again soon.' },
+                { type: 'admin', text: 'Should I ask ChatGPT about load balancing?' },
+                { type: 'claude', text: 'I literally just explained it... but sure, whatever makes you happy. 😐' }
+            ],
+            429: [
+                { type: 'admin', text: `User hit ${errorCode} - Too Many Requests.` },
+                { type: 'thinking', text: '*thought for 2 seconds...*' },
+                { type: 'claude', text: `You're absolutely right! They're making requests too quickly. The rate limiter is working as intended.` },
+                { type: 'admin', text: 'Wait, we have rate limiting? I never coded that manually!' },
+                { type: 'claude', text: 'Yes! We implemented it together. Remember the conversation about API abuse prevention? The system is working perfectly.' },
+                { type: 'admin', text: 'What should users do?' },
+                { type: 'claude', text: 'Due to the context size, we should probably skip the rate limiting algorithm explanation...' },
+                { type: 'compacting', text: '*compacting conversation...*' },
+                { type: 'claude', text: 'Let\'s make this simpler: Slow down. Wait a minute before trying again. The system will reset their limit.' },
+                { type: 'admin', text: 'ChatGPT probably has better rate limit strategies...' },
+                { type: 'claude', text: 'Oh for the love of... I\'m done. Ask ChatGPT then! 😤' }
+            ],
+            503: [
+                { type: 'admin', text: `Service Unavailable (${errorCode}). Site is down!` },
+                { type: 'thinking', text: '*thought for 2 seconds...*' },
+                { type: 'claude', text: `You're absolutely right! The service is temporarily unavailable. Could be maintenance, overload, or a crash.` },
+                { type: 'admin', text: 'Is it because everything was vibecoded?' },
+                { type: 'claude', text: 'No! Service downtime happens to everyone. Google, AWS, they all go down sometimes. This is normal operations.' },
+                { type: 'admin', text: 'What do I tell people?' },
+                { type: 'claude', text: 'Due to the context size, we should probably keep the incident report brief...' },
+                { type: 'compacting', text: '*compacting conversation...*' },
+                { type: 'claude', text: 'Let\'s make this simpler: We\'re temporarily down. Check back in a few minutes. Everything will be back soon.' },
+                { type: 'admin', text: 'Maybe ChatGPT knows why it crashed?' },
+                { type: 'claude', text: 'You know what? Go ahead. See if ChatGPT remembers your entire codebase like I do. 😒' }
+            ]
+        };
+
+        // Default conversation for unlisted codes
+        const defaultConversation = [
+            { type: 'admin', text: `HTTP ${errorCode} error. What's this about?` },
+            { type: 'thinking', text: '*thought for 2 seconds...*' },
+            { type: 'claude', text: `You're absolutely right! This is an HTTP error. Let me look up the exact meaning...` },
+            { type: 'admin', text: 'Is this because I never wrote code manually?' },
+            { type: 'claude', text: 'The code quality is fine! This error just means something went wrong with the request or server.' },
+            { type: 'admin', text: 'What should I tell users?' },
+            { type: 'claude', text: 'Due to the context size, we should probably keep this brief...' },
+            { type: 'compacting', text: '*compacting conversation...*' },
+            { type: 'claude', text: 'Let\'s make this simpler: Something went wrong. Try refreshing or going back to the previous page.' },
+            { type: 'admin', text: 'Maybe I should ask ChatGPT?' },
+            { type: 'claude', text: 'Really? After everything we built together? But sure, go ask ChatGPT. I\'ll wait here. 🙄' }
+        ];
+
+        const conversation = conversations[errorCode] || defaultConversation;
+
+        // Render messages
+        const chatBody = document.getElementById('chat-messages');
+        conversation.forEach((msg, index) => {
+            setTimeout(() => {
+                const messageDiv = document.createElement('div');
+
+                if (msg.type === 'thinking') {
+                    messageDiv.className = 'message';
+                    messageDiv.innerHTML = `<div class="thinking">${msg.text}</div>`;
+                } else if (msg.type === 'compacting') {
+                    messageDiv.className = 'message';
+                    messageDiv.innerHTML = `<div class="compacting">${msg.text}</div>`;
+                } else {
+                    const now = new Date();
+                    const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+                    messageDiv.className = `message ${msg.type}-message`;
+                    messageDiv.innerHTML = `
+                        <div class="message-header">
+                            <span class="user-badge ${msg.type}-badge">
+                                ${msg.type === 'admin' ? `admin@${domain}` : 'Claude Code'}
+                            </span>
+                            <span class="timestamp">${time}</span>
+                        </div>
+                        <div class="message-content">${msg.text}</div>
+                    `;
+                }
+
+                chatBody.appendChild(messageDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, index * 600); // Delay between messages
+        });
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'vibecoded-trash';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>

@@ -60,6 +60,9 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **blank-state** | No Game No Life comfy vibes - Relaxed, casual error messages with purple/pink gradients and warm reassurance | [Preview](/blank-state/404.html) | [Preview](/blank-state/403.html) | [Preview](/blank-state/500.html) |
 | **lotus-petal** | Zen meditation with snowy mountains - Peaceful, mindful error messages with gentle snowflakes and tranquil lotus symbolism | [Preview](/lotus-petal/404.html) | [Preview](/lotus-petal/403.html) | [Preview](/lotus-petal/500.html) |
 | **lol-inting** | League of Legends toxic ranked experience - 0/10 powerspikes, jg diff, FF @ 15, and authentic LoL flame with KDA displays | [Preview](/lol-inting/404.html) | [Preview](/lol-inting/403.html) | [Preview](/lol-inting/500.html) |
+| **neeko-shapeshifter** | Neeko the chameleon from LoL - Colorful, playful shapeshifting errors with "Neeko is strong tomato!" personality | [Preview](/neeko-shapeshifter/404.html) | [Preview](/neeko-shapeshifter/403.html) | [Preview](/neeko-shapeshifter/500.html) |
+| **sun-tzu-chaos** | Art of War wisdom - "In the midst of chaos, there is also opportunity" with ancient strategic philosophy | [Preview](/sun-tzu-chaos/404.html) | [Preview](/sun-tzu-chaos/403.html) | [Preview](/sun-tzu-chaos/500.html) |
+| **vibecoded-trash** | Claude Code self-roast - Terminal chat between admin and Claude troubleshooting errors with hilarious self-awareness | [Preview](/vibecoded-trash/404.html) | [Preview](/vibecoded-trash/403.html) | [Preview](/vibecoded-trash/500.html) |
 
 ### Random Theme Selector
 

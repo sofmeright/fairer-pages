@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif', serif;
+            background: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f5f5f5;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            filter: brightness(0.4) sepia(0.3);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(26, 26, 26, 0.7),
+                rgba(26, 26, 26, 0.85),
+                rgba(26, 26, 26, 0.7));
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .error-card {
+            background: rgba(20, 20, 20, 0.92);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-radius: 10px;
+            padding: 60px 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8),
+                        0 0 100px rgba(218, 165, 32, 0.1);
+        }
+
+        .chinese-symbol {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            color: #daa520;
+        }
+
+        .error-code {
+            font-size: 80px;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            color: #daa520;
+            margin-bottom: 20px;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(218, 165, 32, 0.5);
+        }
+
+        .quote-main {
+            font-size: 32px;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+            color: #f5f5f5;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #daa520, transparent);
+            margin: 30px auto;
+        }
+
+        .wisdom-text {
+            font-size: 18px;
+            color: #c9c9c9;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+
+        .attribution {
+            font-size: 16px;
+            color: #daa520;
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #daa520, #b8860b);
+            color: #1a1a1a;
+            box-shadow: 0 8px 20px rgba(218, 165, 32, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(218, 165, 32, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #daa520;
+            border: 2px solid #daa520;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(218, 165, 32, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer-wisdom {
+            margin-top: 35px;
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 45px 35px;
+            }
+
+            .error-code {
+                font-size: 64px;
+            }
+
+            .quote-main {
+                font-size: 26px;
+            }
+
+            .wisdom-text {
+                font-size: 16px;
+            }
+
+            .chinese-symbol {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/sunzi.jpg" alt="Ancient Wisdom" class="bg-image">
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <div class="error-card">
+            <div class="chinese-symbol">☯</div>
+            <div class="error-code" id="error-code">404</div>
+            <div class="quote-main">In the midst of chaos, there is also opportunity</div>
+            <div class="divider"></div>
+            <div class="wisdom-text" id="wisdom-text">
+                The path you seek does not exist. But as the great strategist teaches us, every obstacle reveals a new path forward. This error is not failure—it is redirection.
+            </div>
+            <div class="attribution">— Sun Tzu, The Art of War</div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Seize Opportunity</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Retreat Wisely</a>
+            </div>
+            <div class="footer-wisdom" id="footer-wisdom">
+                The wise warrior avoids the battle
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const wisdomTexts = {
+            400: "Your request was malformed, yet Sun Tzu teaches: 'In the midst of chaos, there is also opportunity.' Correct your approach and victory shall be yours.",
+            401: "You lack the credentials to proceed. Remember: 'Know yourself and you will win all battles.' Authenticate yourself to continue.",
+            402: "This resource requires payment. As the master said: 'The general who advances without coveting fame and retreats without fearing disgrace is the jewel of the kingdom.'",
+            403: "Access is forbidden. 'The supreme art of war is to subdue the enemy without fighting.' Perhaps another path exists for you.",
+            404: "The path you seek does not exist. But as the great strategist teaches us, every obstacle reveals a new path forward. This error is not failure—it is redirection.",
+            405: "This method is not permitted. 'All warfare is based on deception.' Try a different approach to achieve your objective.",
+            406: "The format is not acceptable. 'Victorious warriors win first and then go to war.' Prepare your request properly before advancing.",
+            408: "Time has expired. 'Rapidity is the essence of war.' Yet patience is also wisdom. Try again with swifter execution.",
+            409: "A conflict has arisen. 'In the midst of chaos, there is also opportunity.' Resolve the contradiction and find harmony.",
+            410: "This resource has been removed permanently. 'Let your plans be dark and impenetrable as night, and when you move, fall like a thunderbolt.' Move forward to new goals.",
+            413: "Your request is too large. 'He who knows when to fight and when not to fight will be victorious.' Reduce your demands.",
+            429: "You make too many requests. 'Ponder and deliberate before you make a move.' Patience brings clarity; haste brings confusion.",
+            500: "The server encounters internal chaos. 'In the midst of chaos, there is also opportunity.' Those who manage the server will restore order.",
+            502: "The gateway fails to respond correctly. 'Strategy without tactics is the slowest route to victory.' The connection must be repaired.",
+            503: "The service is currently unavailable. 'To know when to march and when to rest is the secret of victory.' Return when service resumes.",
+            504: "The gateway timed out. 'Speed is the essence of war,' yet even the swiftest warrior must wait for the right moment. Try again."
+        };
+
+        const footerWisdoms = {
+            400: "Strategy without tactics is the slowest route to victory",
+            401: "Know yourself and you will win all battles",
+            402: "Regard your soldiers as your children",
+            403: "The wise warrior avoids the battle",
+            404: "The wise warrior avoids the battle",
+            405: "All warfare is based on deception",
+            406: "Victorious warriors win first and then go to war",
+            408: "Rapidity is the essence of war",
+            409: "Invincibility lies in the defense",
+            410: "When you move, fall like a thunderbolt",
+            413: "He who knows when to fight will be victorious",
+            429: "Ponder and deliberate before you make a move",
+            500: "Order or disorder depends on organization",
+            502: "Strategy without tactics is the slowest route",
+            503: "To know when to rest is the secret of victory",
+            504: "Speed is the essence of war"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const wisdomText = wisdomTexts[errorCode] || "An error has occurred. Seek opportunity within this chaos.";
+        const footerWisdom = footerWisdoms[errorCode] || "The wise warrior avoids the battle";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('wisdom-text').textContent = wisdomText;
+        document.getElementById('footer-wisdom').textContent = footerWisdom;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'sun-tzu-chaos';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
