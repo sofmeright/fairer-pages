@@ -108,8 +108,12 @@
             margin-bottom: 0.5em;
         }
 
-        /* Hide the first h1 since banner shows Fairer Pages */
+        /* Hide the first h1 and description since banner shows Fairer Pages */
         .markdown-body > h1:first-child {
+            display: none;
+        }
+
+        .markdown-body > h1:first-child + p {
             display: none;
         }
 
