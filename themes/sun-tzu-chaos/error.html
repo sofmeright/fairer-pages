@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Noto Serif', serif;
-            background: #1a1a1a;
+            background: linear-gradient(to bottom, #1a1a1a, #2a2520, #1a1a1a);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -26,33 +26,8 @@
             position: relative;
         }
 
-        .bg-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            filter: brightness(0.4) sepia(0.3);
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom,
-                rgba(26, 26, 26, 0.7),
-                rgba(26, 26, 26, 0.85),
-                rgba(26, 26, 26, 0.7));
-            z-index: 1;
-        }
-
         .content-container {
             position: relative;
-            z-index: 2;
             text-align: center;
             padding: 40px;
             max-width: 800px;
@@ -193,9 +168,6 @@
     </style>
 </head>
 <body>
-    <img src="resources/sunzi.jpg" alt="Ancient Wisdom" class="bg-image">
-    <div class="overlay"></div>
-
     <div class="content-container">
         <div class="error-card">
             <div class="chinese-symbol">☯</div>
@@ -287,12 +259,6 @@
         document.getElementById('wisdom-text').textContent = wisdomText;
         document.getElementById('footer-wisdom').textContent = footerWisdom;
         document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
-
-        // Fix resource paths for internal error redirects
-        const themeName = 'sun-tzu-chaos';
-        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
-            img.src = '/' + themeName + '/' + img.getAttribute('src');
-        });
     </script>
 </body>
 </html>
