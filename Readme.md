@@ -11,6 +11,7 @@ Access error pages via: `http://host:port/<theme>/<errorcode>.html`
 - `http://localhost/back2thefuture/404.html` - 404 Not Found page
 - `http://localhost/back2thefuture/403.html` - 403 Forbidden page
 - `http://localhost/back2thefuture/400.html` - 400 Bad Request page
+- `http://localhost/random/404.html` - Random theme for 404 page (picks a different theme each time!)
 
 ### Available Themes
 
@@ -58,6 +59,14 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **control-room** | Halo Installation 04 Control Room - 343 Guilty Spark monitor messages with Forerunner holographic terminal and UNSC protocols | [Preview](/control-room/404.html) | [Preview](/control-room/403.html) | [Preview](/control-room/500.html) |
 | **blank-state** | No Game No Life comfy vibes - Relaxed, casual error messages with purple/pink gradients and warm reassurance | [Preview](/blank-state/404.html) | [Preview](/blank-state/403.html) | [Preview](/blank-state/500.html) |
 | **lotus-petal** | Zen meditation with snowy mountains - Peaceful, mindful error messages with gentle snowflakes and tranquil lotus symbolism | [Preview](/lotus-petal/404.html) | [Preview](/lotus-petal/403.html) | [Preview](/lotus-petal/500.html) |
+
+### Random Theme Selector
+
+Want to surprise your users? Use the **`random`** theme to automatically pick a different theme each time!
+
+- [Random 404](random/404.html) - Randomly selects from all available themes
+- Works with any error code: [Random 500](random/500.html), [Random 403](random/403.html), etc.
+- Perfect for keeping error pages fresh and unexpected
 
 ### Supported Error Codes
 

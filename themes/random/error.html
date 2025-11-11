@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Random Theme...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .theme-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 20px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <h1>Picking a random theme...</h1>
+        <p id="error-code">Error 404</p>
+        <div class="theme-name" id="theme-name">🎲 Rolling the dice...</div>
+    </div>
+
+    <script>
+        // All available themes
+        const themes = [
+            'back2thefuture',
+            'MegumiTokoroOwo',
+            'hideyodawg',
+            'leggoohno',
+            'catastrotypcic',
+            'upsidedown',
+            'gettodachopper',
+            'sanfordandson',
+            'trollface',
+            'leavealone',
+            'shaninblake',
+            'reddressgirl',
+            'wanderer',
+            'mk-yoshi-banana',
+            'strangepresence',
+            'jayandsilentbob',
+            'anisorry',
+            'dogatemypage',
+            'zelda-mastersword',
+            'rushhour',
+            'meninblack',
+            'bigoneredd',
+            'fakerockyridge',
+            'salamancas',
+            'jessepinkman',
+            'readyplayerone',
+            'swordart-aincrad',
+            'jedi-mindtrick',
+            'shadowheart-shar',
+            'rickandmorty',
+            'shaunofthedead',
+            'sailormoon',
+            'psycho-pass',
+            'still-waiting',
+            'neighborhood-watch',
+            'meow-game',
+            'serene-shores',
+            'control-room',
+            'blank-state',
+            'lotus-petal'
+        ];
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+
+        // Pick random theme
+        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+
+        // Update display
+        document.getElementById('error-code').textContent = `Error ${errorCode}`;
+        document.getElementById('theme-name').textContent = `🎲 ${randomTheme}`;
+
+        // Redirect after a brief moment (using relative path)
+        setTimeout(() => {
+            window.location.href = `../${randomTheme}/${errorCode}.html`;
+        }, 1200);
+    </script>
+</body>
+</html>
