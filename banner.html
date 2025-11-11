@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairer Pages Banner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1200px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg,
+                #2d1b4e 0%,
+                #4a2c6f 25%,
+                #6b4091 50%,
+                #8b5a2b 75%,
+                #a0826d 100%);
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: blur(1px);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center,
+                rgba(139, 90, 43, 0.3) 0%,
+                rgba(45, 27, 78, 0.7) 100%);
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .wisp {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0;
+            animation: float-up 8s infinite ease-in-out;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-350px) translateX(50px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .wisp:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
+        .wisp:nth-child(2) { left: 25%; animation-delay: 1.5s; animation-duration: 9s; }
+        .wisp:nth-child(3) { left: 40%; animation-delay: 3s; animation-duration: 6s; }
+        .wisp:nth-child(4) { left: 55%; animation-delay: 0.5s; animation-duration: 8s; }
+        .wisp:nth-child(5) { left: 70%; animation-delay: 2s; animation-duration: 7.5s; }
+        .wisp:nth-child(6) { left: 85%; animation-delay: 4s; animation-duration: 8.5s; }
+        .wisp:nth-child(7) { left: 15%; animation-delay: 2.5s; animation-duration: 7s; }
+        .wisp:nth-child(8) { left: 60%; animation-delay: 1s; animation-duration: 9s; }
+        .wisp:nth-child(9) { left: 35%; animation-delay: 3.5s; animation-duration: 6.5s; }
+        .wisp:nth-child(10) { left: 80%; animation-delay: 0.8s; animation-duration: 8s; }
+
+        .wisp.gold {
+            background: radial-gradient(circle,
+                rgba(255, 215, 100, 0.8) 0%,
+                rgba(218, 165, 32, 0.4) 50%,
+                rgba(184, 134, 11, 0) 100%);
+            width: 60px;
+            height: 60px;
+        }
+
+        .wisp.purple {
+            background: radial-gradient(circle,
+                rgba(186, 85, 211, 0.7) 0%,
+                rgba(138, 43, 226, 0.3) 50%,
+                rgba(75, 0, 130, 0) 100%);
+            width: 50px;
+            height: 50px;
+        }
+
+        .wisp.teal {
+            background: radial-gradient(circle,
+                rgba(64, 224, 208, 0.6) 0%,
+                rgba(72, 209, 204, 0.3) 50%,
+                rgba(0, 128, 128, 0) 100%);
+            width: 40px;
+            height: 40px;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .brand {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 96px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 8px;
+            text-shadow:
+                0 0 20px rgba(255, 215, 100, 0.8),
+                0 0 40px rgba(218, 165, 32, 0.6),
+                0 0 60px rgba(184, 134, 11, 0.4),
+                0 0 80px rgba(139, 90, 43, 0.3),
+                4px 4px 8px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            line-height: 1;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                text-shadow:
+                    0 0 20px rgba(255, 215, 100, 0.8),
+                    0 0 40px rgba(218, 165, 32, 0.6),
+                    0 0 60px rgba(184, 134, 11, 0.4),
+                    0 0 80px rgba(139, 90, 43, 0.3),
+                    4px 4px 8px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                text-shadow:
+                    0 0 30px rgba(255, 215, 100, 1),
+                    0 0 50px rgba(218, 165, 32, 0.8),
+                    0 0 70px rgba(184, 134, 11, 0.6),
+                    0 0 90px rgba(139, 90, 43, 0.5),
+                    4px 4px 8px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .tagline {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 20px;
+            color: rgba(255, 215, 100, 0.9);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            text-shadow:
+                0 0 10px rgba(218, 165, 32, 0.8),
+                2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Sparkle effects */
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            animation: sparkle 2s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .sparkle:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 70%; left: 20%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 30%; left: 80%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 80%; left: 75%; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { top: 40%; left: 15%; animation-delay: 0.3s; }
+        .sparkle:nth-child(6) { top: 60%; left: 90%; animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <img src="themes/random/resources/porco.jpg" alt="Background" class="bg-image">
+    <div class="overlay"></div>
+
+    <div class="particles">
+        <div class="wisp gold"></div>
+        <div class="wisp purple"></div>
+        <div class="wisp teal"></div>
+        <div class="wisp gold"></div>
+        <div class="wisp purple"></div>
+        <div class="wisp teal"></div>
+        <div class="wisp gold"></div>
+        <div class="wisp purple"></div>
+        <div class="wisp teal"></div>
+        <div class="wisp gold"></div>
+
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+    </div>
+
+    <div class="content">
+        <h1 class="brand">Fairer Pages</h1>
+        <div class="tagline">Error Page Collection</div>
+    </div>
+</body>
+</html>

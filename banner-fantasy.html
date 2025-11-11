@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairer Pages Banner - Fantasy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1200px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg,
+                #0f0c29 0%,
+                #302b63 35%,
+                #24243e 65%,
+                #0f0c29 100%);
+        }
+
+        /* Animated ethereal background */
+        .bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 20% 50%,
+                rgba(138, 43, 226, 0.3) 0%,
+                transparent 50%),
+                radial-gradient(ellipse at 80% 50%,
+                rgba(75, 0, 130, 0.3) 0%,
+                transparent 50%);
+            animation: bg-shift 10s ease-in-out infinite;
+        }
+
+        @keyframes bg-shift {
+            0%, 100% { transform: translateX(0); opacity: 0.6; }
+            50% { transform: translateX(30px); opacity: 0.8; }
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .wisp {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(3px);
+            opacity: 0;
+            animation: float-up 10s infinite ease-in-out;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(350px) translateX(0) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-50px) translateX(100px) scale(2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .wisp:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 8s; }
+        .wisp:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 10s; }
+        .wisp:nth-child(3) { left: 35%; animation-delay: 4s; animation-duration: 7s; }
+        .wisp:nth-child(4) { left: 50%; animation-delay: 1s; animation-duration: 9s; }
+        .wisp:nth-child(5) { left: 65%; animation-delay: 3s; animation-duration: 8.5s; }
+        .wisp:nth-child(6) { left: 80%; animation-delay: 5s; animation-duration: 9.5s; }
+        .wisp:nth-child(7) { left: 12%; animation-delay: 3.5s; animation-duration: 7.5s; }
+        .wisp:nth-child(8) { left: 45%; animation-delay: 1.5s; animation-duration: 10s; }
+        .wisp:nth-child(9) { left: 72%; animation-delay: 4.5s; animation-duration: 8s; }
+        .wisp:nth-child(10) { left: 90%; animation-delay: 2.5s; animation-duration: 9s; }
+        .wisp:nth-child(11) { left: 28%; animation-delay: 0.5s; animation-duration: 8.5s; }
+        .wisp:nth-child(12) { left: 58%; animation-delay: 3.8s; animation-duration: 7.8s; }
+
+        .wisp.violet {
+            background: radial-gradient(circle,
+                rgba(238, 130, 238, 0.9) 0%,
+                rgba(186, 85, 211, 0.5) 40%,
+                rgba(138, 43, 226, 0) 100%);
+            width: 70px;
+            height: 70px;
+        }
+
+        .wisp.gold {
+            background: radial-gradient(circle,
+                rgba(255, 223, 128, 0.85) 0%,
+                rgba(255, 215, 100, 0.5) 40%,
+                rgba(218, 165, 32, 0) 100%);
+            width: 55px;
+            height: 55px;
+        }
+
+        .wisp.cyan {
+            background: radial-gradient(circle,
+                rgba(127, 255, 212, 0.8) 0%,
+                rgba(64, 224, 208, 0.4) 40%,
+                rgba(0, 206, 209, 0) 100%);
+            width: 45px;
+            height: 45px;
+        }
+
+        .wisp.pink {
+            background: radial-gradient(circle,
+                rgba(255, 182, 193, 0.75) 0%,
+                rgba(255, 105, 180, 0.4) 40%,
+                rgba(219, 112, 147, 0) 100%);
+            width: 50px;
+            height: 50px;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .brand {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 96px;
+            font-weight: 700;
+            background: linear-gradient(135deg,
+                #ffd700 0%,
+                #ffed4e 25%,
+                #ff8c00 50%,
+                #ba55d3 75%,
+                #9370db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 8px;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 100, 0.8))
+                    drop-shadow(0 0 40px rgba(186, 85, 211, 0.6))
+                    drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.7));
+            margin: 0;
+            line-height: 1;
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(255, 215, 100, 0.8))
+                        drop-shadow(0 0 40px rgba(186, 85, 211, 0.6))
+                        drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.7));
+            }
+            50% {
+                filter: drop-shadow(0 0 35px rgba(255, 215, 100, 1))
+                        drop-shadow(0 0 60px rgba(186, 85, 211, 0.9))
+                        drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.7));
+            }
+        }
+
+        .tagline {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 20px;
+            color: rgba(255, 223, 186, 0.95);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            text-shadow:
+                0 0 15px rgba(255, 215, 100, 0.9),
+                0 0 25px rgba(186, 85, 211, 0.5),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Magical orbs floating around */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: 0.6;
+            animation: orbit 15s infinite linear;
+        }
+
+        @keyframes orbit {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.2); }
+            50% { transform: translate(80px, 20px) scale(0.9); }
+            75% { transform: translate(30px, 50px) scale(1.1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .orb.orb1 {
+            top: 10%;
+            left: 15%;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 215, 100, 0.8), transparent);
+            animation-delay: 0s;
+        }
+
+        .orb.orb2 {
+            top: 75%;
+            right: 20%;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, rgba(186, 85, 211, 0.7), transparent);
+            animation-delay: 3s;
+        }
+
+        .orb.orb3 {
+            top: 30%;
+            right: 10%;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, rgba(64, 224, 208, 0.7), transparent);
+            animation-delay: 6s;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-layer"></div>
+
+    <div class="stars">
+        <div class="star" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
+        <div class="star" style="top: 25%; left: 30%; animation-delay: 0.5s;"></div>
+        <div class="star" style="top: 45%; left: 15%; animation-delay: 1s;"></div>
+        <div class="star" style="top: 35%; left: 70%; animation-delay: 1.5s;"></div>
+        <div class="star" style="top: 65%; left: 25%; animation-delay: 0.3s;"></div>
+        <div class="star" style="top: 55%; left: 85%; animation-delay: 0.8s;"></div>
+        <div class="star" style="top: 75%; left: 50%; animation-delay: 1.2s;"></div>
+        <div class="star" style="top: 20%; left: 90%; animation-delay: 0.6s;"></div>
+        <div class="star" style="top: 80%; left: 12%; animation-delay: 1.8s;"></div>
+        <div class="star" style="top: 10%; left: 55%; animation-delay: 0.2s;"></div>
+    </div>
+
+    <div class="particles">
+        <div class="wisp violet"></div>
+        <div class="wisp gold"></div>
+        <div class="wisp cyan"></div>
+        <div class="wisp pink"></div>
+        <div class="wisp violet"></div>
+        <div class="wisp gold"></div>
+        <div class="wisp cyan"></div>
+        <div class="wisp pink"></div>
+        <div class="wisp violet"></div>
+        <div class="wisp gold"></div>
+        <div class="wisp cyan"></div>
+        <div class="wisp pink"></div>
+    </div>
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+    <div class="content">
+        <h1 class="brand">Fairer Pages</h1>
+        <div class="tagline">Error Page Collection</div>
+    </div>
+</body>
+</html>
