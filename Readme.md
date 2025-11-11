@@ -2,6 +2,12 @@
 
 A containerized error page service supporting multiple themes and error codes.
 
+## Public Resources:
+|     |     |
+| --- | --- |
+| Docker Images    | [Docker Hub](https://hub.docker.com/r/prplanit/fairer-pages)    |
+| Source Code    |  [GitHub](https://github.com/sofmeright/fairer-pages)          |
+
 ## Usage
 
 A copy of the instructions/ReadMe is served at the host:port of the docker container by default.
