@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00d4ff;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        .installation-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        /* Holographic scan lines */
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            box-shadow: 0 0 20px #00d4ff;
+            animation: scan 4s linear infinite;
+            z-index: 1;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            max-width: 1000px;
+            width: 95%;
+            max-height: 95vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .terminal-box {
+            background: rgba(0, 10, 20, 0.95);
+            border: 3px solid #00d4ff;
+            border-radius: 0;
+            padding: 50px 30px 25px 30px;
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.6),
+                        inset 0 0 40px rgba(0, 212, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .terminal-box::before {
+            content: '⬡ INSTALLATION 04 - CONTROL ROOM ⬡';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 20, 40, 0.95);
+            color: #00d4ff;
+            padding: 8px 20px;
+            font-weight: 900;
+            font-size: 11px;
+            letter-spacing: 3px;
+            border: 2px solid #00d4ff;
+            border-radius: 0;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+            white-space: nowrap;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .status-header {
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        .error-code {
+            font-family: 'Orbitron', monospace;
+            font-size: 90px;
+            font-weight: 900;
+            color: #ff4500;
+            text-shadow: 0 0 30px rgba(255, 69, 0, 0.8);
+            margin: 15px 0;
+            line-height: 1;
+            animation: pulse-error 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-error {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .error-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 28px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .monitor-message {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 4px solid #00d4ff;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            border-radius: 0;
+        }
+
+        .monitor-header {
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            color: #00ff88;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .monitor-text {
+            font-size: 17px;
+            color: #a0d8e8;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .protocol-warning {
+            background: rgba(255, 69, 0, 0.1);
+            border: 2px solid #ff4500;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .warning-header {
+            font-family: 'Orbitron', monospace;
+            font-size: 16px;
+            color: #ff4500;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .warning-text {
+            font-size: 15px;
+            color: #ffaa77;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .system-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .status-item {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid #00d4ff;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .status-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 11px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .status-value {
+            font-size: 16px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .status-value.error {
+            color: #ff4500;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            border: 3px solid;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 69, 0, 0.1);
+            color: #ff4500;
+            border-color: #ff4500;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 69, 0, 0.2);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: #5588aa;
+            font-style: italic;
+            margin-top: 25px;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .terminal-box {
+                padding: 50px 20px 20px 20px;
+            }
+
+            .terminal-box::before {
+                font-size: 9px;
+                padding: 6px 12px;
+            }
+
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-title {
+                font-size: 22px;
+            }
+
+            .monitor-message, .protocol-warning {
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            .monitor-text, .warning-text {
+                font-size: 15px;
+            }
+
+            .system-status {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/installation.jpg" alt="Installation Control Room" class="installation-bg">
+    <div class="scan-line"></div>
+
+    <div class="error-container">
+        <div class="terminal-box">
+            <div class="status-header">◈ FORERUNNER SYSTEMS ACTIVE ◈</div>
+
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">RESOURCE NOT FOUND</div>
+
+            <div class="system-status">
+                <div class="status-item">
+                    <div class="status-label">Error Code</div>
+                    <div class="status-value error" id="status-code">ERROR-404</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Installation</div>
+                    <div class="status-value">04 (ALPHA HALO)</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">System Status</div>
+                    <div class="status-value error" id="system-status">DEGRADED</div>
+                </div>
+            </div>
+
+            <div class="monitor-message">
+                <div class="monitor-header">⬡ 343 GUILTY SPARK - MONITOR</div>
+                <div class="monitor-text" id="monitor-text">
+                    Greetings, Reclaimer. The resource you seek is not present in this facility's data repository. The requested data may have been lost during the Flood containment breach, or perhaps it was never indexed by the Installation's systems.
+                </div>
+            </div>
+
+            <div class="protocol-warning">
+                <div class="warning-header">⚠ UNSC PROTOCOL ALERT</div>
+                <div class="warning-text" id="warning-text">
+                    Warning: Requested asset is unavailable. Recommend returning to previous checkpoint or consulting UNSC navigation protocols.
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Return to Index</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Previous Location</a>
+            </div>
+
+            <div class="footer-text" id="footer-text">
+                Reclaimer, the installation awaits your command
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "INVALID REQUEST FORMAT",
+            401: "AUTHORIZATION REQUIRED",
+            402: "ACCESS PAYMENT NEEDED",
+            403: "ACCESS DENIED",
+            404: "RESOURCE NOT FOUND",
+            405: "METHOD NOT PERMITTED",
+            406: "FORMAT INCOMPATIBLE",
+            408: "REQUEST TIMEOUT",
+            409: "DATA CONFLICT",
+            410: "RESOURCE DELETED",
+            413: "PAYLOAD EXCEEDS LIMITS",
+            429: "REQUEST RATE EXCEEDED",
+            500: "SYSTEM MALFUNCTION",
+            502: "GATEWAY FAILURE",
+            503: "SYSTEMS OFFLINE",
+            504: "GATEWAY TIMEOUT"
+        };
+
+        const monitorMessages = {
+            400: "Greetings, Reclaimer. Your request contains malformed data structures. The Installation's protocols cannot parse the syntax provided. I recommend reformatting your request according to proper Forerunner data specifications.",
+            401: "Curious. You lack the proper authorization credentials to access this section of the Installation. Your identity has not been verified by the security protocols. Perhaps you should acquire proper Reclaimer authentication?",
+            402: "Interesting. This particular resource requires payment verification before access can be granted. Even in the time of the Forerunners, certain archives required proper authorization tokens.",
+            403: "I'm afraid this area is restricted, Reclaimer. The Installation's security systems have deemed your current clearance level insufficient. These protocols were established by the Forerunners themselves and cannot be easily overridden.",
+            404: "Greetings, Reclaimer. The resource you seek is not present in this facility's data repository. The requested data may have been lost during the Flood containment breach, or perhaps it was never indexed by the Installation's systems.",
+            405: "Fascinating. The method you've employed to access this resource is not supported by the Installation's protocols. The Forerunners designed very specific interaction methods for their systems. I suggest using an alternative approach.",
+            406: "The format you've requested is not available in the Installation's archives, Reclaimer. The data exists, but not in the configuration you desire. Perhaps try requesting a different format that the systems can provide?",
+            408: "Your request has exceeded the Installation's timeout parameters, Reclaimer. The systems require responses within specific time windows. The connection has been terminated due to excessive delay.",
+            409: "A data conflict has been detected, Reclaimer. Two simultaneous operations are attempting to modify the same resource. The Installation's systems cannot resolve this conflict automatically. Manual intervention is required.",
+            410: "The resource has been permanently purged from the Installation's archives, Reclaimer. Whether by design or during a containment protocol activation, the data no longer exists in any accessible form.",
+            413: "Your data payload exceeds the Installation's processing limits, Reclaimer. Even Forerunner systems have their constraints. You must reduce the size of your request before the systems can process it.",
+            429: "You are making requests at an excessive rate, Reclaimer. The Installation's systems are being overwhelmed. Please reduce your query frequency to avoid triggering defensive protocols.",
+            500: "I apologize, Reclaimer. The Installation is experiencing a critical system malfunction. These ancient systems occasionally develop faults after 100,000 years of operation. Diagnostics are underway.",
+            502: "The gateway connection between Installation subsystems has failed, Reclaimer. The relay network that connects various facilities is not responding properly. This is most unusual.",
+            503: "The requested systems are currently offline for maintenance cycles, Reclaimer. Even Forerunner technology requires periodic regeneration. The systems should return to operational status shortly.",
+            504: "The gateway has not responded within acceptable parameters, Reclaimer. The connection to remote Installation subsystems has timed out. The facility may be too distant or experiencing its own malfunctions."
+        };
+
+        const warnings = {
+            400: "Warning: Request syntax error detected. Unable to process malformed data structures. Recommend syntax validation before retry.",
+            401: "Warning: Authentication failure. Reclaimer credentials not recognized. Authorization required for access.",
+            402: "Warning: Payment verification required. Access to premium Installation archives requires proper authorization tokens.",
+            403: "Warning: Access denied by security protocols. Current clearance level insufficient. Contact Installation administrator.",
+            404: "Warning: Requested asset is unavailable. Recommend returning to previous checkpoint or consulting UNSC navigation protocols.",
+            405: "Warning: HTTP method not supported by Installation protocols. Use alternative request method.",
+            406: "Warning: Requested format not available in archives. Try alternative data format specifications.",
+            408: "Warning: Connection timeout. Request exceeded Installation response time limits. Retry recommended.",
+            409: "Warning: Data conflict detected. Simultaneous modifications attempted. Resolve conflict before proceeding.",
+            410: "Warning: Resource permanently deleted. Data no longer exists in Installation archives. No recovery possible.",
+            413: "Warning: Payload size exceeds limits. Reduce data transmission size to acceptable parameters.",
+            429: "Warning: Request rate limit exceeded. Reduce query frequency to avoid triggering defensive systems.",
+            500: "Warning: Critical system malfunction. Installation experiencing internal errors. Maintenance protocols initiated.",
+            502: "Warning: Gateway communication failure. Installation subsystem relay network experiencing disruption.",
+            503: "Warning: Systems temporarily offline. Maintenance cycle in progress. Retry after regeneration complete.",
+            504: "Warning: Gateway timeout. Remote Installation subsystems not responding within acceptable timeframe."
+        };
+
+        const footerTexts = {
+            400: "Protocol compliance ensures Installation stability",
+            401: "Only Reclaimers may access sacred archives",
+            402: "Even ancient systems require verification",
+            403: "The Forerunners built many barriers",
+            404: "Not all data survives 100,000 years",
+            405: "Follow the path the Forerunners designed",
+            406: "Format compatibility is essential",
+            408: "Time is a factor even for machines",
+            409: "Order must be maintained in the archives",
+            410: "What is deleted cannot be recovered",
+            413: "Even Forerunner systems have limits",
+            429: "Patience, Reclaimer, patience",
+            500: "Ancient systems are not infallible",
+            502: "The relay network spans vast distances",
+            503: "All systems require rest and regeneration",
+            504: "Distance creates delays, even in light"
+        };
+
+        const systemStatuses = {
+            400: "SYNTAX ERROR",
+            401: "UNAUTHORIZED",
+            402: "PAYMENT REQUIRED",
+            403: "ACCESS BLOCKED",
+            404: "DEGRADED",
+            405: "METHOD BLOCKED",
+            406: "FORMAT ERROR",
+            408: "TIMEOUT",
+            409: "CONFLICT",
+            410: "PURGED",
+            413: "OVERLOAD",
+            429: "SATURATED",
+            500: "CRITICAL",
+            502: "RELAY FAILURE",
+            503: "OFFLINE",
+            504: "TIMEOUT"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "SYSTEM ERROR";
+        const monitorMessage = monitorMessages[errorCode] || "Greetings, Reclaimer. An error has occurred.";
+        const warning = warnings[errorCode] || "Warning: System error detected.";
+        const footerText = footerTexts[errorCode] || "Reclaimer, the installation awaits your command";
+        const systemStatus = systemStatuses[errorCode] || "ERROR";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('status-code').textContent = 'ERROR-' + errorCode;
+        document.getElementById('system-status').textContent = systemStatus;
+        document.getElementById('monitor-text').textContent = monitorMessage;
+        document.getElementById('warning-text').textContent = warning;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'control-room';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
