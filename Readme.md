@@ -52,6 +52,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **sailormoon** | Sailor Moon magical girl transformation - "In the name of the moon, I'll punish this error!" with attack names | [Preview](/sailormoon/404.html) | [Preview](/sailormoon/403.html) | [Preview](/sailormoon/500.html) |
 | **psycho-pass** | Sibyl System crime coefficient scanner - Dominator enforcement mode with cyberpunk holographic UI | [Preview](/psycho-pass/404.html) | [Preview](/psycho-pass/403.html) | [Preview](/psycho-pass/500.html) |
 | **still-waiting** | Matrix Construct white void - "Stop trying to find it and realize... there is no page" with Morpheus wisdom | [Preview](/still-waiting/404.html) | [Preview](/still-waiting/403.html) | [Preview](/still-waiting/500.html) |
+| **neighborhood-watch** | The Watch collateral damage - "Good news: threat eliminated. Bad news: we destroyed everything 🤷" with Costco and alien orb | [Preview](/neighborhood-watch/404.html) | [Preview](/neighborhood-watch/403.html) | [Preview](/neighborhood-watch/500.html) |
 
 ### Supported Error Codes
 
