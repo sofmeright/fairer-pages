@@ -4,117 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="page-title">Error</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-:root {
-  --primary: #263238;
-  --primary-light: #4F5B62;
-  --primary-dark: #000A12;
-  --secondary: #DD2C00;
-  --secondary-light: #FF6434;
-  --secondary-dark: #A30000;
-  --tertiary: #2962FF;
-  --tertiary-light: #768FFF;
-  --tertiary-dark: #0039CB;
-  --primary-text-on-primary: white;
-  --primary-text-on-primary-light: white;
-  --primary-text-on-primary-dark: white;
-  --primary-text-on-secondary: white;
-  --primary-text-on-secondary-light: black;
-  --primary-text-on-secondary-dark: white;
-  --primary-text-on-tertiary: white;
-  --primary-text-on-tertiary-light: black;
-  --primary-text-on-tertiary-dark: white;
-  --primary-text-on-light: black;
-  --primary-text-on-dark: white;
-  --secondary-text-on-primary: rgba(255, 255, 255, 0.5);
-  --secondary-text-on-primary-light: rgba(255, 255, 255, 0.71);
-  --secondary-text-on-primary-dark: rgba(255, 255, 255, 0.45);
-  --secondary-text-on-secondary: rgba(255, 255, 255, 0.97);
-  --secondary-text-on-secondary-light: rgba(0, 0, 0, 0.68);
-  --secondary-text-on-secondary-dark: rgba(255, 255, 255, 0.71);
-  --secondary-text-on-tertiary: rgba(255, 255, 255, 0.94);
-  --secondary-text-on-tertiary-light: rgba(0, 0, 0, 0.68);
-  --secondary-text-on-tertiary-dark: rgba(255, 255, 255, 0.66);
-  --secondary-text-on-light: rgba(0, 0, 0, 0.56);
-  --secondary-text-on-dark: rgba(255, 255, 255, 0.57);
-  --disabled-text-on-primary: rgba(255, 255, 255, 0.35);
-  --disabled-text-on-primary-light: rgba(255, 255, 255, 0.49);
-  --disabled-text-on-primary-dark: rgba(255, 255, 255, 0.34);
-  --disabled-text-on-secondary: rgba(255, 255, 255, 0.72);
-  --disabled-text-on-secondary-light: rgba(0, 0, 0, 0.5);
-  --disabled-text-on-secondary-dark: rgba(255, 255, 255, 0.53);
-  --disabled-text-on-tertiary: rgba(255, 255, 255, 0.65);
-  --disabled-text-on-tertiary-light: rgba(0, 0, 0, 0.5);
-  --disabled-text-on-tertiary-dark: rgba(255, 255, 255, 0.48);
-  --disabled-text-on-light: rgba(0, 0, 0, 0.43);
-  --disabled-text-on-dark: rgba(255, 255, 255, 0.39);
-  --error-text-on-light: #b71c1c;
-  --error-text-on-dark: #ef9a9a;
-  --border-color-on-light: rgba(0, 0, 0, 0.12);
-  --border-color-on-dark: rgba(255, 255, 255, 0.12);
-  --border-width-small: 0.0625rem;
-  --border-width-medium: 0.1875rem;
-  --border-secondary-color-on-light: rgba(0, 0, 0, 0.38);
-  --border-secondary-color-on-dark: rgba(255, 255, 255, 0.5);
-  --border-on-light: rgba(0, 0, 0, 0.12) solid 0.0625rem;
-  --border-on-dark: rgba(255, 255, 255, 0.12) solid 0.0625rem;
-  --primary-background: #EEEEEE;
-  --secondary-background: #424242;
-  --root-font-size: 16;
-}
-
-:root {
-  font-size: calc(var(--root-font-size) * 1px);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body, html {
   width: 100vw;
   height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  overflow-x: hidden;
 }
 
-body {
-  background-color: var(--primary-background);
-  font-family: "Roboto", sans-serif;
-}
-
-:root {
-  --venn-base-size: 12.5rem;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-::-moz-selection {
-  color: white;
-  background-color: black;
-}
-
-::selection {
-  color: white;
-  background-color: black;
-}
-
-ul {
-  list-style-type: disc;
-  list-style-position: inside;
-  padding: 0.5rem 0.5rem 0;
-}
-ul li:not(:last-child) {
-  padding-bottom: 0.25rem;
-}
-
-.sr-only {
-  position: absolute;
-  width: 0.0625rem;
-  height: 0.0625rem;
-  margin: -0.0625rem;
-  padding: 0;
-  clip: rect(0.0625rem, 0.0625rem, 0.0625rem, 0.0625rem);
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
-  overflow: hidden;
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .container {
@@ -122,131 +35,258 @@ ul li:not(:last-child) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  height: 100%;
-}
-.container__left {
-  margin-top: 3rem;
-}
-.container__right {
-  margin-top: 3rem;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
 }
 
 .venn {
   display: grid;
-  grid-template-columns: repeat(3, var(--venn-base-size));
+  grid-template-columns: repeat(3, 200px);
   grid-template-areas: "left center right";
+  margin-bottom: 50px;
 }
+
 .venn__bubble {
   grid-row: 1;
   display: flex;
   align-items: center;
-  height: calc(var(--venn-base-size) * 2);
-  border-radius: 12.5rem;
+  height: 400px;
+  border-radius: 200px;
+  position: relative;
+  transition: all 0.3s ease;
 }
+
 .venn__bubble--left {
   grid-column-start: left;
   grid-column-end: center;
-  background-color: var(--secondary);
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  box-shadow: inset var(--venn-base-size) 0 var(--secondary);
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 200px 0 0 rgba(255, 107, 107, 0.8),
+              0 20px 60px rgba(255, 107, 107, 0.4);
+  animation: pulse-left 3s ease-in-out infinite;
 }
+
+@keyframes pulse-left {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
 .venn__bubble--right {
   grid-column-start: center;
   grid-column-end: right;
   justify-content: flex-end;
-  background: var(--tertiary) repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.2) 0rem, rgba(0, 0, 0, 0) 0.0625rem, rgba(0, 0, 0, 0) 0.5rem, rgba(0, 0, 0, 0.2) 0.5625rem);
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  box-shadow: inset calc(var(--venn-base-size) * -1) 0 var(--tertiary);
+  background: linear-gradient(135deg, #4FACFE, #00F2FE);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset -200px 0 0 rgba(79, 172, 254, 0.8),
+              0 20px 60px rgba(79, 172, 254, 0.4);
   mix-blend-mode: hard-light;
+  animation: pulse-right 3s ease-in-out infinite 0.3s;
 }
+
+@keyframes pulse-right {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
 .venn__text {
   position: relative;
   grid-row: 1;
   display: flex;
   align-items: center;
-  padding: 1rem;
-  height: calc(var(--venn-base-size) * 2);
-  font-size: 1.5rem;
-  line-height: 1.5;
-  font-weight: lighter;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.84);
+  padding: 20px;
+  height: 400px;
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   z-index: 1;
+  color: white;
 }
+
 .venn__text--left {
   grid-column-start: left;
   grid-column-end: left;
   justify-content: flex-start;
-  color: var(--primary-text-on-secondary);
 }
+
 .venn__text--center {
   grid-column-start: center;
   grid-column-end: center;
   justify-content: center;
-  font-size: 3rem;
-  color: var(--primary-text-on-primary);
+  font-size: 80px;
+  font-weight: 700;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: float 3s ease-in-out infinite;
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
 .venn__text--right {
   grid-column-start: right;
   grid-column-end: right;
   justify-content: flex-end;
   text-align: right;
-  color: var(--primary-text-on-tertiary);
 }
 
 .desc {
   width: 100%;
-  max-width: calc(var(--venn-base-size) * 2);
-}
-.desc__head {
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-  text-align: center;
-  border-bottom: var(--border-on-light);
-}
-.desc__body {
-  color: var(--disabled-text-on-light);
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 43.75rem) {
-  :root {
-    --venn-base-size: 6.25rem;
+.desc__head {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  color: #2d3748;
+}
+
+.desc__body {
+  color: #4a5568;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.desc__body p {
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 8px 0 8px 30px;
+  position: relative;
+}
+
+ul li::before {
+  content: "•";
+  position: absolute;
+  left: 10px;
+  color: #667eea;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.btn-secondary {
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .venn {
+    grid-template-columns: repeat(3, 120px);
+  }
+
+  .venn__bubble {
+    height: 240px;
+    border-radius: 120px;
+  }
+
+  .venn__bubble--left {
+    box-shadow: inset 120px 0 0 rgba(255, 107, 107, 0.8),
+                0 15px 40px rgba(255, 107, 107, 0.4);
+  }
+
+  .venn__bubble--right {
+    box-shadow: inset -120px 0 0 rgba(79, 172, 254, 0.8),
+                0 15px 40px rgba(79, 172, 254, 0.4);
   }
 
   .venn__text {
-    font-size: 0.875rem;
-    font-weight: normal;
+    height: 240px;
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .venn__text--center {
+    font-size: 48px;
   }
 
   .desc {
-    max-width: calc(var(--venn-base-size) * 3);
+    padding: 30px 25px;
+  }
+
+  .desc__head {
+    font-size: 20px;
   }
 }
 </style>
 </head>
 <body>
   <main class="container">
-    <div class="container__left venn" role="img" aria-label="404 Venn Diagram">
+    <div class="venn" role="img" aria-label="Error Venn Diagram">
       <div class="venn__bubble venn__bubble--left" aria-hidden="true"></div>
       <div class="venn__bubble venn__bubble--right" aria-hidden="true"></div>
-      <p class="venn__text venn__text--left" aria-describedby="venn-left" id="left-text">We broke Something</p>
-      <p class="venn__text venn__text--center" aria-describedby="venn-center" id="error-code">404</p>
-      <p class="venn__text venn__text--right" aria-describedby="venn-right" id="right-text">You cannot type</p>
-      <span id="venn-left" class="sr-only">Left side of venn diagram</span>
-      <span id="venn-center" class="sr-only">Intersect side of venn diagram</span>
-      <span id="venn-right" class="sr-only">Right side of venn diagram</span>
+      <p class="venn__text venn__text--left" id="left-text">We broke something</p>
+      <p class="venn__text venn__text--center" id="error-code">404</p>
+      <p class="venn__text venn__text--right" id="right-text">You can't type</p>
     </div>
-    <div class="container__right desc">
+    <div class="desc">
       <h1 class="desc__head" id="error-title">Error: 404 - Page Not Found</h1>
       <div class="desc__body">
-        <p>You might be here because:</p>
+        <p id="description-text">You might be here because:</p>
         <ul id="reason-list">
           <li>The page has moved</li>
           <li>The page no longer exists</li>
           <li>You were looking for your kittens and got lost</li>
           <li>You like 404 pages</li>
         </ul>
+      </div>
+      <div class="buttons">
+        <a href="/" class="btn btn-primary">Go Home</a>
+        <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
       </div>
     </div>
   </main>
@@ -271,16 +311,188 @@ ul li:not(:last-child) {
       504: "Gateway Timeout"
     };
 
+    const leftTexts = {
+      400: "You sent bad data",
+      401: "You're not logged in",
+      402: "Payment needed",
+      403: "Access denied",
+      404: "We broke something",
+      405: "Wrong method used",
+      406: "Format not accepted",
+      408: "Request timed out",
+      409: "Data conflicted",
+      410: "Gone forever",
+      413: "File too large",
+      429: "Too many tries",
+      500: "Server exploded",
+      502: "Gateway failed",
+      503: "Service down",
+      504: "Gateway timeout"
+    };
+
+    const rightTexts = {
+      400: "We can't parse it",
+      401: "We can't verify you",
+      402: "We need payment",
+      403: "We can't allow this",
+      404: "You can't type",
+      405: "We don't support that",
+      406: "We don't have that format",
+      408: "You were too slow",
+      409: "System is confused",
+      410: "It's really gone",
+      413: "We can't handle it",
+      429: "You're going too fast",
+      500: "Nothing works",
+      502: "Upstream broken",
+      503: "System offline",
+      504: "Upstream too slow"
+    };
+
+    const descriptions = {
+      400: "Your request is malformed or contains invalid data:",
+      401: "You need to authenticate to access this resource:",
+      402: "This content requires payment to access:",
+      403: "You don't have permission to access this resource:",
+      404: "You might be here because:",
+      405: "The HTTP method you used isn't allowed:",
+      406: "We can't provide the content format you requested:",
+      408: "Your request took too long to complete:",
+      409: "Your request conflicts with the current state:",
+      410: "This resource is permanently gone:",
+      413: "Your request payload is too large:",
+      429: "You've made too many requests:",
+      500: "Our server encountered an error:",
+      502: "Our gateway received an invalid response:",
+      503: "Our service is temporarily unavailable:",
+      504: "Our gateway request timed out:"
+    };
+
+    const reasons = {
+      400: [
+        "Missing required fields",
+        "Invalid data format",
+        "Malformed JSON or XML",
+        "Parameter validation failed"
+      ],
+      401: [
+        "You're not logged in",
+        "Your session expired",
+        "Invalid credentials",
+        "Missing authentication token"
+      ],
+      402: [
+        "Subscription required",
+        "Payment method needed",
+        "Free tier limit reached",
+        "Premium feature"
+      ],
+      403: [
+        "Insufficient permissions",
+        "IP address blocked",
+        "Account suspended",
+        "Resource is private"
+      ],
+      404: [
+        "The page has moved",
+        "The page no longer exists",
+        "You were looking for your kittens and got lost",
+        "You like 404 pages"
+      ],
+      405: [
+        "Only GET allowed",
+        "POST required here",
+        "Method not implemented",
+        "Use different HTTP verb"
+      ],
+      406: [
+        "JSON not available",
+        "Format not supported",
+        "Content negotiation failed",
+        "Try different Accept header"
+      ],
+      408: [
+        "Server didn't receive complete request",
+        "Network latency too high",
+        "Client took too long",
+        "Try again faster"
+      ],
+      409: [
+        "Concurrent edit detected",
+        "Version mismatch",
+        "Duplicate entry",
+        "State conflict"
+      ],
+      410: [
+        "Resource permanently deleted",
+        "No forwarding address",
+        "Intentionally removed",
+        "Will not return"
+      ],
+      413: [
+        "File exceeds size limit",
+        "Request body too large",
+        "Reduce payload size",
+        "Use chunked transfer"
+      ],
+      429: [
+        "Rate limit exceeded",
+        "Slow down requests",
+        "Wait before retrying",
+        "Too many requests per minute"
+      ],
+      500: [
+        "Server code crashed",
+        "Database connection failed",
+        "Unexpected error occurred",
+        "Our team is investigating"
+      ],
+      502: [
+        "Upstream server error",
+        "Invalid gateway response",
+        "Backend service down",
+        "Proxy configuration issue"
+      ],
+      503: [
+        "Server maintenance",
+        "Overloaded with requests",
+        "Database temporarily down",
+        "Try again soon"
+      ],
+      504: [
+        "Upstream timeout",
+        "Backend too slow",
+        "Gateway couldn't wait",
+        "Retry may succeed"
+      ]
+    };
+
     // Get error code from URL path
     const path = window.location.pathname;
     const match = path.match(/\/(\d+)\.html$/);
     const errorCode = match ? parseInt(match[1]) : 404;
     const errorMessage = errorMessages[errorCode] || "Unknown Error";
+    const leftText = leftTexts[errorCode] || leftTexts[404];
+    const rightText = rightTexts[errorCode] || rightTexts[404];
+    const description = descriptions[errorCode] || descriptions[404];
+    const reasonList = reasons[errorCode] || reasons[404];
 
     // Update page content
     document.getElementById('error-code').textContent = errorCode;
+    document.getElementById('left-text').textContent = leftText;
+    document.getElementById('right-text').textContent = rightText;
     document.getElementById('error-title').textContent = `Error: ${errorCode} - ${errorMessage}`;
+    document.getElementById('description-text').textContent = description;
     document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+    // Update reasons list
+    const listElement = document.getElementById('reason-list');
+    listElement.innerHTML = '';
+    reasonList.forEach(reason => {
+      const li = document.createElement('li');
+      li.textContent = reason;
+      listElement.appendChild(li);
+    });
   </script>
 </body>
 </html>
