@@ -50,6 +50,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **rickandmorty** | Rick mocks human error systems while Morty nervously tries to explain what went wrong | [Preview](/rickandmorty/404.html) | [Preview](/rickandmorty/403.html) | [Preview](/rickandmorty/500.html) |
 | **shaunofthedead** | British zombie apocalypse humor - "You've got red on you" with plans to head to the Winchester | [Preview](/shaunofthedead/404.html) | [Preview](/shaunofthedead/403.html) | [Preview](/shaunofthedead/500.html) |
 | **sailormoon** | Sailor Moon magical girl transformation - "In the name of the moon, I'll punish this error!" with attack names | [Preview](/sailormoon/404.html) | [Preview](/sailormoon/403.html) | [Preview](/sailormoon/500.html) |
+| **psycho-pass** | Sibyl System crime coefficient scanner - Dominator enforcement mode with cyberpunk holographic UI | [Preview](/psycho-pass/404.html) | [Preview](/psycho-pass/403.html) | [Preview](/psycho-pass/500.html) |
 
 ### Supported Error Codes
 

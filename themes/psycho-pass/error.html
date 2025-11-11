@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00ffff;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        /* Scanning lines effect */
+        @keyframes scanner {
+            0% { transform: translateY(-100vh); opacity: 0.1; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(100vh); opacity: 0.1; }
+        }
+
+        .scanner-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            box-shadow: 0 0 20px #00ffff;
+            animation: scanner 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 15px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 95vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .sibyl-box {
+            background: rgba(10, 10, 20, 0.95);
+            border: 3px solid #00ffff;
+            border-radius: 0;
+            padding: 50px 20px 18px 20px;
+            box-shadow: 0 0 60px rgba(0, 255, 255, 0.6),
+                        inset 0 0 40px rgba(0, 0, 0, 0.9),
+                        0 0 100px rgba(0, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .sibyl-box::before {
+            content: '⚠ SIBYL SYSTEM ⚠';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #001a1a, #003333);
+            color: #00ffff;
+            padding: 8px 18px;
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: 3px;
+            border: 2px solid #00ffff;
+            border-radius: 0;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.9),
+                        inset 0 0 10px rgba(0, 255, 255, 0.3);
+            white-space: nowrap;
+            font-family: 'Orbitron', monospace;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 25px rgba(0, 255, 255, 0.9), inset 0 0 10px rgba(0, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 35px rgba(0, 255, 255, 1), inset 0 0 15px rgba(0, 255, 255, 0.5); }
+        }
+
+        .title {
+            font-family: 'Orbitron', monospace;
+            font-size: 24px;
+            color: #ff0066;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 3px 3px 0 #000,
+                         0 0 30px rgba(255, 0, 102, 0.8);
+            line-height: 1.2;
+            letter-spacing: 2px;
+        }
+
+        .dominator-img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border: 3px solid #00ffff;
+            border-radius: 0;
+            margin: 8px auto 5px auto;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+            opacity: 0.9;
+        }
+
+        .status-bar {
+            background: rgba(0, 50, 50, 0.8);
+            border: 2px solid #00ffff;
+            padding: 10px;
+            margin: 8px auto;
+            max-width: 650px;
+            text-align: left;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .status-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .status-label {
+            color: #00ffff;
+            font-weight: 700;
+        }
+
+        .status-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .coefficient-display {
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #ff0066;
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 650px;
+            box-shadow: 0 0 30px rgba(255, 0, 102, 0.7);
+        }
+
+        .error-code {
+            font-family: 'Orbitron', monospace;
+            font-size: 65px;
+            font-weight: 900;
+            color: #ff0066;
+            text-shadow: 4px 4px 0 #000,
+                         0 0 40px rgba(255, 0, 102, 0.9);
+            margin: 5px 0;
+            line-height: 1;
+            animation: glitch 3s ease-in-out infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+        }
+
+        .coefficient-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 16px;
+            color: #00ffff;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .error-message {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00ffff;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .threat-level {
+            font-size: 20px;
+            font-weight: 900;
+            margin: 8px 0;
+            padding: 10px;
+            background: rgba(255, 0, 102, 0.2);
+            border: 2px solid #ff0066;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .threat-low { color: #00ff00; border-color: #00ff00; background: rgba(0, 255, 0, 0.1); }
+        .threat-medium { color: #ffaa00; border-color: #ffaa00; background: rgba(255, 170, 0, 0.1); }
+        .threat-high { color: #ff0066; border-color: #ff0066; background: rgba(255, 0, 102, 0.1); }
+
+        .judgment {
+            background: rgba(0, 50, 50, 0.6);
+            border-left: 4px solid #00ffff;
+            padding: 12px 15px;
+            margin: 10px auto;
+            max-width: 650px;
+            text-align: left;
+            border-radius: 0;
+        }
+
+        .judgment-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 16px;
+            color: #ff0066;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .judgment-text {
+            font-size: 16px;
+            color: #fff;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .enforcement-action {
+            font-size: 15px;
+            color: #00ffff;
+            margin: 8px 0;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            font-size: 18px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            border: 3px solid;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #001a1a, #003333);
+            color: #00ffff;
+            border-color: #00ffff;
+            box-shadow: 0 8px 0 #001a1a,
+                        0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #003333, #004d4d);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #001a1a,
+                        0 0 40px rgba(0, 255, 255, 0.7);
+        }
+
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #001a1a,
+                        0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 0, 102, 0.2);
+            color: #ff0066;
+            border-color: #ff0066;
+            box-shadow: 0 8px 0 rgba(255, 0, 102, 0.4),
+                        0 0 30px rgba(255, 0, 102, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 0, 102, 0.3);
+            color: #ff3388;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 rgba(255, 0, 102, 0.4),
+                        0 0 40px rgba(255, 0, 102, 0.6);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(255, 0, 102, 0.4),
+                        0 0 20px rgba(255, 0, 102, 0.3);
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: #0088aa;
+            font-style: italic;
+            margin-top: 10px;
+            padding-top: 8px;
+            font-family: 'Orbitron', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 20px;
+            }
+
+            .error-code {
+                font-size: 55px;
+            }
+
+            .error-message {
+                font-size: 16px;
+            }
+
+            .status-bar {
+                padding: 8px;
+                max-width: 100%;
+            }
+
+            .status-line {
+                font-size: 12px;
+            }
+
+            .judgment {
+                padding: 10px 12px;
+                max-width: 100%;
+            }
+
+            .judgment-title {
+                font-size: 14px;
+            }
+
+            .judgment-text {
+                font-size: 14px;
+            }
+
+            .enforcement-action {
+                font-size: 14px;
+            }
+
+            .threat-level {
+                font-size: 18px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 16px;
+            }
+
+            .sibyl-box {
+                padding: 45px 15px 15px 15px;
+            }
+
+            .sibyl-box::before {
+                font-size: 10px;
+                padding: 7px 12px;
+            }
+
+            .dominator-img {
+                max-width: 380px;
+            }
+
+            .coefficient-label {
+                font-size: 14px;
+            }
+
+            .footer-text {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanner-line"></div>
+
+    <div class="error-container">
+        <div class="sibyl-box">
+            <div class="title" id="title">
+                TARGET NOT FOUND
+            </div>
+
+            <div class="status-bar">
+                <div class="status-line">
+                    <span class="status-label">SCAN STATUS:</span>
+                    <span class="status-value" id="scan-status">ANALYZING...</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">HUE STATUS:</span>
+                    <span class="status-value" id="hue-status">CLOUDED</span>
+                </div>
+                <div class="status-line">
+                    <span class="status-label">AREA STRESS:</span>
+                    <span class="status-value" id="area-stress">ELEVATED</span>
+                </div>
+            </div>
+
+            <img src="resources/dominator.jpg" alt="Dominator" class="dominator-img">
+
+            <div class="coefficient-display">
+                <div class="coefficient-label">CRIME COEFFICIENT</div>
+                <div class="error-code" id="error-code">000</div>
+            </div>
+
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="threat-level" id="threat-level">
+                ENFORCEMENT MODE: ANALYZING
+            </div>
+
+            <div class="judgment">
+                <div class="judgment-title">SIBYL SYSTEM JUDGMENT:</div>
+                <div class="judgment-text" id="judgment-text">
+                    The target's psycho-pass has been analyzed. Enforcement action required.
+                </div>
+            </div>
+
+            <div class="enforcement-action" id="enforcement-action">
+                Dominator set to Paralyzer mode. Aim carefully and suppress the target.
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Return to System</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Re-scan</a>
+            </div>
+
+            <div class="footer-text" id="footer-text">
+                The law doesn't protect people. People protect the law.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "INVALID REQUEST DETECTED",
+            401: "AUTHENTICATION REQUIRED",
+            402: "PAYMENT VERIFICATION FAILED",
+            403: "ACCESS DENIED",
+            404: "TARGET NOT FOUND",
+            405: "METHOD PROHIBITED",
+            406: "FORMAT UNACCEPTABLE",
+            408: "REQUEST TIMEOUT",
+            409: "DATA CONFLICT DETECTED",
+            410: "TARGET ELIMINATED",
+            413: "PAYLOAD EXCEEDS LIMITS",
+            429: "EXCESSIVE REQUESTS DETECTED",
+            500: "SYSTEM MALFUNCTION",
+            502: "GATEWAY FAILURE",
+            503: "SERVICE OFFLINE",
+            504: "GATEWAY TIMEOUT"
+        };
+
+        const judgments = {
+            400: "The request format has been deemed incompatible with system protocols. The syntax structure violates established communication standards. Enforcement action: Request reconstruction required.",
+            401: "Authentication credentials have not been provided or are invalid. The target's identity cannot be verified through Sibyl System protocols. Enforcement action: Credential verification required.",
+            402: "Payment verification has failed. Economic transaction protocols have not been satisfied. The target must complete financial authorization before proceeding. Enforcement action: Transaction completion required.",
+            403: "Access to the requested resource has been denied. The target's clearance level is insufficient. Crime coefficient indicates unauthorized access attempt. Enforcement action: Access restriction maintained.",
+            404: "The requested target has not been found in any sector. Scan results indicate the resource may have been relocated or eliminated. Area enforcement protocols activated. Enforcement action: Target relocation required.",
+            405: "The requested method has been prohibited by system protocols. The approach violates established communication standards. Enforcement action: Method revision required.",
+            406: "The requested format is not acceptable. Content negotiation has failed. The target's request cannot be fulfilled in the specified format. Enforcement action: Format adjustment required.",
+            408: "Request processing has exceeded time limits. The target failed to complete the transaction within allocated timeframe. Enforcement action: Retry with increased priority.",
+            409: "Data conflict has been detected. The request conflicts with current system state. Multiple enforcement actions are attempting simultaneous modifications. Enforcement action: Conflict resolution required.",
+            410: "The target has been permanently eliminated from the system. No backup data exists in any sector. The resource has been decomposed beyond recovery. Enforcement action: Accept termination.",
+            413: "Payload size exceeds system capacity limits. The data transfer violates established protocols. Enforcement action: Payload reduction required.",
+            429: "Excessive request frequency detected. The target is generating requests at a rate that threatens system stability. Crime coefficient rising. Enforcement action: Request throttling activated.",
+            500: "Critical system malfunction detected. Sibyl System has encountered an internal error. Enforcement protocols compromised. Enforcement action: System restoration in progress.",
+            502: "Gateway connection has failed. Communication with upstream systems has been severed. Enforcement action: Gateway re-establishment required.",
+            503: "Service is currently offline for maintenance. System resources are unavailable. Enforcement action: Standby mode until restoration.",
+            504: "Gateway response timeout. The upstream system failed to respond within acceptable parameters. Enforcement action: Connection retry required."
+        };
+
+        const enforcementActions = {
+            400: "Non-Lethal Paralyzer mode. Stun the malformed request and reconstruct.",
+            401: "Paralyzer mode. Suppress unauthorized access attempt.",
+            402: "Non-Lethal Paralyzer mode. Suspend transaction until verification.",
+            403: "Lethal Eliminator mode authorized. Threat level exceeds 300.",
+            404: "Paralyzer mode. Search and relocate missing target.",
+            405: "Non-Lethal Paralyzer mode. Redirect method approach.",
+            406: "Paralyzer mode. Force format compliance.",
+            408: "Non-Lethal Paralyzer mode. Reset timeout parameters.",
+            409: "Paralyzer mode. Isolate and resolve conflict.",
+            410: "Destroy Decomposer mode. Target has been permanently eliminated.",
+            413: "Paralyzer mode. Compress and reduce payload.",
+            429: "Lethal Eliminator mode standby. Reduce request frequency immediately.",
+            500: "System diagnostic mode. Sibyl System requires immediate attention.",
+            502: "Lethal Eliminator mode standby. Gateway threat assessment in progress.",
+            503: "Standby mode. Await system restoration.",
+            504: "Paralyzer mode. Force gateway reconnection."
+        };
+
+        const footerTexts = {
+            400: "Crime doesn't sleep, and neither does bad syntax.",
+            401: "Your psycho-pass has been clouded by lack of credentials.",
+            402: "Even in the future, nothing is free.",
+            403: "The Sibyl System has deemed you unworthy of access.",
+            404: "Not all targets can be found in this dystopia.",
+            405: "Wrong method, wrong approach. The Sibyl System judges all.",
+            406: "The system only accepts perfect compliance.",
+            408: "Time waits for no one, not even the Sibyl System.",
+            409: "In a world of order, conflict must be eliminated.",
+            410: "Some things, once gone, can never return.",
+            413: "Even data has its limits in this controlled society.",
+            429: "Calm down. Excessive behavior clouds your psycho-pass.",
+            500: "Even the Sibyl System is not infallible.",
+            502: "The gateway between worlds has collapsed.",
+            503: "The system rests, but enforcement never sleeps.",
+            504: "Connection lost in the labyrinth of the network."
+        };
+
+        const scanStatuses = {
+            400: "MALFORMED",
+            401: "UNVERIFIED",
+            402: "UNPAID",
+            403: "RESTRICTED",
+            404: "MISSING",
+            405: "INVALID METHOD",
+            406: "FORMAT ERROR",
+            408: "TIMEOUT",
+            409: "CONFLICT",
+            410: "ELIMINATED",
+            413: "OVERSIZE",
+            429: "FLOODING",
+            500: "CRITICAL",
+            502: "GATEWAY DOWN",
+            503: "OFFLINE",
+            504: "NO RESPONSE"
+        };
+
+        const hueStatuses = {
+            400: "CLOUDED",
+            401: "UNCLEAR",
+            402: "CLOUDED",
+            403: "HEAVILY CLOUDED",
+            404: "CLOUDED",
+            405: "CLOUDED",
+            406: "CLOUDED",
+            408: "CLOUDED",
+            409: "CLOUDED",
+            410: "BLACK",
+            413: "CLOUDED",
+            429: "HEAVILY CLOUDED",
+            500: "CRITICAL",
+            502: "CLOUDED",
+            503: "CLEAR (OFFLINE)",
+            504: "CLOUDED"
+        };
+
+        const areaStresses = {
+            400: "ELEVATED",
+            401: "ELEVATED",
+            402: "MODERATE",
+            403: "HIGH",
+            404: "ELEVATED",
+            405: "MODERATE",
+            406: "MODERATE",
+            408: "ELEVATED",
+            409: "HIGH",
+            410: "CRITICAL",
+            413: "HIGH",
+            429: "CRITICAL",
+            500: "CRITICAL",
+            502: "HIGH",
+            503: "MODERATE",
+            504: "HIGH"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "TARGET NOT FOUND";
+        const judgment = judgments[errorCode] || "The target's psycho-pass has been analyzed. Enforcement action required.";
+        const enforcement = enforcementActions[errorCode] || "Dominator set to Paralyzer mode. Aim carefully and suppress the target.";
+        const footerText = footerTexts[errorCode] || "The law doesn't protect people. People protect the law.";
+        const scanStatus = scanStatuses[errorCode] || "UNKNOWN";
+        const hueStatus = hueStatuses[errorCode] || "CLOUDED";
+        const areaStress = areaStresses[errorCode] || "ELEVATED";
+
+        // Determine threat level based on error code
+        let threatLevel = "ENFORCEMENT MODE: PARALYZER";
+        let threatClass = "threat-low";
+
+        if (errorCode >= 500) {
+            threatLevel = "ENFORCEMENT MODE: SYSTEM CRITICAL";
+            threatClass = "threat-high";
+        } else if (errorCode === 403 || errorCode === 410 || errorCode === 429) {
+            threatLevel = "ENFORCEMENT MODE: LETHAL ELIMINATOR";
+            threatClass = "threat-high";
+        } else if (errorCode >= 400 && errorCode < 500) {
+            if (errorCode === 404 || errorCode === 401 || errorCode === 409) {
+                threatLevel = "ENFORCEMENT MODE: NON-LETHAL PARALYZER";
+                threatClass = "threat-medium";
+            } else {
+                threatLevel = "ENFORCEMENT MODE: PARALYZER";
+                threatClass = "threat-low";
+            }
+        }
+
+        // Update page content
+        document.getElementById('title').textContent = title;
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('judgment-text').textContent = judgment;
+        document.getElementById('enforcement-action').textContent = enforcement;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+        document.getElementById('scan-status').textContent = scanStatus;
+        document.getElementById('hue-status').textContent = hueStatus;
+        document.getElementById('area-stress').textContent = areaStress;
+
+        const threatElement = document.getElementById('threat-level');
+        threatElement.textContent = threatLevel;
+        threatElement.className = 'threat-level ' + threatClass;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'psycho-pass';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
