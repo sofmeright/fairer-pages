@@ -24,6 +24,83 @@ body {
     justify-content: center;
     padding: 20px;
     color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.lightning {
+    position: fixed;
+    top: 0;
+    right: 10%;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.9) 10%,
+        rgba(200, 220, 255, 0.8) 15%,
+        transparent 20%,
+        rgba(255, 255, 255, 0.7) 25%,
+        rgba(180, 200, 255, 0.6) 35%,
+        transparent 40%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(200, 220, 255, 0.6);
+    opacity: 0;
+    animation: lightning-strike 8s infinite;
+    z-index: 0;
+    transform: skewX(-5deg);
+}
+
+.lightning::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 4px;
+    width: 3px;
+    height: 25%;
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.8),
+        rgba(200, 220, 255, 0.6),
+        transparent);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    transform: skewX(15deg);
+}
+
+.lightning::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 4px;
+    width: 3px;
+    height: 15%;
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(180, 200, 255, 0.5),
+        transparent);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+    transform: skewX(-20deg);
+}
+
+@keyframes lightning-strike {
+    0%, 100% { opacity: 0; }
+    25% { opacity: 0; }
+    25.1% { opacity: 1; }
+    25.3% { opacity: 0; }
+    25.4% { opacity: 1; }
+    25.7% { opacity: 0; }
+    25.8% { opacity: 1; }
+    26.5% { opacity: 0; }
 }
 
 .container {
@@ -33,6 +110,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 50px;
+    position: relative;
+    z-index: 1;
 }
 
 .left-section {
@@ -227,6 +306,7 @@ body {
 </style>
 </head>
 <body>
+    <div class="lightning"></div>
     <div class="container">
         <div class="left-section">
             <img src="resources/backToTheHomepage.png" alt="Back to the Homepage" class="logo-img"/>
