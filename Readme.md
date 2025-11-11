@@ -46,6 +46,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **readyplayerone** | Ready Player One OASIS terminal with neon cyberpunk and Halliday's Journal quotes | [Preview](/readyplayerone/404.html) | [Preview](/readyplayerone/403.html) | [Preview](/readyplayerone/500.html) |
 | **swordart-aincrad** | Sword Art Online Aincrad - "At least you won't die" with HP bars and floor system | [Preview](/swordart-aincrad/404.html) | [Preview](/swordart-aincrad/403.html) | [Preview](/swordart-aincrad/500.html) |
 | **jedi-mindtrick** | Star Wars Jedi mind trick - "This is not the URL you are looking for" with Force waves | [Preview](/jedi-mindtrick/404.html) | [Preview](/jedi-mindtrick/403.html) | [Preview](/jedi-mindtrick/500.html) |
+| **shadowheart-shar** | Baldur's Gate 3 Shadowheart - Lady Shar's darkness vs inner light, embrace loss or seek hope | [Preview](/shadowheart-shar/404.html) | [Preview](/shadowheart-shar/403.html) | [Preview](/shadowheart-shar/500.html) |
 
 ### Supported Error Codes
 
