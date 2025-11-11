@@ -265,7 +265,7 @@
         // Fix resource paths for internal error redirects
         const themeName = 'MegumiTokoroOwo';
         document.querySelectorAll('img[src^="resources/"]').forEach(img => {
-            img.src = '/' + themeName + '/' + img.getAttribute('src');
+            img.src = '/fairer-pages/' + themeName + '/' + img.getAttribute('src');
         });
 
         // Create floating particles

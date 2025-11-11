@@ -289,12 +289,12 @@
         // Fix resource paths for internal error redirects
         const themeName = 'random';
         document.querySelectorAll('img[src^="resources/"]').forEach(img => {
-            img.src = '/' + themeName + '/' + img.getAttribute('src');
+            img.src = '/fairer-pages/' + themeName + '/' + img.getAttribute('src');
         });
 
-        // Redirect after a brief moment (using relative path)
+        // Redirect after a brief moment (using /fairer-pages/ prefix)
         setTimeout(() => {
-            window.location.href = `../${randomTheme}/${errorCode}.html`;
+            window.location.href = `/fairer-pages/${randomTheme}/${errorCode}.html`;
         }, 1500);
     </script>
 </body>
