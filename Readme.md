@@ -56,6 +56,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **meow-game** | Super Troopers meow game - Highway patrol citation with "meow" hidden throughout (includes meow counter!) | [Preview](/meow-game/404.html) | [Preview](/meow-game/403.html) | [Preview](/meow-game/500.html) |
 | **serene-shores** | Calming beach sunset - Professional, soothing error messages with elegant typography and peaceful ocean metaphors | [Preview](/serene-shores/404.html) | [Preview](/serene-shores/403.html) | [Preview](/serene-shores/500.html) |
 | **control-room** | Halo Installation 04 Control Room - 343 Guilty Spark monitor messages with Forerunner holographic terminal and UNSC protocols | [Preview](/control-room/404.html) | [Preview](/control-room/403.html) | [Preview](/control-room/500.html) |
+| **blank-state** | No Game No Life comfy vibes - Relaxed, casual error messages with purple/pink gradients and warm reassurance | [Preview](/blank-state/404.html) | [Preview](/blank-state/403.html) | [Preview](/blank-state/500.html) |
 
 ### Supported Error Codes
 

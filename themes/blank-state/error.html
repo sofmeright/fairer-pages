@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(255, 105, 180, 0.3));
+            z-index: 1;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 30px;
+            max-width: 700px;
+            width: 90%;
+        }
+
+        .error-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-code {
+            font-size: 100px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8a2be2, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #5a4a6a;
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            font-size: 18px;
+            font-weight: 500;
+            color: #7a6a8a;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8a2be2, #ff69b4);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(138, 43, 226, 0.1);
+            color: #8a2be2;
+            border: 2px solid #8a2be2;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(138, 43, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #9a8aaa;
+            margin-top: 30px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 40px 30px;
+            }
+
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .error-message {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 13px 30px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/ngnl.jpg" alt="Background" class="bg-image">
+    <div class="overlay"></div>
+
+    <div class="error-container">
+        <div class="error-card">
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">Page Not Found</div>
+            <div class="error-message" id="error-message">
+                Looks like this page wandered off somewhere. No worries though!
+            </div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Go Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+            <div class="footer-text" id="footer-text">
+                Take it easy, everything's okay
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "Something's Not Right",
+            401: "Need to Sign In",
+            402: "Payment Needed",
+            403: "Can't Access This",
+            404: "Page Not Found",
+            405: "Can't Do That",
+            406: "Format Issue",
+            408: "Took Too Long",
+            409: "Small Conflict",
+            410: "No Longer Here",
+            413: "Too Much Data",
+            429: "Slow Down",
+            500: "Server Hiccup",
+            502: "Connection Issue",
+            503: "Taking a Break",
+            504: "Timeout"
+        };
+
+        const messages = {
+            400: "The request didn't quite work out. Try checking things and giving it another go!",
+            401: "You'll need to sign in first. It's quick and easy!",
+            402: "This content needs payment. No big deal, just a heads up!",
+            403: "This area is off limits right now. Try somewhere else maybe?",
+            404: "Looks like this page wandered off somewhere. No worries though!",
+            405: "That method won't work here. Try a different approach!",
+            406: "The format's not quite right. Want to try another one?",
+            408: "Things took a bit too long. Let's try again!",
+            409: "There's a small conflict happening. Refresh and it should be fine!",
+            410: "This content's gone for good. Time to find something new!",
+            413: "That's a lot of data! Try sending a bit less?",
+            429: "Whoa, slow down there! Take a breather and try again in a moment.",
+            500: "Oops, something went wrong on our end. We're on it!",
+            502: "Having trouble connecting. Give it a sec and try again!",
+            503: "Taking a quick break. Be back soon!",
+            504: "The connection timed out. Let's give it another shot!"
+        };
+
+        const footerTexts = {
+            400: "No stress, just try again",
+            401: "Quick login and you're good",
+            402: "All good things in time",
+            403: "There's always another way",
+            404: "Take it easy, everything's okay",
+            405: "Try something different",
+            406: "It happens, no worries",
+            408: "Patience is a virtue",
+            409: "Just a small bump",
+            410: "Moving on is good",
+            413: "Less is more sometimes",
+            429: "Relax and take your time",
+            500: "We'll fix this up quick",
+            502: "Connections can be finicky",
+            503: "Everyone needs a break",
+            504: "Try once more, it'll work"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "Something Happened";
+        const message = messages[errorCode] || "An error occurred, but it's all good!";
+        const footerText = footerTexts[errorCode] || "Take it easy";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('error-message').textContent = message;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'blank-state';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
