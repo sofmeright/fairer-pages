@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to Random Theme...</title>
+    <title>Fairer Pages - Redirecting...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,63 +15,201 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Cinzel', serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
+            color: #2c1810;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(255, 248, 240, 0.75),
+                rgba(255, 243, 224, 0.7),
+                rgba(245, 235, 215, 0.75));
+            z-index: 1;
         }
 
         .container {
+            position: relative;
+            z-index: 2;
             text-align: center;
-            padding: 40px;
+            padding: 60px 40px;
+            max-width: 700px;
+            width: 90%;
+            background: rgba(255, 250, 240, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+                        0 0 0 1px rgba(139, 90, 43, 0.1);
+            border: 3px solid rgba(139, 90, 43, 0.2);
+        }
+
+        .brand {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: #8b5a2b;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #a0826d;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .spinner-container {
+            margin: 40px auto;
+            position: relative;
+            width: 100px;
+            height: 100px;
         }
 
         .spinner {
+            width: 80px;
+            height: 80px;
+            border: 3px solid rgba(139, 90, 43, 0.15);
+            border-top-color: rgba(139, 90, 43, 0.6);
+            border-right-color: rgba(139, 90, 43, 0.4);
+            border-radius: 50%;
+            animation: spin 2s ease-in-out infinite;
+            margin: 10px auto;
+        }
+
+        .spinner-inner {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             width: 60px;
             height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top-color: #fff;
+            border: 2px solid rgba(160, 130, 109, 0.1);
+            border-bottom-color: rgba(160, 130, 109, 0.5);
+            border-left-color: rgba(160, 130, 109, 0.3);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 30px;
+            animation: spin 1.5s ease-in-out infinite reverse;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        h1 {
-            font-size: 28px;
-            font-weight: 600;
+        .message {
+            font-size: 18px;
+            color: #6b4423;
             margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
-        p {
+        .error-code {
             font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 10px;
+            color: #8b5a2b;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
 
         .theme-name {
-            font-size: 20px;
-            font-weight: 700;
-            margin-top: 20px;
-            padding: 15px 25px;
-            background: rgba(255, 255, 255, 0.2);
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: #5d3a1a;
+            padding: 18px 35px;
+            background: rgba(139, 90, 43, 0.08);
             border-radius: 50px;
             display: inline-block;
+            border: 2px solid rgba(139, 90, 43, 0.15);
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .propeller {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 80px;
+            height: 80px;
+            opacity: 0.15;
+        }
+
+        .propeller::before,
+        .propeller::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 4px;
+            background: #8b5a2b;
+            transform-origin: center;
+            animation: propeller 0.8s linear infinite;
+        }
+
+        .propeller::after {
+            transform: rotate(90deg);
+        }
+
+        @keyframes propeller {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .brand {
+                font-size: 36px;
+            }
+
+            .container {
+                padding: 40px 30px;
+            }
+
+            .theme-name {
+                font-size: 18px;
+                padding: 14px 25px;
+            }
         }
     </style>
 </head>
 <body>
+    <img src="resources/porco.jpg" alt="Background" class="bg-image">
+    <div class="overlay"></div>
+
     <div class="container">
-        <div class="spinner"></div>
-        <h1>Picking a random theme...</h1>
-        <p id="error-code">Error 404</p>
-        <div class="theme-name" id="theme-name">🎲 Rolling the dice...</div>
+        <div class="propeller"></div>
+        <div class="brand">Fairer Pages</div>
+        <div class="tagline">Error Page Collection</div>
+
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <div class="spinner-inner"></div>
+        </div>
+
+        <div class="message">Selecting a theme...</div>
+        <div class="error-code" id="error-code">Error 404</div>
+        <div class="theme-name" id="theme-name">🎲 Rolling...</div>
     </div>
 
     <script>
@@ -126,12 +267,18 @@
 
         // Update display
         document.getElementById('error-code').textContent = `Error ${errorCode}`;
-        document.getElementById('theme-name').textContent = `🎲 ${randomTheme}`;
+        document.getElementById('theme-name').textContent = randomTheme;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'random';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
 
         // Redirect after a brief moment (using relative path)
         setTimeout(() => {
             window.location.href = `../${randomTheme}/${errorCode}.html`;
-        }, 1200);
+        }, 1500);
     </script>
 </body>
 </html>
