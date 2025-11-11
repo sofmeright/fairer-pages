@@ -48,6 +48,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **jedi-mindtrick** | Star Wars Jedi mind trick - "This is not the URL you are looking for" with Force waves | [Preview](/jedi-mindtrick/404.html) | [Preview](/jedi-mindtrick/403.html) | [Preview](/jedi-mindtrick/500.html) |
 | **shadowheart-shar** | Baldur's Gate 3 Shadowheart - Lady Shar's darkness vs inner light, embrace loss or seek hope | [Preview](/shadowheart-shar/404.html) | [Preview](/shadowheart-shar/403.html) | [Preview](/shadowheart-shar/500.html) |
 | **rickandmorty** | Rick mocks human error systems while Morty nervously tries to explain what went wrong | [Preview](/rickandmorty/404.html) | [Preview](/rickandmorty/403.html) | [Preview](/rickandmorty/500.html) |
+| **shaunofthedead** | British zombie apocalypse humor - "You've got red on you" with plans to head to the Winchester | [Preview](/shaunofthedead/404.html) | [Preview](/shaunofthedead/403.html) | [Preview](/shaunofthedead/500.html) |
 
 ### Supported Error Codes
 
