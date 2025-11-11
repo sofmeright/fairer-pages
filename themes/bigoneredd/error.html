@@ -22,7 +22,8 @@
             justify-content: center;
             align-items: center;
             color: #2c1810;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: hidden;
             position: relative;
         }
 
@@ -58,16 +59,18 @@
             width: 90%;
             max-height: 95vh;
             overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .junkyard-box {
             background: rgba(222, 184, 135, 0.95);
             border: 6px solid #8b4513;
             border-radius: 10px;
-            padding: 25px;
+            padding: 20px;
             box-shadow: 0 0 40px rgba(139, 69, 19, 0.6),
                         inset 0 0 30px rgba(0, 0, 0, 0.2);
             position: relative;
+            overflow-x: hidden;
         }
 
         .junkyard-box::before {
@@ -121,22 +124,24 @@
 
         .cop-dialogue {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             justify-content: center;
             margin: 15px 0;
             flex-wrap: wrap;
+            max-width: 100%;
         }
 
         .cop-box {
             flex: 1;
             min-width: 250px;
             max-width: 100%;
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
             border: 4px solid;
             position: relative;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            box-sizing: border-box;
         }
 
         .cop-box::before {
@@ -186,11 +191,13 @@
             background: rgba(139, 0, 0, 0.2);
             border: 4px solid #8b0000;
             border-radius: 10px;
-            padding: 15px;
+            padding: 12px;
             margin: 15px 0;
             position: relative;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .fred-box::before {
@@ -351,11 +358,20 @@
             }
 
             .junkyard-box {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
 
             .cop-box {
                 min-width: 100%;
+                padding: 10px;
+            }
+
+            .fred-box {
+                padding: 10px;
+            }
+
+            .cop-dialogue {
+                gap: 8px;
             }
         }
     </style>
