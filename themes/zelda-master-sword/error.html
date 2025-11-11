@@ -16,58 +16,36 @@
 
         body {
             font-family: 'Philosopher', sans-serif;
-            background: #0a1628;
+            background: linear-gradient(135deg, #0a1628, #1a3a5a, #0a1628);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #e8f4f8;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .bg-gif {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            opacity: 0.75;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center,
-                rgba(10, 22, 40, 0.6),
-                rgba(10, 22, 40, 0.9));
-            z-index: 1;
+            padding: 20px;
         }
 
         .content-container {
             position: relative;
-            z-index: 2;
             text-align: center;
-            padding: 40px;
             max-width: 850px;
-            width: 90%;
+            width: 100%;
         }
 
-        .sword-icon {
-            font-size: 70px;
-            margin-bottom: 20px;
-            animation: glow 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(100, 200, 255, 0.8));
+        .sword-image-container {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(100, 200, 255, 0.8)); }
-            50% { filter: drop-shadow(0 0 35px rgba(100, 200, 255, 1)); }
+        .sword-image {
+            max-width: 100%;
+            max-height: 350px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(100, 200, 255, 0.4);
+            border: 2px solid rgba(100, 200, 255, 0.4);
         }
 
         .error-card {
@@ -227,14 +205,15 @@
     </style>
 </head>
 <body>
-    <img src="resources/sword.gif" alt="Master Sword" class="bg-gif">
-    <div class="overlay"></div>
-
     <div class="content-container">
-        <div class="sword-icon">⚔️</div>
         <div class="error-card">
             <div class="error-code" id="error-code">404</div>
             <div class="error-title" id="error-title">Trial of Courage</div>
+
+            <div class="sword-image-container">
+                <img src="resources/sword.gif" alt="Master Sword" class="sword-image">
+            </div>
+
             <div class="hero-text" id="hero-text">
                 A true hero faces many obstacles on their journey. This page may be lost, but your courage remains unshaken. Rise, hero, and continue your quest.
             </div>
