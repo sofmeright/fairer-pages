@@ -68,10 +68,20 @@
             border: 3px solid rgba(139, 69, 19, 0.6);
         }
 
+        .dice-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 25px 0 -10px 0;
+        }
+
         .dice-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
+            font-size: 50px;
             animation: roll 2s ease-in-out infinite;
+        }
+
+        .dice-icon:nth-child(2) {
+            animation-delay: 0.3s;
         }
 
         @keyframes roll {
@@ -218,11 +228,14 @@
 
     <div class="content-container">
         <div class="error-card">
-            <div class="dice-icon">🎲</div>
             <div class="error-code" id="error-code">404</div>
             <div class="error-title" id="error-title">Critical Failure</div>
             <div class="narrator-text" id="narrator-text">
                 *The path before you crumbles into darkness. You've ventured into territory unmapped by any cartographer.*
+            </div>
+            <div class="dice-container">
+                <div class="dice-icon">🎲</div>
+                <div class="dice-icon">🎲</div>
             </div>
             <div class="skill-check">
                 <div class="check-title" id="check-title">Investigation Check</div>
