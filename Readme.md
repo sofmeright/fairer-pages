@@ -29,6 +29,7 @@ Examples:
 #### Overriding the random list to restrict to a custom set of pages:
 If you mount `/usr/share/nginx/html/themes/random/error.html` inside the container to local storage...
 You should be able to edit the lines that look like this below:
+
     ```yaml
         <script>
             // All available themes
