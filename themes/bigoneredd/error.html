@@ -54,9 +54,9 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             max-width: 900px;
-            width: 90%;
+            width: 95%;
             max-height: 95vh;
             overflow-y: auto;
             overflow-x: hidden;
@@ -66,11 +66,13 @@
             background: rgba(222, 184, 135, 0.95);
             border: 6px solid #8b4513;
             border-radius: 10px;
-            padding: 20px;
+            padding: 25px 20px;
             box-shadow: 0 0 40px rgba(139, 69, 19, 0.6),
                         inset 0 0 30px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .junkyard-box::before {
@@ -124,18 +126,19 @@
 
         .cop-dialogue {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
-            margin: 15px 0;
+            margin: 18px 0;
             flex-wrap: wrap;
-            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .cop-box {
             flex: 1;
-            min-width: 250px;
-            max-width: 100%;
-            padding: 12px;
+            min-width: 280px;
+            max-width: calc(50% - 10px);
+            padding: 15px 12px;
             border-radius: 10px;
             border: 4px solid;
             position: relative;
@@ -168,12 +171,13 @@
         }
 
         .cop-speech {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             line-height: 1.5;
             color: #2c1810;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .white-cop {
@@ -191,12 +195,12 @@
             background: rgba(139, 0, 0, 0.2);
             border: 4px solid #8b0000;
             border-radius: 10px;
-            padding: 12px;
-            margin: 15px 0;
+            padding: 15px 12px;
+            margin: 18px 0;
             position: relative;
             word-wrap: break-word;
             overflow-wrap: break-word;
-            max-width: 100%;
+            width: 100%;
             box-sizing: border-box;
         }
 
@@ -216,13 +220,14 @@
         }
 
         .fred-speech {
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 700;
             line-height: 1.5;
             color: #2c1810;
             font-style: italic;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .error-code {
@@ -328,6 +333,11 @@
         }
 
         @media (max-width: 768px) {
+            .error-container {
+                padding: 10px;
+                width: 98%;
+            }
+
             .episode-title {
                 font-size: 26px;
             }
@@ -341,11 +351,11 @@
             }
 
             .cop-speech {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .fred-speech {
-                font-size: 17px;
+                font-size: 16px;
             }
 
             .heart-attack {
@@ -353,25 +363,27 @@
             }
 
             .btn {
-                padding: 12px 28px;
+                padding: 12px 24px;
                 font-size: 18px;
             }
 
             .junkyard-box {
-                padding: 20px 15px;
+                padding: 20px 12px;
             }
 
             .cop-box {
                 min-width: 100%;
-                padding: 10px;
+                max-width: 100%;
+                padding: 12px 10px;
             }
 
             .fred-box {
-                padding: 10px;
+                padding: 12px 10px;
             }
 
             .cop-dialogue {
-                gap: 8px;
+                gap: 10px;
+                margin: 15px 0;
             }
         }
     </style>
