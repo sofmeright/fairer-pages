@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0d001a;
+            color: #00ff7f;
+            font-family: 'Consolas', 'Courier New', monospace;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+
+            /* Background image */
+            background-image: url('resources/OASIS.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 15px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 95vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .oasis-container {
+            max-width: 800px;
+            padding: 40px;
+            border: 3px solid #00ff7f;
+            box-shadow: 0 0 50px rgba(0, 255, 127, 0.5);
+            background-color: rgba(13, 0, 26, 0.85);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: #00ff7f;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px #00ff7f;
+            letter-spacing: 3px;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 30px #ff00ff;
+            line-height: 1;
+            margin: 10px 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .error-message {
+            font-size: 2rem;
+            color: #ffcc00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 10px 0 30px 0;
+            text-shadow: 0 0 8px #ffcc00;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .flavor-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #00ff7f;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .button {
+            text-decoration: none;
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 0;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        .primary-button {
+            background-color: #00ff7f;
+            color: #0d001a;
+            border-color: #00ff7f;
+            box-shadow: 0 0 10px #00ff7f;
+        }
+
+        .primary-button:hover {
+            background-color: #0d001a;
+            color: #00ff7f;
+            box-shadow: 0 0 20px #00ff7f;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            color: #ff00ff;
+            border-color: #ff00ff;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        .secondary-button:hover {
+            background-color: #ff00ff;
+            color: #0d001a;
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        /* Glitch effect for error code */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+
+        .error-code:hover {
+            animation: glitch 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .oasis-container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .error-code {
+                font-size: 6rem;
+            }
+
+            .error-message {
+                font-size: 1.5rem;
+            }
+
+            .flavor-text {
+                font-size: 1rem;
+            }
+
+            .button {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+
+            .footer-text {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 4.5rem;
+            }
+
+            .error-message {
+                font-size: 1.2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="oasis-container">
+            <header class="header">
+                <h1>OASIS System Alert</h1>
+            </header>
+
+            <main class="error-content">
+                <p class="error-code" id="error-code">000</p>
+                <h2 class="error-message" id="error-message">Unknown Error</h2>
+
+                <p class="flavor-text" id="flavor-text">
+                    The requested site could not be located. Perhaps you took the wrong path at the Halliday Journals. Access denied.
+                </p>
+
+                <div class="action-buttons">
+                    <a href="/" class="button primary-button">Back to the OASIS</a>
+                    <a href="javascript:history.back()" class="button secondary-button">Previous Location</a>
+                </div>
+
+                <p class="footer-text" id="footer-text">
+                    **HALLIDAY'S JOURNAL ENTRY #178**: Sometimes the most fun is in the chase.
+                </p>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const flavorTexts = {
+            400: "Your input data is corrupted, Gunter. The OASIS can't process this malformed request. Check your command syntax and try again.",
+            401: "Authentication failed. You need the right credentials to access this sector. Did you forget your haptic gloves?",
+            402: "This content requires payment. Even in the OASIS, nothing worth having comes easy. You'll need more credits, Gunter.",
+            403: "Access denied! This area is restricted. You don't have the artifact or clearance level needed to enter this zone.",
+            404: "Uh oh! You're about to zero out! The requested site could not be located. Perhaps you took the wrong path at the Halliday Journals.",
+            405: "Invalid method detected. This portal doesn't accept that type of request. Try a different approach, Gunter.",
+            406: "The OASIS system can't provide content in the format you requested. Adjust your client settings and reconnect.",
+            408: "Connection timeout. Your session took too long to respond and the OASIS server disconnected. Latency is everything, Gunter!",
+            409: "Conflict detected! There's a data collision in the system. Someone else might be modifying this resource simultaneously.",
+            410: "This content has been permanently deleted from the OASIS archives. Not even Halliday can bring it back now.",
+            413: "File size exceeds maximum upload limit. Even the OASIS has its limits. Try compressing your data, Gunter.",
+            429: "Too many requests! You're spamming the OASIS servers. Slow down or you'll get temporarily banned from this sector.",
+            500: "Internal Server Error! Something broke in the OASIS infrastructure. The admins are on it. Meanwhile, you might want to log out.",
+            502: "Bad Gateway. The OASIS relay servers are having trouble communicating. This connection route is unreliable right now.",
+            503: "Service Unavailable. The OASIS servers are currently overloaded or under maintenance. Try again later, Gunter.",
+            504: "Gateway Timeout. The OASIS network took too long to respond. The servers might be under heavy load or experiencing lag."
+        };
+
+        const footerQuotes = {
+            400: "**HALLIDAY'S JOURNAL ENTRY #42**: \"Sometimes, the wrong input teaches you more than the right one.\"",
+            401: "**HALLIDAY'S JOURNAL ENTRY #89**: \"Access is earned, not given. That's rule one.\"",
+            402: "**HALLIDAY'S JOURNAL ENTRY #123**: \"Everything has a price, even in virtual worlds.\"",
+            403: "**HALLIDAY'S JOURNAL ENTRY #256**: \"Forbidden zones exist for a reason. Respect the barriers.\"",
+            404: "**HALLIDAY'S JOURNAL ENTRY #178**: \"Sometimes the most fun is in the chase, not the destination.\"",
+            405: "**HALLIDAY'S JOURNAL ENTRY #67**: \"Not every door opens the same way. Find the right key.\"",
+            406: "**HALLIDAY'S JOURNAL ENTRY #201**: \"Compatibility matters. Make sure you're speaking the same language.\"",
+            408: "**HALLIDAY'S JOURNAL ENTRY #88**: \"Patience is a virtue, but speed is a necessity.\"",
+            409: "**HALLIDAY'S JOURNAL ENTRY #144**: \"When two forces collide, only one can win.\"",
+            410: "**HALLIDAY'S JOURNAL ENTRY #404**: \"Some things, once lost, can never be recovered. Save often.\"",
+            413: "**HALLIDAY'S JOURNAL ENTRY #512**: \"Bigger isn't always better. Quality over quantity.\"",
+            429: "**HALLIDAY'S JOURNAL ENTRY #99**: \"Slow and steady wins the race. Don't spam the system.\"",
+            500: "**HALLIDAY'S JOURNAL ENTRY #500**: \"Even the best systems fail sometimes. That's when you reboot.\"",
+            502: "**HALLIDAY'S JOURNAL ENTRY #77**: \"Communication breakdowns happen. Find another route.\"",
+            503: "**HALLIDAY'S JOURNAL ENTRY #503**: \"Downtime is inevitable. Use it to plan your next move.\"",
+            504: "**HALLIDAY'S JOURNAL ENTRY #101**: \"Lag is the enemy of every Gunter. Wait for the connection.\""
+        };
+
+        const errorTitles = {
+            400: "Corrupted Input Detected!",
+            401: "Authentication Required!",
+            402: "Insufficient Credits!",
+            403: "Access Denied, Gunter!",
+            404: "Uh oh! You're about to zero out!",
+            405: "Invalid Method!",
+            406: "Format Not Supported!",
+            408: "Connection Timeout!",
+            409: "Data Collision!",
+            410: "Permanently Deleted!",
+            413: "File Too Large!",
+            429: "Rate Limit Exceeded!",
+            500: "OASIS System Failure!",
+            502: "Gateway Malfunction!",
+            503: "OASIS Overloaded!",
+            504: "Network Lag Detected!"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const flavorText = flavorTexts[errorCode] || "The requested site could not be located. Perhaps you took the wrong path at the Halliday Journals. Access denied.";
+        const footerQuote = footerQuotes[errorCode] || "**HALLIDAY'S JOURNAL ENTRY #178**: \"Sometimes the most fun is in the chase.\"";
+        const errorTitle = errorTitles[errorCode] || "System Error!";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorTitle;
+        document.getElementById('flavor-text').textContent = flavorText;
+        document.getElementById('footer-text').textContent = footerQuote;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'readyplayerone';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
