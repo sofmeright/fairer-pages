@@ -54,6 +54,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **still-waiting** | Matrix Construct white void - "Stop trying to find it and realize... there is no page" with Morpheus wisdom | [Preview](/still-waiting/404.html) | [Preview](/still-waiting/403.html) | [Preview](/still-waiting/500.html) |
 | **neighborhood-watch** | The Watch collateral damage - "Good news: threat eliminated. Bad news: we destroyed everything 🤷" with Costco and alien orb | [Preview](/neighborhood-watch/404.html) | [Preview](/neighborhood-watch/403.html) | [Preview](/neighborhood-watch/500.html) |
 | **meow-game** | Super Troopers meow game - Highway patrol citation with "meow" hidden throughout (includes meow counter!) | [Preview](/meow-game/404.html) | [Preview](/meow-game/403.html) | [Preview](/meow-game/500.html) |
+| **serene-shores** | Calming beach sunset - Professional, soothing error messages with elegant typography and peaceful ocean metaphors | [Preview](/serene-shores/404.html) | [Preview](/serene-shores/403.html) | [Preview](/serene-shores/500.html) |
 
 ### Supported Error Codes
 

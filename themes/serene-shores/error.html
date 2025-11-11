@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .beach-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6));
+            z-index: 1;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .error-code {
+            font-family: 'Lora', serif;
+            font-size: 120px;
+            font-weight: 400;
+            color: #6B9AC4;
+            margin-bottom: 20px;
+            line-height: 1;
+            opacity: 0.9;
+        }
+
+        .error-title {
+            font-family: 'Lora', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .error-message {
+            font-size: 18px;
+            font-weight: 300;
+            color: #5A6C7D;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .suggestion {
+            font-size: 16px;
+            font-weight: 400;
+            color: #7B8A99;
+            font-style: italic;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6B9AC4, #4A7FA7);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(107, 154, 196, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(107, 154, 196, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #6B9AC4;
+            border: 2px solid #6B9AC4;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #95A5B5;
+            margin-top: 40px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .content-card {
+                padding: 40px 25px;
+            }
+
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .error-message {
+                font-size: 16px;
+            }
+
+            .suggestion {
+                font-size: 15px;
+            }
+
+            .btn {
+                padding: 14px 35px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/beach.jpg" alt="Serene Beach" class="beach-bg">
+    <div class="overlay"></div>
+
+    <div class="error-container">
+        <div class="content-card">
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">Page Not Found</div>
+            <div class="error-message" id="error-message">
+                The page you're looking for seems to have drifted away with the tide.
+            </div>
+            <div class="suggestion" id="suggestion">
+                Perhaps try returning to the homepage, or let the waves guide you back.
+            </div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Return Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+            <div class="footer-text" id="footer-text">
+                Take a moment to breathe
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "Something Seems Off",
+            401: "Authentication Required",
+            402: "Payment Needed",
+            403: "Access Not Permitted",
+            404: "Page Not Found",
+            405: "Method Not Allowed",
+            406: "Format Mismatch",
+            408: "Request Timed Out",
+            409: "A Conflict Occurred",
+            410: "No Longer Available",
+            413: "Request Too Large",
+            429: "Too Many Requests",
+            500: "Server Issue",
+            502: "Gateway Problem",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const messages = {
+            400: "The request wasn't quite right. Like a wave that didn't break properly, something in the format needs adjustment.",
+            401: "You'll need to sign in first. Think of it as needing a beach pass to access this particular shore.",
+            402: "This content requires payment. Even the most beautiful beaches have their admission fees.",
+            403: "This area is restricted. Some shores are private, and this happens to be one of them.",
+            404: "The page you're looking for seems to have drifted away with the tide. It may have moved, or perhaps it never existed here.",
+            405: "That approach won't work here. Try a different method, like choosing another path along the shoreline.",
+            406: "The format requested isn't available. Sometimes the beach doesn't have the amenities you're looking for.",
+            408: "Your request took too long. Like waiting for the perfect wave, sometimes timing matters.",
+            409: "There's a conflict with your request. Two waves colliding, creating an unexpected disturbance.",
+            410: "This content has been permanently removed. Like footprints washed away by the tide, it's gone forever.",
+            413: "Your request is too large. Even the ocean has its limits on what it can carry.",
+            429: "You're making requests too quickly. Slow down and enjoy the rhythm of the waves.",
+            500: "Something went wrong on our end. Even the calmest seas can have unexpected currents.",
+            502: "We're having trouble connecting. The lighthouse signal isn't reaching the ships properly.",
+            503: "The service is temporarily unavailable. The tide is out, but it will return.",
+            504: "The connection timed out. The message didn't reach the distant shore in time."
+        };
+
+        const suggestions = {
+            400: "Check your request and try again with the correct format.",
+            401: "Please log in to access this content.",
+            402: "Complete your payment to proceed.",
+            403: "If you believe you should have access, please contact support.",
+            404: "Perhaps try returning to the homepage, or let the waves guide you back.",
+            405: "Try using a different method to access this resource.",
+            406: "Request a different format that we support.",
+            408: "Please try your request again.",
+            409: "Refresh and try again to resolve the conflict.",
+            410: "This content is no longer available anywhere.",
+            413: "Try reducing the size of your request.",
+            429: "Take a moment to breathe, then try again in a few moments.",
+            500: "We're working to resolve this. Please try again shortly.",
+            502: "The connection between servers failed. Please try again.",
+            503: "We're temporarily down for maintenance. Please check back soon.",
+            504: "The server didn't respond in time. Please try again."
+        };
+
+        const footerTexts = {
+            400: "Every mistake is a chance to learn",
+            401: "Take your time",
+            402: "Good things are worth waiting for",
+            403: "Respect the boundaries",
+            404: "Not all who wander are lost",
+            405: "There's always another way",
+            406: "Adapt and adjust",
+            408: "Patience brings peace",
+            409: "Find harmony in the chaos",
+            410: "Let go of what's gone",
+            413: "Less is often more",
+            429: "Slow down and breathe",
+            500: "Even storms pass",
+            502: "Connections can be restored",
+            503: "Rest is part of the journey",
+            504: "Give it time"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "Something Went Wrong";
+        const message = messages[errorCode] || "An unexpected error occurred. Please try again.";
+        const suggestion = suggestions[errorCode] || "Perhaps try returning to the homepage.";
+        const footerText = footerTexts[errorCode] || "Take a moment to breathe";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('error-message').textContent = message;
+        document.getElementById('suggestion').textContent = suggestion;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'serene-shores';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
