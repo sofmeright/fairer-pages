@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #2d3428;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f5f5dc;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(45, 52, 40, 0.7),
+                rgba(60, 70, 50, 0.75));
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 850px;
+            width: 90%;
+        }
+
+        .hammock-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .error-card {
+            background: rgba(60, 70, 50, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px 45px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6),
+                        0 0 40px rgba(139, 195, 74, 0.2);
+            border: 3px solid rgba(139, 195, 74, 0.4);
+        }
+
+        .error-code {
+            font-size: 85px;
+            font-weight: 700;
+            font-family: 'Comfortaa', cursive;
+            color: #8bc34a;
+            margin-bottom: 20px;
+            line-height: 1;
+            text-shadow: 0 0 25px rgba(139, 195, 74, 0.5),
+                         2px 2px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 'Comfortaa', cursive;
+            color: #f5f5dc;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .chill-text {
+            font-size: 18px;
+            color: #e0dec8;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .rest-box {
+            background: rgba(139, 195, 74, 0.15);
+            border: 2px solid #8bc34a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            font-size: 16px;
+            color: #8bc34a;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8bc34a, #689f38);
+            color: #2d3428;
+            box-shadow: 0 8px 20px rgba(139, 195, 74, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(139, 195, 74, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #8bc34a;
+            border: 2px solid #8bc34a;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(139, 195, 74, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 14px;
+            color: rgba(245, 245, 220, 0.6);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 40px 30px;
+            }
+
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .chill-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/hammock.gif" alt="Zelda Cozy Hammock" class="bg-gif">
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <div class="hammock-icon">🛏️</div>
+        <div class="error-card">
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">Take a Break</div>
+            <div class="chill-text" id="chill-text">
+                Hey, the page you're looking for isn't here. But that's okay! Why not take a moment to relax? No need to rush.
+            </div>
+            <div class="rest-box" id="rest-box">
+                💚 Status: Time to chill
+            </div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Head Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+            <div class="footer-text" id="footer-text">
+                Just taking it easy, one page at a time
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "Invalid Input",
+            401: "Need Credentials",
+            402: "Payment Needed",
+            403: "Access Restricted",
+            404: "Take a Break",
+            405: "Wrong Method",
+            406: "Not Supported",
+            408: "Took Too Long",
+            409: "Small Conflict",
+            410: "No Longer Here",
+            413: "Too Much Data",
+            429: "Slow Down",
+            500: "Server Resting",
+            502: "Gateway Down",
+            503: "Service Napping",
+            504: "Gateway Timeout"
+        };
+
+        const chillTexts = {
+            400: "Oops, the request format wasn't quite right. But hey, mistakes happen! Take a breath, fix it up, and try again when you're ready.",
+            401: "You'll need to sign in to see this content. No worries though - grab your credentials and come back whenever you feel like it.",
+            402: "This content requires payment to access. Take your time deciding if you want to subscribe. No pressure!",
+            403: "Access to this area is restricted. That's alright! There's plenty of other content to explore. Take it easy.",
+            404: "Hey, the page you're looking for isn't here. But that's okay! Why not take a moment to relax? No need to rush.",
+            405: "That HTTP method isn't allowed here. Easy fix though - just try a different approach when you're ready. No stress!",
+            406: "The format you requested isn't available. But don't worry about it! Try another format or just kick back for a bit.",
+            408: "The request took a while and timed out. It happens! Maybe the network was slow. Take a break and try again later.",
+            409: "There's a small conflict with the request. No big deal - refresh the page when you're ready and it should sort itself out.",
+            410: "This content has been permanently removed. That's okay though! Sometimes things change. Let's find something else to look at.",
+            413: "The data you sent is a bit too large. No worries! Just trim it down a bit and resend whenever you feel like it.",
+            429: "Whoa there, you're making too many requests! Take a breather. Relax for a moment, then try again. Everything will still be here.",
+            500: "The server's taking an unexpected rest. These things happen! Our team is on it. Meanwhile, why not take a break too?",
+            502: "The gateway is having issues connecting. It'll be back soon! Take this as a sign to relax for a moment.",
+            503: "The service is unavailable right now, probably taking a well-deserved nap. Check back later when you're ready!",
+            504: "The gateway timed out while connecting. No rush though - give it some time and try again when you feel like it."
+        };
+
+        const restBoxes = {
+            400: "💚 Status: Easy fix needed",
+            401: "💚 Status: Credentials required",
+            402: "💚 Status: Payment needed",
+            403: "💚 Status: Restricted zone",
+            404: "💚 Status: Time to chill",
+            405: "💚 Status: Try another way",
+            406: "💚 Status: Different format needed",
+            408: "💚 Status: Take your time",
+            409: "💚 Status: Minor conflict",
+            410: "💚 Status: Content moved on",
+            413: "💚 Status: Lighten the load",
+            429: "💚 Status: Slow and steady",
+            500: "💚 Status: Server resting",
+            502: "💚 Status: Gateway chillin'",
+            503: "💚 Status: Service napping",
+            504: "💚 Status: Timeout occurred"
+        };
+
+        const footerTexts = {
+            400: "Fix it when you're ready, no rush",
+            401: "Grab your credentials and come back",
+            402: "Take your time deciding",
+            403: "Plenty of other things to explore",
+            404: "Just taking it easy, one page at a time",
+            405: "Try another method whenever",
+            406: "Different format, same chill vibe",
+            408: "All good things take time",
+            409: "Small bumps make the journey interesting",
+            410: "Sometimes things move on, and that's okay",
+            413: "Less is more, friend",
+            429: "Slow down and enjoy the moment",
+            500: "Even servers need a break sometimes",
+            502: "Gateway's taking five",
+            503: "Service is catching some Z's",
+            504: "Patience is a virtue, after all"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "Take a Break";
+        const chillText = chillTexts[errorCode] || chillTexts[404];
+        const restBox = restBoxes[errorCode] || restBoxes[404];
+        const footerText = footerTexts[errorCode] || footerTexts[404];
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('chill-text').textContent = chillText;
+        document.getElementById('rest-box').textContent = restBox;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'zelda-cozy-hammock';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>

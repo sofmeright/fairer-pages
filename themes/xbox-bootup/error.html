@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        .green-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center,
+                rgba(16, 124, 16, 0.3),
+                rgba(0, 0, 0, 0.9));
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .xbox-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #107c10, #0e6b0e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(16, 124, 16, 0.8),
+                        inset 0 0 40px rgba(255, 255, 255, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 60px rgba(16, 124, 16, 0.8),
+                            inset 0 0 40px rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(16, 124, 16, 1),
+                            inset 0 0 60px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .xbox-logo-text {
+            font-size: 60px;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+        }
+
+        .error-code {
+            font-size: 90px;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            color: #107c10;
+            margin-bottom: 20px;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(16, 124, 16, 0.8);
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .console-message {
+            font-size: 18px;
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .status-box {
+            background: rgba(16, 124, 16, 0.1);
+            border: 2px solid #107c10;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            font-size: 16px;
+            color: #107c10;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(16, 124, 16, 0.5);
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(16, 124, 16, 0.2);
+            border-radius: 2px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .loading-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #107c10, #0e6b0e);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(16, 124, 16, 0.8);
+            animation: loading 3s ease-in-out infinite;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 0%; }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-primary {
+            background: #107c10;
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(16, 124, 16, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #0e6b0e;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(16, 124, 16, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #107c10;
+            border: 2px solid #107c10;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(16, 124, 16, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .xbox-logo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .xbox-logo-text {
+                font-size: 45px;
+            }
+
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .console-message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/xbox.gif" alt="Xbox Bootup" class="bg-gif">
+    <div class="green-glow"></div>
+
+    <div class="content-container">
+        <div class="xbox-logo">
+            <div class="xbox-logo-text">X</div>
+        </div>
+
+        <div class="error-code" id="error-code">404</div>
+        <div class="error-title" id="error-title">PAGE NOT FOUND</div>
+        <div class="console-message" id="console-message">
+            The system encountered an error while loading this page. Press any button to continue, or restart your journey.
+        </div>
+
+        <div class="status-box">
+            <div id="status-text">● STATUS: ERROR DETECTED</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="/" class="btn btn-primary">Continue</a>
+            <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        </div>
+
+        <div class="footer-text" id="footer-text">
+            Xbox Experience • Power Your Dreams
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "INVALID REQUEST",
+            401: "AUTHENTICATION REQUIRED",
+            402: "PAYMENT NEEDED",
+            403: "ACCESS DENIED",
+            404: "PAGE NOT FOUND",
+            405: "METHOD NOT ALLOWED",
+            406: "FORMAT NOT SUPPORTED",
+            408: "CONNECTION TIMEOUT",
+            409: "SYSTEM CONFLICT",
+            410: "CONTENT REMOVED",
+            413: "REQUEST TOO LARGE",
+            429: "TOO MANY REQUESTS",
+            500: "SYSTEM ERROR",
+            502: "GATEWAY ERROR",
+            503: "SERVICE OFFLINE",
+            504: "GATEWAY TIMEOUT"
+        };
+
+        const consoleMessages = {
+            400: "The request format is invalid. Check your input and try again. Press any button to continue.",
+            401: "Authentication is required to access this content. Please sign in with your account and retry.",
+            402: "This content requires a subscription or payment. Visit the store to purchase access.",
+            403: "You do not have permission to access this content. Check your account settings or contact support.",
+            404: "The system encountered an error while loading this page. Press any button to continue, or restart your journey.",
+            405: "The requested method is not supported. Try a different approach or check the documentation.",
+            406: "The content format is not compatible with your request. Select a different format and try again.",
+            408: "The connection timed out. Check your network connection and retry your request.",
+            409: "A conflict occurred with the current system state. Refresh and try again.",
+            410: "This content has been permanently removed from the system. It is no longer available.",
+            413: "The request data is too large for the system to process. Reduce the size and retry.",
+            429: "You have made too many requests. Please wait a moment before trying again.",
+            500: "A system error occurred. Our team has been notified and is working on a fix. Try again later.",
+            502: "The gateway encountered an error. Check your connection and try again in a few moments.",
+            503: "The service is currently unavailable for maintenance. Please check back shortly.",
+            504: "The gateway connection timed out. Check your network and retry your request."
+        };
+
+        const statusTexts = {
+            400: "● STATUS: INVALID REQUEST DATA",
+            401: "● STATUS: AUTH REQUIRED",
+            402: "● STATUS: PAYMENT REQUIRED",
+            403: "● STATUS: ACCESS RESTRICTED",
+            404: "● STATUS: ERROR DETECTED",
+            405: "● STATUS: METHOD UNSUPPORTED",
+            406: "● STATUS: FORMAT ERROR",
+            408: "● STATUS: CONNECTION LOST",
+            409: "● STATUS: CONFLICT DETECTED",
+            410: "● STATUS: CONTENT DELETED",
+            413: "● STATUS: SIZE LIMIT EXCEEDED",
+            429: "● STATUS: RATE LIMIT REACHED",
+            500: "● STATUS: SYSTEM FAILURE",
+            502: "● STATUS: GATEWAY ERROR",
+            503: "● STATUS: SERVICE OFFLINE",
+            504: "● STATUS: TIMEOUT ERROR"
+        };
+
+        const footerTexts = {
+            400: "Xbox Experience • Invalid Input",
+            401: "Xbox Experience • Sign In Required",
+            402: "Xbox Experience • Purchase Required",
+            403: "Xbox Experience • Restricted Access",
+            404: "Xbox Experience • Power Your Dreams",
+            405: "Xbox Experience • Method Error",
+            406: "Xbox Experience • Format Error",
+            408: "Xbox Experience • Connection Lost",
+            409: "Xbox Experience • System Conflict",
+            410: "Xbox Experience • Content Removed",
+            413: "Xbox Experience • Size Error",
+            429: "Xbox Experience • Slow Down",
+            500: "Xbox Experience • System Down",
+            502: "Xbox Experience • Gateway Error",
+            503: "Xbox Experience • Maintenance Mode",
+            504: "Xbox Experience • Timeout"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "SYSTEM ERROR";
+        const consoleMessage = consoleMessages[errorCode] || consoleMessages[404];
+        const statusText = statusTexts[errorCode] || statusTexts[404];
+        const footerText = footerTexts[errorCode] || footerTexts[404];
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('console-message').textContent = consoleMessage;
+        document.getElementById('status-text').textContent = statusText;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'xbox-bootup';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>

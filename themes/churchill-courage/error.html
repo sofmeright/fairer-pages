@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f0f0f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.25;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(26, 26, 26, 0.92),
+                rgba(40, 40, 40, 0.92));
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 900px;
+            width: 90%;
+        }
+
+        .shield-icon {
+            font-size: 55px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 8px rgba(184, 134, 11, 0.5));
+        }
+
+        .error-card {
+            background: rgba(30, 30, 30, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 50px 45px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                        0 0 0 1px rgba(184, 134, 11, 0.3);
+            border: 2px solid rgba(184, 134, 11, 0.5);
+        }
+
+        .error-code {
+            font-size: 80px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: #b8860b;
+            margin-bottom: 20px;
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .error-title {
+            font-size: 30px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: #daa520;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .courage-text {
+            font-size: 18px;
+            color: #d0d0d0;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .quote-box {
+            background: rgba(184, 134, 11, 0.08);
+            border-left: 4px solid #b8860b;
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin: 30px 0;
+            font-size: 20px;
+            color: #daa520;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 16px;
+            color: #b8860b;
+            font-style: normal;
+            text-align: right;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Source Sans 3', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #b8860b, #8b6914);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(184, 134, 11, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #daa520;
+            border: 2px solid #b8860b;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(184, 134, 11, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 14px;
+            color: rgba(240, 240, 240, 0.5);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 40px 30px;
+            }
+
+            .error-code {
+                font-size: 65px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .courage-text {
+                font-size: 16px;
+            }
+
+            .quote-box {
+                font-size: 18px;
+                padding: 20px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/success.gif" alt="Courage to Continue" class="bg-image">
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <div class="shield-icon">🛡️</div>
+        <div class="error-card">
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">This Is Not Failure</div>
+            <div class="courage-text" id="courage-text">
+                You've encountered an obstacle, not a defeat. The page you sought isn't here, but that doesn't stop your journey. What matters is your courage to continue forward.
+            </div>
+            <div class="quote-box">
+                "Success is not final, failure is not fatal: it is the courage to continue that counts."
+                <span class="quote-author">— Winston Churchill</span>
+            </div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Continue Forward</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Regroup</a>
+            </div>
+            <div class="footer-text" id="footer-text">
+                The courage to continue is what defines us
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "A Stumble, Not a Fall",
+            401: "Credentials Required",
+            402: "Investment Needed",
+            403: "Access Restricted",
+            404: "This Is Not Failure",
+            405: "Wrong Approach",
+            406: "Format Mismatch",
+            408: "Time Ran Out",
+            409: "Conflict Encountered",
+            410: "Permanently Gone",
+            413: "Load Too Heavy",
+            429: "Too Many Attempts",
+            500: "System Challenged",
+            502: "Connection Failed",
+            503: "Temporarily Down",
+            504: "Timeout Occurred"
+        };
+
+        const courageTexts = {
+            400: "Your request wasn't formatted correctly. This is a stumble, not a fall. Learn from it, adjust your approach, and continue with courage.",
+            401: "You need proper credentials to proceed. Not having them yet isn't failure—it's just the next step. Gather what you need and continue forward.",
+            402: "This resource requires payment. Whether you proceed or not, the choice is yours. Either path forward takes courage to decide.",
+            403: "Access is restricted here. That's not a failure on your part. Sometimes doors are closed. Find another path and continue with determination.",
+            404: "You've encountered an obstacle, not a defeat. The page you sought isn't here, but that doesn't stop your journey. What matters is your courage to continue forward.",
+            405: "The method you tried didn't work. That's not failure—that's learning. Try a different approach and continue with renewed wisdom.",
+            406: "The format isn't compatible. This isn't defeat, just information. Adjust your approach and continue forward with what you've learned.",
+            408: "The request timed out. You're not too slow; sometimes conditions aren't right. Take what you've learned and continue trying.",
+            409: "There's a conflict to resolve. Conflicts aren't failures—they're opportunities to find better solutions. Resolve it and continue.",
+            410: "What you sought is permanently gone. This isn't your failure. Acceptance takes courage. Find a new goal and continue your journey.",
+            413: "The payload was too large. This isn't defeat—it's feedback. Adjust, optimize, and continue forward with what you've learned.",
+            429: "You've made too many attempts. That shows determination, not failure. Rest, regroup, and continue when ready.",
+            500: "The server encountered an error. This isn't your failure. Our team is working on it. Your courage is to wait patiently and continue when ready.",
+            502: "The gateway connection failed. Technical issues aren't your defeat. These things happen. Continue trying with patience.",
+            503: "The service is temporarily unavailable. Downtime isn't failure—it's a pause. Continue checking back with determination.",
+            504: "The gateway timed out. Network issues aren't your fault. Keep your courage and continue trying when conditions improve."
+        };
+
+        const footerTexts = {
+            400: "Learn, adjust, and continue forward",
+            401: "Gather what you need and proceed",
+            402: "Make your choice with confidence",
+            403: "Find another path forward",
+            404: "The courage to continue is what defines us",
+            405: "Try differently and persist",
+            406: "Adapt and move forward",
+            408: "Timing is part of the journey",
+            409: "Resolution is a form of progress",
+            410: "New goals await your courage",
+            413: "Optimization is forward progress",
+            429: "Determination shows character",
+            500: "Patience during challenges is courage",
+            502: "Persistence overcomes technical hurdles",
+            503: "Consistency brings success",
+            504: "Keep trying with determination"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "This Is Not Failure";
+        const courageText = courageTexts[errorCode] || courageTexts[404];
+        const footerText = footerTexts[errorCode] || footerTexts[404];
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('courage-text').textContent = courageText;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'churchill-courage';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>

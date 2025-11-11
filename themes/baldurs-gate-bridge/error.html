@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IM Fell English', serif;
+            background: #1a1410;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e8dcc4;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(26, 20, 16, 0.8),
+                rgba(40, 30, 20, 0.85));
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 850px;
+            width: 90%;
+        }
+
+        .error-card {
+            background: rgba(40, 30, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 50px 45px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8),
+                        0 0 40px rgba(139, 69, 19, 0.3);
+            border: 3px solid rgba(139, 69, 19, 0.6);
+        }
+
+        .dice-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: roll 2s ease-in-out infinite;
+        }
+
+        @keyframes roll {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(90deg); }
+            50% { transform: rotate(180deg); }
+            75% { transform: rotate(270deg); }
+        }
+
+        .error-code {
+            font-size: 90px;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            color: #8b4513;
+            margin-bottom: 20px;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(139, 69, 19, 0.6),
+                         3px 3px 0 rgba(0, 0, 0, 0.7);
+        }
+
+        .error-title {
+            font-size: 34px;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            color: #e8dcc4;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .narrator-text {
+            font-size: 19px;
+            color: #d4c4a8;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .skill-check {
+            background: rgba(139, 69, 19, 0.15);
+            border: 2px solid #8b4513;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .check-title {
+            font-size: 18px;
+            color: #8b4513;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .check-result {
+            font-size: 16px;
+            color: #e8dcc4;
+            font-style: italic;
+        }
+
+        .dice-roll {
+            display: inline-block;
+            background: rgba(139, 69, 19, 0.3);
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 18px;
+            color: #ff6b6b;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b4513, #654321);
+            color: #e8dcc4;
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(139, 69, 19, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #8b4513;
+            border: 2px solid #8b4513;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(139, 69, 19, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 14px;
+            color: rgba(232, 220, 196, 0.6);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 40px 30px;
+            }
+
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-title {
+                font-size: 28px;
+            }
+
+            .narrator-text {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/bridge.jpg" alt="Baldur's Gate" class="bg-image">
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <div class="error-card">
+            <div class="dice-icon">🎲</div>
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">Critical Failure</div>
+            <div class="narrator-text" id="narrator-text">
+                *The path before you crumbles into darkness. You've ventured into territory unmapped by any cartographer.*
+            </div>
+            <div class="skill-check">
+                <div class="check-title" id="check-title">Investigation Check</div>
+                <div class="check-result" id="check-result">
+                    You attempt to find the missing page...
+                </div>
+                <div class="dice-roll" id="dice-roll">🎲 Rolled: 1 (Critical Fail)</div>
+            </div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Return to Camp</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Retreat</a>
+            </div>
+            <div class="footer-text" id="footer-text">
+                The dice are not in your favor today
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "Failed Persuasion",
+            401: "Stealth Failed",
+            402: "Insufficient Gold",
+            403: "Access Denied",
+            404: "Critical Failure",
+            405: "Wrong Action",
+            406: "Incompatible",
+            408: "Time Expired",
+            409: "Party Conflict",
+            410: "Destroyed",
+            413: "Overencumbered",
+            429: "Exhausted",
+            500: "Cursed",
+            502: "Bridge Collapsed",
+            503: "Tavern Closed",
+            504: "Portal Failed"
+        };
+
+        const narratorTexts = {
+            400: "*Your words fall flat. The request you've made is incomprehensible to those around you. Perhaps rephrasing would help.*",
+            401: "*The guard blocks your path. You lack the proper credentials to pass through these gates. Show your papers.*",
+            402: "*The merchant eyes you suspiciously. Your coin purse is insufficient for this transaction. Find more gold.*",
+            403: "*An invisible force repels you. This area is forbidden to all but those with special permission.*",
+            404: "*The path before you crumbles into darkness. You've ventured into territory unmapped by any cartographer.*",
+            405: "*That action won't work here. Choose a different approach from your repertoire of skills.*",
+            406: "*The magic fizzles. This spell and your current situation are fundamentally incompatible.*",
+            408: "*Time slips through your fingers like sand. The window of opportunity has closed before you could act.*",
+            409: "*Your party members argue amongst themselves. This conflict must be resolved before you can proceed.*",
+            410: "*The artifact crumbles to dust in your hands. What you seek has been destroyed beyond any hope of recovery.*",
+            413: "*You collapse under the weight of your burden. You're carrying far too much. Drop some items.*",
+            429: "*Your limbs grow heavy with exhaustion. You've pushed yourself too hard. Rest before continuing.*",
+            500: "*Dark magic corrupts the realm. Something has gone terribly wrong with the Weave itself.*",
+            502: "*The bridge between worlds has collapsed. You cannot cross until it is rebuilt by master craftsmen.*",
+            503: "*The tavern doors are locked. The establishment is closed for the evening. Return at dawn.*",
+            504: "*The portal shimmers and fades before you can step through. The connection was severed too soon.*"
+        };
+
+        const checkTitles = {
+            400: "Persuasion Check",
+            401: "Stealth Check",
+            402: "Appraisal Check",
+            403: "Arcana Check",
+            404: "Investigation Check",
+            405: "Insight Check",
+            406: "Arcana Check",
+            408: "Initiative Check",
+            409: "Persuasion Check",
+            410: "History Check",
+            413: "Athletics Check",
+            429: "Constitution Check",
+            500: "Arcana Check",
+            502: "Perception Check",
+            503: "Insight Check",
+            504: "Arcana Check"
+        };
+
+        const checkResults = {
+            400: "You attempt to rephrase your request...",
+            401: "You attempt to sneak past the guard...",
+            402: "You count your remaining gold...",
+            403: "You attempt to dispel the barrier...",
+            404: "You attempt to find the missing page...",
+            405: "You try a different approach...",
+            406: "You attempt to adapt the spell...",
+            408: "You attempt to act quickly...",
+            409: "You attempt to mediate the dispute...",
+            410: "You search for any remaining fragments...",
+            413: "You attempt to carry your burden...",
+            429: "You push through your exhaustion...",
+            500: "You attempt to understand the corruption...",
+            502: "You search for an alternate route...",
+            503: "You knock on the tavern door...",
+            504: "You attempt to reopen the portal..."
+        };
+
+        const footerTexts = {
+            400: "The dice favor the eloquent",
+            401: "Shadows hide many secrets",
+            402: "Gold opens many doors",
+            403: "Some barriers cannot be broken",
+            404: "The dice are not in your favor today",
+            405: "Choose your actions wisely",
+            406: "Magic has its limits",
+            408: "Time waits for no adventurer",
+            409: "Unity makes strength",
+            410: "Some things cannot be undone",
+            413: "Travel light, move fast",
+            429: "Rest is a warrior's ally",
+            500: "Dark forces are at work",
+            502: "Every path has obstacles",
+            503: "Return when the hour is right",
+            504: "Portals are unpredictable"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "Critical Failure";
+        const narratorText = narratorTexts[errorCode] || narratorTexts[404];
+        const checkTitle = checkTitles[errorCode] || checkTitles[404];
+        const checkResult = checkResults[errorCode] || checkResults[404];
+        const footerText = footerTexts[errorCode] || footerTexts[404];
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('narrator-text').textContent = narratorText;
+        document.getElementById('check-title').textContent = checkTitle;
+        document.getElementById('check-result').textContent = checkResult;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Randomize dice roll (but keep it low for failure theme)
+        const roll = Math.floor(Math.random() * 5) + 1; // 1-5 for failure
+        document.getElementById('dice-roll').textContent = `🎲 Rolled: ${roll} (Failure)`;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'baldurs-gate-bridge';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>

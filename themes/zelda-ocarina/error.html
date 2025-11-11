@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f5f5dc;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.85;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(34, 139, 34, 0.3),
+                rgba(184, 134, 11, 0.3));
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .triforce {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px gold); }
+            50% { filter: drop-shadow(0 0 20px gold); }
+        }
+
+        .error-card {
+            background: rgba(34, 139, 34, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 50px 40px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6),
+                        0 0 40px rgba(218, 165, 32, 0.3);
+            border: 3px solid rgba(218, 165, 32, 0.5);
+        }
+
+        .error-code {
+            font-size: 90px;
+            font-weight: 700;
+            font-family: 'MedievalSharp', cursive;
+            color: #daa520;
+            margin-bottom: 20px;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(218, 165, 32, 0.8),
+                         3px 3px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 'MedievalSharp', cursive;
+            color: #f5f5dc;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .quest-message {
+            font-size: 18px;
+            color: #f5f5dc;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .song-box {
+            background: rgba(218, 165, 32, 0.15);
+            border: 2px solid #daa520;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            font-size: 16px;
+            color: #daa520;
+            font-weight: 700;
+        }
+
+        .notes {
+            font-size: 24px;
+            margin-top: 10px;
+            letter-spacing: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #daa520, #b8860b);
+            color: #1a1a1a;
+            box-shadow: 0 8px 20px rgba(218, 165, 32, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(218, 165, 32, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #daa520;
+            border: 2px solid #daa520;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(218, 165, 32, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 14px;
+            color: rgba(245, 245, 220, 0.7);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 40px 30px;
+            }
+
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .quest-message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/ocarina.gif" alt="Ocarina of Time" class="bg-gif">
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <div class="triforce">▲<br>▲ ▲</div>
+        <div class="error-card">
+            <div class="error-code" id="error-code">404</div>
+            <div class="error-title" id="error-title">Quest Failed</div>
+            <div class="quest-message" id="quest-message">
+                The path you seek has been lost to time. Play the Song of Time to find another way, brave traveler.
+            </div>
+            <div class="song-box">
+                <div id="song-name">♪ Song of Lost Pages ♪</div>
+                <div class="notes">♪ ♫ ♪ ♫ ♪</div>
+            </div>
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Continue Quest</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Turn Back</a>
+            </div>
+            <div class="footer-text" id="footer-text">
+                May the Goddess smile upon you
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "Invalid Request",
+            401: "Gate Locked",
+            402: "Rupees Required",
+            403: "Sealed Door",
+            404: "Quest Failed",
+            405: "Wrong Path",
+            406: "Incompatible",
+            408: "Time's Up",
+            409: "Timeline Split",
+            410: "Erased by Time",
+            413: "Too Heavy",
+            429: "Stamina Depleted",
+            500: "Dark Magic",
+            502: "Bridge Broken",
+            503: "Temple Closed",
+            504: "Portal Timeout"
+        };
+
+        const messages = {
+            400: "Your request is malformed, like a broken ocarina. Check your inputs and try playing the song again.",
+            401: "This door is locked. You need the proper key or medallion to pass through these gates.",
+            402: "You need more Rupees to access this content. Visit the shop or find hidden treasures.",
+            403: "This path is sealed by ancient magic. You lack the power to break this barrier, brave hero.",
+            404: "The path you seek has been lost to time. Play the Song of Time to find another way, brave traveler.",
+            405: "That action won't work here. Try a different tool from your inventory, hero.",
+            406: "This format is incompatible with your quest. Seek another form of passage.",
+            408: "Time has run out! The timer expired before you could complete this task. Try again swiftly.",
+            409: "A timeline conflict has occurred. Multiple versions of this resource exist. Resolve the paradox.",
+            410: "This content has been erased from time itself. Not even the Master Sword can restore it.",
+            413: "Your bag is too full! This payload is heavier than a Goron. Lighten your load and try again.",
+            429: "You're exhausted from too many attempts. Rest and regain your stamina before trying again.",
+            500: "Dark magic has corrupted the server. Our sages are working to restore the balance.",
+            502: "The bridge between realms is broken. The gateway cannot be crossed at this time.",
+            503: "The temple is closed for maintenance. Return when the sun rises again, hero.",
+            504: "The portal timed out before completing the connection. Try opening it again."
+        };
+
+        const songs = {
+            400: "♪ Song of Broken Code ♪",
+            401: "♪ Song of Locked Gates ♪",
+            402: "♪ Song of Empty Wallet ♪",
+            403: "♪ Song of Sealed Doors ♪",
+            404: "♪ Song of Lost Pages ♪",
+            405: "♪ Song of Wrong Tools ♪",
+            406: "♪ Song of Incompatibility ♪",
+            408: "♪ Song of Passing Time ♪",
+            409: "♪ Song of Timelines ♪",
+            410: "♪ Song of Erasure ♪",
+            413: "♪ Song of Heavy Loads ♪",
+            429: "♪ Song of Exhaustion ♪",
+            500: "♪ Song of Dark Magic ♪",
+            502: "♪ Song of Broken Bridges ♪",
+            503: "♪ Song of Closed Temples ♪",
+            504: "♪ Song of Failed Portals ♪"
+        };
+
+        const footerTexts = {
+            400: "Check your inputs, hero",
+            401: "Find the key, brave one",
+            402: "Gather more Rupees",
+            403: "The seal holds strong",
+            404: "May the Goddess smile upon you",
+            405: "Choose wisely, hero",
+            406: "Seek another path",
+            408: "Time waits for no one",
+            409: "Restore the timeline",
+            410: "Accept what is lost",
+            413: "Lighten your burden",
+            429: "Rest and recover",
+            500: "The sages are working",
+            502: "The bridge shall be repaired",
+            503: "Return at dawn",
+            504: "Try the portal again"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "Quest Failed";
+        const message = messages[errorCode] || messages[404];
+        const song = songs[errorCode] || songs[404];
+        const footerText = footerTexts[errorCode] || footerTexts[404];
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = title;
+        document.getElementById('quest-message').textContent = message;
+        document.getElementById('song-name').textContent = song;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'zelda-ocarina';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
