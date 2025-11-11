@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #c71585 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        /* Floating stars */
+        @keyframes sparkle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 15px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 95vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .moon-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 5px solid #ffd700;
+            border-radius: 20px;
+            padding: 40px 20px 18px 20px;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.8),
+                        inset 0 0 40px rgba(255, 192, 203, 0.3),
+                        0 0 100px rgba(255, 105, 180, 0.5);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .moon-box::before {
+            content: '🌙 MOON PRISM POWER! 🌙';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: #fff;
+            padding: 8px 18px;
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: 3px;
+            border: 3px solid #c71585;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.9);
+            white-space: nowrap;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 24px;
+            color: #ff1493;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 0 #fff,
+                         0 0 20px rgba(255, 20, 147, 0.6);
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+
+        .sailor-img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border: 5px solid #ffd700;
+            border-radius: 15px;
+            margin: 5px auto 3px auto;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .error-code {
+            font-family: 'Fredoka One', cursive;
+            font-size: 55px;
+            font-weight: bold;
+            color: #ff1493;
+            text-shadow: 3px 3px 0 #ffd700,
+                         0 0 30px rgba(255, 20, 147, 0.8);
+            margin: 3px 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 18px;
+            font-weight: 700;
+            color: #c71585;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .moon-icon {
+            font-size: 32px;
+            margin: 2px 0;
+            animation: moon-spin 8s linear infinite;
+        }
+
+        @keyframes moon-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .transformation-text {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(255, 20, 147, 0.2));
+            border-left: 4px solid #ff69b4;
+            padding: 8px 12px;
+            margin: 6px auto;
+            max-width: 650px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .transformation-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 16px;
+            color: #ff1493;
+            margin-bottom: 4px;
+        }
+
+        .transformation-body {
+            font-size: 16px;
+            color: #c71585;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .moon-punishment {
+            font-size: 15px;
+            color: #ff69b4;
+            margin: 6px 0;
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            font-size: 18px;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-family: 'Fredoka One', cursive;
+            text-transform: uppercase;
+            border: 4px solid;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: #fff;
+            border-color: #c71585;
+            box-shadow: 0 8px 0 #c71585,
+                        0 0 30px rgba(255, 105, 180, 0.5);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ff1493, #c71585);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 #c71585,
+                        0 0 40px rgba(255, 105, 180, 0.7);
+        }
+
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #c71585,
+                        0 0 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffd700;
+            border-color: #ffd700;
+            box-shadow: 0 8px 0 rgba(218, 165, 32, 0.6),
+                        0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 rgba(218, 165, 32, 0.6),
+                        0 0 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(218, 165, 32, 0.6),
+                        0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #ff69b4;
+            font-style: italic;
+            margin-top: 8px;
+            padding-top: 6px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 20px;
+            }
+
+            .error-code {
+                font-size: 48px;
+            }
+
+            .error-message {
+                font-size: 16px;
+            }
+
+            .transformation-text {
+                padding: 8px 10px;
+                max-width: 100%;
+                margin: 5px auto;
+            }
+
+            .transformation-title {
+                font-size: 14px;
+            }
+
+            .transformation-body {
+                font-size: 14px;
+            }
+
+            .moon-punishment {
+                font-size: 14px;
+            }
+
+            .moon-icon {
+                font-size: 28px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 16px;
+            }
+
+            .moon-box {
+                padding: 38px 15px 15px 15px;
+            }
+
+            .moon-box::before {
+                font-size: 10px;
+                padding: 7px 12px;
+            }
+
+            .sailor-img {
+                max-width: 200px;
+            }
+
+            .footer-text {
+                font-size: 13px;
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="moon-box">
+            <div class="title" id="title">
+                In The Name Of The Moon!
+            </div>
+
+            <img src="resources/transformation.gif" alt="Sailor Moon Transformation" class="sailor-img">
+
+            <div class="moon-icon">🌙</div>
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="transformation-text">
+                <div class="transformation-title" id="transformation-title">✨ TRANSFORMATION SEQUENCE ✨</div>
+                <div class="transformation-body" id="transformation-body">
+                    Moon Crystal Power! Transform this error!
+                </div>
+            </div>
+
+            <div class="moon-punishment" id="moon-punishment">
+                In the name of the moon, I'll punish this error!
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Moon Prism Power!</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Transform Back</a>
+            </div>
+
+            <div class="footer-text" id="footer-text">
+                Fighting evil by moonlight, fixing errors by daylight! ✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "In The Name Of The Moon!",
+            401: "Moon Tiara Action!",
+            402: "Venus Love Chain!",
+            403: "Mars Fire Ignite!",
+            404: "Moon Crystal Power!",
+            405: "Jupiter Thunder Crash!",
+            406: "Mercury Aqua Rhapsody!",
+            408: "Saturn Silent Wall!",
+            409: "Neptune Deep Submerge!",
+            410: "Uranus World Shaking!",
+            413: "Pluto Dead Scream!",
+            429: "Moon Spiral Heart Attack!",
+            500: "Silver Moon Crystal Power!",
+            502: "Starlight Honeymoon!",
+            503: "Rainbow Moon Heart Ache!",
+            504: "Moon Gorgeous Meditation!"
+        };
+
+        const transformations = {
+            400: "Your request data is corrupted! Moon Healing Escalation will fix the malformed syntax!",
+            401: "You lack the magic crystal for access! Transform with proper credentials!",
+            402: "This content requires Sailor Scout payment! Venus Love and Beauty Shock requires coins!",
+            403: "Dark forces block your path! Mars Flame Sniper cannot penetrate this barrier!",
+            404: "The page has vanished into the Dark Kingdom! Moon Spiral Heart Attack cannot locate it!",
+            405: "Wrong magical spell detected! Jupiter Oak Evolution requires a different method!",
+            406: "The crystal format is incompatible! Mercury Aqua Mirage needs different data!",
+            408: "The transformation took too long! Saturn Death Reborn cannot wait forever!",
+            409: "Two magical forces collide! Neptune Submarine Reflection detects conflict!",
+            410: "The page returned to stardust! Uranus Space Sword cannot recover what's gone!",
+            413: "The magical energy is too powerful! Pluto Garnet Ball cannot handle this payload!",
+            429: "Too many transformations at once! Moon Princess Halation is overloaded!",
+            500: "The Silver Crystal has shattered! Starlight Honeymoon Therapy cannot fix the server!",
+            502: "The gateway to the Moon Kingdom failed! Rainbow Moon Heartache detects errors!",
+            503: "The Sailor Scouts are unavailable! Moon Cosmic Power is under maintenance!",
+            504: "The teleport circle timed out! Moon Eternal power took too long to respond!"
+        };
+
+        const punishments = {
+            400: "In the name of the moon, I'll punish your bad syntax!",
+            401: "In the name of the moon, I'll punish your lack of credentials!",
+            402: "In the name of the moon, I'll punish your unpaid account!",
+            403: "In the name of the moon, I'll punish this forbidden access!",
+            404: "In the name of the moon, I'll punish this missing page!",
+            405: "In the name of the moon, I'll punish this wrong method!",
+            406: "In the name of the moon, I'll punish incompatible formats!",
+            408: "In the name of the moon, I'll punish this timeout!",
+            409: "In the name of the moon, I'll punish this conflict!",
+            410: "In the name of the moon, I'll accept this permanent loss!",
+            413: "In the name of the moon, I'll punish this oversized payload!",
+            429: "In the name of the moon, I'll punish excessive requests!",
+            500: "In the name of the moon, I'll punish this server error!",
+            502: "In the name of the moon, I'll punish this bad gateway!",
+            503: "In the name of the moon, I'll punish this downtime!",
+            504: "In the name of the moon, I'll punish this gateway timeout!"
+        };
+
+        const footerTexts = {
+            400: "Fighting bad requests by moonlight! ✨",
+            401: "Winning auth battles by daylight! ✨",
+            402: "Never running from a payment fight! ✨",
+            403: "She is the one named Sailor Access Denied! ✨",
+            404: "Searching for pages by moonlight! ✨",
+            405: "Finding the right method by daylight! ✨",
+            406: "Never backing down from a format fight! ✨",
+            408: "She is the one who waits for timeouts! ✨",
+            409: "Resolving conflicts by moonlight! ✨",
+            410: "Accepting loss by daylight! ✨",
+            413: "Never running from a big file fight! ✨",
+            429: "She is the one called Rate Limit Moon! ✨",
+            500: "Fixing servers by moonlight! ✨",
+            502: "Routing gateways by daylight! ✨",
+            503: "Never running from downtime! She is Sailor Service! ✨",
+            504: "She is the one who battles lag! Sailor Timeout! ✨"
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "In The Name Of The Moon!";
+        const transformation = transformations[errorCode] || "Moon Crystal Power! Transform this error!";
+        const punishment = punishments[errorCode] || "In the name of the moon, I'll punish this error!";
+        const footerText = footerTexts[errorCode] || "Fighting evil by moonlight, fixing errors by daylight! ✨";
+
+        // Update page content
+        document.getElementById('title').textContent = title;
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('transformation-body').textContent = transformation;
+        document.getElementById('moon-punishment').textContent = punishment;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'sailormoon';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+
+        // Create sparkling stars
+        for (let i = 0; i < 30; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animation = `sparkle-float ${Math.random() * 8 + 6}s infinite ease-in-out`;
+            star.style.animationDelay = Math.random() * 8 + 's';
+            star.textContent = '✨';
+            star.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            star.style.opacity = '0';
+            document.body.appendChild(star);
+        }
+    </script>
+</body>
+</html>
