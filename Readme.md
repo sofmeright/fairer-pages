@@ -75,6 +75,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **frequency-shift** | Barbara Marciniak quote - "Emit your own frequency" with purple wave aesthetics and vibration metaphors | [Preview](/frequency-shift/404.html) | [Preview](/frequency-shift/403.html) | [Preview](/frequency-shift/500.html) |
 | **churchill-courage** | Churchill wisdom - "Courage to continue" quote with elegant serif typography and golden accents | [Preview](/churchill-courage/404.html) | [Preview](/churchill-courage/403.html) | [Preview](/churchill-courage/500.html) |
 | **steilacoom-park** | Tranquil park nature theme - Peaceful forest trails with green tones and nature wisdom metaphors | [Preview](/steilacoom-park/404.html) | [Preview](/steilacoom-park/403.html) | [Preview](/steilacoom-park/500.html) |
+| **venn-diagram** | Animated Venn diagram - Colorful overlapping circles with dynamic error-specific messaging and gradients | [Preview](/venn-diagram/404.html) | [Preview](/venn-diagram/403.html) | [Preview](/venn-diagram/500.html) |
 
 ### Random Theme Selector
 
