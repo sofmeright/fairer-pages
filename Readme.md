@@ -4,14 +4,42 @@ A containerized error page service supporting multiple themes and error codes.
 
 ## Usage
 
-Access error pages via: `http://host:port/<theme>/<errorcode>.html`
+A copy of the instructions/ReadMe is served at the host:port of the docker container by default.
 
-### Examples
+Error pages can be accessed by this syntax:
+
+- `http://<host:port>/fairer-pages/<theme>/<errorcode>.html`
+- `http://<domain.tld>/fairer-pages/<theme>/<errorcode>.html`
+
+Examples:
 
 - `http://localhost/fairer-pages/back2thefuture/404.html` - 404 Not Found page
-- `http://localhost/fairer-pages/back2thefuture/403.html` - 403 Forbidden page
-- `http://localhost/fairer-pages/back2thefuture/400.html` - 400 Bad Request page
-- `http://localhost/fairer-pages/random/404.html` - Random theme for 404 page (picks a different theme each time!)
+- `http://anchorage:8023/fairer-pages/back2thefuture/403.html` - 403 Forbidden page
+- `http://precisionplanit.com/fairer-pages/back2thefuture/400.html` - 400 Bad Request page
+- `http://192.168.1.42/fairer-pages/random/404.html` - Random theme for 404 page (picks a different theme each time!)
+
+### Random Theme Selector
+
+> Want to surprise your users? Use the **`random`** theme to automatically pick a different theme each time!
+
+- [Random 404](fairer-pages/random/404.html) - Randomly selects from all available themes
+- Works with any error code: [Random 500](fairer-pages/random/500.html), [Random 403](fairer-pages/random/403.html), etc.
+- Perfect for keeping error pages fresh and unexpected
+
+### Supported Error Codes
+
+Common error codes (all supported):
+- 400 - Bad Request
+- 401 - Unauthorized
+- 403 - Forbidden
+- 404 - Not Found
+- 405 - Method Not Allowed
+- 429 - Too Many Requests
+- 500 - Internal Server Error
+- 502 - Bad Gateway
+- 503 - Service Unavailable
+
+...and many more (all 4xx and 5xx codes)!
 
 ### Available Themes
 
@@ -77,70 +105,114 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **zelda-mastersword** | Legend of Zelda adventure - "It's dangerous to go alone!" with Master Sword | [Preview](/fairer-pages/zelda-mastersword/404.html) | [Preview](/fairer-pages/zelda-mastersword/403.html) | [Preview](/fairer-pages/zelda-mastersword/500.html) |
 | **zelda-ocarina** | Ocarina of Time theme - Triforce symbol, golden colors, quest messages, and songs for each error | [Preview](/fairer-pages/zelda-ocarina/404.html) | [Preview](/fairer-pages/zelda-ocarina/403.html) | [Preview](/fairer-pages/zelda-ocarina/500.html) |
 
-### Random Theme Selector
+## Installation
 
-Want to surprise your users? Use the **`random`** theme to automatically pick a different theme each time!
+The recommended path is a **Docker** or Kubernetes based deploment of Fairer Pages. 
+> This project is near 100% HTML & JS, it should not be dependent on Docker/K8s, let alone NGINX. Feel free to explore this.
 
-- [Random 404](fairer-pages/random/404.html) - Randomly selects from all available themes
-- Works with any error code: [Random 500](fairer-pages/random/500.html), [Random 403](fairer-pages/random/403.html), etc.
-- Perfect for keeping error pages fresh and unexpected
+Docker Compose Example:
+```yaml
+services:
+  fairer-pages:
+    container_name: fairer-pages
+    image: prplanit/fairer-pages:latest
+    ports: 
+      - 8023:80
+```
 
-### Supported Error Codes
-
-Common error codes (all supported):
-- 400 - Bad Request
-- 401 - Unauthorized
-- 403 - Forbidden
-- 404 - Not Found
-- 405 - Method Not Allowed
-- 429 - Too Many Requests
-- 500 - Internal Server Error
-- 502 - Bad Gateway
-- 503 - Service Unavailable
-
-...and many more (all 4xx and 5xx codes)!
+Docker Run Example:
+```bash
+ docker run -d --name fairer-pages --restart always -p 8023:80 prplanit/fairer-pages:latest
+```
 
 ## Integration with Nginx
 
 ```nginx
+upstream fairer-pages {
+    server anchorage:8023;
+}
+
 server {
-    listen 443 ssl;
-    server_name example.com;
+    # Directs the server to listen for IPv4 connections on port 80.
+    listen 80;
+    # Directs the server to listen for IPv6 connections on port 80.
+    listen [::]:80;
+    server_name domain.com;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    server_name domain.com;
+
+    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem; # managed by Certbot
+    ssl_dhparam /etc/nginx/ssl/dhparam.pem;
+
+    ssl_protocols TLSv1.1 TLSv1.2;
+    ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
+    ssl_prefer_server_ciphers on;
+    #ssl_session_cache shared:SSL:10m;
 
     # Enable error interception
     proxy_intercept_errors on;
 
-    # Your normal configuration
-    location / {
-        proxy_pass http://backend;
+    # Proxy all fairer-pages paths
+    location /fairer-pages/ {
+        proxy_pass http://fairer-pages/fairer-pages/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
+
+    location / {
+        # Uncomment the line below and comment the proxy_pass and domain.com will only serve 404s.
+        # return 404;
+        proxy_pass http://host:port/;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
 
     # Route errors to fairer-pages service
-    error_page 400 401 402 403 404 405 406 = @error_handler;
+    error_page 400 401 402 403 404 405 406 408 409 410 413 429 500 502 503 504 = @error_handler;
 
     location @error_handler {
-        proxy_pass http://fairer-pages/back2thefuture/$status.html;
+        proxy_pass http://fairer-pages/fairer-pages/random/$status.html;
         proxy_set_header Host $host;
         internal;
+
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
-
-upstream fairer-pages {
-    server fairer-pages:80;
-}
 ```
 
-## Adding New Themes
-
-1. Create a new directory under `themes/`
-2. Add error HTML files (400.html, 403.html, 404.html, etc.)
-3. Add theme resources in `themes/<theme>/resources/`
-4. Commit and push - CI/CD will build and deploy automatically
-
-## Local Testing
+## Building Fairer Pages from Source:
 
 ```bash
-docker build -t fairer-pages-test .
-docker run -d -p 8080:80 fairer-pages-test
-curl http://localhost:8080/back2thefuture/404.html
+# Navigate to a suitable folder to clone the repo:
+cd /srv
+# Clone the Repository and `cd` into it:
+git clone https://github.com/sofmeright/fairer-pages && cd fairer-pages
+# Build Fairer Pages:
+docker build -t fairer-pages .
+# Run Fairer Pages:
+docker run -d -p 8023:80 fairer-pages
+# Run a Quick Test:
+curl http://localhost:8023/back2thefuture/404.html
 ```
+
+## Adding More Themes:
+
+1. Create a new directory under `themes/`.
+2. Add error HTML files (400.html, 403.html, 404.html, etc.).
+3. Add theme resources in `themes/<theme>/resources/`.
+4. Follow the steps provided above to build the image with your modifications.
