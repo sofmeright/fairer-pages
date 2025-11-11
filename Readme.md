@@ -51,6 +51,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 | **shaunofthedead** | British zombie apocalypse humor - "You've got red on you" with plans to head to the Winchester | [Preview](/shaunofthedead/404.html) | [Preview](/shaunofthedead/403.html) | [Preview](/shaunofthedead/500.html) |
 | **sailormoon** | Sailor Moon magical girl transformation - "In the name of the moon, I'll punish this error!" with attack names | [Preview](/sailormoon/404.html) | [Preview](/sailormoon/403.html) | [Preview](/sailormoon/500.html) |
 | **psycho-pass** | Sibyl System crime coefficient scanner - Dominator enforcement mode with cyberpunk holographic UI | [Preview](/psycho-pass/404.html) | [Preview](/psycho-pass/403.html) | [Preview](/psycho-pass/500.html) |
+| **still-waiting** | Matrix Construct white void - "Stop trying to find it and realize... there is no page" with Morpheus wisdom | [Preview](/still-waiting/404.html) | [Preview](/still-waiting/403.html) | [Preview](/still-waiting/500.html) |
 
 ### Supported Error Codes
 

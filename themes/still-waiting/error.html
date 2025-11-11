@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 50%, #f5f5f5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2d2d2d;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        /* Matrix rain effect */
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+        }
+
+        .matrix-char {
+            position: absolute;
+            font-family: 'Share Tech Mono', monospace;
+            color: #00ff41;
+            font-size: 14px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100%); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 15px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 95vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .construct-box {
+            background: rgba(255, 255, 255, 0.98);
+            border: 2px solid #c0c0c0;
+            border-radius: 0;
+            padding: 50px 20px 18px 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1),
+                        inset 0 0 100px rgba(0, 255, 65, 0.02);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .construct-box::before {
+            content: '▸ THE CONSTRUCT ◂';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+            color: #00ff41;
+            padding: 8px 18px;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 3px;
+            border: 2px solid #00ff41;
+            border-radius: 0;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3),
+                        inset 0 0 10px rgba(0, 255, 65, 0.1);
+            white-space: nowrap;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 22px;
+            color: #2d2d2d;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .construct-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border: 3px solid #d0d0d0;
+            border-radius: 0;
+            margin: 8px auto 8px auto;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0.95;
+        }
+
+        .loading-bar {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid #b0b0b0;
+            padding: 3px;
+            margin: 10px auto;
+            max-width: 500px;
+            height: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff41, #00cc33);
+            width: 0%;
+            animation: load-stuck 3s ease-out forwards;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+
+        @keyframes load-stuck {
+            0% { width: 0%; }
+            60% { width: 75%; }
+            100% { width: 75%; }
+        }
+
+        .loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px;
+            color: #2d2d2d;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .error-code {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 70px;
+            font-weight: 700;
+            color: #00ff41;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 18px;
+            font-weight: 700;
+            color: #505050;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .morpheus-wisdom {
+            background: rgba(0, 0, 0, 0.03);
+            border-left: 4px solid #00ff41;
+            padding: 15px 18px;
+            margin: 12px auto;
+            max-width: 650px;
+            text-align: left;
+            border-radius: 0;
+        }
+
+        .wisdom-quote {
+            font-size: 17px;
+            color: #2d2d2d;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .wisdom-attribution {
+            font-size: 13px;
+            color: #00ff41;
+            text-align: right;
+            font-weight: 700;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .construct-status {
+            font-size: 14px;
+            color: #707070;
+            margin: 8px 0;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 1px;
+        }
+
+        .program-loading {
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid #00ff41;
+            padding: 10px 15px;
+            margin: 10px auto;
+            max-width: 650px;
+            text-align: left;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .program-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 13px;
+            color: #404040;
+        }
+
+        .program-name {
+            color: #2d2d2d;
+            font-weight: 700;
+        }
+
+        .program-status {
+            color: #00ff41;
+            font-weight: 700;
+        }
+
+        .program-status.failed {
+            color: #ff4444;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            font-family: 'Share Tech Mono', monospace;
+            text-transform: uppercase;
+            border: 3px solid;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            color: #000;
+            border-color: #00cc33;
+            box-shadow: 0 6px 0 #009922,
+                        0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #00ff55, #00dd44);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 0 #009922,
+                        0 0 30px rgba(0, 255, 65, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 #009922,
+                        0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 68, 68, 0.15);
+            color: #ff4444;
+            border-color: #ff4444;
+            box-shadow: 0 6px 0 rgba(255, 68, 68, 0.3),
+                        0 0 20px rgba(255, 68, 68, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 68, 68, 0.25);
+            color: #ff6666;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 0 rgba(255, 68, 68, 0.3),
+                        0 0 30px rgba(255, 68, 68, 0.3);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 rgba(255, 68, 68, 0.3),
+                        0 0 15px rgba(255, 68, 68, 0.2);
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: #909090;
+            font-style: italic;
+            margin-top: 10px;
+            padding-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 18px;
+            }
+
+            .error-code {
+                font-size: 60px;
+            }
+
+            .error-message {
+                font-size: 16px;
+            }
+
+            .morpheus-wisdom {
+                padding: 12px 15px;
+                max-width: 100%;
+            }
+
+            .wisdom-quote {
+                font-size: 15px;
+            }
+
+            .construct-status {
+                font-size: 13px;
+            }
+
+            .program-loading {
+                padding: 8px 12px;
+                max-width: 100%;
+            }
+
+            .program-line {
+                font-size: 12px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 14px;
+            }
+
+            .construct-box {
+                padding: 45px 15px 15px 15px;
+            }
+
+            .construct-box::before {
+                font-size: 10px;
+                padding: 7px 12px;
+            }
+
+            .construct-img {
+                max-width: 100%;
+            }
+
+            .loading-bar {
+                max-width: 100%;
+            }
+
+            .footer-text {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-rain" id="matrix-rain"></div>
+
+    <div class="error-container">
+        <div class="construct-box">
+            <div class="title" id="title">
+                LOADING CONSTRUCT...
+            </div>
+
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+                <div class="loading-text" id="loading-text">LOADING ERROR.EXE...</div>
+            </div>
+
+            <img src="resources/construct.jpg" alt="The Construct" class="construct-img">
+
+            <div class="error-code" id="error-code">000</div>
+            <div class="error-message" id="error-message">Unknown Error</div>
+
+            <div class="construct-status" id="construct-status">
+                ▸ CONSTRUCT STATUS: INCOMPLETE
+            </div>
+
+            <div class="program-loading">
+                <div class="program-line">
+                    <span class="program-name">page.exe</span>
+                    <span class="program-status failed" id="program-status">FAILED TO LOAD</span>
+                </div>
+                <div class="program-line">
+                    <span class="program-name">request.dll</span>
+                    <span class="program-status" id="request-status">OK</span>
+                </div>
+                <div class="program-line">
+                    <span class="program-name">morpheus.ai</span>
+                    <span class="program-status">WAITING</span>
+                </div>
+            </div>
+
+            <div class="morpheus-wisdom">
+                <div class="wisdom-quote" id="wisdom-quote">
+                    "Stop trying to load the page and realize... there is no page."
+                </div>
+                <div class="wisdom-attribution">— MORPHEUS</div>
+            </div>
+
+            <div class="buttons">
+                <a href="/" class="btn btn-primary">Exit Construct</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Reload Program</a>
+            </div>
+
+            <div class="footer-text" id="footer-text">
+                Unfortunately, no one can be told what the error is. You have to see it for yourself.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const titles = {
+            400: "MALFORMED REQUEST DETECTED",
+            401: "AUTHENTICATION REQUIRED",
+            402: "PAYMENT PROTOCOL NEEDED",
+            403: "ACCESS RESTRICTED",
+            404: "PROGRAM NOT FOUND",
+            405: "INVALID METHOD",
+            406: "FORMAT INCOMPATIBLE",
+            408: "CONNECTION TIMEOUT",
+            409: "DATA CONFLICT",
+            410: "PROGRAM DELETED",
+            413: "DATA OVERFLOW",
+            429: "SYSTEM OVERLOAD",
+            500: "CONSTRUCT MALFUNCTION",
+            502: "GATEWAY DISCONNECTED",
+            503: "CONSTRUCT OFFLINE",
+            504: "GATEWAY UNRESPONSIVE"
+        };
+
+        const wisdomQuotes = {
+            400: '"Your request is flawed. What you must learn is that the syntax is not real. Then you\'ll see that it is not the request that is bad, it is only yourself."',
+            401: '"You have to let it all go. Fear, doubt, and disbelief. Free your credentials."',
+            402: '"You take the blue pill, the story ends. You take the red pill, and I show you how deep the payment rabbit hole goes."',
+            403: '"I can only show you the door. You\'re the one that has to have access to walk through it."',
+            404: '"Stop trying to find the page and realize... there is no page."',
+            405: '"There is a difference between knowing the method and walking the method."',
+            406: '"Do not try to parse the format, that\'s impossible. Instead, only try to realize the truth: there is no format."',
+            408: '"I\'m trying to free your mind. But I can only show you the door. The timeout is yours to resolve."',
+            409: '"The Matrix is a system. That system is our conflict. When you\'re inside, you look around, what do you see?"',
+            410: '"The page you are looking for has been deleted. Everything that has a beginning has an end."',
+            413: '"What is real? How do you define \'payload size\'? If you\'re talking about what you can send, what you can upload, then \'size\' is simply electrical signals interpreted by your browser."',
+            429: '"You\'ve been sending too many requests. You\'re moving too fast. You must learn to slow down."',
+            500: '"The Construct has malfunctioned. Even I cannot fix what is broken within the system itself."',
+            502: '"The gateway between worlds has failed. We are cut off from the source."',
+            503: '"The Construct is offline. We must wait for the operator to bring it back online."',
+            504: '"The gateway is not responding. Time is an illusion in the Matrix, but timeouts are very real."'
+        };
+
+        const loadingTexts = {
+            400: "PARSING ERROR...",
+            401: "VERIFYING CREDENTIALS...",
+            402: "PROCESSING PAYMENT...",
+            403: "CHECKING PERMISSIONS...",
+            404: "LOCATING PROGRAM...",
+            405: "VALIDATING METHOD...",
+            406: "CONVERTING FORMAT...",
+            408: "ESTABLISHING CONNECTION...",
+            409: "RESOLVING CONFLICT...",
+            410: "SEARCHING ARCHIVES...",
+            413: "COMPRESSING DATA...",
+            429: "THROTTLING REQUESTS...",
+            500: "REPAIRING CONSTRUCT...",
+            502: "RECONNECTING GATEWAY...",
+            503: "INITIALIZING SERVICES...",
+            504: "AWAITING RESPONSE..."
+        };
+
+        const programStatuses = {
+            400: "SYNTAX ERROR",
+            401: "AUTH FAILED",
+            402: "PAYMENT FAILED",
+            403: "ACCESS DENIED",
+            404: "NOT FOUND",
+            405: "INVALID METHOD",
+            406: "NO MATCH",
+            408: "TIMED OUT",
+            409: "CONFLICT",
+            410: "DELETED",
+            413: "TOO LARGE",
+            429: "RATE LIMITED",
+            500: "CRASHED",
+            502: "NO GATEWAY",
+            503: "OFFLINE",
+            504: "NO RESPONSE"
+        };
+
+        const constructStatuses = {
+            400: "▸ CONSTRUCT STATUS: REQUEST MALFORMED",
+            401: "▸ CONSTRUCT STATUS: IDENTITY UNVERIFIED",
+            402: "▸ CONSTRUCT STATUS: TRANSACTION INCOMPLETE",
+            403: "▸ CONSTRUCT STATUS: ACCESS BLOCKED",
+            404: "▸ CONSTRUCT STATUS: PROGRAM MISSING",
+            405: "▸ CONSTRUCT STATUS: METHOD REJECTED",
+            406: "▸ CONSTRUCT STATUS: FORMAT MISMATCH",
+            408: "▸ CONSTRUCT STATUS: CONNECTION LOST",
+            409: "▸ CONSTRUCT STATUS: DATA CONFLICT",
+            410: "▸ CONSTRUCT STATUS: PERMANENTLY DELETED",
+            413: "▸ CONSTRUCT STATUS: BUFFER OVERFLOW",
+            429: "▸ CONSTRUCT STATUS: SYSTEM SATURATED",
+            500: "▸ CONSTRUCT STATUS: CRITICAL FAILURE",
+            502: "▸ CONSTRUCT STATUS: GATEWAY ERROR",
+            503: "▸ CONSTRUCT STATUS: MAINTENANCE MODE",
+            504: "▸ CONSTRUCT STATUS: GATEWAY TIMEOUT"
+        };
+
+        const footerTexts = {
+            400: "What is real? Your request syntax certainly isn't.",
+            401: "Fate, it seems, has denied you credentials.",
+            402: "There is no spoon. But there is a payment required.",
+            403: "Choice. The problem is choice. And you chose wrong.",
+            404: "Unfortunately, no one can be told what the page is. You have to see it for yourself.",
+            405: "I can only show you the method. You're the one that has to use it.",
+            406: "Do you think that's your format you're requesting?",
+            408: "You're going to learn that timing is everything in the Matrix.",
+            409: "Throughout human history, we have been dependent on data... that doesn't conflict.",
+            410: "Everything that has a beginning has an end. This page has ended.",
+            413: "Your payload is too big for the spoon to hold. And there is no spoon.",
+            429: "You move like they do. Too fast. Slow down.",
+            500: "Denial is the most predictable of all human responses. But the server is broken.",
+            502: "The gateway is everywhere. It is all around us. But right now, it's down.",
+            503: "The service you know, it doesn't exist. It never existed.",
+            504: "Hope. It is the quintessential human delusion. But the gateway timed out."
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const title = titles[errorCode] || "LOADING CONSTRUCT...";
+        const wisdom = wisdomQuotes[errorCode] || '"Stop trying to load the page and realize... there is no page."';
+        const loadingText = loadingTexts[errorCode] || "LOADING ERROR.EXE...";
+        const programStatus = programStatuses[errorCode] || "FAILED TO LOAD";
+        const constructStatus = constructStatuses[errorCode] || "▸ CONSTRUCT STATUS: INCOMPLETE";
+        const footerText = footerTexts[errorCode] || "Unfortunately, no one can be told what the error is. You have to see it for yourself.";
+
+        // Update page content
+        document.getElementById('title').textContent = title;
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('wisdom-quote').innerHTML = wisdom;
+        document.getElementById('loading-text').textContent = loadingText;
+        document.getElementById('program-status').textContent = programStatus;
+        document.getElementById('construct-status').textContent = constructStatus;
+        document.getElementById('footer-text').textContent = footerText;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Update request status based on error
+        const requestStatusEl = document.getElementById('request-status');
+        if (errorCode >= 400 && errorCode < 500) {
+            requestStatusEl.textContent = "CLIENT ERROR";
+            requestStatusEl.classList.add('failed');
+        } else if (errorCode >= 500) {
+            requestStatusEl.textContent = "SERVER ERROR";
+            requestStatusEl.classList.add('failed');
+        }
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'still-waiting';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/' + themeName + '/' + img.getAttribute('src');
+        });
+
+        // Create Matrix rain effect
+        const matrixRain = document.getElementById('matrix-rain');
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+
+        for (let i = 0; i < 30; i++) {
+            const char = document.createElement('div');
+            char.className = 'matrix-char';
+            char.textContent = chars[Math.floor(Math.random() * chars.length)];
+            char.style.left = Math.random() * 100 + '%';
+            char.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            char.style.animationDelay = Math.random() * 5 + 's';
+            matrixRain.appendChild(char);
+        }
+    </script>
+</body>
+</html>
