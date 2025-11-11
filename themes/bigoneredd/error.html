@@ -66,24 +66,25 @@
             background: rgba(222, 184, 135, 0.95);
             border: 6px solid #8b4513;
             border-radius: 10px;
-            padding: 25px 20px;
+            padding: 35px 20px 25px 20px;
             box-shadow: 0 0 40px rgba(139, 69, 19, 0.6),
                         inset 0 0 30px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow-x: hidden;
             width: 100%;
             box-sizing: border-box;
+            margin-top: 25px;
         }
 
         .junkyard-box::before {
             content: '🚔 THIS IS THE BIG ONE! 🚔';
             position: absolute;
-            top: -20px;
+            top: -18px;
             left: 50%;
             transform: translateX(-50%);
             background: #8b0000;
             color: #fff;
-            padding: 10px 25px;
+            padding: 10px 20px;
             font-weight: 900;
             font-size: 13px;
             letter-spacing: 2px;
@@ -91,6 +92,7 @@
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
             font-family: 'Special Elite', cursive;
+            white-space: nowrap;
         }
 
         .episode-title {
@@ -165,7 +167,7 @@
         }
 
         .black-cop::before {
-            content: '🕴️ OFFICER JOHNSON';
+            content: '🕴️ OFFICER "SMITTY" SMITH';
             background: #654321;
             color: #fff;
         }
@@ -186,7 +188,7 @@
         }
 
         .white-cop::before {
-            content: '👮 OFFICER SMITH';
+            content: '👮 OFFICER "SWANNY" SWANHAUSER';
             background: #8b7355;
             color: #fff;
         }
@@ -323,13 +325,11 @@
         }
 
         .footer-text {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
             font-size: 16px;
             color: #654321;
             font-style: italic;
+            margin-top: 20px;
+            padding-top: 10px;
         }
 
         @media (max-width: 768px) {
@@ -368,7 +368,8 @@
             }
 
             .junkyard-box {
-                padding: 20px 12px;
+                padding: 30px 12px 20px 12px;
+                margin-top: 20px;
             }
 
             .cop-box {
@@ -384,6 +385,11 @@
             .cop-dialogue {
                 gap: 10px;
                 margin: 15px 0;
+            }
+
+            .footer-text {
+                margin-top: 15px;
+                font-size: 14px;
             }
         }
     </style>
@@ -404,15 +410,15 @@
             <div class="error-message" id="error-message">Unknown Error</div>
 
             <div class="cop-dialogue">
-                <div class="cop-box black-cop">
-                    <div class="cop-speech" id="street-speak">
-                        Yo, listen up - this page ain't where it's supposed to be, feel me?
-                    </div>
-                </div>
-
                 <div class="cop-box white-cop">
                     <div class="cop-speech" id="tech-speak">
                         The HTTP protocol indicates a 404 status code, signifying the requested resource cannot be located in the server directory structure.
+                    </div>
+                </div>
+
+                <div class="cop-box black-cop">
+                    <div class="cop-speech" id="street-speak">
+                        Yo, listen up - this page ain't where it's supposed to be, feel me?
                     </div>
                 </div>
             </div>
