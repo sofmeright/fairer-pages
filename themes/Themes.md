@@ -2,6 +2,12 @@
 
 All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme uses a single dynamic error page that automatically displays the correct error code and message for any HTTP error (400-599).
 
+## Random Theme
+
+The **random** theme automatically picks a different theme each time, keeping error pages fresh and unexpected!
+
+---
+
 ## Theme Screenshots
 
 ### anisorry
@@ -407,9 +413,3 @@ Legend of Zelda adventure - "It's dangerous to go alone!" with Master Sword
 Ocarina of Time theme - Triforce symbol, golden colors, quest messages, and songs for each error
 
 ![zelda-ocarina](_screenshots/zelda-ocarina-404.png)
-
----
-
-## Random Theme
-
-The **random** theme automatically picks a different theme each time, keeping error pages fresh and unexpected!
