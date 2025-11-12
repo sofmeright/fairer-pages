@@ -3,10 +3,11 @@
 A containerized error page service supporting multiple themes and error codes.
 
 ## Public Resources:
-|     |     |
-| --- | --- |
-| Docker Images    | [Docker Hub](https://hub.docker.com/r/prplanit/fairer-pages)    |
-| Source Code    |  [GitHub](https://github.com/sofmeright/fairer-pages)          |
+|                  |                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| Docker Images    | [Docker Hub](https://hub.docker.com/r/prplanit/fairer-pages)                         |
+| Source Code      |  [GitHub](https://github.com/sofmeright/fairer-pages)                                |
+| Theme Gallery    | [Screenshots](https://github.com/sofmeright/fairer-pages/blob/main/themes/Themes.md) |
 
 ## Usage
 
