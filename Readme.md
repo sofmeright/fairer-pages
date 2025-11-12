@@ -153,19 +153,22 @@ Docker Run Example:
  docker run -d --name fairer-pages --restart always -p 8023:80 prplanit/fairer-pages:latest
 ```
 
-## Integration with Nginx
+## Nginx Integration Example:
 
 ```nginx
-upstream fairer-pages {
-    server anchorage:8023;
+# Define your Fairer Pages Upstream:
+upstream fairer-pages { 
+    server fairer-pages-host:8023; 
 }
 
 server {
+    server_name domain.com;
+
     # Directs the server to listen for IPv4 connections on port 80.
     listen 80;
     # Directs the server to listen for IPv6 connections on port 80.
     listen [::]:80;
-    server_name domain.com;
+    # Redirect all requests from this listener, 80 -> 443 (HTTP -> HTTPS).
     return 301 https://$server_name$request_uri;
 }
 
@@ -184,10 +187,26 @@ server {
     ssl_prefer_server_ciphers on;
     #ssl_session_cache shared:SSL:10m;
 
+    # You can configure specific paths and (sub)domains to only serve 404's with NGINX.
+    # If you desire that behavior; uncomment the `return` line below and remove/comment the `proxy_pass` and configure the rest as desired.
+    # Otherwise this block would serve http://some-important-service:port to clients of domain.com with fairer pages via fairer-pages-host:8023.
+    location / {
+        # return 404;
+        proxy_pass http://some-important-service:port/;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
     # Enable error interception
     proxy_intercept_errors on;
 
-    # Proxy all fairer-pages paths
+    # Route errors to fairer-pages service
+    error_page 400 401 402 403 404 405 406 408 409 410 413 429 500 502 503 504 = @error_handler;
+
+    # Proxy fairer-pages "/fairer-pages/" path, so error pages can be available available to clients!
     location /fairer-pages/ {
         proxy_pass http://fairer-pages/fairer-pages/;
         proxy_set_header Host $host;
@@ -196,21 +215,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
-    location / {
-        # Uncomment the line below and comment the proxy_pass and domain.com will only serve 404s.
-        # return 404;
-        proxy_pass http://host:port/;
-
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-
-    # Route errors to fairer-pages service
-    error_page 400 401 402 403 404 405 406 408 409 410 413 429 500 502 503 504 = @error_handler;
-
+    # Define the error handler and select your **error theme** in the **proxy-pass**.
     location @error_handler {
         proxy_pass http://fairer-pages/fairer-pages/random/$status.html;
         proxy_set_header Host $host;
