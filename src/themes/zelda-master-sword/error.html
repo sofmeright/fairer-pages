@@ -222,7 +222,7 @@
             </div>
             <div class="buttons">
                 <a href="/" class="btn btn-primary">Continue Quest</a>
-                <a href="javascript:history.back()" class="btn btn-secondary">Retreat</a>
+                <a href="javascript:void(0)" onclick="goBack(); return false;" class="btn btn-secondary">Retreat</a>
             </div>
             <div class="footer-text" id="footer-text">
                 Courage need not be remembered, for it is never forgotten
@@ -231,6 +231,14 @@
     </div>
 
     <script>
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '/';
+            }
+        }
+
         const errorMessages = {
             400: "Bad Request",
             401: "Unauthorized",

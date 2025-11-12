@@ -318,7 +318,7 @@
 
             <div class="buttons">
                 <a href="/" class="btn btn-primary">Return to Hyrule</a>
-                <a href="javascript:history.back()" class="btn btn-secondary">Retrace Steps</a>
+                <a href="javascript:void(0)" onclick="goBack(); return false;" class="btn btn-secondary">Retrace Steps</a>
             </div>
 
             <div class="footer-text">May the Triforce guide you...</div>
@@ -326,6 +326,14 @@
     </div>
 
     <script>
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '/';
+            }
+        }
+
         const errorMessages = {
             // 4xx Client Errors
             400: "Bad Request",

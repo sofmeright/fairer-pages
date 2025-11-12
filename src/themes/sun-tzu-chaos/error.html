@@ -180,7 +180,7 @@
             <div class="attribution">— Sun Tzu, The Art of War</div>
             <div class="buttons">
                 <a href="/" class="btn btn-primary">Seize Opportunity</a>
-                <a href="javascript:history.back()" class="btn btn-secondary">Retreat Wisely</a>
+                <a href="javascript:void(0)" onclick="goBack(); return false;" class="btn btn-secondary">Retreat Wisely</a>
             </div>
             <div class="footer-wisdom" id="footer-wisdom">
                 The wise warrior avoids the battle
@@ -189,6 +189,14 @@
     </div>
 
     <script>
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '/';
+            }
+        }
+
         const errorMessages = {
             400: "Bad Request",
             401: "Unauthorized",

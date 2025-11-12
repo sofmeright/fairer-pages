@@ -354,7 +354,7 @@
 
             <div class="buttons">
                 <a href="/" class="btn btn-primary">Return to Town</a>
-                <a href="javascript:history.back()" class="btn btn-secondary">Teleport Back</a>
+                <a href="javascript:void(0)" onclick="goBack(); return false;" class="btn btn-secondary">Teleport Back</a>
             </div>
 
             <div class="footer-text" id="footer-text">
@@ -364,6 +364,14 @@
     </div>
 
     <script>
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '/';
+            }
+        }
+
         const errorMessages = {
             400: "Bad Request",
             401: "Unauthorized",

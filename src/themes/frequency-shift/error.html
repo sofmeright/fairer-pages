@@ -170,7 +170,7 @@
 
             <div class="buttons">
                 <a href="/" class="btn btn-primary">Realign</a>
-                <a href="javascript:history.back()" class="btn btn-secondary">Return</a>
+                <a href="javascript:void(0)" onclick="goBack(); return false;" class="btn btn-secondary">Return</a>
             </div>
             <div class="footer-text" id="footer-text">
                 Emit your own frequency
@@ -179,6 +179,14 @@
     </div>
 
     <script>
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '/';
+            }
+        }
+
         const errorMessages = {
             400: "Bad Request",
             401: "Unauthorized",

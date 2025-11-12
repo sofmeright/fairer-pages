@@ -237,7 +237,7 @@
 
                 <div class="action-buttons">
                     <a href="/" class="button primary-button">Back to the OASIS</a>
-                    <a href="javascript:history.back()" class="button secondary-button">Previous Location</a>
+                    <a href="javascript:void(0)" onclick="goBack(); return false;" class="button secondary-button">Previous Location</a>
                 </div>
 
                 <p class="footer-text" id="footer-text">
@@ -248,6 +248,14 @@
     </div>
 
     <script>
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '/';
+            }
+        }
+
         const errorMessages = {
             400: "Bad Request",
             401: "Unauthorized",
