@@ -1,0 +1,18 @@
+# Exclude screenshots (only for GitHub/GitLab display)
+ss/
+
+# Git files
+.git
+.gitignore
+.gitlab-ci.yml
+
+# Documentation
+*.md
+!Readme.md
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

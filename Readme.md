@@ -1,4 +1,4 @@
-![BANNER](fairer-pages-banner.png)
+![BANNER](ss/banner.png)
 
 A containerized error page service supporting multiple themes and error codes.
 
@@ -70,7 +70,7 @@ All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme 
 
 > Note: The Preview links provided below are **only functional from the WebUI of the docker container**. There's a method to the madness, I promise. 
 
-[Screenshots/Previews are available here without running Fairer Pages!](./themes/Themes.md)
+[Screenshots/Previews are available here without running Fairer Pages!](./Themes.md)
 
 | Theme | Description | 404 | 403 | 500 |
 |-------|-------------|-----|-----|-----|
