@@ -7,7 +7,7 @@ A containerized error page service supporting multiple themes and error codes.
 | ---------------- | ------------------------------------------------------------------------------------ |
 | Docker Images    | [Docker Hub](https://hub.docker.com/r/prplanit/fairer-pages)                         |
 | Source Code      | [GitHub](https://github.com/sofmeright/fairer-pages)                                 |
-| Theme Gallery    | [Screenshots](https://github.com/sofmeright/fairer-pages/blob/main/themes/Themes.md) |
+| Theme Gallery    | [Screenshots](https://github.com/sofmeright/fairer-pages/blob/main/Themes.md) |
 
 ## Usage
 
