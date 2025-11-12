@@ -52,6 +52,13 @@ No Game No Life comfy vibes - Relaxed, casual error messages with purple/pink gr
 
 ---
 
+### bridge-rave
+Underground renegade rave - Neon colors, disco balls, bass-heavy vibes under the bridge
+
+![bridge-rave](_screenshots/bridge-rave-404.png)
+
+---
+
 ### catastrotypcic
 Matrix terminal with manic cat typing and glitch effects
 
@@ -185,10 +192,24 @@ Super Troopers meow game - Highway patrol citation with "meow" hidden throughout
 
 ---
 
+### middle-earth-map
+Lord of the Rings Middle-earth journey - Ancient maps, Fellowship quotes, and Tolkien's legendary realm
+
+![middle-earth-map](_screenshots/middle-earth-map-404.png)
+
+---
+
 ### mk-yoshi-banana
 Mario Kart banana slip - Yoshi racing with banana peel hazards
 
 ![mk-yoshi-banana](_screenshots/mk-yoshi-banana-404.png)
+
+---
+
+### morrowind-balmora
+Elder Scrolls Morrowind - Journal entries from Vvardenfell with Balmora backdrop and Nerevarine vibes
+
+![morrowind-balmora](_screenshots/morrowind-balmora-404.png)
 
 ---
 
@@ -311,6 +332,20 @@ Zombie apocalypse pub refuge - "You've got red on you" with Winchester vibes
 
 ---
 
+### shuffled-around
+Disco house music rave culture - 135 BPM, cutting shapes, "Sorry, I got carried away shuffling things around" with neon vibes
+
+![shuffled-around](_screenshots/shuffled-around-404.png)
+
+---
+
+### star-trek-fuse
+Star Trek LCARS technical malfunction - Blown fuse, system failure, Starfleet emergency protocols
+
+![star-trek-fuse](_screenshots/star-trek-fuse-404.png)
+
+---
+
 ### steilacoom-park
 Pacific Northwest nature - Serene park scenery with mossy trees and tranquil PNW vibes
 
@@ -392,6 +427,13 @@ Classic Xbox boot sequence - Green glowing X with console startup sounds
 Zelda relaxation - Link chilling in hammock after saving Hyrule
 
 ![zelda-cozy-hammock](_screenshots/zelda-cozy-hammock-404.png)
+
+---
+
+### zelda-epona
+Zelda riding Epona across Hyrule - Minimal text, let the journey speak, galloping through fields
+
+![zelda-epona](_screenshots/zelda-epona-404.png)
 
 ---
 
