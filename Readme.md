@@ -64,7 +64,7 @@ Common error codes (all supported):
 
 ...and many more (all 4xx and 5xx codes)!
 
-### Available Themes
+### Available Themes (65+)
 
 All themes support **all HTTP 4xx and 5xx error codes dynamically!** Each theme uses a single dynamic error page that automatically displays the correct error code and message for any HTTP error (400-599).
 
