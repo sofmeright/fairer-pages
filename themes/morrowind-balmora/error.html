@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #d4c5a0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(20, 15, 10, 0.80),
+                rgba(40, 25, 15, 0.75),
+                rgba(20, 15, 10, 0.80));
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 60px 50px;
+            max-width: 800px;
+            width: 90%;
+            background: rgba(40, 30, 20, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 5px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7),
+                        0 0 0 2px rgba(180, 140, 80, 0.4);
+            border: 3px solid rgba(180, 140, 80, 0.5);
+        }
+
+        .scroll-header {
+            font-family: 'MedievalSharp', serif;
+            font-size: 22px;
+            color: #b48c50;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .error-code {
+            font-size: 130px;
+            font-weight: 700;
+            color: #d4c5a0;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 8px;
+        }
+
+        .error-title {
+            font-size: 34px;
+            font-weight: 600;
+            color: #b48c50;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .divider {
+            width: 140px;
+            height: 2px;
+            background: linear-gradient(to right,
+                transparent,
+                rgba(180, 140, 80, 0.6),
+                transparent);
+            margin: 25px auto;
+        }
+
+        .error-description {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #d4c5a0;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .journal-entry {
+            font-style: italic;
+            font-size: 16px;
+            color: #b48c50;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            border-left: 3px solid rgba(180, 140, 80, 0.5);
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 45px;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 3px solid #b48c50;
+            background: rgba(180, 140, 80, 0.15);
+            color: #d4c5a0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn:hover {
+            background: #b48c50;
+            color: #1a1510;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(180, 140, 80, 0.6);
+        }
+
+        .btn-secondary {
+            border-color: #8b6f47;
+            background: rgba(139, 111, 71, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: #8b6f47;
+            border-color: #8b6f47;
+            color: #1a1510;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            .error-code {
+                font-size: 90px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .error-description {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 14px 35px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-title {
+                font-size: 22px;
+            }
+
+            .scroll-header {
+                font-size: 18px;
+            }
+
+            .journal-entry {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/balmora.jpg" alt="Balmora" class="bg-image">
+    <div class="overlay"></div>
+
+    <div class="container">
+        <div class="scroll-header">⚔ A Scroll from Vvardenfell ⚔</div>
+        <div class="error-code" id="error-code">404</div>
+        <div class="error-title" id="error-title">Not Found</div>
+        <div class="divider"></div>
+        <div class="error-description" id="error-description">
+            The path you seek does not appear on any map of Vvardenfell.
+        </div>
+        <div class="journal-entry" id="journal-entry">
+            Journal Entry: I searched the streets of Balmora, but the location remains elusive. Perhaps I should ask the locals.
+        </div>
+        <div class="button-group">
+            <a href="/" class="btn">Return to Seyda Neen</a>
+            <a href="javascript:history.back()" class="btn btn-secondary">Recall</a>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const descriptions = {
+            400: "Your request was written in Daedric script and cannot be read.",
+            401: "You need the proper credentials to enter this House stronghold.",
+            402: "The guild requires payment before granting access to this knowledge.",
+            403: "This area is restricted. Only those with proper authority may pass.",
+            404: "The path you seek does not appear on any map of Vvardenfell.",
+            405: "That approach will not work in Morrowind. Try another method.",
+            406: "The format you request is unknown to the scholars of Vivec.",
+            408: "Your summon spell has expired. The connection timed out.",
+            409: "There is a dispute between the Great Houses over this resource.",
+            410: "This location has been consumed by the Blight and no longer exists.",
+            413: "Your inventory is full. Drop some items before proceeding.",
+            429: "You are making too many requests. Rest and regain your fatigue.",
+            500: "A great disturbance has occurred in the Ghostfence. The servers are unstable.",
+            502: "The gateway to Tel Fyr is not responding.",
+            503: "The Tribunal Temple is closed for meditation. Try again later.",
+            504: "The silt strider took too long to arrive. The connection has timed out."
+        };
+
+        const journalEntries = {
+            400: "Journal Entry: I spoke gibberish and the guard looked at me suspiciously. I should try again with clearer words.",
+            401: "Journal Entry: The door is locked. I need to find a key or convince someone to let me in.",
+            402: "Journal Entry: The merchant demands gold. I cannot proceed without payment.",
+            403: "Journal Entry: I was turned away at the entrance. This place is forbidden to outsiders.",
+            404: "Journal Entry: I searched the streets of Balmora, but the location remains elusive. Perhaps I should ask the locals.",
+            405: "Journal Entry: My approach failed. I need to find another way.",
+            406: "Journal Entry: They do not understand what I'm asking for. Perhaps it doesn't exist in this form.",
+            408: "Journal Entry: I waited too long and lost my chance. The connection has faded.",
+            409: "Journal Entry: Two factions are fighting over this resource. I'm caught in the middle.",
+            410: "Journal Entry: This place is gone, consumed by ash and blight. Nothing remains.",
+            413: "Journal Entry: I cannot carry any more. My burden is too heavy.",
+            429: "Journal Entry: I've been traveling too quickly. I need to rest and recover my strength.",
+            500: "Journal Entry: Something terrible has happened. The very fabric of Vvardenfell seems unstable.",
+            502: "Journal Entry: The gateway does not respond. Perhaps it has been destroyed.",
+            503: "Journal Entry: The Temple is closed. I must return later when they are receiving visitors.",
+            504: "Journal Entry: The silt strider never arrived. I've been waiting too long."
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const description = descriptions[errorCode] || "You have wandered into unfamiliar territory.";
+        const journalEntry = journalEntries[errorCode] || "Journal Entry: I have encountered an unexpected obstacle on my journey.";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = errorMessage;
+        document.getElementById('error-description').textContent = description;
+        document.getElementById('journal-entry').textContent = journalEntry;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'morrowind-balmora';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/fairer-pages/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>

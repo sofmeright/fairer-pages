@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2c1810;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(30, 20, 10, 0.75),
+                rgba(40, 30, 20, 0.70),
+                rgba(30, 20, 10, 0.75));
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 60px 50px;
+            max-width: 800px;
+            width: 90%;
+            background: rgba(250, 240, 220, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                        0 0 0 3px rgba(139, 90, 43, 0.4);
+            border: 4px solid rgba(139, 90, 43, 0.6);
+        }
+
+        .ancient-title {
+            font-family: 'Uncial Antiqua', serif;
+            font-size: 24px;
+            color: #8b5a2b;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-code {
+            font-family: 'Uncial Antiqua', serif;
+            font-size: 140px;
+            font-weight: 700;
+            color: #5d3a1a;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            letter-spacing: 8px;
+        }
+
+        .error-title {
+            font-size: 36px;
+            font-weight: 600;
+            color: #8b5a2b;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .divider {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(to right,
+                transparent,
+                rgba(139, 90, 43, 0.6),
+                transparent);
+            margin: 25px auto;
+        }
+
+        .error-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #6b4423;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .quest-note {
+            font-style: italic;
+            font-size: 16px;
+            color: #8b5a2b;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 45px;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 3px solid #8b5a2b;
+            background: rgba(139, 90, 43, 0.1);
+            color: #5d3a1a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: #8b5a2b;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 90, 43, 0.5);
+        }
+
+        .btn-secondary {
+            border-color: #6b4423;
+            background: rgba(107, 68, 35, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: #6b4423;
+            border-color: #6b4423;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            .error-code {
+                font-size: 90px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .error-description {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 14px 35px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 70px;
+            }
+
+            .error-title {
+                font-size: 22px;
+            }
+
+            .ancient-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="resources/middle-earth-map.jpg" alt="Middle-earth Map" class="bg-image">
+    <div class="overlay"></div>
+
+    <div class="container">
+        <div class="ancient-title">The Maps of Middle-earth</div>
+        <div class="error-code" id="error-code">404</div>
+        <div class="error-title" id="error-title">Not Found</div>
+        <div class="divider"></div>
+        <div class="error-description" id="error-description">
+            The path you seek is not marked upon these ancient maps.
+        </div>
+        <div class="quest-note" id="quest-note">
+            "Not all those who wander are lost, but this page certainly is."
+        </div>
+        <div class="button-group">
+            <a href="/" class="btn">Return to the Shire</a>
+            <a href="javascript:history.back()" class="btn btn-secondary">Retrace Your Steps</a>
+        </div>
+    </div>
+
+    <script>
+        const errorMessages = {
+            400: "Bad Request",
+            401: "Unauthorized",
+            402: "Payment Required",
+            403: "Forbidden",
+            404: "Not Found",
+            405: "Method Not Allowed",
+            406: "Not Acceptable",
+            408: "Request Timeout",
+            409: "Conflict",
+            410: "Gone",
+            413: "Payload Too Large",
+            429: "Too Many Requests",
+            500: "Internal Server Error",
+            502: "Bad Gateway",
+            503: "Service Unavailable",
+            504: "Gateway Timeout"
+        };
+
+        const descriptions = {
+            400: "Your request was written in the Black Speech and cannot be understood.",
+            401: "You need the key to the Mines of Moria to access this realm.",
+            402: "The toll to cross this bridge has not been paid.",
+            403: "You shall not pass! This path is forbidden to all who seek it.",
+            404: "The path you seek is not marked upon these ancient maps.",
+            405: "That method will not work in Middle-earth. Try a different path.",
+            406: "The format you request cannot be found in any of the archives of Gondor.",
+            408: "The beacons were not lit in time. Your request has timed out.",
+            409: "There is a conflict between the kingdoms. This resource is contested.",
+            410: "This realm has been abandoned and its halls are empty.",
+            413: "Your burden is too great, even for one who has borne the Ring.",
+            429: "You have traveled too swiftly. Even the eagles need rest.",
+            500: "A great disturbance has occurred in Middle-earth. The servers of Isengard have fallen.",
+            502: "The gateway at the Black Gate is not responding.",
+            503: "The realm is temporarily closed. The King is in counsel.",
+            504: "The gateway took too long to respond. Perhaps the roads are watched."
+        };
+
+        const questNotes = {
+            400: "\"A wizard should know better than to speak in riddles.\"",
+            401: "\"The way is shut. It was made by those who are dead.\"",
+            402: "\"We cannot get out. Drums in the deep.\"",
+            403: "\"You shall not pass!\" - Gandalf the Grey",
+            404: "\"Not all those who wander are lost, but this page certainly is.\"",
+            405: "\"One does not simply walk into this resource.\"",
+            406: "\"I asked for one thing, and they gave me another.\"",
+            408: "\"Time is running short. The quest has failed.\"",
+            409: "\"There is but one Lord of the Ring, and he does not share power.\"",
+            410: "\"The age of Men is over. The age of this page has ended.\"",
+            413: "\"The load is too heavy. Cast it into the fire!\"",
+            429: "\"Fool of a Took! Stop making so many requests!\"",
+            500: "\"Something terrible has happened in the depths.\"",
+            502: "\"The beacons are lit, but there is no answer.\"",
+            503: "\"The steward of Gondor has asked that you wait.\"",
+            504: "\"No news from the watchers. The gateway is silent.\""
+        };
+
+        // Get error code from URL path
+        const path = window.location.pathname;
+        const match = path.match(/\/(\d+)\.html$/);
+        const errorCode = match ? parseInt(match[1]) : 404;
+        const errorMessage = errorMessages[errorCode] || "Unknown Error";
+        const description = descriptions[errorCode] || "An unexpected journey has led you astray.";
+        const questNote = questNotes[errorCode] || "\"The road goes ever on and on...\"";
+
+        // Update page content
+        document.getElementById('error-code').textContent = errorCode;
+        document.getElementById('error-title').textContent = errorMessage;
+        document.getElementById('error-description').textContent = description;
+        document.getElementById('quest-note').textContent = questNote;
+        document.getElementById('page-title').textContent = errorCode + " - " + errorMessage;
+
+        // Fix resource paths for internal error redirects
+        const themeName = 'middle-earth-map';
+        document.querySelectorAll('img[src^="resources/"]').forEach(img => {
+            img.src = '/fairer-pages/' + themeName + '/' + img.getAttribute('src');
+        });
+    </script>
+</body>
+</html>
