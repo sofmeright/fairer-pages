@@ -301,7 +301,8 @@
 
         // Redirect after a brief moment (using /fairer-pages/ prefix)
         setTimeout(() => {
-            window.location.href = `/fairer-pages/${randomTheme}/${errorCode}.html`;
+            const referrer = encodeURIComponent(document.referrer || '/');
+            window.location.href = `/fairer-pages/${randomTheme}/${errorCode}.html?ref=${referrer}`;
         }, 1500);
     </script>
 </body>

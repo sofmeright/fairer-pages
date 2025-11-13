@@ -279,7 +279,13 @@
 
     <script>
         function goBack() {
-            if (document.referrer && document.referrer !== window.location.href) {
+            // Check for ref query parameter (passed from random error page)
+            const urlParams = new URLSearchParams(window.location.search);
+            const refParam = urlParams.get('ref');
+            
+            if (refParam && refParam !== window.location.href) {
+                window.location.href = decodeURIComponent(refParam);
+            } else if (document.referrer && document.referrer !== window.location.href) {
                 window.location.href = document.referrer;
             } else {
                 window.location.href = '/';
