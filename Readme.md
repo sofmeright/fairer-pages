@@ -90,7 +90,7 @@ docker run -e FAIRER_PLAYLIST_FILE=/path/to/custom-playlists.yml \
   prplanit/fairer-pages
 ```
 
-See [default-playlists.yml](default-playlists.yml) for the full default configuration. 
+See [default-playlists.yml](https://github.com/sofmeright/fairer-pages/blob/main/default-playlists.yml) for the full default configuration. 
 
 ### Supported Error Codes
 

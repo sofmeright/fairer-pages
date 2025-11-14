@@ -275,15 +275,18 @@
 
     <script>
         function goBack() {
-            // Check for ref query parameter (passed from random error page)
+            // Get ref parameter from URL
             const urlParams = new URLSearchParams(window.location.search);
-            const refParam = urlParams.get('ref');
-            
-            if (refParam && refParam !== window.location.href) {
-                window.location.href = decodeURIComponent(refParam);
-            } else if (document.referrer && document.referrer !== window.location.href) {
-                window.location.href = document.referrer;
+            const refUrl = urlParams.get('ref');
+
+            if (refUrl && refUrl !== '/') {
+                // Navigate to the referring page (before the error)
+                window.location.href = decodeURIComponent(refUrl);
+            } else if (window.history.length > 1) {
+                // Fallback: go back in history
+                window.history.back();
             } else {
+                // Last resort: go to home
                 window.location.href = '/';
             }
         }
