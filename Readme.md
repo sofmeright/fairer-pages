@@ -258,6 +258,8 @@ server {
     # Proxy fairer-pages "/fairer-pages/" path, so error pages can be available available to clients!
     location /fairer-pages/ {
         proxy_pass http://fairer-pages/fairer-pages/;
+        # Allow playlist iframes to load
+        add_header Content-Security-Policy "frame-ancestors 'self';";
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
