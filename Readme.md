@@ -1,6 +1,6 @@
 ![BANNER](ss/banner.png)
 
-A containerized error page service supporting multiple themes and error codes.
+A comprehensive error pages as a service workflow. Fairer Pages is open-source, ships with 65+ themes, and it also has the ability to serve fairer-pages as playlists. You will have fine grain control over your fairer-pages for each and every domain ✨ The design is low-code so it is easier for you to understand and add your flare! 🔥 Let us see your custom fairer-pages!!! 🎉
 
 ## Public Resources:
 |                  |                                                                                      |
@@ -303,7 +303,7 @@ curl http://localhost:8023/back2thefuture/404.html
 
 ## Contributing
 - File issues with steps, logs, and versions.
-- Small, focused PRs are best (typos, error handling, UI polish).
+- Small, focused PRs are best (typos, fairer handling, UI polish).
 - Theme contributions are welcome!
 - Security-related PRs and hardening suggestions are especially appreciated if you notice anything that can be improved.
 
