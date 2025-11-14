@@ -33,21 +33,64 @@ Examples:
 - Works with any error code: [Random 500](fairer-pages/random/500.html), [Random 403](fairer-pages/random/403.html), etc.
 - Perfect for keeping error pages fresh and unexpected
 
-#### Overriding the random list to restrict to a custom set of pages:
-If you mount `/usr/share/nginx/html/themes/random/error.html` inside the container to local storage...
-You should be able to edit the lines that look like this below:
+### Playlists - Curated Theme Collections
 
-    ```yaml
-        <script>
-            // All available themes
-            const themes = [
-                'back2thefuture',
-                'MegumiTokoroOwo',
-                'hideyodawg',
-                'leggoohno',
-    ```
-                ...
-    Edit this list to match the themes you want to be randomly selected and restart the container. 
+> Create custom theme collections for different contexts! Use playlists to group themes by mood, purpose, or audience.
+
+The playlist endpoint allows you to randomly select from a curated subset of themes:
+
+```
+http://<host:port>/fairer-pages/playlist/<playlist-name>/<errorcode>.html
+```
+
+Examples:
+- `http://localhost/fairer-pages/playlist/work/404.html` - Professional themes suitable for work environments
+- `http://anchorage:8023/fairer-pages/playlist/nature/500.html` - Calming nature-themed error pages
+- `http://precisionplanit.com/fairer-pages/playlist/theatre/403.html` - Dramatic theatrical themes
+
+#### Built-in Playlists
+
+The default configuration includes several pre-configured playlists:
+
+- **work** - Professional, calming themes suitable for business contexts
+- **nature** - Peaceful, natural themes (lotus-petal, peaceful-waterfalls, serene-shores, etc.)
+- **theatre** - Dramatic, entertaining themes with pop culture references
+- **pretty-shiny** - Visually appealing, polished themes
+- **default** - All available themes (same as `/random/`)
+
+#### Custom Playlists
+
+You can define your own playlists using environment variables:
+
+**Option 1: CSV (Simple)**
+```bash
+docker run -e FAIRER_PLAYLIST_CSV="trollface,blank-state,dogatemypage" prplanit/fairer-pages
+```
+
+**Option 2: YAML File (Advanced)**
+```yaml
+# custom-playlists.yml
+playlists:
+  my-playlist:
+    ANY:
+      - trollface
+      - sailormoon
+      - rickandmorty
+
+  corporate:
+    ANY:
+      - churchill-courage
+      - jedi-mindtrick
+      - sun-tzu-chaos
+```
+
+```bash
+docker run -e FAIRER_PLAYLIST_FILE=/path/to/custom-playlists.yml \
+  -v /path/to/custom-playlists.yml:/path/to/custom-playlists.yml:ro \
+  prplanit/fairer-pages
+```
+
+See [default-playlists.yml](default-playlists.yml) for the full default configuration. 
 
 ### Supported Error Codes
 

@@ -237,9 +237,13 @@
         const match = path.match(/\/(\d+)\.html$/);
         const errorCode = match ? parseInt(match[1]) : 404;
 
-        // Get playlist name from query param (for /playlist/<name>/<code>.html support)
+        // Get playlist name from SSI variable (injected by nginx), URL path, or query param
+        // SSI sets this to the actual playlist name when served via /playlist/<name>/ endpoint
+        const injectedPlaylist = '<!--#echo var="playlist_name" default="__NONE__" -->';
         const urlParams = new URLSearchParams(window.location.search);
-        const playlistName = urlParams.get('playlist') || 'default';
+        const playlistMatch = path.match(/\/playlist\/([^/]+)\//);
+        const playlistName = (injectedPlaylist !== '__NONE__' && injectedPlaylist.indexOf('<!--') === -1) ? injectedPlaylist :
+                             (playlistMatch ? playlistMatch[1] : (urlParams.get('playlist') || 'default'));
 
         // Function to select theme based on playlist configuration
         function selectTheme(playlistName, errorCode) {
@@ -276,10 +280,15 @@
             img.src = '/fairer-pages/' + themeName + '/' + img.getAttribute('src');
         });
 
-        // Redirect after a brief moment (using /fairer-pages/ prefix)
+        // Display the selected theme directly without redirect
+        // This keeps the original URL intact for better UX
         setTimeout(() => {
-            const referrer = encodeURIComponent(document.referrer || '/');
-            window.location.href = `/fairer-pages/${randomTheme}/${errorCode}.html?ref=${referrer}`;
+            // Load the theme content in an iframe to preserve the URL
+            const iframe = document.createElement('iframe');
+            iframe.src = `/fairer-pages/${randomTheme}/${errorCode}.html`;
+            iframe.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;border:none;';
+            document.body.innerHTML = '';
+            document.body.appendChild(iframe);
         }, 1500);
     </script>
 </body>

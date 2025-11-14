@@ -1,0 +1,276 @@
+playlists:
+  # fpglobal applies to ALL playlists (including default)
+  # These themes get ADDED to every playlist
+  # fpglobal:
+  #   # ANY applies to all error codes (can be string or list)
+  #   # ANY: "lol-inting"
+  #
+  #   # Specific error codes can have their own themes
+  #   # 404: "mk-yoshi-banana, jayandsilentbob"
+  #   # 502: "bad-gateway-wag"
+  #   # 406:
+  #   #   - shadowheart-shar
+  #   #   - another-theme
+
+  # Default playlist used by /fairer-pages/random/<code>.html
+  # ANY applies to all HTTP error codes (400-599)
+  default:
+    ANY: &all-themes
+      - anisorry
+      - back2thefuture
+      - baldurs-gate-bridge
+      - bigoneredd
+      - blank-state
+      - bridge-rave
+      - catastrotypcic
+      - chill-wallhaven
+      - churchill-courage
+      - control-room
+      - dogatemypage
+      - fakerockyridge
+      - frequency-shift
+      - gettodachopper
+      - hideyodawg
+      - jayandsilentbob
+      - jedi-mindtrick
+      - jessepinkman
+      - leavealone
+      - leggoohno
+      - lol-inting
+      - lotus-petal
+      - MegumiTokoroOwo
+      - meninblack
+      - meow-game
+      - middle-earth-map
+      - mk-yoshi-banana
+      - morrowind-balmora
+      - neeko-shapeshifter
+      - neighborhood-watch
+      - peaceful-waterfalls
+      - porco-rosso-pagoda
+      - psycho-pass
+      - readyplayerone
+      - reddressgirl
+      - retrowave-rain
+      - rickandmorty
+      - rushhour
+      - sailormoon
+      - salamancas
+      - sanfordandson
+      - serene-shores
+      - shadowheart-shar
+      - shaninblake
+      - shaunofthedead
+      - shuffled-around
+      - star-trek-fuse
+      - steilacoom-park
+      - still-waiting
+      - strangepresence
+      - sun-tzu-chaos
+      - swordart-aincrad
+      - trollface
+      - upsidedown
+      - venn-diagram
+      - vibecoded-trash
+      - wanderer
+      - xbox-bootup
+      - zelda-cozy-hammock
+      - zelda-epona
+      - zelda-master-sword
+      - zelda-mastersword
+      - zelda-ocarina
+    # Show bad-gateway-wag only on 502 errors
+    502: "bad-gateway-wag"
+
+  # Named playlists for /fairer-pages/playlist/<name>/<code>.html
+  personal:
+    ANY: *all-themes  # Reuse all themes anchor
+    # Show bad-gateway-wag only on 502 errors
+    502: "bad-gateway-wag"
+
+  anime:
+    ANY:
+      - anisorry
+      - blank-state
+      - MegumiTokoroOwo
+      - neeko-shapeshifter
+      - porco-rosso-pagoda
+      - psycho-pass
+      - sailormoon
+      - swordart-aincrad
+
+  chill:
+    ANY:
+      - blank-state
+      - bridge-rave
+      - chill-wallhaven
+      - frequency-shift
+      - lotus-petal
+      - peaceful-waterfalls
+      - porco-rosso-pagoda
+      - retrowave-rain
+      - serene-shores
+      - shaninblake
+      - shuffled-around
+      - steilacoom-park
+      - zelda-epona
+      - zelda-ocarina
+      - zelda-cozy-hammock
+      - zelda-mastersword
+
+  games:
+    ANY:
+      - baldurs-gate-bridge
+      - control-room
+      - lol-inting
+      - mk-yoshi-banana
+      - morrowind-balmora
+      - neeko-shapeshifter
+      - shadowheart-shar
+      - xbox-bootup
+  
+  # Holidays:
+  # christmas:
+  #   ANY:
+  #     - add themes here
+
+  halloween:
+    ANY:
+      - strangepresence
+      - upsidedown
+
+  meme:
+    ANY:
+      - anisorry
+      - back2thefuture
+      - bigoneredd
+      - bridge-rave
+      - catastrotypcic
+      - dogatemypage
+      - gettodachopper
+      - hideyodawg
+      - jayandsilentbob
+      - jedi-mindtrick
+      - jessepinkman
+      - leavealone
+      - leggoohno
+      - lol-inting
+      - MegumiTokoroOwo
+      - mk-yoshi-banana
+      - meninblack
+      - meow-game
+      - neighborhood-watch
+      - reddressgirl
+      - rickandmorty
+      - rushhour
+      - sanfordandson
+      - salamancas
+      - shadowheart-shar
+      - shaninblake
+      - shaunofthedead
+      - shuffled-around
+      - still-waiting
+      - strangepresence
+      - trollface
+      - venn-diagram
+      - vibecoded-trash
+      - wanderer
+      - xbox-bootup
+    502: "bad-gateway-wag"
+
+  quotes:
+    ANY:
+      - churchill-courage
+      - frequency-shift
+      - sun-tzu-chaos
+
+  nature:
+    ANY: 
+      - lotus-petal
+      - peaceful-waterfalls
+      - porco-rosso-pagoda
+      - serene-shores
+      - steilacoom-park
+
+  pretty-shiny:
+    ANY:
+      - back2thefuture
+      - baldurs-gate-bridge
+      - blank-state
+      - chill-wallhaven
+      - control-room
+      - lotus-petal
+      - middle-earth-map
+      - morrowind-balmora
+      - neeko-shapeshifter
+      - peaceful-waterfalls
+      - porco-rosso-pagoda
+      - readyplayerone
+      - retrowave-rain
+      - serene-shores
+      - shaninblake
+      - shuffled-around
+      - steilacoom-park
+      - swordart-aincrad
+      - zelda-cozy-hammock
+      - zelda-epona
+      - zelda-ocarina
+
+  theatre:
+    ANY:
+      - bigoneredd
+      - gettodachopper
+      - jayandsilentbob
+      - jedi-mindtrick
+      - jessepinkman
+      - meninblack
+      - meow-game
+      - neighborhood-watch
+      - readyplayerone
+      - rickandmorty
+      - rushhour
+      - salamancas
+      - sanfordandson
+      - shaunofthedead
+      - star-trek-fuse
+      - still-waiting
+      - upsidedown
+
+  work:
+    ANY:
+      - back2thefuture
+      - baldurs-gate-bridge
+      - chill-wallhaven
+      - churchill-courage
+      - control-room
+      - fakerockyridge
+      - frequency-shift
+      - jedi-mindtrick
+      - lotus-petal
+      - middle-earth-map
+      - morrowind-balmora
+      - peaceful-waterfalls
+      - porco-rosso-pagoda
+      - readyplayerone
+      - retrowave-rain
+      - serene-shores
+      - steilacoom-park
+      - sun-tzu-chaos
+      - swordart-aincrad
+      - venn-diagram
+      - vibecoded-trash
+      - wanderer
+      - xbox-bootup
+      - zelda-cozy-hammock
+      - zelda-epona
+      - zelda-master-sword
+      - zelda-ocarina
+    502: "bad-gateway-wag"
+
+  zelda:
+    ANY:
+      - zelda-epona
+      - zelda-ocarina
+      - zelda-cozy-hammock
+      - zelda-master-sword
+      - zelda-mastersword
