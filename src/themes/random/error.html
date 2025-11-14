@@ -212,73 +212,24 @@
         <div class="theme-name" id="theme-name">🎲 Rolling...</div>
     </div>
 
+    <script src="/fairer-pages/playlist-config.js"></script>
     <script>
-        // All available themes
-        const themes = [
-            'back2thefuture',
-            'MegumiTokoroOwo',
-            'hideyodawg',
-            'leggoohno',
-            'catastrotypcic',
-            'upsidedown',
-            'gettodachopper',
-            'sanfordandson',
-            'trollface',
-            'leavealone',
-            'shaninblake',
-            'reddressgirl',
-            'wanderer',
-            'mk-yoshi-banana',
-            'strangepresence',
-            'jayandsilentbob',
-            'anisorry',
-            'dogatemypage',
-            'zelda-mastersword',
-            'rushhour',
-            'meninblack',
-            'bigoneredd',
-            'fakerockyridge',
-            'salamancas',
-            'jessepinkman',
-            'readyplayerone',
-            'swordart-aincrad',
-            'jedi-mindtrick',
-            'shadowheart-shar',
-            'rickandmorty',
-            'shaunofthedead',
-            'sailormoon',
-            'psycho-pass',
-            'still-waiting',
-            'neighborhood-watch',
-            'meow-game',
-            'serene-shores',
-            'control-room',
-            'blank-state',
-            'bridge-rave',
-            'lotus-petal',
-            'lol-inting',
-            'middle-earth-map',
-            'morrowind-balmora',
-            'neeko-shapeshifter',
-            'sun-tzu-chaos',
-            'vibecoded-trash',
-            'bad-gateway-wag',
-            'retrowave-rain',
-            'shuffled-around',
-            'star-trek-fuse',
-            'xbox-bootup',
-            'zelda-epona',
-            'zelda-ocarina',
-            'baldurs-gate-bridge',
-            'zelda-cozy-hammock',
-            'zelda-master-sword',
-            'chill-wallhaven',
-            'peaceful-waterfalls',
-            'porco-rosso-pagoda',
-            'frequency-shift',
-            'churchill-courage',
-            'steilacoom-park',
-            'venn-diagram'
+        // Fallback themes if config not loaded
+        const DEFAULT_THEMES = [
+            'back2thefuture','MegumiTokoroOwo','hideyodawg','leggoohno','catastrotypcic',
+            'upsidedown','gettodachopper','sanfordandson','trollface','leavealone',
+            'shaninblake','reddressgirl','wanderer','mk-yoshi-banana','strangepresence',
+            'jayandsilentbob','anisorry','dogatemypage','zelda-mastersword','rushhour',
+            'meninblack','bigoneredd','fakerockyridge','salamancas','jessepinkman',
+            'readyplayerone','swordart-aincrad','jedi-mindtrick','shadowheart-shar',
+            'rickandmorty','shaunofthedead','sailormoon','psycho-pass','still-waiting',
+            'neighborhood-watch','meow-game','serene-shores','control-room','blank-state',
+            'bridge-rave','lotus-petal','lol-inting','middle-earth-map','morrowind-balmora',
+            'neeko-shapeshifter','sun-tzu-chaos','vibecoded-trash','bad-gateway-wag',
+            'retrowave-rain','shuffled-around','star-trek-fuse','xbox-bootup','zelda-epona',
+            'zelda-ocarina','baldurs-gate-bridge','zelda-cozy-hammock','zelda-master-sword',
+            'chill-wallhaven','peaceful-waterfalls','porco-rosso-pagoda','frequency-shift',
+            'churchill-courage','steilacoom-park','venn-diagram'
         ];
 
         // Get error code from URL path
@@ -286,8 +237,34 @@
         const match = path.match(/\/(\d+)\.html$/);
         const errorCode = match ? parseInt(match[1]) : 404;
 
-        // Pick random theme
-        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+        // Get playlist name from query param (for /playlist/<name>/<code>.html support)
+        const urlParams = new URLSearchParams(window.location.search);
+        const playlistName = urlParams.get('playlist') || 'default';
+
+        // Function to select theme based on playlist configuration
+        function selectTheme(playlistName, errorCode) {
+            const config = window.FAIRER_PLAYLISTS || { default: { ANY: DEFAULT_THEMES } };
+            const playlist = config[playlistName] || config.default;
+            const fpglobal = config.fpglobal || {};
+
+            // Get themes for this code, fall back to ANY
+            let themes = playlist[errorCode] || playlist[String(errorCode)] || playlist.ANY || [];
+
+            // Add global themes for this code
+            const globalThemes = fpglobal[errorCode] || fpglobal[String(errorCode)] || fpglobal.ANY || [];
+            themes = themes.concat(globalThemes);
+
+            // Fall back to default if empty
+            if (themes.length === 0) {
+                themes = DEFAULT_THEMES;
+            }
+
+            // Select random theme
+            return themes[Math.floor(Math.random() * themes.length)];
+        }
+
+        // Pick random theme based on configuration
+        const randomTheme = selectTheme(playlistName, errorCode);
 
         // Update display
         document.getElementById('error-code').textContent = `Error ${errorCode}`;

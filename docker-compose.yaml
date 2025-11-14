@@ -1,0 +1,7 @@
+services:
+  fairer-pages:
+    container_name: fairer-pages
+    build: .
+    image: prplanit/fairer-pages:latest
+    ports:
+      - 8023:80
