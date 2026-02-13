@@ -28,7 +28,7 @@ echo ""
 echo -e "${BLUE}[Test 1]${NC} Checking playlist-config.js accessibility..."
 TOTAL_TESTS=$((TOTAL_TESTS + 1))
 
-config_content=$(curl -s "${CONTAINER_URL}/playlist-config.js" 2>&1)
+config_content=$(curl -s "${CONTAINER_URL}/fairer-pages/playlist-config.js" 2>&1)
 if echo "$config_content" | grep -q '"work"' && echo "$config_content" | grep -q '"ANY"'; then
     echo -e "${GREEN}✓${NC} playlist-config.js accessible and contains work playlist"
     PASSED_TESTS=$((PASSED_TESTS + 1))
@@ -43,7 +43,7 @@ echo ""
 echo -e "${BLUE}[Test 2]${NC} Verifying work playlist composition..."
 TOTAL_TESTS=$((TOTAL_TESTS + 1))
 
-work_playlist=$(curl -s "${CONTAINER_URL}/playlist-config.js" | grep -A 50 '"work"')
+work_playlist=$(curl -s "${CONTAINER_URL}/fairer-pages/playlist-config.js" | grep -A 50 '"work"')
 if ! echo "$work_playlist" | grep -q '"lol-inting"'; then
     echo -e "${GREEN}✓${NC} work playlist does NOT contain lol-inting (correct)"
     PASSED_TESTS=$((PASSED_TESTS + 1))
@@ -57,7 +57,7 @@ echo ""
 echo -e "${BLUE}[Test 3]${NC} Verifying default playlist contains lol-inting..."
 TOTAL_TESTS=$((TOTAL_TESTS + 1))
 
-default_playlist=$(curl -s "${CONTAINER_URL}/playlist-config.js" | grep -A 100 '"default"' | head -100)
+default_playlist=$(curl -s "${CONTAINER_URL}/fairer-pages/playlist-config.js" | grep -A 100 '"default"' | head -100)
 if echo "$default_playlist" | grep -q '"lol-inting"'; then
     echo -e "${GREEN}✓${NC} default playlist contains lol-inting (correct)"
     PASSED_TESTS=$((PASSED_TESTS + 1))

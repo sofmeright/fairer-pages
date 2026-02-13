@@ -1,9 +1,24 @@
 #!/bin/sh
 set -e
 
-# Output JavaScript file that will be loaded by random/error.html
-OUTPUT_JS="/usr/share/nginx/html/playlist-config.js"
-# Default YAML configuration shipped with the container
+# --- Environment defaults ---
+export LISTEN_PORT="${LISTEN_PORT:-8080}"
+export LOG_LEVEL="${LOG_LEVEL:-warn}"
+export WORKER_PROCESSES="${WORKER_PROCESSES:-auto}"
+
+# --- Resolve nginx config templates into /tmp (read-only root filesystem) ---
+mkdir -p /tmp/conf.d
+
+envsubst '${LISTEN_PORT}' \
+  < /etc/nginx/conf.d/default.conf.template \
+  > /tmp/conf.d/default.conf
+
+envsubst '${WORKER_PROCESSES} ${LOG_LEVEL}' \
+  < /etc/nginx/nginx.conf.template \
+  > /tmp/nginx.conf
+
+# --- Generate playlist configuration ---
+OUTPUT_JS="/tmp/playlist-config.js"
 DEFAULT_PLAYLIST_YAML="/usr/share/nginx/html/default-playlists.yml"
 
 echo "Fairer Pages - Generating playlist configuration..."
@@ -20,26 +35,22 @@ if [ -n "$FAIRER_PLAYLIST_FILE" ]; then
         FAIRER_PLAYLIST_FILE="$DEFAULT_PLAYLIST_YAML"
     fi
 
-    # Convert YAML playlist configuration to browser-ready JavaScript
     python3 - "$FAIRER_PLAYLIST_FILE" > "$OUTPUT_JS" << 'PYTHON_SCRIPT'
 import yaml
 import json
 import sys
 
 try:
-    # Load YAML configuration
     with open(sys.argv[1], 'r') as f:
         config = yaml.safe_load(f)
 
     playlists = config.get('playlists', {})
     js_playlists = {}
 
-    # Convert each playlist to JavaScript-compatible structure
     for playlist_name, playlist_data in playlists.items():
         js_playlists[playlist_name] = {}
 
         for error_code, themes in playlist_data.items():
-            # Support both CSV strings and YAML lists
             if isinstance(themes, str):
                 theme_list = [t.strip() for t in themes.split(',')]
             elif isinstance(themes, list):
@@ -49,7 +60,6 @@ try:
 
             js_playlists[playlist_name][error_code] = theme_list
 
-    # Output as JavaScript that assigns to window.FAIRER_PLAYLISTS
     print("window.FAIRER_PLAYLISTS = " + json.dumps(js_playlists, indent=2) + ";")
 
 except Exception as e:
@@ -62,7 +72,6 @@ fi
 if [ -n "$FAIRER_PLAYLIST_CSV" ]; then
     echo "Using CSV playlist: $FAIRER_PLAYLIST_CSV"
 
-    # Convert CSV to JSON array
     THEMES_JSON=$(echo "$FAIRER_PLAYLIST_CSV" | python3 -c "
 import sys
 import json
@@ -89,18 +98,15 @@ import json
 import sys
 
 try:
-    # Load default YAML configuration
     with open(sys.argv[1], 'r') as f:
         config = yaml.safe_load(f)
 
     playlists = config.get('playlists', {})
     js_playlists = {}
 
-    # Convert each playlist to JavaScript-compatible structure
     for playlist_name, playlist_data in playlists.items():
         js_playlists[playlist_name] = {}
         for error_code, themes in playlist_data.items():
-            # Support both CSV strings and YAML lists
             if isinstance(themes, str):
                 theme_list = [t.strip() for t in themes.split(',')]
             elif isinstance(themes, list):
@@ -109,7 +115,6 @@ try:
                 theme_list = []
             js_playlists[playlist_name][error_code] = theme_list
 
-    # Output as JavaScript that assigns to window.FAIRER_PLAYLISTS
     print("window.FAIRER_PLAYLISTS = " + json.dumps(js_playlists, indent=2) + ";")
 
 except Exception as e:
@@ -121,5 +126,5 @@ fi
 echo "Playlist configuration generated at $OUTPUT_JS"
 
 # Start nginx
-echo "Starting nginx..."
-exec nginx -g "daemon off;"
+echo "Starting nginx on port $LISTEN_PORT..."
+exec nginx -c /tmp/nginx.conf -g "daemon off;"

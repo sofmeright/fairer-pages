@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base target="_top">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Error</title>
@@ -320,19 +321,16 @@
 
     <script>
         function goBack() {
-            // Get ref parameter from URL
+            const nav = (window.self !== window.top) ? window.top : window;
             const urlParams = new URLSearchParams(window.location.search);
             const refUrl = urlParams.get('ref');
 
             if (refUrl && refUrl !== '/') {
-                // Navigate to the referring page (before the error)
-                window.location.href = decodeURIComponent(refUrl);
-            } else if (window.history.length > 1) {
-                // Fallback: go back in history
-                window.history.back();
+                nav.location.href = decodeURIComponent(refUrl);
+            } else if (nav.history.length > 1) {
+                nav.history.back();
             } else {
-                // Last resort: go to home
-                window.location.href = '/';
+                nav.location.href = '/';
             }
         }
 
