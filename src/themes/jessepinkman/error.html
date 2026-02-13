@@ -64,16 +64,15 @@
             padding: 15px;
             max-width: 900px;
             width: 95%;
-            max-height: 95vh;
-            overflow-y: auto;
-            overflow-x: hidden;
+            max-height: 100vh;
+            overflow: hidden;
         }
 
         .yo-box {
             background: rgba(20, 20, 20, 0.95);
             border: 6px solid #ffdd00;
             border-radius: 5px;
-            padding: 45px 20px 25px 20px;
+            padding: 35px 20px 15px 20px;
             box-shadow: 0 0 60px rgba(255, 221, 0, 0.5),
                         inset 0 0 40px rgba(0, 0, 0, 0.9);
             position: relative;
@@ -114,16 +113,17 @@
         .jesse-img {
             width: 100%;
             max-width: 450px;
-            height: auto;
+            max-height: 30vh;
+            object-fit: cover;
             border: 5px solid #ffdd00;
             border-radius: 5px;
-            margin: 10px auto 5px auto;
+            margin: 8px auto 5px auto;
             box-shadow: 0 0 40px rgba(255, 221, 0, 0.6);
         }
 
         .chili {
-            font-size: 50px;
-            margin: 5px 0;
+            font-size: 40px;
+            margin: 3px 0;
             animation: spicy-shake 3s ease-in-out infinite;
         }
 
@@ -136,12 +136,12 @@
 
         .error-code {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 75px;
+            font-size: 60px;
             font-weight: bold;
             color: #ffdd00;
             text-shadow: 4px 4px 0 #000,
                          0 0 40px rgba(255, 221, 0, 0.9);
-            margin: 8px 0;
+            margin: 5px 0;
             line-height: 1;
         }
 
@@ -155,26 +155,26 @@
         }
 
         .bitch-text {
-            font-size: 26px;
+            font-size: 22px;
             color: #ffdd00;
-            margin: 15px 0;
-            line-height: 1.5;
+            margin: 8px 0;
+            line-height: 1.4;
             font-weight: 700;
         }
 
         .yo-text {
-            font-size: 20px;
+            font-size: 17px;
             color: #ccc;
-            margin: 12px 0;
-            line-height: 1.6;
+            margin: 6px 0;
+            line-height: 1.5;
         }
 
         .buttons {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 18px;
+            margin-top: 10px;
         }
 
         .btn {
@@ -234,11 +234,10 @@
         }
 
         .footer-text {
-            font-size: 16px;
+            font-size: 14px;
             color: #888;
             font-style: italic;
-            margin-top: 20px;
-            padding-top: 10px;
+            margin-top: 10px;
         }
 
         @media (max-width: 768px) {
