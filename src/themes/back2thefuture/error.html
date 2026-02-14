@@ -26,7 +26,7 @@ body {
     padding: 20px;
     color: #FFFFFF;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 body::before {
@@ -276,32 +276,70 @@ body::before {
 
 @media only screen and (max-width: 480px) {
     .logo-img {
-        max-width: 350px;
+        max-width: 260px;
     }
 
     .delorean-img {
-        max-width: 350px;
+        max-width: 260px;
     }
 
     .error-code {
-        font-size: 80px;
+        font-size: 56px;
     }
 
     .error-message {
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .error-description {
-        font-size: 16px;
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 25px;
     }
 
     .question {
-        font-size: 20px;
+        font-size: 16px;
+        margin-bottom: 20px;
     }
 
     .btn {
+        font-size: 12px;
+        padding: 10px 20px;
+    }
+
+    .left-section {
+        gap: 12px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .logo-img {
+        max-width: 200px;
+    }
+
+    .delorean-img {
+        max-width: 200px;
+    }
+
+    .error-code {
+        font-size: 44px;
+    }
+
+    .error-message {
         font-size: 14px;
-        padding: 12px 25px;
+    }
+
+    .error-description {
+        font-size: 11px;
+    }
+
+    .question {
+        font-size: 13px;
+    }
+
+    .btn {
+        font-size: 11px;
+        padding: 8px 16px;
     }
 }
 </style>

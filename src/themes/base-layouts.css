@@ -124,6 +124,10 @@ body.fp-loading > .fp-overlay {
     opacity: 0;
 }
 
+body.fp-ready {
+    overflow-y: auto;
+}
+
 body.fp-ready > .fp-container,
 body.fp-ready > .fp-bg-image,
 body.fp-ready > .fp-overlay {
