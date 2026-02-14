@@ -1,0 +1,113 @@
+/*
+ * Peaceful Waterfalls — Nature/water theme
+ * Layout: card-bg
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #0d1b2a;
+    --fp-card-bg: linear-gradient(135deg, rgba(13, 27, 42, 0.92), rgba(26, 54, 82, 0.92));
+    --fp-text: #e0f7fa;
+    --fp-accent: #4fc3f7;
+    --fp-code-color: #4fc3f7;
+    --fp-title-color: #b3e5fc;
+    --fp-message-color: #4fc3f7;
+    --fp-desc-color: #cfe9f3;
+    --fp-footer-color: rgba(224, 247, 250, 0.5);
+
+    /* Typography */
+    --fp-font-body: 'Poppins', sans-serif;
+    --fp-font-display: 'Abril Fatface', cursive;
+    --fp-code-size: clamp(55px, 9vw, 85px);
+    --fp-title-size: clamp(24px, 3.5vw, 32px);
+    --fp-message-size: clamp(14px, 2vw, 16px);
+    --fp-desc-size: clamp(15px, 2vw, 18px);
+
+    /* Card */
+    --fp-card-border-color: rgba(79, 195, 247, 0.3);
+    --fp-card-border-width: 2px;
+    --fp-card-radius: 20px;
+    --fp-card-shadow: 0 25px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(79, 195, 247, 0.2);
+    --fp-card-backdrop: blur(15px);
+    --fp-card-padding: clamp(35px, 5vw, 50px) clamp(30px, 4vw, 45px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(180deg,
+        rgba(13, 27, 42, 0.7),
+        rgba(26, 54, 82, 0.75),
+        rgba(13, 27, 42, 0.7));
+    --fp-bg-image-opacity: 0.65;
+
+    /* Buttons */
+    --fp-btn-radius: 12px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-primary-bg: linear-gradient(135deg, #4fc3f7, #29b6f6);
+    --fp-btn-primary-text: #0d1b2a;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 8px 20px rgba(79, 195, 247, 0.4);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #4fc3f7, #29b6f6);
+    --fp-btn-primary-hover-shadow: 0 12px 30px rgba(79, 195, 247, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #4fc3f7;
+    --fp-btn-secondary-border: #4fc3f7;
+    --fp-btn-secondary-hover-bg: rgba(79, 195, 247, 0.15);
+
+    /* Container */
+    --fp-container-width: min(90%, 850px);
+}
+
+/* Body background */
+body {
+    background: #0d1b2a;
+    overflow: hidden;
+}
+
+/* Error code styling */
+.fp-error-code {
+    font-weight: 400;
+    text-shadow: 0 0 30px rgba(79, 195, 247, 0.6),
+                 2px 2px 0 rgba(0, 0, 0, 0.5);
+    line-height: 1;
+}
+
+/* Title styling */
+.fp-title {
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Message styling — flow-box aesthetic */
+.fp-error-message {
+    background: rgba(79, 195, 247, 0.12);
+    border: 2px solid rgba(79, 195, 247, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+    font-weight: 600;
+    animation: ripple 2s ease-in-out infinite;
+}
+
+@keyframes ripple {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Description styling */
+.fp-description {
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* Footer styling */
+.fp-footer {
+    font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px;
+        --fp-code-size: clamp(50px, 8vw, 70px);
+        --fp-title-size: clamp(20px, 3vw, 26px);
+        --fp-desc-size: clamp(14px, 2vw, 16px);
+    }
+}

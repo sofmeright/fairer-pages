@@ -1,0 +1,142 @@
+/*
+ * Red Dress Girl — Distracted Boyfriend meme theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #e8f4f8 0%, #b8d4e0 50%, #e8f4f8 100%);
+    --fp-card-bg: rgba(255, 255, 255, 0.95);
+    --fp-text: #2c3e50;
+    --fp-accent: #e74c3c;
+    --fp-code-color: #3498db;
+    --fp-title-color: #e74c3c;
+    --fp-message-color: #e74c3c;
+    --fp-desc-color: #7f8c8d;
+    --fp-footer-color: #95a5a6;
+
+    /* Typography */
+    --fp-font-body: 'Roboto', sans-serif;
+    --fp-font-display: 'Anton', sans-serif;
+    --fp-code-size: clamp(60px, 10vw, 110px);
+    --fp-title-size: clamp(36px, 6vw, 54px);
+    --fp-message-size: clamp(22px, 3.5vw, 28px);
+    --fp-desc-size: clamp(18px, 2.5vw, 20px);
+    --fp-btn-size: clamp(20px, 3vw, 24px);
+
+    /* Card */
+    --fp-card-border-color: #e74c3c;
+    --fp-card-border-width: 5px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 10px 50px rgba(231, 76, 60, 0.3), inset 0 0 0 3px #3498db;
+    --fp-card-padding: clamp(40px, 5vw, 45px) clamp(25px, 4vw, 35px);
+
+    /* Badge */
+    --fp-badge-bg: linear-gradient(135deg, #e74c3c, #c0392b);
+    --fp-badge-text: #fff;
+    --fp-badge-border: #fff;
+    --fp-badge-shadow: 0 4px 15px rgba(231, 76, 60, 0.5);
+    --fp-badge-radius: 25px;
+
+    /* Image */
+    --fp-image-border: 5px solid #2c3e50;
+    --fp-image-radius: 10px;
+    --fp-image-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    --fp-image-max-width: 450px;
+
+    /* Buttons */
+    --fp-btn-radius: 8px;
+    --fp-btn-border-width: 4px;
+    --fp-btn-font-weight: 900;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #3498db;
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: #2980b9;
+    --fp-btn-primary-shadow: 0 6px 0 #2980b9, 0 10px 25px rgba(52, 152, 219, 0.4);
+    --fp-btn-primary-hover-bg: #5dade2;
+    --fp-btn-primary-hover-shadow: 0 9px 0 #2980b9, 0 13px 30px rgba(52, 152, 219, 0.5);
+    --fp-btn-secondary-bg: #e74c3c;
+    --fp-btn-secondary-text: #fff;
+    --fp-btn-secondary-border: #c0392b;
+    --fp-btn-secondary-shadow: 0 6px 0 #c0392b, 0 10px 25px rgba(231, 76, 60, 0.4);
+    --fp-btn-secondary-hover-bg: #ec7063;
+    --fp-btn-secondary-hover-shadow: 0 9px 0 #c0392b, 0 13px 30px rgba(231, 76, 60, 0.5);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+}
+
+/* Body background with subtle pattern */
+body {
+    background: linear-gradient(135deg, #e8f4f8 0%, #b8d4e0 50%, #e8f4f8 100%);
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Title styling */
+.fp-title {
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #3498db, 6px 6px 0 rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    letter-spacing: 2px;
+}
+
+/* Error code */
+.fp-error-code {
+    text-shadow: 4px 4px 0 #e74c3c, 7px 7px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Error message */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: clamp(22px, 3.5vw, 34px);
+}
+
+/* Description */
+.fp-description {
+    font-style: italic;
+}
+
+/* Footer styling */
+.fp-footer {
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #2980b9, 0 6px 15px rgba(52, 152, 219, 0.3);
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #c0392b, 0 6px 15px rgba(231, 76, 60, 0.3);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 25px;
+    }
+
+    .fp-badge {
+        font-size: 11px;
+        padding: 6px 15px;
+    }
+}

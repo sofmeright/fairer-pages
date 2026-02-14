@@ -1,0 +1,26 @@
+{
+    "layout": "card-image",
+    "name": "Catastrotypcic",
+    "image": "resources/cat-typing.webp",
+    "imageAlt": "Cat Typing Manically",
+    "fonts": "https://fonts.googleapis.com/css2?family=VT323&family=Courier+Prime:wght@400;700&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 50,
+        "type": "matrix",
+        "color": "#0f0"
+    },
+    "buttons": {
+        "home": "ESCAPE",
+        "back": "PANIC BACK"
+    },
+    "titles": {
+        "default": "CATASTROTYPCIC!"
+    },
+    "messages": {
+        "default": "Unknown Error"
+    },
+    "descriptions": {
+        "default": "*TYPING FRANTICALLY* KEYBOARD MASHING IN PROGRESS!"
+    }
+}

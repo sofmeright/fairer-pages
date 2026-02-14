@@ -1,0 +1,169 @@
+/*
+ * Leave Alone — Dramatic emotional breakdown theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #c71585 100%);
+    --fp-card-bg: rgba(0, 0, 0, 0.7);
+    --fp-text: #fff;
+    --fp-accent: #ff69b4;
+    --fp-code-color: #ff69b4;
+    --fp-title-color: #fff;
+    --fp-message-color: #fff;
+    --fp-desc-color: #ffe4e1;
+    --fp-footer-color: rgba(255, 255, 255, 0.8);
+
+    /* Typography */
+    --fp-font-body: 'Roboto', sans-serif;
+    --fp-font-display: 'Passion One', cursive;
+    --fp-code-size: clamp(60px, 12vw, 100px);
+    --fp-title-size: clamp(42px, 6vw, 52px);
+    --fp-message-size: clamp(28px, 4vw, 40px);
+    --fp-desc-size: clamp(18px, 2.5vw, 22px);
+    --fp-btn-size: clamp(22px, 3vw, 26px);
+
+    /* Card */
+    --fp-card-border-color: #ff69b4;
+    --fp-card-border-width: 6px;
+    --fp-card-radius: 20px;
+    --fp-card-shadow: 0 0 60px rgba(255, 105, 180, 0.8), inset 0 0 40px rgba(255, 20, 147, 0.3);
+    --fp-card-padding: clamp(48px, 5vw, 48px) clamp(20px, 3vw, 30px) clamp(15px, 2vw, 15px);
+
+    /* Badge */
+    --fp-badge-bg: #ff1493;
+    --fp-badge-text: #fff;
+    --fp-badge-border: #ff69b4;
+    --fp-badge-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+    --fp-badge-radius: 25px;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Image */
+    --fp-image-border: 6px solid #ff69b4;
+    --fp-image-radius: 15px;
+    --fp-image-shadow: 0 10px 50px rgba(255, 20, 147, 0.6);
+    --fp-image-max-width: 350px;
+
+    /* Buttons */
+    --fp-btn-radius: 50px;
+    --fp-btn-border-width: 4px;
+    --fp-btn-font-weight: 900;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #ff69b4;
+    --fp-btn-primary-text: #000;
+    --fp-btn-primary-border: #fff;
+    --fp-btn-primary-shadow: 0 6px 25px rgba(255, 105, 180, 0.6);
+    --fp-btn-primary-hover-bg: #ff1493;
+    --fp-btn-primary-hover-shadow: 0 10px 35px rgba(255, 20, 147, 0.8);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #ff69b4;
+    --fp-btn-secondary-border: #ff69b4;
+    --fp-btn-secondary-shadow: 0 6px 25px rgba(255, 105, 180, 0.4);
+    --fp-btn-secondary-hover-bg: #ff69b4;
+    --fp-btn-secondary-hover-shadow: 0 10px 35px rgba(255, 105, 180, 0.8);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+
+    /* Particles */
+    --fp-particle-color: #ffffff;
+}
+
+/* Body background */
+body {
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #c71585 100%);
+    overflow-y: hidden;
+}
+
+/* Dramatic curtain effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.05) 0px,
+            transparent 2px,
+            transparent 4px,
+            rgba(255, 255, 255, 0.05) 6px
+        );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Title styling */
+.fp-title {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4, 4px 4px 0 rgba(0, 0, 0, 0.5);
+    animation: dramatic-pulse 2s infinite;
+}
+
+@keyframes dramatic-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Error code */
+.fp-error-code {
+    font-weight: 900;
+    text-shadow: 0 0 30px #ff1493, 5px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Error message */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+}
+
+/* Description */
+.fp-description {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* Image brightness/contrast filter */
+.fp-image {
+    filter: brightness(1.1) contrast(1.1);
+}
+
+/* Hover states */
+.fp-btn-primary:hover {
+    color: #fff;
+}
+
+.fp-btn-secondary:hover {
+    color: #000;
+}
+
+/* Sparkle particle override */
+.fp-particle {
+    width: 4px !important;
+    height: 4px !important;
+    animation-name: sparkle !important;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 25px 15px 25px;
+    }
+
+    .fp-badge {
+        font-size: 11px;
+        padding: 6px 15px;
+    }
+}

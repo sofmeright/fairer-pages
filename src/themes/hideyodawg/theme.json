@@ -1,0 +1,21 @@
+{
+    "layout": "card-image",
+    "name": "Hide Yo Dawg",
+    "badge": "\u26a0\ufe0f WARNING \u26a0\ufe0f",
+    "image": "resources/antoine.gif",
+    "imageAlt": "Antoine Dodson",
+    "fonts": "https://fonts.googleapis.com/css2?family=Impact&family=Anton&display=swap",
+    "buttons": {
+        "home": "Get Out!",
+        "back": "Run Back!"
+    },
+    "titles": {
+        "default": "HIDE YO KIDS! HIDE YO WIFE! AND HIDE YO HUSBAND!"
+    },
+    "messages": {
+        "default": "'Cause they erroring everybody out here!"
+    },
+    "descriptions": {
+        "default": ""
+    }
+}

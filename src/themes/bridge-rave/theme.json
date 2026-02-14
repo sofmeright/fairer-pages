@@ -1,0 +1,52 @@
+{
+    "layout": "card-image",
+    "name": "Bridge Rave",
+    "image": "resources/bridge-rave.gif",
+    "imageAlt": "Underground Rave",
+    "fonts": "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap",
+    "buttons": {
+        "home": "Back to Surface",
+        "back": "Previous Location"
+    },
+    "titles": {
+        "default": "Renegade Sector"
+    },
+    "messages": {
+        "400": "Bad Request",
+        "401": "Unauthorized",
+        "402": "Payment Required",
+        "403": "Forbidden",
+        "404": "Not Found",
+        "405": "Method Not Allowed",
+        "406": "Not Acceptable",
+        "408": "Request Timeout",
+        "409": "Conflict",
+        "410": "Gone",
+        "413": "Payload Too Large",
+        "429": "Too Many Requests",
+        "500": "Internal Server Error",
+        "502": "Bad Gateway",
+        "503": "Service Unavailable",
+        "504": "Gateway Timeout",
+        "default": "Unknown Error"
+    },
+    "descriptions": {
+        "400": "Your signal was corrupted. The underground network couldn't decode your request.",
+        "401": "You need proper credentials to access this secret location.",
+        "402": "Entry fee required for this exclusive underground spot.",
+        "403": "This area is off-limits. Even renegades have boundaries.",
+        "404": "This route doesn't exist in the underground network.",
+        "405": "That method won't work down here. Try a different approach.",
+        "406": "The format you requested isn't supported in this sector.",
+        "408": "Your connection to the underground timed out. The signal was lost.",
+        "409": "There's a conflict in the underground network. Two signals can't occupy the same space.",
+        "410": "This location was shut down permanently. The rave moved on.",
+        "413": "Your data packet is too large for the underground channels.",
+        "429": "Slow down! You're pinging the network too frequently.",
+        "500": "The underground server crashed. Even renegades have technical difficulties.",
+        "502": "The gateway to this sector is malfunctioning.",
+        "503": "The underground network is temporarily offline. Maintenance in progress.",
+        "504": "The gateway timed out trying to reach this location.",
+        "default": "Something went wrong in the underground."
+    }
+}

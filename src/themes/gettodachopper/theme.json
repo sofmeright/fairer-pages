@@ -1,0 +1,22 @@
+{
+    "layout": "card-image",
+    "name": "Get To Da Chopper",
+    "badge": "\u26a0 EMERGENCY \u26a0",
+    "image": "resources/chopper.gif",
+    "imageAlt": "Get to the chopper!",
+    "fonts": "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&display=swap",
+    "buttons": {
+        "home": "EVACUATE NOW!",
+        "back": "FALL BACK!"
+    },
+    "footer": "LAT: 404\u00b0N LONG: 500\u00b0W",
+    "titles": {
+        "default": "EXTRACTION NEEDED!"
+    },
+    "messages": {
+        "default": "GET TO DA CHOPPER! I'LL HOLD 'EM OFF!"
+    },
+    "descriptions": {
+        "default": "This page is compromised. Extract immediately!"
+    }
+}

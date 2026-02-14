@@ -1,0 +1,127 @@
+/*
+ * Zelda Master Sword (Elegant) — Breath of the Wild inspired theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #0a1628, #1a3a5a, #0a1628);
+    --fp-card-bg: linear-gradient(135deg, rgba(15, 30, 60, 0.95), rgba(20, 40, 80, 0.95));
+    --fp-text: #e8f4f8;
+    --fp-accent: #64c8ff;
+    --fp-code-color: #64c8ff;
+    --fp-title-color: #64c8ff;
+    --fp-message-color: #e8f4f8;
+    --fp-desc-color: #d0e8f0;
+    --fp-footer-color: rgba(232, 244, 248, 0.6);
+
+    /* Typography */
+    --fp-font-body: 'Philosopher', sans-serif;
+    --fp-font-display: 'Cinzel Decorative', cursive;
+    --fp-code-size: clamp(50px, 8vw, 90px);
+    --fp-title-size: clamp(24px, 4vw, 34px);
+    --fp-message-size: clamp(14px, 2vw, 18px);
+    --fp-desc-size: clamp(14px, 2vw, 16px);
+    --fp-footer-size: 14px;
+    --fp-btn-size: clamp(14px, 2vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: rgba(100, 200, 255, 0.5);
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(100, 200, 255, 0.3);
+    --fp-card-backdrop: blur(10px);
+    --fp-card-padding: clamp(40px, 5vw, 50px) clamp(30px, 4vw, 45px);
+
+    /* Image */
+    --fp-image-border: 2px solid rgba(100, 200, 255, 0.4);
+    --fp-image-radius: 12px;
+    --fp-image-shadow: 0 15px 50px rgba(100, 200, 255, 0.4);
+    --fp-image-max-height: 350px;
+
+    /* Buttons */
+    --fp-btn-radius: 10px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: linear-gradient(135deg, #64c8ff, #4090d0);
+    --fp-btn-primary-text: #0a1628;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 8px 25px rgba(100, 200, 255, 0.4);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #78d4ff, #50a0e0);
+    --fp-btn-primary-hover-shadow: 0 12px 35px rgba(100, 200, 255, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #64c8ff;
+    --fp-btn-secondary-border: #64c8ff;
+    --fp-btn-secondary-shadow: 0 0 15px rgba(100, 200, 255, 0.2);
+    --fp-btn-secondary-hover-bg: rgba(100, 200, 255, 0.1);
+    --fp-btn-secondary-hover-shadow: 0 0 25px rgba(100, 200, 255, 0.4);
+
+    /* Container */
+    --fp-container-width: min(100%, 850px);
+}
+
+/* Background */
+body {
+    background: linear-gradient(135deg, #0a1628, #1a3a5a, #0a1628);
+    padding: 20px;
+}
+
+/* Sword emoji above card */
+.fp-card::before {
+    content: '\2694\FE0F';
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    filter: drop-shadow(0 0 15px rgba(100, 200, 255, 0.6));
+}
+
+/* Error code gradient text */
+.fp-error-code {
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 900;
+    background: linear-gradient(135deg, #64c8ff, #ffffff, #64c8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(100, 200, 255, 0.6));
+}
+
+/* Title */
+.fp-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(100, 200, 255, 0.6);
+    letter-spacing: 2px;
+}
+
+/* Description */
+.fp-description {
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+/* Courage box styled description accent */
+.fp-card .fp-description + .fp-footer {
+    text-shadow: 0 0 10px rgba(100, 200, 255, 0.5);
+}
+
+/* Footer */
+.fp-footer {
+    font-style: italic;
+}
+
+/* Button font */
+.fp-btn-primary,
+.fp-btn-secondary {
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px;
+    }
+}

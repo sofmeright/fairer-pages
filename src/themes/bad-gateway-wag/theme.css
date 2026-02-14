@@ -1,0 +1,103 @@
+/*
+ * Bad Gateway Wag — Finger-wagging shame theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    --fp-card-bg: rgba(20, 20, 20, 0.95);
+    --fp-text: #ffffff;
+    --fp-accent: #ffc107;
+    --fp-code-color: #ffc107;
+    --fp-title-color: #ffffff;
+    --fp-message-color: #e0e0e0;
+    --fp-desc-color: #ffc107;
+    --fp-footer-color: #888;
+
+    /* Typography */
+    --fp-font-body: 'Roboto', sans-serif;
+    --fp-font-display: 'Bangers', cursive;
+    --fp-code-size: clamp(70px, 12vw, 90px);
+    --fp-title-size: clamp(28px, 5vw, 36px);
+    --fp-message-size: clamp(17px, 2.5vw, 19px);
+    --fp-desc-size: clamp(14px, 2vw, 16px);
+    --fp-btn-size: clamp(14px, 2vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: #ffc107;
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 20px;
+    --fp-card-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), 0 0 0 3px rgba(255, 193, 7, 0.3);
+    --fp-card-padding: clamp(40px, 5vw, 50px) clamp(30px, 4vw, 40px) clamp(30px, 4vw, 40px);
+
+    /* Image */
+    --fp-image-border: 2px solid rgba(255, 193, 7, 0.3);
+    --fp-image-radius: 12px;
+    --fp-image-shadow: 0 15px 50px rgba(255, 193, 7, 0.3);
+
+    /* Buttons */
+    --fp-btn-radius: 10px;
+    --fp-btn-border-width: 0px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #ffc107;
+    --fp-btn-primary-text: #1a1a1a;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+    --fp-btn-primary-hover-bg: #ffca28;
+    --fp-btn-primary-hover-shadow: 0 12px 30px rgba(255, 193, 7, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #ffc107;
+    --fp-btn-secondary-border: #ffc107;
+    --fp-btn-secondary-shadow: none;
+    --fp-btn-secondary-hover-bg: rgba(255, 193, 7, 0.1);
+    --fp-btn-secondary-hover-shadow: none;
+
+    /* Container */
+    --fp-container-width: min(100%, 800px);
+}
+
+/* Body */
+body {
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+}
+
+/* Error code */
+.fp-error-code {
+    text-shadow: 0 0 30px rgba(255, 193, 7, 0.6), 4px 4px 0 rgba(0, 0, 0, 0.8);
+    letter-spacing: 3px;
+}
+
+/* Title */
+.fp-title {
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+}
+
+/* Description (warning box style) */
+.fp-description {
+    background: rgba(255, 193, 7, 0.1);
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+    padding: 20px;
+    font-weight: 600;
+}
+
+/* Footer */
+.fp-footer {
+    font-style: italic;
+}
+
+/* Secondary button border */
+.fp-btn-secondary {
+    border: 2px solid #ffc107;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px 30px 30px;
+    }
+}

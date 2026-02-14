@@ -1,0 +1,174 @@
+/*
+ * Get To Da Chopper — Arnold Schwarzenegger Predator theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #1a1a1a 0%, #0d2818 50%, #1a1a1a 100%);
+    --fp-card-bg: rgba(0, 0, 0, 0.9);
+    --fp-text: #fff;
+    --fp-accent: #ff6600;
+    --fp-code-color: #ff6600;
+    --fp-title-color: #ff0000;
+    --fp-message-color: #00ff00;
+    --fp-desc-color: #aaa;
+    --fp-footer-color: #4a7c59;
+
+    /* Typography */
+    --fp-font-body: 'Oswald', sans-serif;
+    --fp-font-display: 'Bebas Neue', cursive;
+    --fp-code-size: clamp(55px, 12vw, 100px);
+    --fp-title-size: clamp(32px, 6vw, 56px);
+    --fp-message-size: clamp(28px, 5vw, 48px);
+    --fp-desc-size: clamp(16px, 2.5vw, 20px);
+    --fp-btn-size: clamp(20px, 3vw, 26px);
+    --fp-footer-size: 12px;
+
+    /* Card */
+    --fp-card-border-color: #4a7c59;
+    --fp-card-border-width: 4px;
+    --fp-card-radius: 8px;
+    --fp-card-shadow: 0 0 50px rgba(74, 124, 89, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.5);
+    --fp-card-padding: 40px 30px;
+
+    /* Badge */
+    --fp-badge-bg: #ff0000;
+    --fp-badge-text: #000;
+    --fp-badge-border: #000;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Image */
+    --fp-image-border: 4px solid #4a7c59;
+    --fp-image-radius: 8px;
+    --fp-image-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    --fp-image-max-width: 400px;
+
+    /* Buttons */
+    --fp-btn-radius: 4px;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 3px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #4a7c59;
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: #fff;
+    --fp-btn-primary-shadow: 0 5px 20px rgba(74, 124, 89, 0.5);
+    --fp-btn-primary-hover-bg: #5a9c69;
+    --fp-btn-primary-hover-shadow: 0 8px 30px rgba(74, 124, 89, 0.8);
+    --fp-btn-secondary-bg: #333;
+    --fp-btn-secondary-text: #ffcc00;
+    --fp-btn-secondary-border: #ffcc00;
+    --fp-btn-secondary-shadow: 0 5px 20px rgba(255, 204, 0, 0.3);
+    --fp-btn-secondary-hover-bg: #444;
+    --fp-btn-secondary-hover-shadow: 0 8px 30px rgba(255, 204, 0, 0.6);
+
+    /* Container */
+    --fp-container-width: min(90%, 850px);
+}
+
+/* Body background + camouflage overlay */
+body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d2818 50%, #1a1a1a 100%);
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(45, 70, 45, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(30, 50, 30, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(35, 60, 35, 0.1) 0%, transparent 50%);
+    z-index: 0;
+    animation: camo-shift 20s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes camo-shift {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.3; }
+}
+
+/* Card danger pulse animation */
+@keyframes danger-pulse {
+    0%, 100% {
+        box-shadow: 0 0 40px rgba(255, 0, 0, 0.3), inset 0 0 40px rgba(255, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(255, 0, 0, 0.6), inset 0 0 60px rgba(255, 0, 0, 0.2);
+    }
+}
+
+.fp-card {
+    animation: danger-pulse 2s infinite;
+}
+
+/* Title urgent blink */
+@keyframes urgent-blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.7; }
+}
+
+.fp-title {
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-shadow: 0 0 20px #ff0000, 3px 3px 0 #000;
+    animation: urgent-blink 1s infinite;
+}
+
+/* Error code text shadow */
+.fp-error-code {
+    text-shadow: 0 0 20px #ff6600, 4px 4px 0 #000;
+}
+
+/* Error message (action text) */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #ffcc00;
+}
+
+/* Message styling (action text) */
+.fp-message {
+    text-transform: uppercase;
+    text-shadow: 0 0 20px #00ff00, 3px 3px 0 #000;
+    letter-spacing: 3px;
+    line-height: 1.3;
+    font-family: 'Bebas Neue', cursive;
+}
+
+/* Description (mission brief) */
+.fp-description {
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* Image desaturation filter */
+.fp-image {
+    filter: saturate(0.8) contrast(1.1);
+}
+
+/* Footer as monospace coordinates */
+.fp-footer {
+    font-family: monospace;
+    opacity: 0.6;
+}
+
+/* Button hover scale */
+.fp-btn-primary:hover,
+.fp-btn-secondary:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 30px 20px;
+    }
+}

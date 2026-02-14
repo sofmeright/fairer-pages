@@ -1,0 +1,272 @@
+/*
+ * Wanderer — Tolkien-inspired lost traveler theme
+ * Layout: card
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #2c1810;
+    --fp-card-bg: rgba(212, 175, 119, 0.08);
+    --fp-text: #d4af77;
+    --fp-accent: #8b7355;
+    --fp-code-color: #d4af77;
+    --fp-title-color: #d4af77;
+    --fp-message-color: #c9a76b;
+    --fp-desc-color: #c9a76b;
+    --fp-footer-color: #8b7355;
+
+    /* Typography */
+    --fp-font-body: 'EB Garamond', serif;
+    --fp-font-display: 'Cinzel', serif;
+    --fp-code-size: clamp(70px, 11vw, 90px);
+    --fp-title-size: clamp(24px, 4vw, 32px);
+    --fp-message-size: clamp(22px, 3.5vw, 28px);
+    --fp-desc-size: clamp(18px, 2.5vw, 20px);
+    --fp-btn-size: clamp(18px, 2.5vw, 22px);
+
+    /* Card */
+    --fp-card-border-color: #8b7355;
+    --fp-card-border-width: 4px;
+    --fp-card-radius: 10px;
+    --fp-card-shadow: 0 0 50px rgba(139, 115, 85, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.3);
+    --fp-card-backdrop: blur(5px);
+    --fp-card-padding: clamp(35px, 5vw, 40px) clamp(25px, 4vw, 35px);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+
+    /* Badge */
+    --fp-badge-bg: #8b7355;
+    --fp-badge-text: #f4e4c1;
+    --fp-badge-border: #d4af77;
+    --fp-badge-shadow: 0 4px 15px rgba(139, 115, 85, 0.5);
+    --fp-badge-radius: 5px;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Buttons */
+    --fp-btn-radius: 5px;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #8b7355;
+    --fp-btn-primary-text: #f4e4c1;
+    --fp-btn-primary-border: #d4af77;
+    --fp-btn-primary-shadow: 0 6px 0 #5c4a3a, 0 10px 25px rgba(0, 0, 0, 0.5);
+    --fp-btn-primary-hover-bg: #a08968;
+    --fp-btn-primary-hover-shadow: 0 9px 0 #5c4a3a, 0 13px 30px rgba(0, 0, 0, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #d4af77;
+    --fp-btn-secondary-border: #8b7355;
+    --fp-btn-secondary-shadow: 0 6px 0 #5c4a3a, 0 10px 25px rgba(0, 0, 0, 0.5);
+    --fp-btn-secondary-hover-bg: rgba(139, 115, 85, 0.3);
+    --fp-btn-secondary-hover-shadow: 0 9px 0 #5c4a3a, 0 13px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Body gradient background */
+body {
+    background: linear-gradient(135deg, #2c1810 0%, #4a3426 50%, #2c1810 100%);
+    overflow: hidden;
+}
+
+/* Parchment texture overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(212, 175, 119, 0.03) 2px, rgba(212, 175, 119, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(212, 175, 119, 0.03) 2px, rgba(212, 175, 119, 0.03) 4px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Compass rose background */
+body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: radial-gradient(circle, transparent 30%, rgba(212, 175, 119, 0.05) 30%, rgba(212, 175, 119, 0.05) 32%, transparent 32%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+    animation: slow-rotate 60s linear infinite;
+}
+
+@keyframes slow-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Badge styling */
+.fp-badge {
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    padding: 8px 25px;
+    border-width: 3px;
+}
+
+/* Corner decorations on card */
+.fp-card {
+    position: relative;
+}
+
+.fp-card::before {
+    content: '\2726';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: #d4af77;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.fp-card::after {
+    content: '\2726';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #d4af77;
+    opacity: 0.5;
+}
+
+/* Bottom corner decorations via card inner wrapper or buttons area */
+.fp-footer::before {
+    content: '\2726                    \2726';
+    display: block;
+    font-size: 24px;
+    color: #d4af77;
+    opacity: 0.5;
+    white-space: pre;
+    margin-bottom: 10px;
+}
+
+/* Title as Tolkien quote */
+.fp-title {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Compass icon above error code */
+.fp-error-code::before {
+    content: '\01F9ED';
+    display: block;
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: #8b7355;
+    text-shadow: 0 0 20px rgba(212, 175, 119, 0.5);
+    animation: compass-spin 4s ease-in-out infinite;
+}
+
+@keyframes compass-spin {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+/* Error code */
+.fp-error-code {
+    font-weight: 700;
+    text-shadow: 3px 3px 0 #8b7355, 5px 5px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+/* Error message */
+.fp-error-message {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 20px;
+}
+
+/* Description — combines reality check and journey text */
+.fp-description {
+    font-size: clamp(18px, 2.5vw, 20px);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* Hide quote element — title handles the Tolkien quote */
+.fp-quote {
+    display: none;
+}
+
+/* Footer text */
+.fp-footer {
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 30px;
+}
+
+/* Buttons */
+.fp-buttons {
+    margin-top: 30px;
+    gap: 20px;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #5c4a3a, 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.fp-btn-primary:hover {
+    filter: none;
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #5c4a3a, 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.fp-btn-secondary:hover {
+    filter: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 35px 25px;
+    }
+
+    .fp-title {
+        font-size: 24px;
+    }
+
+    .fp-error-code::before {
+        font-size: 60px;
+    }
+
+    .fp-error-code {
+        font-size: 70px;
+    }
+
+    .fp-error-message {
+        font-size: 22px;
+    }
+
+    .fp-description {
+        font-size: 18px;
+    }
+
+    .fp-btn-primary,
+    .fp-btn-secondary {
+        padding: 12px 30px;
+        font-size: 18px;
+    }
+}

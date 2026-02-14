@@ -1,0 +1,176 @@
+/*
+ * Shuffled Around — EDM / shuffle dance theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    --fp-card-bg: rgba(20, 20, 40, 0.92);
+    --fp-card-backdrop: blur(20px);
+    --fp-text: #fff;
+    --fp-accent: #00ffff;
+    --fp-code-color: #ff00ff;
+    --fp-title-color: #00ffff;
+    --fp-message-color: #00ffff;
+    --fp-desc-color: #fff;
+    --fp-footer-color: #ffff00;
+
+    /* Typography */
+    --fp-font-body: 'Poppins', sans-serif;
+    --fp-font-display: 'Staatliches', cursive;
+    --fp-code-size: clamp(70px, 12vw, 100px);
+    --fp-title-size: clamp(22px, 3vw, 30px);
+    --fp-message-size: clamp(18px, 2.5vw, 24px);
+    --fp-desc-size: clamp(16px, 2vw, 17px);
+    --fp-btn-size: clamp(14px, 2vw, 16px);
+    --fp-badge-size: clamp(13px, 2vw, 18px);
+
+    /* Card */
+    --fp-card-border-color: transparent;
+    --fp-card-border-width: 4px;
+    --fp-card-radius: 30px;
+    --fp-card-shadow: 0 30px 90px rgba(0, 0, 0, 0.6), 0 0 0 4px rgba(255, 255, 255, 0.1);
+    --fp-card-padding: clamp(30px, 4vw, 35px) clamp(25px, 3vw, 30px);
+
+    /* Badge */
+    --fp-badge-bg: rgba(20, 20, 40, 0.95);
+    --fp-badge-text: #ff00ff;
+    --fp-badge-border: rgba(255, 0, 255, 0.7);
+    --fp-badge-shadow: 0 0 25px rgba(255, 0, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3);
+    --fp-badge-radius: 50px;
+    --fp-badge-letter-spacing: 4px;
+
+    /* Image */
+    --fp-image-border: 4px solid rgba(255, 255, 255, 0.3);
+    --fp-image-radius: 20px;
+    --fp-image-shadow: 0 0 50px rgba(255, 0, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5);
+    --fp-image-max-width: 380px;
+
+    /* Buttons */
+    --fp-btn-radius: 50px;
+    --fp-btn-border-width: 0;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: linear-gradient(135deg, #ff00ff, #00ffff);
+    --fp-btn-primary-text: #000;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #ff44ff, #44ffff);
+    --fp-btn-primary-hover-shadow: 0 0 50px rgba(255, 0, 255, 1), 0 0 30px rgba(0, 255, 255, 1);
+    --fp-btn-secondary-bg: linear-gradient(135deg, #ffff00, #ff00ff);
+    --fp-btn-secondary-text: #000;
+    --fp-btn-secondary-border: transparent;
+    --fp-btn-secondary-shadow: 0 0 30px rgba(255, 255, 0, 0.8);
+    --fp-btn-secondary-hover-bg: linear-gradient(135deg, #ffff44, #ff44ff);
+    --fp-btn-secondary-hover-shadow: 0 0 50px rgba(255, 255, 0, 1), 0 0 30px rgba(255, 0, 255, 1);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+}
+
+/* Animated disco background */
+@keyframes disco-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: disco-bg 8s ease infinite;
+}
+
+/* Disco balls */
+.fp-card::before,
+.fp-card::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #ddd, #666);
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.8),
+                inset -20px -20px 40px rgba(0, 0, 0, 0.3);
+    animation: spin-ball 4s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.fp-card::before {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    right: 15%;
+}
+
+.fp-card::after {
+    width: 60px;
+    height: 60px;
+    bottom: 20%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes spin-ball {
+    to { transform: rotate(360deg); }
+}
+
+/* Neon flowing gradient on badge */
+@keyframes neon-flow {
+    to { background-position: 300% 0; }
+}
+
+.fp-badge {
+    background:
+        linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff),
+        linear-gradient(rgba(20, 20, 40, 0.95), rgba(20, 20, 40, 0.95));
+    background-size: 300% 100%, 100% 100%;
+    -webkit-background-clip: text, padding-box;
+    background-clip: text, padding-box;
+    -webkit-text-fill-color: transparent;
+    animation: neon-flow 3s linear infinite;
+    text-shadow: none;
+    font-weight: 900;
+}
+
+/* Error code gradient text */
+.fp-error-code {
+    background: linear-gradient(135deg, #ff00ff, #00ffff, #ffff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 12px;
+}
+
+/* Error title */
+.fp-error-message {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.9);
+}
+
+/* Footer (BPM indicator) */
+.fp-footer {
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(255, 255, 0, 0.9);
+}
+
+/* Button hover scale */
+.fp-btn-primary:hover,
+.fp-btn-secondary:hover {
+    transform: translateY(-4px) scale(1.05);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 35px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --fp-code-size: 70px;
+    }
+}

@@ -1,0 +1,84 @@
+/* Blank State — Theme CSS */
+
+:root {
+    /* Colors */
+    --fp-bg: #f0f0f0;
+    --fp-card-bg: rgba(255, 255, 255, 0.95);
+    --fp-text: #fff;
+    --fp-accent: #8a2be2;
+    --fp-code-color: #8a2be2;
+    --fp-title-color: #5a4a6a;
+    --fp-message-color: #5a4a6a;
+    --fp-desc-color: #7a6a8a;
+    --fp-footer-color: #9a8aaa;
+
+    /* Typography */
+    --fp-font-body: 'Quicksand', sans-serif;
+    --fp-font-display: 'Quicksand', sans-serif;
+    --fp-code-size: clamp(60px, 10vw, 100px);
+    --fp-title-size: clamp(22px, 4vw, 32px);
+    --fp-desc-size: clamp(14px, 2vw, 18px);
+
+    /* Card */
+    --fp-card-border-color: transparent;
+    --fp-card-border-width: 0px;
+    --fp-card-radius: 30px;
+    --fp-card-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --fp-card-backdrop: blur(10px);
+    --fp-card-padding: clamp(30px, 5vw, 50px) clamp(25px, 4vw, 40px);
+    --fp-container-width: min(90%, 700px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(255, 105, 180, 0.3));
+    --fp-bg-image-opacity: 1;
+
+    /* Buttons */
+    --fp-btn-primary-bg: linear-gradient(135deg, #8a2be2, #ff69b4);
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #8a2be2, #ff69b4);
+    --fp-btn-primary-hover-shadow: 0 12px 30px rgba(138, 43, 226, 0.5);
+    --fp-btn-secondary-bg: rgba(138, 43, 226, 0.1);
+    --fp-btn-secondary-text: #8a2be2;
+    --fp-btn-secondary-border: #8a2be2;
+    --fp-btn-secondary-hover-bg: rgba(138, 43, 226, 0.2);
+    --fp-btn-radius: 50px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-border-width: 2px;
+}
+
+/* Error code gradient text */
+.fp-error-code {
+    background: linear-gradient(135deg, #8a2be2, #ff69b4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Title styling */
+.fp-title {
+    font-weight: 700;
+}
+
+/* Description styling */
+.fp-description {
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+/* Footer styling */
+.fp-footer {
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-code-size: clamp(50px, 9vw, 80px);
+        --fp-title-size: clamp(20px, 4vw, 26px);
+        --fp-desc-size: clamp(13px, 2vw, 16px);
+        --fp-btn-size: clamp(13px, 2vw, 15px);
+    }
+}

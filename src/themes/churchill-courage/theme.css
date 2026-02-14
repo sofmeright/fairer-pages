@@ -1,0 +1,135 @@
+/*
+ * Churchill Courage — Winston Churchill inspirational theme
+ * Layout: card
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #1a1a1a, #2d2d2d, #1a1a1a);
+    --fp-card-bg: rgba(30, 30, 30, 0.98);
+    --fp-text: #f0f0f0;
+    --fp-accent: #b8860b;
+    --fp-code-color: #b8860b;
+    --fp-title-color: #daa520;
+    --fp-message-color: #d0d0d0;
+    --fp-desc-color: #d0d0d0;
+    --fp-footer-color: rgba(240, 240, 240, 0.5);
+
+    /* Typography */
+    --fp-font-body: 'Source Sans 3', sans-serif;
+    --fp-font-display: 'Playfair Display', serif;
+    --fp-code-size: clamp(50px, 8vw, 80px);
+    --fp-title-size: clamp(22px, 3.5vw, 30px);
+    --fp-message-size: clamp(14px, 2vw, 18px);
+    --fp-desc-size: clamp(14px, 1.8vw, 18px);
+    --fp-btn-size: clamp(13px, 1.8vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: rgba(184, 134, 11, 0.5);
+    --fp-card-border-width: 2px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(184, 134, 11, 0.3);
+    --fp-card-backdrop: blur(10px);
+    --fp-card-padding: clamp(35px, 5vw, 50px) clamp(30px, 4vw, 45px);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+
+    /* Buttons */
+    --fp-btn-radius: 8px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: linear-gradient(135deg, #b8860b, #8b6914);
+    --fp-btn-primary-text: #ffffff;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 6px 20px rgba(184, 134, 11, 0.3);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #c99b1e, #a07a18);
+    --fp-btn-primary-hover-shadow: 0 8px 25px rgba(184, 134, 11, 0.5);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #daa520;
+    --fp-btn-secondary-border: #b8860b;
+    --fp-btn-secondary-hover-bg: rgba(184, 134, 11, 0.1);
+
+}
+
+/* Body gradient background */
+body {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #1a1a1a);
+    overflow: hidden;
+}
+
+/* Error code */
+.fp-error-code {
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+}
+
+/* Title */
+.fp-title {
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 25px;
+}
+
+/* Message as courage text */
+.fp-error-message {
+    font-weight: 400;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+/* Hide the description since messages are detailed enough */
+.fp-description {
+    display: none;
+}
+
+/* Quote box styling */
+.fp-quote {
+    background: rgba(184, 134, 11, 0.08);
+    border-left: 4px solid #b8860b;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin: 30px 0;
+    font-size: clamp(16px, 2vw, 20px);
+    color: #daa520;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.fp-quote-author {
+    font-size: clamp(13px, 1.5vw, 16px);
+    color: #b8860b;
+}
+
+/* Buttons */
+.fp-buttons {
+    margin-top: 35px;
+    gap: 15px;
+}
+
+/* Button hover — no filter brightness */
+.fp-btn-primary:hover {
+    filter: none;
+}
+
+/* Footer */
+.fp-footer {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px;
+    }
+
+    .fp-quote {
+        font-size: 18px;
+        padding: 20px 25px;
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "layout": "card-image",
+    "name": "Sanford and Son",
+    "badge": "\u2605 SANFORD & SON SALVAGE \u2605",
+    "image": "resources/glasses.gif",
+    "imageAlt": "Looking for my glasses",
+    "fonts": "https://fonts.googleapis.com/css2?family=Bowlby+One&family=Archivo+Black&display=swap",
+    "buttons": {
+        "home": "Head Home",
+        "back": "Go Back"
+    },
+    "quote": {
+        "text": "This is the big one! This page is coming to join you, Elizabeth!",
+        "author": "Fred Sanford"
+    },
+    "footer": "You big dummy!",
+    "titles": {
+        "default": "Can't Find What You're Looking For?"
+    },
+    "messages": {
+        "default": "You've stumbled into the junkyard..."
+    }
+}

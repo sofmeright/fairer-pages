@@ -1,0 +1,28 @@
+{
+    "layout": "card-image",
+    "name": "Leggo Oh No!",
+    "badge": "🧇 LEGGO OH NO! 🧇",
+    "image": "resources/waffle-fall.gif",
+    "imageAlt": "Waffle Falling",
+    "fonts": "https://fonts.googleapis.com/css2?family=Righteous&family=Bangers&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 20,
+        "color": "rgba(139, 69, 19, 0.7)",
+        "className": "syrup-drip"
+    },
+    "buttons": {
+        "home": "Back to Kitchen",
+        "back": "Try Again"
+    },
+    "footer": "This page has fallen off the plate! 🍽️",
+    "titles": {
+        "default": "WAFFLE DOWN! WAFFLE DOWN!"
+    },
+    "messages": {
+        "default": "This page has fallen off the plate! 🍽️"
+    },
+    "descriptions": {
+        "default": "This page has fallen off the plate! 🍽️"
+    }
+}

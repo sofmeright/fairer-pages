@@ -1,0 +1,28 @@
+{
+    "layout": "card-image",
+    "name": "Shanin Blake",
+    "badge": "\u2728 MANIFEST YOUR PATH \u2728",
+    "image": "resources/manifest.jpg",
+    "imageAlt": "Manifest",
+    "fonts": "https://fonts.googleapis.com/css2?family=Satisfy&family=Quicksand:wght@400;600;700&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 25,
+        "color": "emoji",
+        "emojis": ["\ud83c\udf38", "\ud83c\udf3a", "\ud83c\udf3c", "\ud83c\udf3b", "\ud83c\udf37", "\ud83d\udc90", "\ud83c\udf39", "\ud83c\udff5\ufe0f"]
+    },
+    "buttons": {
+        "home": "Return Home",
+        "back": "Go Back"
+    },
+    "footer": "\ud83c\udf38 Namaste \ud83c\udf38",
+    "titles": {
+        "default": "Don't Worry, Just Believe"
+    },
+    "messages": {
+        "default": "We can manifest this page together!"
+    },
+    "descriptions": {
+        "default": "The universe has a plan for you. This detour is just part of your journey. \u2728"
+    }
+}

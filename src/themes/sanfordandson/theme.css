@@ -1,0 +1,177 @@
+/*
+ * Sanford and Son — 70s junkyard sitcom theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #8B4513 100%);
+    --fp-card-bg: rgba(0, 0, 0, 0.8);
+    --fp-text: #fff;
+    --fp-accent: #FFD700;
+    --fp-code-color: #FF8C00;
+    --fp-title-color: #FFD700;
+    --fp-message-color: #FFD700;
+    --fp-desc-color: #CD853F;
+    --fp-footer-color: #CD853F;
+
+    /* Typography */
+    --fp-font-body: 'Arial', sans-serif;
+    --fp-font-display: 'Bowlby One', cursive;
+    --fp-code-size: clamp(50px, 8vw, 80px);
+    --fp-title-size: clamp(24px, 4vw, 32px);
+    --fp-message-size: clamp(16px, 2.5vw, 20px);
+    --fp-desc-size: clamp(14px, 2vw, 17px);
+    --fp-btn-size: clamp(14px, 2vw, 18px);
+
+    /* Card */
+    --fp-card-border-color: #CD853F;
+    --fp-card-border-width: 8px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 0 50px rgba(205, 133, 63, 0.6), inset 0 0 30px rgba(0, 0, 0, 0.7);
+    --fp-card-padding: clamp(35px, 5vw, 40px) clamp(20px, 3vw, 30px);
+
+    /* Badge */
+    --fp-badge-bg: #CD853F;
+    --fp-badge-text: #000;
+    --fp-badge-border: #8B4513;
+    --fp-badge-shadow: none;
+    --fp-badge-radius: 5px;
+    --fp-badge-letter-spacing: 2px;
+
+    /* Image */
+    --fp-image-border: 6px solid #CD853F;
+    --fp-image-radius: 10px;
+    --fp-image-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    --fp-image-max-width: 400px;
+
+    /* Buttons */
+    --fp-btn-radius: 8px;
+    --fp-btn-border-width: 4px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #CD853F;
+    --fp-btn-primary-text: #000;
+    --fp-btn-primary-border: #8B4513;
+    --fp-btn-primary-shadow: 0 6px 0 #8B4513, 0 10px 25px rgba(0, 0, 0, 0.5);
+    --fp-btn-primary-hover-bg: #FFD700;
+    --fp-btn-primary-hover-shadow: 0 9px 0 #8B4513, 0 13px 30px rgba(0, 0, 0, 0.6);
+    --fp-btn-secondary-bg: #8B4513;
+    --fp-btn-secondary-text: #FFD700;
+    --fp-btn-secondary-border: #CD853F;
+    --fp-btn-secondary-shadow: 0 6px 0 #654321, 0 10px 25px rgba(0, 0, 0, 0.5);
+    --fp-btn-secondary-hover-bg: #A0522D;
+    --fp-btn-secondary-hover-shadow: 0 9px 0 #654321, 0 13px 30px rgba(0, 0, 0, 0.6);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+}
+
+/* Body background */
+body {
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #8B4513 100%);
+}
+
+/* Vintage TV scanlines effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    z-index: 0;
+    pointer-events: none;
+    animation: scanlines 10s linear infinite;
+}
+
+@keyframes scanlines {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
+}
+
+/* Retro stripes background */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(139, 69, 19, 0.3) 35px,
+            rgba(139, 69, 19, 0.3) 70px
+        );
+    z-index: 0;
+    opacity: 0.3;
+}
+
+/* Title styling */
+.fp-title {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 4px 4px 0 #8B4513, 6px 6px 0 rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+
+/* Error code */
+.fp-error-code {
+    text-shadow: 5px 5px 0 #8B4513, 7px 7px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Error message */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Quote (Fred quote) */
+.fp-quote-text {
+    color: #FFA500;
+    font-style: italic;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-weight: 600;
+}
+
+/* Footer (dummy tag) */
+.fp-footer {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #8B4513, 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #654321, 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 35px 20px;
+    }
+
+    .fp-badge {
+        font-size: 12px;
+        padding: 6px 15px;
+    }
+}

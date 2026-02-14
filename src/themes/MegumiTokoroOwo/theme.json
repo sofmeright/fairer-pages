@@ -1,0 +1,43 @@
+{
+    "layout": "card-image",
+    "name": "Megumi Tokoro OwO",
+    "image": "resources/megumi-uhoh.png",
+    "imageAlt": "Uh-oh!",
+    "fonts": "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 15,
+        "color": "rgba(255, 255, 255, 0.3)",
+        "className": "float-particle"
+    },
+    "buttons": {
+        "home": "Go Home",
+        "back": "Go Back"
+    },
+    "footer": "Artwork: Megumi Tokoro by RyuZU² • Free for private, personal use",
+    "titles": {
+        "default": "Uh-oh!"
+    },
+    "messages": {
+        "400": "That request didn't look right...",
+        "401": "You need to log in first!",
+        "403": "This area is off-limits!",
+        "404": "We can't find that page!",
+        "500": "Our server had a hiccup!",
+        "502": "The connection got tangled up!",
+        "503": "We're taking a quick break!",
+        "504": "The server took too long to respond!",
+        "default": "Something went wrong (｡•́︿•̀｡)"
+    },
+    "descriptions": {
+        "400": "Try checking your input and giving it another go~",
+        "401": "You'll need to sign in before you can see this page!",
+        "403": "Sorry, you don't have permission to be here ><",
+        "404": "We looked everywhere but couldn't find it... maybe it was moved?",
+        "500": "Don't worry, we're working on fixing it!",
+        "502": "Please try again in a moment!",
+        "503": "We'll be back soon, promise! ♡",
+        "504": "Things are a little slow right now... try again shortly!",
+        "default": "Don't worry, these things happen! Try heading back or going home~"
+    }
+}

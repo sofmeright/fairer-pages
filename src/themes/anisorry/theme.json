@@ -1,0 +1,28 @@
+{
+    "layout": "card-image",
+    "name": "Anisorry",
+    "badge": "\ud83d\udc95 I'M SO SORRY \ud83d\udc95",
+    "image": "resources/sorry.jpg",
+    "imageAlt": "I'm sorry",
+    "fonts": "https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 20,
+        "chars": ["\u2728", "\ud83d\udc96", "\ud83d\udc95", "\ud83c\udf38", "\u2b50"],
+        "color": "#f48fb1"
+    },
+    "buttons": {
+        "home": "Forgive Me",
+        "back": "Go Back"
+    },
+    "footer": "~ I'll do better next time ~",
+    "titles": {
+        "default": "I'm so sorry..."
+    },
+    "messages": {
+        "default": "Please forgive me! I didn't mean for this to happen!"
+    },
+    "descriptions": {
+        "default": "The page you're looking for... it's not here. I feel terrible about this..."
+    }
+}

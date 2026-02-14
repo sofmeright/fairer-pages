@@ -1,0 +1,110 @@
+/* Zelda Ocarina of Time — Green/gold fantasy with medieval accents */
+
+:root {
+    /* Typography */
+    --fp-font-body: 'Lora', serif;
+    --fp-font-display: 'MedievalSharp', cursive;
+
+    /* Colors */
+    --fp-bg: #1a1a1a;
+    --fp-card-bg: rgba(34, 139, 34, 0.85);
+    --fp-text: #f5f5dc;
+    --fp-accent: #daa520;
+    --fp-code-color: #daa520;
+    --fp-title-color: #f5f5dc;
+    --fp-message-color: #daa520;
+    --fp-desc-color: #f5f5dc;
+    --fp-footer-color: rgba(245, 245, 220, 0.7);
+
+    /* Card */
+    --fp-card-border-color: rgba(218, 165, 32, 0.5);
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(218, 165, 32, 0.3);
+    --fp-card-backdrop: blur(10px);
+    --fp-card-padding: 50px 40px;
+    --fp-container-width: min(90%, 800px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(135deg, rgba(34, 139, 34, 0.3), rgba(184, 134, 11, 0.3));
+    --fp-bg-image-opacity: 0.85;
+
+    /* Badge (Triforce) */
+    --fp-badge-bg: transparent;
+    --fp-badge-text: #daa520;
+    --fp-badge-border: transparent;
+    --fp-badge-shadow: none;
+    --fp-badge-letter-spacing: 8px;
+
+    /* Buttons */
+    --fp-btn-radius: 10px;
+    --fp-btn-border-width: 2px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-primary-bg: linear-gradient(135deg, #daa520, #b8860b);
+    --fp-btn-primary-text: #1a1a1a;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 8px 20px rgba(218, 165, 32, 0.4);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #e6b832, #c8961b);
+    --fp-btn-primary-hover-shadow: 0 12px 30px rgba(218, 165, 32, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #daa520;
+    --fp-btn-secondary-border: #daa520;
+    --fp-btn-secondary-hover-bg: rgba(218, 165, 32, 0.15);
+}
+
+/* Button font override */
+.fp-btn {
+    font-family: 'MedievalSharp', cursive;
+}
+
+/* Badge — Triforce symbol styling */
+.fp-badge {
+    font-size: 50px;
+    padding: 0;
+    animation: fp-triforce-glow 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px gold);
+}
+
+@keyframes fp-triforce-glow {
+    0%, 100% { filter: drop-shadow(0 0 10px gold); }
+    50% { filter: drop-shadow(0 0 20px gold); }
+}
+
+/* Error code styling */
+.fp-error-code {
+    text-shadow: 0 0 30px rgba(218, 165, 32, 0.8), 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Title styling */
+.fp-title {
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Message styling (song box) */
+.fp-error-message {
+    background: rgba(218, 165, 32, 0.15);
+    border: 2px solid #daa520;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: clamp(14px, 1.8vw, 16px);
+    font-weight: 700;
+}
+
+/* Description styling */
+.fp-description {
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+/* Background image positioning — top center for the ocarina gif */
+.fp-bg-image {
+    object-position: top center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px;
+    }
+}

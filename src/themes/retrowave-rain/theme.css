@@ -1,0 +1,156 @@
+/*
+ * Retrowave Rain — Synthwave/neon rain theme
+ * Layout: card-bg
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #0a0a1f;
+    --fp-card-bg: rgba(10, 10, 31, 0.85);
+    --fp-text: #ffffff;
+    --fp-accent: #ff1493;
+    --fp-code-color: #ff1493;
+    --fp-title-color: #00d4ff;
+    --fp-message-color: #ff1493;
+    --fp-desc-color: #e0e0ff;
+    --fp-footer-color: #8080ff;
+
+    /* Typography */
+    --fp-font-body: 'Rajdhani', sans-serif;
+    --fp-font-display: 'Orbitron', sans-serif;
+    --fp-code-size: clamp(55px, 10vw, 100px);
+    --fp-title-size: clamp(22px, 4vw, 36px);
+    --fp-message-size: clamp(14px, 2vw, 16px);
+    --fp-desc-size: clamp(15px, 2.2vw, 19px);
+
+    /* Card */
+    --fp-card-border-color: #ff1493;
+    --fp-card-border-width: 2px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 30px 90px rgba(0, 0, 0, 0.8),
+                      0 0 60px rgba(255, 20, 147, 0.3),
+                      inset 0 0 80px rgba(0, 212, 255, 0.1);
+    --fp-card-backdrop: blur(10px);
+    --fp-card-padding: clamp(40px, 5vw, 60px) clamp(35px, 4vw, 50px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(180deg,
+        rgba(10, 10, 31, 0.6),
+        rgba(20, 10, 40, 0.8),
+        rgba(10, 10, 31, 0.6));
+    --fp-bg-image-opacity: 0.7;
+
+    /* Buttons */
+    --fp-btn-radius: 50px;
+    --fp-btn-border-width: 2px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: linear-gradient(135deg, #ff1493, #00d4ff);
+    --fp-btn-primary-text: #0a0a1f;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #ff1493, #00d4ff);
+    --fp-btn-primary-hover-shadow: 0 12px 35px rgba(255, 20, 147, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #00d4ff;
+    --fp-btn-secondary-border: #00d4ff;
+    --fp-btn-secondary-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    --fp-btn-secondary-hover-bg: rgba(0, 212, 255, 0.1);
+    --fp-btn-secondary-hover-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+}
+
+/* Body background */
+body {
+    background: #0a0a1f;
+    overflow: hidden;
+}
+
+/* Scanlines overlay effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Card border — gradient border effect */
+.fp-card {
+    border-image: linear-gradient(135deg, #ff1493, #00d4ff, #ff1493) 1;
+}
+
+/* Error code — neon gradient text with pulse */
+.fp-error-code {
+    font-weight: 900;
+    background: linear-gradient(90deg, #ff1493, #00d4ff, #ff1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+
+/* Title styling */
+.fp-title {
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}
+
+/* Message — vibe-box aesthetic */
+.fp-error-message {
+    background: linear-gradient(135deg,
+        rgba(255, 20, 147, 0.1),
+        rgba(0, 212, 255, 0.1));
+    border: 1px solid rgba(255, 20, 147, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+}
+
+/* Description styling */
+.fp-description {
+    font-weight: 500;
+    line-height: 1.8;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer styling */
+.fp-footer {
+    text-shadow: 0 0 10px rgba(128, 128, 255, 0.5);
+}
+
+/* Button hover — primary scales up */
+.fp-btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 45px 35px;
+        --fp-code-size: clamp(45px, 8vw, 70px);
+        --fp-title-size: clamp(20px, 3vw, 28px);
+        --fp-desc-size: clamp(14px, 2vw, 17px);
+    }
+}

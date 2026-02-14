@@ -1,0 +1,146 @@
+/*
+ * Jay and Silent Bob — Kevin Smith video store theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+    --fp-card-bg: rgba(44, 62, 80, 0.9);
+    --fp-text: #ecf0f1;
+    --fp-accent: #f39c12;
+    --fp-code-color: #e74c3c;
+    --fp-title-color: #f39c12;
+    --fp-message-color: #f39c12;
+    --fp-desc-color: #95a5a6;
+    --fp-footer-color: #7f8c8d;
+
+    /* Typography */
+    --fp-font-body: 'Roboto', sans-serif;
+    --fp-font-display: 'Permanent Marker', cursive;
+    --fp-code-size: clamp(60px, 12vw, 95px);
+    --fp-title-size: clamp(28px, 5vw, 42px);
+    --fp-message-size: clamp(18px, 3vw, 28px);
+    --fp-desc-size: clamp(16px, 2.5vw, 20px);
+    --fp-btn-size: clamp(18px, 3vw, 24px);
+
+    /* Card */
+    --fp-card-border-color: #e74c3c;
+    --fp-card-border-width: 6px;
+    --fp-card-radius: 10px;
+    --fp-card-shadow: 0 10px 50px rgba(231, 76, 60, 0.5), inset 0 0 0 3px #f39c12;
+    --fp-card-padding: 35px 30px;
+
+    /* Badge */
+    --fp-badge-bg: #e74c3c;
+    --fp-badge-text: #fff;
+    --fp-badge-border: #f39c12;
+    --fp-badge-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+    --fp-badge-radius: 5px;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Image */
+    --fp-image-border: 5px solid #f39c12;
+    --fp-image-radius: 8px;
+    --fp-image-shadow: 0 10px 40px rgba(243, 156, 18, 0.4);
+    --fp-image-max-width: 550px;
+
+    /* Buttons */
+    --fp-btn-radius: 8px;
+    --fp-btn-border-width: 4px;
+    --fp-btn-font-weight: 900;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #e74c3c;
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: #c0392b;
+    --fp-btn-primary-shadow: 0 8px 0 #c0392b, 0 12px 30px rgba(231, 76, 60, 0.4);
+    --fp-btn-primary-hover-bg: #ec7063;
+    --fp-btn-primary-hover-shadow: 0 12px 0 #c0392b, 0 16px 35px rgba(231, 76, 60, 0.5);
+    --fp-btn-secondary-bg: #f39c12;
+    --fp-btn-secondary-text: #000;
+    --fp-btn-secondary-border: #d68910;
+    --fp-btn-secondary-shadow: 0 8px 0 #d68910, 0 12px 30px rgba(243, 156, 18, 0.4);
+    --fp-btn-secondary-hover-bg: #f5b041;
+    --fp-btn-secondary-hover-shadow: 0 12px 0 #d68910, 0 16px 35px rgba(243, 156, 18, 0.5);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+}
+
+/* Body background + VHS scanlines */
+body {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Title text shadow */
+.fp-title {
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #e74c3c, 5px 5px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+
+/* Error code text shadow */
+.fp-error-code {
+    text-shadow: 4px 4px 0 #f39c12, 7px 7px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Error message styling */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+}
+
+/* Description styling */
+.fp-description {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #c0392b, 0 8px 20px rgba(231, 76, 60, 0.3);
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #d68910, 0 8px 20px rgba(243, 156, 18, 0.3);
+}
+
+/* Badge font family override */
+.fp-badge {
+    font-family: 'Permanent Marker', cursive;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 35px 25px;
+    }
+
+    .fp-badge {
+        font-size: 13px;
+        padding: 8px 20px;
+    }
+}

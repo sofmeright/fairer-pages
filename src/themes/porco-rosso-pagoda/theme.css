@@ -1,0 +1,150 @@
+/*
+ * Porco Rosso Pagoda — Studio Ghibli inspired theme
+ * Layout: card-bg
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #2c1810;
+    --fp-card-bg: rgba(255, 250, 240, 0.95);
+    --fp-text: #2c1810;
+    --fp-accent: #8b5a2b;
+    --fp-code-color: #8b5a2b;
+    --fp-title-color: #5d3a1a;
+    --fp-message-color: #5d3a1a;
+    --fp-desc-color: #6b4423;
+    --fp-footer-color: #a0826d;
+
+    /* Typography */
+    --fp-font-body: 'Cinzel', serif;
+    --fp-font-display: 'Cinzel Decorative', serif;
+    --fp-code-size: clamp(72px, 12vw, 160px);
+    --fp-title-size: clamp(22px, 4vw, 36px);
+    --fp-desc-size: clamp(14px, 2vw, 18px);
+    --fp-btn-size: clamp(13px, 1.8vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: rgba(139, 90, 43, 0.25);
+    --fp-card-border-width: 4px;
+    --fp-card-radius: 25px;
+    --fp-card-shadow: 0 25px 70px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(139, 90, 43, 0.15);
+    --fp-card-backdrop: blur(15px);
+    --fp-card-padding: clamp(40px, 5vw, 60px) clamp(30px, 4vw, 50px);
+
+    /* Container */
+    --fp-container-width: min(90%, 800px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(to bottom,
+        rgba(255, 248, 240, 0.85),
+        rgba(255, 243, 224, 0.80),
+        rgba(245, 235, 215, 0.85));
+
+    /* Buttons */
+    --fp-btn-radius: 8px;
+    --fp-btn-border-width: 2px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-primary-bg: rgba(139, 90, 43, 0.05);
+    --fp-btn-primary-text: #5d3a1a;
+    --fp-btn-primary-border: #8b5a2b;
+    --fp-btn-primary-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --fp-btn-primary-hover-bg: #8b5a2b;
+    --fp-btn-primary-hover-shadow: 0 6px 25px rgba(139, 90, 43, 0.4);
+    --fp-btn-secondary-bg: rgba(160, 130, 109, 0.05);
+    --fp-btn-secondary-text: #6b4423;
+    --fp-btn-secondary-border: #a0826d;
+    --fp-btn-secondary-hover-bg: #a0826d;
+    --fp-btn-secondary-hover-shadow: 0 6px 25px rgba(160, 130, 109, 0.4);
+}
+
+body {
+    overflow: hidden;
+}
+
+/* Error code typography */
+.fp-error-code {
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+/* Title typography */
+.fp-title {
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+/* Description */
+.fp-description {
+    line-height: 1.8;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+/* Divider effect after title (using pseudo-element on error code) */
+.fp-error-code::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(139, 90, 43, 0.4), transparent);
+    margin: 30px auto;
+}
+
+/* Button hover states — change text color on hover */
+.fp-btn-primary:hover {
+    color: #fff;
+    filter: none;
+}
+
+.fp-btn-secondary:hover {
+    color: #fff;
+    filter: none;
+}
+
+/* Buttons spacing */
+.fp-buttons {
+    margin-top: 40px;
+    gap: 20px;
+}
+
+/* Decorative accent (top-right cross) */
+.fp-card::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 3px;
+    background: #8b5a2b;
+    opacity: 0.08;
+}
+
+.fp-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 49px;
+    width: 3px;
+    height: 60px;
+    background: #8b5a2b;
+    opacity: 0.08;
+    z-index: 1;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --fp-btn-padding-y: 12px;
+        --fp-btn-padding-x: 28px;
+    }
+}

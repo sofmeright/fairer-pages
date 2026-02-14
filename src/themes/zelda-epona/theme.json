@@ -1,0 +1,30 @@
+{
+    "layout": "card-bg",
+    "name": "Zelda & Epona",
+    "image": "resources/zelda-epona.png",
+    "imageAlt": "Zelda and Epona",
+    "fonts": "https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap",
+    "buttons": {
+        "home": "Hyrule Castle",
+        "back": "Ride Back"
+    },
+    "titles": {
+        "400": "Invalid Request",
+        "401": "Access Denied",
+        "402": "Rupees Required",
+        "403": "Sealed Gate",
+        "404": "Path Not Found",
+        "405": "Wrong Approach",
+        "406": "Incompatible",
+        "408": "Signal Lost",
+        "409": "Path Blocked",
+        "410": "Path Vanished",
+        "413": "Too Heavy",
+        "429": "Too Fast",
+        "500": "Dark Magic",
+        "502": "Gate Failed",
+        "503": "Resting",
+        "504": "No Response",
+        "default": "Path Not Found"
+    }
+}

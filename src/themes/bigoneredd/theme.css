@@ -1,0 +1,152 @@
+/*
+ * Big One Redd — Sanford and Son / Fred Sanford theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #8b4513 0%, #d2691e 50%, #8b4513 100%);
+    --fp-card-bg: rgba(222, 184, 135, 0.95);
+    --fp-text: #2c1810;
+    --fp-accent: #8b0000;
+    --fp-code-color: #8b0000;
+    --fp-title-color: #8b0000;
+    --fp-message-color: #654321;
+    --fp-desc-color: #2c1810;
+    --fp-footer-color: #654321;
+
+    /* Typography */
+    --fp-font-body: 'Courier Prime', monospace;
+    --fp-font-display: 'Special Elite', cursive;
+    --fp-code-size: clamp(60px, 10vw, 70px);
+    --fp-title-size: clamp(26px, 4vw, 32px);
+    --fp-message-size: clamp(18px, 3vw, 22px);
+    --fp-desc-size: clamp(16px, 2.5vw, 18px);
+    --fp-btn-size: clamp(18px, 2.5vw, 20px);
+
+    /* Card */
+    --fp-card-border-color: #8b4513;
+    --fp-card-border-width: 6px;
+    --fp-card-radius: 10px;
+    --fp-card-shadow: 0 0 40px rgba(139, 69, 19, 0.6), inset 0 0 30px rgba(0, 0, 0, 0.2);
+    --fp-card-padding: clamp(50px, 5vw, 50px) clamp(12px, 3vw, 20px) clamp(20px, 3vw, 25px);
+
+    /* Badge */
+    --fp-badge-bg: #8b0000;
+    --fp-badge-text: #fff;
+    --fp-badge-border: #660000;
+    --fp-badge-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+    --fp-badge-radius: 8px;
+    --fp-badge-letter-spacing: 2px;
+
+    /* Image */
+    --fp-image-border: 5px solid #8b4513;
+    --fp-image-radius: 10px;
+    --fp-image-shadow: 0 0 30px rgba(139, 69, 19, 0.5);
+    --fp-image-max-width: 400px;
+
+    /* Buttons */
+    --fp-btn-radius: 8px;
+    --fp-btn-border-width: 4px;
+    --fp-btn-font-weight: 900;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #8b4513;
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: #654321;
+    --fp-btn-primary-shadow: 0 8px 0 #654321, 0 0 30px rgba(139, 69, 19, 0.5);
+    --fp-btn-primary-hover-bg: #a0522d;
+    --fp-btn-primary-hover-shadow: 0 12px 0 #654321, 0 0 40px rgba(139, 69, 19, 0.7);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #654321;
+    --fp-btn-secondary-border: #654321;
+    --fp-btn-secondary-shadow: 0 8px 0 rgba(101, 67, 33, 0.5), 0 0 30px rgba(101, 67, 33, 0.3);
+    --fp-btn-secondary-hover-bg: rgba(101, 67, 33, 0.2);
+    --fp-btn-secondary-hover-shadow: 0 12px 0 rgba(101, 67, 33, 0.5), 0 0 40px rgba(101, 67, 33, 0.5);
+
+    /* Container */
+    --fp-container-width: min(95%, 900px);
+}
+
+/* Body with old TV scan effect */
+body {
+    background: linear-gradient(135deg, #8b4513 0%, #d2691e 50%, #8b4513 100%);
+    overflow-y: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+    animation: tv-flicker 0.3s infinite;
+}
+
+@keyframes tv-flicker {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.95; }
+}
+
+/* Title */
+.fp-title {
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+    line-height: 1.3;
+}
+
+/* Error code */
+.fp-error-code {
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Error message */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* Description (Fred's speech style) */
+.fp-description {
+    font-size: clamp(16px, 2.5vw, 18px);
+    font-weight: 700;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Footer */
+.fp-footer {
+    font-style: italic;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #654321, 0 0 20px rgba(139, 69, 19, 0.4);
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 rgba(101, 67, 33, 0.5), 0 0 20px rgba(101, 67, 33, 0.3);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 45px 12px 20px 12px;
+    }
+
+    .fp-badge {
+        font-size: 11px;
+        padding: 7px 15px;
+    }
+}

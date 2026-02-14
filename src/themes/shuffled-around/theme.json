@@ -1,0 +1,38 @@
+{
+    "layout": "card-image",
+    "name": "Shuffled Around",
+    "badge": "\u2728 SHUFFLE MODE ACTIVATED \u2728",
+    "image": "resources/shuffled-around.gif",
+    "imageAlt": "Shuffling",
+    "fonts": "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Staatliches&display=swap",
+    "buttons": {
+        "home": "Back to the Dancefloor",
+        "back": "Rewind Track"
+    },
+    "footer": "\u266b 135 BPM \u266b",
+    "titles": {
+        "default": "Shuffle Mode Activated"
+    },
+    "messages": {
+        "default": "Something went wrong on the dancefloor!"
+    },
+    "descriptions": {
+        "400": "Yo, that request was off-beat. Try syncing up with the rhythm!",
+        "401": "This VIP section needs a wristband, fam. You're not on the list yet!",
+        "402": "Cover charge required! Can't shuffle without paying the DJ.",
+        "403": "Sorry, this area is restricted to crew only. No backstage passes here!",
+        "404": "Sorry, I got a little carried away while shuffling things around over here...",
+        "405": "That move doesn't work on this floor. Try a different dance style!",
+        "406": "The format you requested isn't compatible with our playlist, homie.",
+        "408": "Your connection dropped the beat. Took too long to respond!",
+        "409": "Two DJs trying to play at once? We got a mix conflict!",
+        "410": "That track was deleted from the playlist. It's gone forever.",
+        "413": "Whoa, your file size is too thicc for the dancefloor! Compress that!",
+        "429": "Slow down! You're requesting songs faster than the DJ can mix!",
+        "500": "The whole system just glitched out. Even the DJ is confused.",
+        "502": "The gateway to the main stage is broken. Sound check failed!",
+        "503": "The club is closed for maintenance. Come back after the cleanup crew is done!",
+        "504": "The connection to the main speakers timed out. No sound!",
+        "default": "Sorry, I got a little carried away while shuffling things around over here..."
+    }
+}

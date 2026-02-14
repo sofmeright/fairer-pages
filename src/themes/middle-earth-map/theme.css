@@ -1,0 +1,131 @@
+/*
+ * Middle-earth Map — Fairer Pages Theme CSS
+ * Ancient parchment aesthetic with warm brown/gold tones
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #1e140a;
+    --fp-card-bg: rgba(250, 240, 220, 0.95);
+    --fp-text: #2c1810;
+    --fp-accent: #8b5a2b;
+    --fp-code-color: #5d3a1a;
+    --fp-title-color: #8b5a2b;
+    --fp-message-color: #8b5a2b;
+    --fp-desc-color: #6b4423;
+    --fp-footer-color: #8b5a2b;
+
+    /* Typography */
+    --fp-font-body: 'Cinzel', serif;
+    --fp-font-display: 'Uncial Antiqua', serif;
+    --fp-code-size: clamp(70px, 12vw, 140px);
+    --fp-title-size: clamp(18px, 2.5vw, 24px);
+    --fp-message-size: clamp(22px, 3.5vw, 36px);
+    --fp-desc-size: clamp(14px, 1.8vw, 18px);
+    --fp-btn-size: clamp(13px, 1.8vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: rgba(139, 90, 43, 0.6);
+    --fp-card-border-width: 4px;
+    --fp-card-radius: 10px;
+    --fp-card-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 3px rgba(139, 90, 43, 0.4);
+    --fp-card-backdrop: blur(10px);
+    --fp-card-padding: clamp(30px, 5vw, 60px) clamp(25px, 4vw, 50px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(to bottom,
+        rgba(30, 20, 10, 0.75),
+        rgba(40, 30, 20, 0.70),
+        rgba(30, 20, 10, 0.75));
+
+    /* Buttons */
+    --fp-btn-radius: 6px;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-primary-bg: rgba(139, 90, 43, 0.1);
+    --fp-btn-primary-text: #5d3a1a;
+    --fp-btn-primary-border: #8b5a2b;
+    --fp-btn-primary-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    --fp-btn-primary-hover-bg: #8b5a2b;
+    --fp-btn-primary-hover-shadow: 0 6px 25px rgba(139, 90, 43, 0.5);
+    --fp-btn-secondary-bg: rgba(107, 68, 35, 0.1);
+    --fp-btn-secondary-text: #5d3a1a;
+    --fp-btn-secondary-border: #6b4423;
+    --fp-btn-secondary-hover-bg: #6b4423;
+    --fp-btn-secondary-hover-shadow: 0 6px 25px rgba(107, 68, 35, 0.5);
+
+    /* Badge */
+    --fp-badge-bg: rgba(250, 240, 220, 0.98);
+    --fp-badge-text: #8b5a2b;
+    --fp-badge-border: rgba(139, 90, 43, 0.6);
+    --fp-badge-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --fp-badge-radius: 5px;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Container */
+    --fp-container-width: min(90%, 800px);
+}
+
+/* Badge styled as ancient title */
+.fp-badge {
+    font-family: 'Uncial Antiqua', serif;
+    font-weight: 400;
+    text-transform: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Hide the title element — middle-earth uses badge as header and HTTP names as message */
+.fp-title {
+    display: none;
+}
+
+/* Error code in Uncial Antiqua display font */
+.fp-error-code {
+    font-family: 'Uncial Antiqua', serif;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    letter-spacing: 8px;
+}
+
+/* Error message styled as the title line */
+.fp-error-message {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Divider between message and description */
+.fp-error-message::after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(139, 90, 43, 0.6), transparent);
+    margin: clamp(16px, 2.5vw, 25px) auto 0;
+}
+
+/* Description body text */
+.fp-description {
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+/* Footer styled as the quest note (italic quoted text) */
+.fp-footer {
+    font-style: italic;
+    opacity: 0.9;
+    font-size: clamp(13px, 1.6vw, 16px);
+}
+
+/* Button hover turns white text */
+.fp-btn-primary:hover {
+    color: #fff;
+}
+
+.fp-btn-secondary:hover {
+    color: #fff;
+    border-color: #6b4423;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+}

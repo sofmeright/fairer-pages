@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Error</title>
+    <link rel="stylesheet" href="/fairer-pages/base-layouts.css">
+    <!-- Theme CSS + fonts injected by template.js -->
+</head>
+<body class="fp-loading">
+    <!-- Background image (card-bg / full-bleed layouts) -->
+    <img id="bg-image" class="fp-bg-image" style="display:none" alt="">
+    <div id="overlay" class="fp-overlay" style="display:none"></div>
+
+    <div class="fp-container">
+        <div class="fp-card">
+            <!-- Badge (optional) -->
+            <div id="badge" class="fp-badge" style="display:none"></div>
+
+            <!-- Title -->
+            <div id="title" class="fp-title"></div>
+
+            <!-- Inline image (card-image layout) -->
+            <img id="inline-image" class="fp-inline-image" style="display:none" alt="">
+
+            <!-- Error code -->
+            <div id="error-code" class="fp-error-code"></div>
+
+            <!-- Error message -->
+            <div id="error-message" class="fp-error-message"></div>
+
+            <!-- Description -->
+            <div id="description" class="fp-description"></div>
+
+            <!-- Quote (optional themed aside) -->
+            <blockquote id="quote" class="fp-quote" style="display:none">
+                <span id="quote-text"></span>
+                <cite id="quote-author" class="fp-quote-author"></cite>
+            </blockquote>
+
+            <!-- Maintenance info (optional, data pipeline Phase 6) -->
+            <div id="maintenance-info" class="fp-maintenance" style="display:none">
+                <div id="service-name" class="fp-service-name"></div>
+                <div id="maintenance-message" class="fp-maintenance-message"></div>
+            </div>
+
+            <!-- Status widget (optional, Phase 7) -->
+            <div id="status-widget" class="fp-status-widget" style="display:none"></div>
+
+            <!-- Buttons -->
+            <div class="fp-buttons">
+                <a id="btn-home" href="/" class="fp-btn fp-btn-primary">Return Home</a>
+                <a id="btn-back" href="javascript:void(0)" onclick="fpGoBack(); return false;" class="fp-btn fp-btn-secondary">Go Back</a>
+            </div>
+
+            <!-- Footer (optional) -->
+            <div id="footer" class="fp-footer" style="display:none"></div>
+        </div>
+    </div>
+
+    <!-- Particle container (JS-populated) -->
+    <div id="particles" class="fp-particles" style="display:none"></div>
+
+    <script src="/fairer-pages/template.js"></script>
+</body>
+</html>

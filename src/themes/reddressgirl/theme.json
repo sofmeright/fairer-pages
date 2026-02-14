@@ -1,0 +1,22 @@
+{
+    "layout": "card-image",
+    "name": "Red Dress Girl",
+    "badge": "\ud83d\udc40 CAUGHT LOOKING \ud83d\udc40",
+    "image": "resources/distracted.jpg",
+    "imageAlt": "Distracted boyfriend meme",
+    "fonts": "https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700;900&display=swap",
+    "buttons": {
+        "home": "Go Home",
+        "back": "Go Back"
+    },
+    "footer": "*judges silently*",
+    "titles": {
+        "default": "Out Of Bounds!"
+    },
+    "messages": {
+        "default": "Caught Looking At The Wrong Page!"
+    },
+    "descriptions": {
+        "default": "Your homepage is right there, but here you are..."
+    }
+}

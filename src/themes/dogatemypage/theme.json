@@ -1,0 +1,27 @@
+{
+    "layout": "card-image",
+    "name": "Dog Ate My Page",
+    "badge": "\ud83d\udd25 CANINE CATASTROPHE \ud83d\udd25",
+    "image": "resources/dog.jpg",
+    "imageAlt": "Robot dog with flamethrower",
+    "fonts": "https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Patrick+Hand&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 25,
+        "color": "#ff6f00"
+    },
+    "buttons": {
+        "home": "Go Home",
+        "back": "Go Back"
+    },
+    "footer": "Bad dog! Bad!",
+    "titles": {
+        "default": "My Dog Ate This Page!"
+    },
+    "messages": {
+        "default": "I'm sorry, this page was amazing but my dog got into things..."
+    },
+    "descriptions": {
+        "default": "It's quite unfortunate sometimes. He has a bit of a... fire problem."
+    }
+}

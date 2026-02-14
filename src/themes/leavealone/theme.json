@@ -1,0 +1,28 @@
+{
+    "layout": "card-image",
+    "name": "Leave Alone",
+    "badge": "✨ EMOTIONAL BREAKDOWN ✨",
+    "image": "resources/leavealone.gif",
+    "imageAlt": "Leave alone!",
+    "fonts": "https://fonts.googleapis.com/css2?family=Passion+One:wght@700;900&family=Roboto:wght@400;700&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 20,
+        "color": "#ffffff",
+        "className": "sparkle"
+    },
+    "buttons": {
+        "home": "GO HOME",
+        "back": "LEAVE"
+    },
+    "footer": "😭 💔 😭",
+    "titles": {
+        "default": "LEAVE THIS PAGE ALONE!"
+    },
+    "messages": {
+        "default": "IT'S A HUMAN! THIS PAGE HAS BEEN THROUGH ENOUGH!"
+    },
+    "descriptions": {
+        "default": "*sobbing dramatically behind a sheet* Why can't you just let it live in peace?!"
+    }
+}

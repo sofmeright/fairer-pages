@@ -1,0 +1,161 @@
+/*
+ * Neeko Shapeshifter — Fairer Pages Theme CSS
+ * Colorful, playful League of Legends Neeko aesthetic with gradients and sparkles
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #0a2540;
+    --fp-card-bg: linear-gradient(135deg, rgba(138, 218, 203, 0.95), rgba(221, 126, 227, 0.95));
+    --fp-text: #ffffff;
+    --fp-accent: #c471ed;
+    --fp-code-color: #ff6b9d;
+    --fp-title-color: #0a2540;
+    --fp-message-color: #0a2540;
+    --fp-desc-color: #1a3a5a;
+    --fp-footer-color: rgba(10, 37, 64, 0.8);
+
+    /* Typography */
+    --fp-font-body: 'Poppins', sans-serif;
+    --fp-font-display: 'Fredoka', sans-serif;
+    --fp-code-size: clamp(50px, 8vw, 90px);
+    --fp-title-size: clamp(22px, 3vw, 32px);
+    --fp-message-size: clamp(22px, 3vw, 32px);
+    --fp-desc-size: clamp(15px, 1.8vw, 19px);
+    --fp-btn-size: clamp(14px, 1.8vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: transparent;
+    --fp-card-border-width: 0;
+    --fp-card-radius: 30px;
+    --fp-card-shadow: 0 30px 90px rgba(0, 0, 0, 0.5), 0 0 60px rgba(138, 218, 203, 0.3);
+    --fp-card-backdrop: none;
+    --fp-card-padding: clamp(30px, 4vw, 50px) clamp(25px, 4vw, 40px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(135deg,
+        rgba(138, 218, 203, 0.2),
+        rgba(221, 126, 227, 0.2),
+        rgba(255, 191, 105, 0.2));
+    --fp-bg-image-opacity: 0.85;
+
+    /* Buttons */
+    --fp-btn-radius: 50px;
+    --fp-btn-border-width: 2px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-text-transform: capitalize;
+    --fp-btn-primary-bg: linear-gradient(135deg, #ff6b9d, #c471ed);
+    --fp-btn-primary-text: #ffffff;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 8px 25px rgba(196, 113, 237, 0.4);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #ff6b9d, #c471ed);
+    --fp-btn-primary-hover-shadow: 0 12px 35px rgba(196, 113, 237, 0.6);
+    --fp-btn-secondary-bg: rgba(255, 255, 255, 0.9);
+    --fp-btn-secondary-text: #c471ed;
+    --fp-btn-secondary-border: #c471ed;
+    --fp-btn-secondary-hover-bg: #ffffff;
+    --fp-btn-secondary-hover-shadow: none;
+
+    /* Badge */
+    --fp-badge-bg: transparent;
+    --fp-badge-text: #0a2540;
+    --fp-badge-border: transparent;
+    --fp-badge-shadow: none;
+    --fp-badge-radius: 0;
+
+    /* Container */
+    --fp-container-width: min(90%, 750px);
+}
+
+/* Card gradient background */
+.fp-card {
+    background: linear-gradient(135deg, rgba(138, 218, 203, 0.95), rgba(221, 126, 227, 0.95));
+}
+
+/* Shimmer animation on card */
+.fp-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: neeko-shimmer 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes neeko-shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Badge as bouncing chameleon icon */
+.fp-badge {
+    font-size: clamp(50px, 7vw, 80px);
+    text-transform: none;
+    padding: 0;
+    animation: neeko-bounce 2s ease-in-out infinite;
+    display: inline-block;
+    letter-spacing: 0;
+}
+
+@keyframes neeko-bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.1); }
+}
+
+/* Hide the title element — neeko shows code first then custom message */
+.fp-title {
+    display: none;
+}
+
+/* Error code with gradient text and color shift */
+.fp-error-code {
+    font-family: 'Fredoka', sans-serif;
+    background: linear-gradient(135deg, #ff6b9d, #c471ed, #12c2e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: neeko-color-shift 4s ease-in-out infinite;
+}
+
+@keyframes neeko-color-shift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(30deg); }
+}
+
+/* Error message styled as the bold title */
+.fp-error-message {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Description styled as the neeko-text box with shape status */
+.fp-description {
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    white-space: pre-line;
+    line-height: 1.7;
+}
+
+/* Footer text */
+.fp-footer {
+    font-weight: 500;
+}
+
+/* Button hover with scale */
+.fp-btn-primary:hover,
+.fp-btn-secondary:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fp-badge {
+        font-size: clamp(40px, 10vw, 60px);
+    }
+}

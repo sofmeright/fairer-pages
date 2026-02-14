@@ -1,0 +1,90 @@
+/* Baldur's Gate Bridge — Theme CSS */
+
+:root {
+    /* Colors */
+    --fp-bg: #1a1410;
+    --fp-card-bg: rgba(40, 30, 20, 0.88);
+    --fp-text: #e8dcc4;
+    --fp-accent: #8b4513;
+    --fp-code-color: #8b4513;
+    --fp-title-color: #e8dcc4;
+    --fp-message-color: #8b4513;
+    --fp-desc-color: #d4c4a8;
+    --fp-footer-color: rgba(232, 220, 196, 0.6);
+
+    /* Typography */
+    --fp-font-body: 'IM Fell English', serif;
+    --fp-font-display: 'Cinzel', serif;
+    --fp-code-size: clamp(55px, 9vw, 90px);
+    --fp-title-size: clamp(24px, 4vw, 34px);
+    --fp-message-size: clamp(15px, 2vw, 18px);
+    --fp-desc-size: clamp(15px, 2vw, 19px);
+
+    /* Card */
+    --fp-card-border-color: rgba(139, 69, 19, 0.6);
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 10px;
+    --fp-card-shadow: 0 25px 80px rgba(0, 0, 0, 0.8),
+                      0 0 40px rgba(139, 69, 19, 0.3);
+    --fp-card-backdrop: blur(2px);
+    --fp-card-padding: clamp(30px, 5vw, 50px) clamp(25px, 4vw, 45px);
+    --fp-container-width: min(90%, 850px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(135deg,
+        rgba(26, 20, 16, 0.5),
+        rgba(40, 30, 20, 0.55));
+    --fp-bg-image-opacity: 0.85;
+
+    /* Buttons */
+    --fp-btn-primary-bg: linear-gradient(135deg, #8b4513, #654321);
+    --fp-btn-primary-text: #e8dcc4;
+    --fp-btn-primary-border: #8b4513;
+    --fp-btn-primary-shadow: 0 8px 20px rgba(139, 69, 19, 0.4);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #8b4513, #654321);
+    --fp-btn-primary-hover-shadow: 0 12px 30px rgba(139, 69, 19, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #8b4513;
+    --fp-btn-secondary-border: #8b4513;
+    --fp-btn-secondary-hover-bg: rgba(139, 69, 19, 0.15);
+    --fp-btn-radius: 8px;
+    --fp-btn-font-weight: 700;
+}
+
+/* Error code text shadow */
+.fp-error-code {
+    text-shadow: 0 0 30px rgba(139, 69, 19, 0.6),
+                 3px 3px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* Title text shadow */
+.fp-title {
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Error message styled as check title */
+.fp-error-message {
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+}
+
+/* Description styled as narrator italic text */
+.fp-description {
+    font-style: italic;
+    line-height: 1.8;
+}
+
+/* Button font */
+.fp-btn {
+    font-family: 'Cinzel', serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-code-size: clamp(50px, 8vw, 70px);
+        --fp-title-size: clamp(22px, 4vw, 28px);
+        --fp-desc-size: clamp(14px, 2vw, 17px);
+    }
+}

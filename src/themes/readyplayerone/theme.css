@@ -1,0 +1,163 @@
+/*
+ * Ready Player One — OASIS/gaming terminal theme
+ * Layout: card-bg (background-image on body via CSS)
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #0d001a;
+    --fp-card-bg: rgba(13, 0, 26, 0.85);
+    --fp-text: #00ff7f;
+    --fp-accent: #ff00ff;
+    --fp-code-color: #ff00ff;
+    --fp-title-color: #ffcc00;
+    --fp-message-color: #00ff7f;
+    --fp-desc-color: #00ff7f;
+    --fp-footer-color: #888;
+
+    /* Typography */
+    --fp-font-body: 'Consolas', 'Courier New', monospace;
+    --fp-font-display: 'Orbitron', sans-serif;
+    --fp-code-size: clamp(60px, 10vw, 128px);
+    --fp-title-size: clamp(18px, 3vw, 28px);
+    --fp-message-size: clamp(16px, 2.5vw, 32px);
+    --fp-desc-size: clamp(14px, 1.8vw, 17.6px);
+
+    /* Card */
+    --fp-card-border-color: #00ff7f;
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 5px;
+    --fp-card-shadow: 0 0 50px rgba(0, 255, 127, 0.5);
+    --fp-card-padding: clamp(25px, 4vw, 40px);
+
+    /* Badge */
+    --fp-badge-bg: rgba(13, 0, 26, 0.95);
+    --fp-badge-text: #00ff7f;
+    --fp-badge-border: #00ff7f;
+    --fp-badge-shadow: 0 0 15px rgba(0, 255, 127, 0.3);
+    --fp-badge-letter-spacing: 3px;
+
+    /* Overlay — no overlay needed, bg-image used with body background */
+    --fp-overlay-bg: transparent;
+    --fp-bg-image-opacity: 1;
+
+    /* Buttons */
+    --fp-btn-radius: 5px;
+    --fp-btn-border-width: 2px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #00ff7f;
+    --fp-btn-primary-text: #0d001a;
+    --fp-btn-primary-border: #00ff7f;
+    --fp-btn-primary-shadow: 0 0 10px #00ff7f;
+    --fp-btn-primary-hover-bg: #0d001a;
+    --fp-btn-primary-hover-shadow: 0 0 20px #00ff7f;
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #ff00ff;
+    --fp-btn-secondary-border: #ff00ff;
+    --fp-btn-secondary-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    --fp-btn-secondary-hover-bg: #ff00ff;
+    --fp-btn-secondary-hover-shadow: 0 0 20px #ff00ff;
+
+    /* Container */
+    --fp-container-width: min(95%, 900px);
+}
+
+/* Body — background image applied via CSS (original used CSS background-image) */
+body {
+    background-color: #0d001a;
+    background-image: var(--_rpo-bg-image, none);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* Badge — styled as OASIS alert */
+.fp-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px #00ff7f;
+}
+
+/* Error code — neon magenta */
+.fp-error-code {
+    font-weight: 700;
+    text-shadow: 0 0 10px #ff00ff, 0 0 30px #ff00ff;
+    line-height: 1;
+}
+
+/* Glitch effect on hover */
+.fp-error-code:hover {
+    animation: glitch 0.3s ease-in-out;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+}
+
+/* Title — acts as error message display (yellow, uppercase) */
+.fp-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px #ffcc00;
+}
+
+/* Description styling */
+.fp-description {
+    line-height: 1.6;
+}
+
+/* Footer styling */
+.fp-footer {
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Button hover states — primary inverts */
+.fp-btn-primary:hover {
+    color: #00ff7f;
+}
+
+/* Button hover states — secondary fills */
+.fp-btn-secondary:hover {
+    color: #0d001a;
+    background: #ff00ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 30px 20px;
+        --fp-title-size: clamp(16px, 2.5vw, 22px);
+        --fp-code-size: clamp(50px, 8vw, 96px);
+        --fp-desc-size: clamp(13px, 1.8vw, 16px);
+    }
+
+}
+
+@media (max-width: 480px) {
+    :root {
+        --fp-code-size: clamp(40px, 8vw, 72px);
+        --fp-message-size: clamp(14px, 2vw, 19.2px);
+    }
+
+    .fp-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .fp-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,109 @@
+/* LoL Inting — Theme CSS */
+
+:root {
+    /* Colors */
+    --fp-bg: #010a13;
+    --fp-card-bg: linear-gradient(135deg, rgba(12, 35, 52, 0.95), rgba(18, 45, 65, 0.95));
+    --fp-text: #f0e6d2;
+    --fp-accent: #c8aa6e;
+    --fp-code-color: #e74c3c;
+    --fp-title-color: #f0e6d2;
+    --fp-message-color: #e74c3c;
+    --fp-desc-color: #c8aa6e;
+    --fp-footer-color: #5b5a56;
+
+    /* Typography */
+    --fp-font-body: 'Roboto', sans-serif;
+    --fp-font-display: 'Roboto', sans-serif;
+    --fp-code-size: clamp(44px, 7vw, 72px);
+    --fp-title-size: clamp(20px, 3.5vw, 32px);
+    --fp-message-size: clamp(14px, 2vw, 18px);
+    --fp-desc-size: clamp(14px, 2vw, 18px);
+    --fp-footer-size: clamp(10px, 1.5vw, 13px);
+
+    /* Card */
+    --fp-card-border-color: #785a28;
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 25px 80px rgba(0, 0, 0, 0.6),
+                      0 0 40px rgba(200, 170, 110, 0.1),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    --fp-card-padding: clamp(30px, 5vw, 50px) clamp(25px, 4vw, 40px);
+    --fp-container-width: min(90%, 800px);
+
+    /* Overlay */
+    --fp-overlay-bg: radial-gradient(circle at center, rgba(1, 10, 19, 0.3), rgba(1, 10, 19, 0.6));
+    --fp-bg-image-opacity: 0.8;
+
+    /* Buttons */
+    --fp-btn-primary-bg: linear-gradient(to bottom, #c8aa6e, #785a28);
+    --fp-btn-primary-text: #0a1428;
+    --fp-btn-primary-border: #c8aa6e;
+    --fp-btn-primary-shadow: 0 4px 15px rgba(200, 170, 110, 0.4);
+    --fp-btn-primary-hover-bg: linear-gradient(to bottom, #f0e6d2, #c8aa6e);
+    --fp-btn-primary-hover-shadow: 0 6px 20px rgba(200, 170, 110, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #c8aa6e;
+    --fp-btn-secondary-border: #785a28;
+    --fp-btn-secondary-hover-bg: rgba(120, 90, 40, 0.2);
+    --fp-btn-radius: 5px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-border-width: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-letter-spacing: 1px;
+}
+
+/* Gold top accent bar on card */
+.fp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c89b3c, #f0e6d2, #c89b3c);
+}
+
+/* Error code — styled as KDA display */
+.fp-error-code {
+    font-weight: 900;
+    text-shadow: 0 0 20px rgba(231, 76, 60, 0.8),
+                 0 4px 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 3px;
+}
+
+/* Title — uppercase with letter spacing */
+.fp-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Error message — styled as KDA/score text */
+.fp-error-message {
+    font-weight: 900;
+    font-size: var(--fp-message-size);
+    letter-spacing: 2px;
+}
+
+/* Description — flame text */
+.fp-description {
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+/* Footer — italic */
+.fp-footer {
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-code-size: clamp(36px, 7vw, 56px);
+        --fp-title-size: clamp(18px, 3.5vw, 24px);
+        --fp-desc-size: clamp(13px, 2vw, 16px);
+        --fp-btn-size: clamp(12px, 2vw, 14px);
+    }
+}

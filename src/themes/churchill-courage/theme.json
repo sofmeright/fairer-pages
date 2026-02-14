@@ -1,0 +1,70 @@
+{
+    "layout": "card",
+    "name": "Churchill Courage",
+    "fonts": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@400;600&display=swap",
+    "buttons": {
+        "home": "Continue Forward",
+        "back": "Regroup"
+    },
+    "quote": {
+        "text": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        "author": "Winston Churchill"
+    },
+    "titles": {
+        "400": "A Stumble, Not a Fall",
+        "401": "Credentials Required",
+        "402": "Investment Needed",
+        "403": "Access Restricted",
+        "404": "This Is Not Failure",
+        "405": "Wrong Approach",
+        "406": "Format Mismatch",
+        "408": "Time Ran Out",
+        "409": "Conflict Encountered",
+        "410": "Permanently Gone",
+        "413": "Load Too Heavy",
+        "429": "Too Many Attempts",
+        "500": "System Challenged",
+        "502": "Connection Failed",
+        "503": "Temporarily Down",
+        "504": "Timeout Occurred",
+        "default": "This Is Not Failure"
+    },
+    "messages": {
+        "400": "Your request wasn't formatted correctly. This is a stumble, not a fall. Learn from it, adjust your approach, and continue with courage.",
+        "401": "You need proper credentials to proceed. Not having them yet isn't failure\u2014it's just the next step. Gather what you need and continue forward.",
+        "402": "This resource requires payment. Whether you proceed or not, the choice is yours. Either path forward takes courage to decide.",
+        "403": "Access is restricted here. That's not a failure on your part. Sometimes doors are closed. Find another path and continue with determination.",
+        "404": "You've encountered an obstacle, not a defeat. The page you sought isn't here, but that doesn't stop your journey. What matters is your courage to continue forward.",
+        "405": "The method you tried didn't work. That's not failure\u2014that's learning. Try a different approach and continue with renewed wisdom.",
+        "406": "The format isn't compatible. This isn't defeat, just information. Adjust your approach and continue forward with what you've learned.",
+        "408": "The request timed out. You're not too slow; sometimes conditions aren't right. Take what you've learned and continue trying.",
+        "409": "There's a conflict to resolve. Conflicts aren't failures\u2014they're opportunities to find better solutions. Resolve it and continue.",
+        "410": "What you sought is permanently gone. This isn't your failure. Acceptance takes courage. Find a new goal and continue your journey.",
+        "413": "The payload was too large. This isn't defeat\u2014it's feedback. Adjust, optimize, and continue forward with what you've learned.",
+        "429": "You've made too many attempts. That shows determination, not failure. Rest, regroup, and continue when ready.",
+        "500": "The server encountered an error. This isn't your failure. Our team is working on it. Your courage is to wait patiently and continue when ready.",
+        "502": "The gateway connection failed. Technical issues aren't your defeat. These things happen. Continue trying with patience.",
+        "503": "The service is temporarily unavailable. Downtime isn't failure\u2014it's a pause. Continue checking back with determination.",
+        "504": "The gateway timed out. Network issues aren't your fault. Keep your courage and continue trying when conditions improve.",
+        "default": "You've encountered an obstacle, not a defeat. What matters is your courage to continue forward."
+    },
+    "footers": {
+        "400": "Learn, adjust, and continue forward",
+        "401": "Gather what you need and proceed",
+        "402": "Make your choice with confidence",
+        "403": "Find another path forward",
+        "404": "The courage to continue is what defines us",
+        "405": "Try differently and persist",
+        "406": "Adapt and move forward",
+        "408": "Timing is part of the journey",
+        "409": "Resolution is a form of progress",
+        "410": "New goals await your courage",
+        "413": "Optimization is forward progress",
+        "429": "Determination shows character",
+        "500": "Patience during challenges is courage",
+        "502": "Persistence overcomes technical hurdles",
+        "503": "Consistency brings success",
+        "504": "Keep trying with determination",
+        "default": "The courage to continue is what defines us"
+    }
+}

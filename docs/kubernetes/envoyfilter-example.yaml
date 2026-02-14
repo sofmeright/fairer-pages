@@ -1,0 +1,43 @@
+# Istio EnvoyFilter example for intercepting upstream errors
+# and serving Fairer Pages content in-place.
+# Apply to the workload that should show themed error pages.
+# Update the workload selector and fairer-pages service URL.
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: fairer-pages-error-intercept
+spec:
+  workloadSelector:
+    labels:
+      app: my-upstream-app
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        context: SIDECAR_OUTBOUND
+        listener:
+          filterChain:
+            filter:
+              name: envoy.filters.network.http_connection_manager
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: envoy.filters.http.custom_response
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.http.custom_response.v3.CustomResponse
+            custom_response_matcher:
+              matcher_list:
+                matchers:
+                  - predicate:
+                      single_predicate:
+                        input:
+                          name: status_code
+                          typed_config:
+                            "@type": type.googleapis.com/envoy.type.matcher.v3.HttpResponseStatusCodeMatchInput
+                        value_match:
+                          exact: "404"
+                    on_match:
+                      action:
+                        name: redirect
+                        typed_config:
+                          "@type": type.googleapis.com/envoy.extensions.http.custom_response.redirect_policy.v3.RedirectPolicy
+                          uri: "http://fairer-pages.default.svc.cluster.local/fairer-pages/random/404.html"

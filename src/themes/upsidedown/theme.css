@@ -1,0 +1,177 @@
+/* The Upside Down — Dark Stranger Things horror theme with red/black palette */
+
+:root {
+    /* Typography */
+    --fp-font-body: 'Special Elite', cursive;
+    --fp-font-display: 'Special Elite', cursive;
+
+    /* Colors */
+    --fp-bg: #000;
+    --fp-card-bg: rgba(0, 0, 0, 0.85);
+    --fp-text: #fff;
+    --fp-accent: #ff0000;
+    --fp-code-color: #ff0000;
+    --fp-title-color: #ff0000;
+    --fp-message-color: #ddd;
+    --fp-desc-color: #ff6666;
+    --fp-footer-color: #999;
+
+    /* Card */
+    --fp-card-border-color: #8b0000;
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 5px;
+    --fp-card-shadow: 0 0 60px rgba(139, 0, 0, 0.6), inset 0 0 40px rgba(139, 0, 0, 0.2);
+    --fp-card-backdrop: none;
+    --fp-card-padding: 40px 30px;
+    --fp-container-width: min(90%, 900px);
+
+    /* Code sizing */
+    --fp-code-size: clamp(60px, 10vw, 120px);
+    --fp-message-size: clamp(22px, 3.5vw, 36px);
+    --fp-desc-size: clamp(18px, 2.8vw, 28px);
+
+    /* Overlay */
+    --fp-overlay-bg: radial-gradient(ellipse at center, rgba(26, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.95) 70%);
+    --fp-bg-image-opacity: 0.35;
+
+    /* Badge */
+    --fp-badge-bg: transparent;
+    --fp-badge-text: #ff0000;
+    --fp-badge-border: transparent;
+    --fp-badge-shadow: none;
+    --fp-badge-letter-spacing: 8px;
+    --fp-badge-size: clamp(24px, 4vw, 48px);
+
+    /* Buttons */
+    --fp-btn-radius: 3px;
+    --fp-btn-border-width: 2px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: transparent;
+    --fp-btn-primary-text: #ff0000;
+    --fp-btn-primary-border: #ff0000;
+    --fp-btn-primary-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    --fp-btn-primary-hover-bg: #ff0000;
+    --fp-btn-primary-hover-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #8b0000;
+    --fp-btn-secondary-border: #8b0000;
+    --fp-btn-secondary-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+    --fp-btn-secondary-hover-bg: #8b0000;
+    --fp-btn-secondary-hover-shadow: 0 0 30px rgba(139, 0, 0, 0.8);
+
+    /* Particles */
+    --fp-particle-color: rgba(255, 255, 255, 0.3);
+
+    /* Footer */
+    --fp-footer-color: #999;
+}
+
+/* Badge — "THE UPSIDE DOWN" title with red glow */
+.fp-badge {
+    font-size: var(--fp-badge-size);
+    text-transform: uppercase;
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #8b0000;
+    animation: fp-upside-glow 2s ease-in-out infinite alternate;
+    padding: 0;
+}
+
+@keyframes fp-upside-glow {
+    from {
+        text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #8b0000;
+    }
+    to {
+        text-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #8b0000;
+    }
+}
+
+/* Flicker effect on the card */
+.fp-card {
+    animation: fp-flicker 4s infinite;
+}
+
+@keyframes fp-flicker {
+    0%, 100% { opacity: 1; }
+    2%, 8%, 12% { opacity: 0.4; }
+    4%, 10% { opacity: 0.9; }
+    6% { opacity: 0.2; }
+}
+
+/* SVG noise texture on card */
+.fp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="noise"><feTurbulence baseFrequency="0.9"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* Error code styling */
+.fp-error-code {
+    font-weight: bold;
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #8b0000;
+}
+
+/* Error message styling — large and bold */
+.fp-error-message {
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Description — eerie italic text */
+.fp-description {
+    font-style: italic;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    line-height: 1.5;
+}
+
+/* Footer — warning text */
+.fp-footer {
+    letter-spacing: 2px;
+    font-style: normal;
+}
+
+/* Button hover overrides — invert colors on hover */
+.fp-btn-primary:hover {
+    color: #000;
+    transform: scale(1.05);
+}
+
+.fp-btn-secondary:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Override particle animation for floating spore effect */
+.fp-particle {
+    animation-name: fp-spore-float;
+}
+
+@keyframes fp-spore-float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 30px 20px;
+    }
+}

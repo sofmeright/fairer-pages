@@ -1,0 +1,88 @@
+/* Zelda & Epona — Bold medieval fantasy with green/gold Zelda palette */
+
+:root {
+    /* Typography */
+    --fp-font-body: 'MedievalSharp', serif;
+    --fp-font-display: 'MedievalSharp', serif;
+
+    /* Colors */
+    --fp-bg: #0a1a0a;
+    --fp-card-bg: rgba(20, 40, 20, 0.75);
+    --fp-text: #fff;
+    --fp-accent: #90d050;
+    --fp-code-color: #90d050;
+    --fp-title-color: #d4f0b0;
+    --fp-message-color: #d4f0b0;
+    --fp-desc-color: #d4f0b0;
+
+    /* Card */
+    --fp-card-border-color: rgba(100, 150, 80, 0.6);
+    --fp-card-border-width: 4px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 0 3px rgba(100, 150, 80, 0.5);
+    --fp-card-backdrop: blur(8px);
+    --fp-card-padding: 50px 45px;
+    --fp-container-width: min(90%, 650px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.40));
+    --fp-bg-image-opacity: 1;
+
+    /* Code sizing — larger for this minimal theme */
+    --fp-code-size: clamp(75px, 12vw, 140px);
+    --fp-title-size: clamp(24px, 4.5vw, 36px);
+
+    /* Buttons */
+    --fp-btn-radius: 10px;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-primary-bg: rgba(100, 150, 80, 0.3);
+    --fp-btn-primary-text: #d4f0b0;
+    --fp-btn-primary-border: #90d050;
+    --fp-btn-primary-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    --fp-btn-primary-hover-bg: rgba(144, 208, 80, 0.5);
+    --fp-btn-primary-hover-shadow: 0 8px 30px rgba(144, 208, 80, 0.6);
+    --fp-btn-secondary-bg: rgba(80, 120, 60, 0.3);
+    --fp-btn-secondary-text: #d4f0b0;
+    --fp-btn-secondary-border: #70b030;
+    --fp-btn-secondary-hover-bg: rgba(112, 176, 48, 0.5);
+    --fp-btn-secondary-hover-shadow: 0 8px 30px rgba(112, 176, 48, 0.6);
+}
+
+/* Button font override */
+.fp-btn {
+    font-family: 'MedievalSharp', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Error code styling */
+.fp-error-code {
+    letter-spacing: 10px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(144, 208, 80, 0.6);
+}
+
+/* Title styling */
+.fp-title {
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Hide description and message since this is a minimal theme */
+.fp-error-message:empty,
+.fp-description:empty {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fp-btn {
+        padding: 13px 32px;
+    }
+}

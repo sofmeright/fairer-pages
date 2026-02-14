@@ -1,0 +1,27 @@
+{
+    "layout": "card-image",
+    "name": "Fake Rocky Ridge",
+    "badge": "🎬 OOPS! WRONG SIDE! 🎬",
+    "image": "resources/facade.jpg",
+    "imageAlt": "Movie set facades - empty behind",
+    "fonts": "https://fonts.googleapis.com/css2?family=Rye&family=Bebas+Neue&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 30,
+        "color": "rgba(244, 228, 193, 0.3)"
+    },
+    "buttons": {
+        "home": "See The Front",
+        "back": "Go Back"
+    },
+    "footer": "🎭 All just smoke and mirrors, folks!",
+    "titles": {
+        "default": "The Secret's Out: There's Nothing Here!"
+    },
+    "messages": {
+        "default": "Oops! We accidentally showed you the WRONG SIDE! It's all just scaffolding and plywood back here..."
+    },
+    "descriptions": {
+        "default": "What you're looking for? Yeah, it's just a facade. Nothing behind these walls but empty promises."
+    }
+}

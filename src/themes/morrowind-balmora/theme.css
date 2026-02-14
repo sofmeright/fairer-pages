@@ -1,0 +1,136 @@
+/*
+ * Morrowind Balmora — Fairer Pages Theme CSS
+ * Dark parchment aesthetic with warm gold/amber tones from Vvardenfell
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #140f0a;
+    --fp-card-bg: rgba(40, 30, 20, 0.92);
+    --fp-text: #d4c5a0;
+    --fp-accent: #b48c50;
+    --fp-code-color: #d4c5a0;
+    --fp-title-color: #b48c50;
+    --fp-message-color: #b48c50;
+    --fp-desc-color: #d4c5a0;
+    --fp-footer-color: #b48c50;
+
+    /* Typography */
+    --fp-font-body: 'Cinzel', serif;
+    --fp-font-display: 'MedievalSharp', serif;
+    --fp-code-size: clamp(70px, 12vw, 130px);
+    --fp-title-size: clamp(18px, 2.5vw, 22px);
+    --fp-message-size: clamp(22px, 3.5vw, 34px);
+    --fp-desc-size: clamp(14px, 1.8vw, 18px);
+    --fp-btn-size: clamp(13px, 1.8vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: rgba(180, 140, 80, 0.5);
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 5px;
+    --fp-card-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(180, 140, 80, 0.4);
+    --fp-card-backdrop: blur(12px);
+    --fp-card-padding: clamp(30px, 5vw, 60px) clamp(25px, 4vw, 50px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(to bottom,
+        rgba(20, 15, 10, 0.80),
+        rgba(40, 25, 15, 0.75),
+        rgba(20, 15, 10, 0.80));
+
+    /* Buttons */
+    --fp-btn-radius: 4px;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-primary-bg: rgba(180, 140, 80, 0.15);
+    --fp-btn-primary-text: #d4c5a0;
+    --fp-btn-primary-border: #b48c50;
+    --fp-btn-primary-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    --fp-btn-primary-hover-bg: #b48c50;
+    --fp-btn-primary-hover-shadow: 0 6px 25px rgba(180, 140, 80, 0.6);
+    --fp-btn-secondary-bg: rgba(139, 111, 71, 0.15);
+    --fp-btn-secondary-text: #d4c5a0;
+    --fp-btn-secondary-border: #8b6f47;
+    --fp-btn-secondary-hover-bg: #8b6f47;
+    --fp-btn-secondary-hover-shadow: 0 6px 25px rgba(139, 111, 71, 0.6);
+
+    /* Badge */
+    --fp-badge-bg: rgba(40, 30, 20, 0.95);
+    --fp-badge-text: #b48c50;
+    --fp-badge-border: rgba(180, 140, 80, 0.5);
+    --fp-badge-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    --fp-badge-radius: 5px;
+    --fp-badge-letter-spacing: 2px;
+
+    /* Container */
+    --fp-container-width: min(90%, 800px);
+}
+
+/* Badge styled as scroll header */
+.fp-badge {
+    font-family: 'MedievalSharp', serif;
+    font-weight: 400;
+    text-transform: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Hide the title element — morrowind uses badge as header and HTTP names as message */
+.fp-title {
+    display: none;
+}
+
+/* Error code styling */
+.fp-error-code {
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+    letter-spacing: 8px;
+}
+
+/* Error message styled as the title line */
+.fp-error-message {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Divider between message and description */
+.fp-error-message::after {
+    content: '';
+    display: block;
+    width: 140px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(180, 140, 80, 0.6), transparent);
+    margin: clamp(16px, 2.5vw, 25px) auto 0;
+}
+
+/* Description body text */
+.fp-description {
+    line-height: 1.9;
+    font-weight: 400;
+}
+
+/* Footer styled as the journal entry (italic with left border) */
+.fp-footer {
+    font-style: italic;
+    opacity: 0.95;
+    font-size: clamp(12px, 1.6vw, 16px);
+    border-left: 3px solid rgba(180, 140, 80, 0.5);
+    padding-left: 20px;
+    text-align: left;
+}
+
+/* Button hover states — dark text on hover */
+.fp-btn-primary:hover {
+    color: #1a1510;
+}
+
+.fp-btn-secondary:hover {
+    color: #1a1510;
+    border-color: #8b6f47;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .fp-footer {
+        font-size: clamp(11px, 3vw, 14px);
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "layout": "card-image",
+    "name": "Rush Hour",
+    "badge": "\ud83d\udea8 COMMUNICATION BREAKDOWN \ud83d\udea8",
+    "image": "resources/carter.gif",
+    "imageAlt": "Confusion intensifies",
+    "fonts": "https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@700;900&display=swap",
+    "buttons": {
+        "home": "Go Home",
+        "back": "Go Back"
+    },
+    "footer": "Case closed... or is it?",
+    "titles": {
+        "default": "Do You Understand This Error Message?"
+    },
+    "messages": {
+        "default": "We're having a communication problem here! This page is missing in action."
+    },
+    "descriptions": {
+        "default": "Don't worry, we're on the case... Just gotta work together on this one."
+    }
+}

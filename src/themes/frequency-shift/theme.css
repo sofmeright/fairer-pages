@@ -1,0 +1,80 @@
+/*
+ * Frequency Shift — Vibrational frequency theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+    --fp-card-bg: linear-gradient(135deg, rgba(20, 20, 40, 0.95), rgba(30, 30, 50, 0.95));
+    --fp-text: #e0e0ff;
+    --fp-accent: #da70d6;
+    --fp-code-color: #8a2be2;
+    --fp-title-color: #da70d6;
+    --fp-message-color: #d0d0e8;
+    --fp-desc-color: #d0d0e8;
+    --fp-footer-color: rgba(224, 224, 255, 0.5);
+
+    /* Typography */
+    --fp-font-body: 'Space Grotesk', sans-serif;
+    --fp-font-display: 'JetBrains Mono', monospace;
+    --fp-code-size: clamp(45px, 8vw, 65px);
+    --fp-title-size: clamp(22px, 4vw, 32px);
+    --fp-message-size: clamp(14px, 2.5vw, 18px);
+    --fp-btn-size: clamp(14px, 2vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: rgba(138, 43, 226, 0.4);
+    --fp-card-border-width: 2px;
+    --fp-card-radius: 20px;
+    --fp-card-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(138, 43, 226, 0.2);
+    --fp-card-padding: clamp(30px, 4vw, 40px) clamp(25px, 3vw, 35px);
+
+    /* Image */
+    --fp-image-border: 2px solid rgba(138, 43, 226, 0.3);
+    --fp-image-radius: 12px;
+    --fp-image-shadow: 0 15px 50px rgba(138, 43, 226, 0.3);
+    --fp-image-max-height: 30vh;
+
+    /* Buttons */
+    --fp-btn-radius: 12px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-primary-bg: linear-gradient(135deg, #8a2be2, #9370db);
+    --fp-btn-primary-text: #ffffff;
+    --fp-btn-primary-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
+    --fp-btn-primary-hover-shadow: 0 12px 30px rgba(138, 43, 226, 0.6);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #da70d6;
+    --fp-btn-secondary-border: #8a2be2;
+    --fp-btn-secondary-hover-bg: rgba(138, 43, 226, 0.15);
+
+    /* Container */
+    --fp-container-width: min(100%, 900px);
+}
+
+/* Body background */
+body {
+    background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+}
+
+/* Error code gradient text */
+.fp-error-code {
+    background: linear-gradient(135deg, #8a2be2, #da70d6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.5));
+}
+
+/* Title glow */
+.fp-title {
+    text-shadow: 0 0 15px rgba(218, 112, 214, 0.5);
+    letter-spacing: 1px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px;
+    }
+}

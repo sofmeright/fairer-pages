@@ -129,6 +129,36 @@
             border-bottom-color: #5d3a1a;
         }
 
+        #doc-nav {
+            display: none;
+            margin: 0 20px 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        #doc-nav a {
+            display: inline-block;
+            background: #8b5a2b;
+            color: #fff8f0;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 2px solid #6b3a1b;
+            box-shadow: 0 2px 8px rgba(139, 90, 43, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        #doc-nav a:hover {
+            background: #6b3a1b;
+            color: #fff;
+            border-color: #5d3a1a;
+            box-shadow: 0 4px 12px rgba(139, 90, 43, 0.4);
+        }
+
         .markdown-body code {
             background: rgba(139, 90, 43, 0.1);
             border: 1px solid rgba(139, 90, 43, 0.2);
@@ -534,20 +564,118 @@
     </div>
 
     <div class="content-wrapper">
+        <nav id="doc-nav">
+            <a href="#" id="doc-nav-link">&larr; Home</a>
+        </nav>
         <article class="markdown-body" id="content">
             Loading...
         </article>
     </div>
 
     <script>
-        fetch('/Readme.md')
-            .then(response => response.text())
-            .then(text => {
-                document.getElementById('content').innerHTML = marked.parse(text);
-            })
-            .catch(error => {
-                document.getElementById('content').innerHTML = '<h1>Error loading README</h1><p>' + error + '</p>';
-            });
+        var currentDoc = 'Readme.md';
+
+        function getBaseDir(path) {
+            var parts = path.split('/');
+            parts.pop();
+            return parts.length ? parts.join('/') + '/' : '';
+        }
+
+        function resolvePath(href, fromDoc) {
+            // Already absolute doc path
+            if (href.startsWith('docs/')) return href;
+            // Resolve relative to the current doc's directory
+            var base = getBaseDir(fromDoc);
+            if (!base) return href;
+            // Handle ../ segments
+            var parts = base.split('/').filter(Boolean);
+            var segments = href.split('/');
+            for (var i = 0; i < segments.length; i++) {
+                if (segments[i] === '..') parts.pop();
+                else if (segments[i] !== '.') parts.push(segments[i]);
+            }
+            return parts.join('/');
+        }
+
+        function showNav(visible) {
+            document.getElementById('doc-nav').style.display = visible ? 'block' : 'none';
+        }
+
+        function loadDoc(path) {
+            currentDoc = path;
+            var isSubDoc = path !== 'Readme.md';
+
+            fetch('/' + path)
+                .then(function(response) {
+                    if (!response.ok) throw new Error('Not found: ' + path);
+                    return response.text();
+                })
+                .then(function(text) {
+                    var content = document.getElementById('content');
+
+                    if (path.match(/\.md$/)) {
+                        content.innerHTML = marked.parse(text);
+                    } else {
+                        // Raw file — render as code block with filename header
+                        var filename = path.split('/').pop();
+                        content.innerHTML = '<h3>' + filename + '</h3><pre><code>' +
+                            text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+                            '</code></pre>';
+                    }
+
+                    showNav(isSubDoc);
+                    window.scrollTo(0, 0);
+
+                    if (isSubDoc) {
+                        history.pushState({ doc: path }, '', '/?doc=' + encodeURIComponent(path));
+                    } else {
+                        history.pushState({ doc: 'Readme.md' }, '', '/');
+                    }
+                })
+                .catch(function(error) {
+                    document.getElementById('content').innerHTML =
+                        '<h2>Error loading document</h2><p>' + error + '</p>';
+                    showNav(true);
+                });
+        }
+
+        var docFilePattern = /\.(ya?ml|md|conf|env|example|json|toml|txt|sh)$/;
+
+        // Event delegation — single click handler catches all doc link clicks
+        document.getElementById('content').addEventListener('click', function(e) {
+            var link = e.target;
+            while (link && link.tagName !== 'A') link = link.parentElement;
+            if (!link) return;
+
+            var href = link.getAttribute('href');
+            if (!href || href.startsWith('http://') || href.startsWith('https://') || href.startsWith('#') || href.startsWith('mailto:')) return;
+
+            var resolved = resolvePath(href, currentDoc);
+            if (!resolved.match(docFilePattern)) return;
+
+            e.preventDefault();
+            loadDoc(resolved);
+        });
+
+        // Nav home link
+        document.getElementById('doc-nav-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            loadDoc('Readme.md');
+        });
+
+        // Browser back/forward
+        window.addEventListener('popstate', function(e) {
+            if (e.state && e.state.doc) {
+                loadDoc(e.state.doc);
+            } else {
+                loadDoc('Readme.md');
+            }
+        });
+
+        // Initial load — check for ?doc= parameter
+        var params = new URLSearchParams(window.location.search);
+        var doc = params.get('doc');
+        loadDoc(doc && doc.startsWith('docs/') ? doc : 'Readme.md');
     </script>
 </body>
 </html>

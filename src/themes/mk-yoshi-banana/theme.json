@@ -1,0 +1,28 @@
+{
+    "layout": "card-image",
+    "name": "Mario Kart - Yoshi Banana",
+    "badge": "🏁 BANANA SLIP! 🏁",
+    "image": "resources/yoshi-banana.gif",
+    "imageAlt": "Yoshi with banana",
+    "fonts": "https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@700;900&display=swap",
+    "particles": {
+        "enabled": true,
+        "count": 15,
+        "emoji": "🍌",
+        "className": "banana-peel"
+    },
+    "buttons": {
+        "home": "RESPAWN",
+        "back": "REVERSE"
+    },
+    "footer": "★ RACE OVER ★",
+    "titles": {
+        "default": "YOU SLIPPED ON A BANANA PEEL!"
+    },
+    "messages": {
+        "default": "WAHOOOOO! YOU'VE BEEN PEELED!"
+    },
+    "descriptions": {
+        "default": "Looks like someone left a banana on the track! Better luck next lap..."
+    }
+}

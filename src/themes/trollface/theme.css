@@ -1,0 +1,144 @@
+/*
+ * Trollface — Rage comic meme theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #fff;
+    --fp-card-bg: #fff;
+    --fp-text: #000;
+    --fp-accent: #000;
+    --fp-code-color: #000;
+    --fp-title-color: #000;
+    --fp-message-color: #000;
+    --fp-desc-color: #333;
+    --fp-footer-color: #666;
+
+    /* Typography */
+    --fp-font-body: 'Comic Sans MS', 'Comic Sans', cursive;
+    --fp-font-display: 'Comic Sans MS', 'Comic Sans', cursive;
+    --fp-code-size: clamp(60px, 12vw, 110px);
+    --fp-title-size: clamp(28px, 5vw, 48px);
+    --fp-message-size: clamp(22px, 4vw, 38px);
+    --fp-desc-size: clamp(18px, 3vw, 24px);
+    --fp-footer-size: 18px;
+    --fp-btn-size: clamp(18px, 3vw, 26px);
+
+    /* Card */
+    --fp-card-border-color: #000;
+    --fp-card-border-width: 8px;
+    --fp-card-radius: 0;
+    --fp-card-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+    --fp-card-padding: 40px 30px;
+
+    /* Badge - not used, title serves as header */
+    --fp-badge-bg: transparent;
+    --fp-badge-text: transparent;
+    --fp-badge-border: transparent;
+    --fp-badge-shadow: none;
+
+    /* Image */
+    --fp-image-border: none;
+    --fp-image-radius: 0;
+    --fp-image-shadow: none;
+    --fp-image-max-width: 350px;
+
+    /* Buttons */
+    --fp-btn-radius: 0;
+    --fp-btn-border-width: 5px;
+    --fp-btn-font-weight: 900;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #000;
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: #000;
+    --fp-btn-primary-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+    --fp-btn-primary-hover-bg: #333;
+    --fp-btn-primary-hover-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+    --fp-btn-secondary-bg: #fff;
+    --fp-btn-secondary-text: #000;
+    --fp-btn-secondary-border: #000;
+    --fp-btn-secondary-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+    --fp-btn-secondary-hover-bg: #f0f0f0;
+    --fp-btn-secondary-hover-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+
+    /* Container */
+    --fp-container-width: min(90%, 800px);
+}
+
+/* Background */
+body {
+    background: #fff;
+}
+
+/* Rage comic border frame */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 20px solid #000;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Image contrast */
+.fp-image {
+    filter: contrast(1.1);
+}
+
+/* Error code */
+.fp-error-code {
+    font-weight: bold;
+    text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Message */
+.fp-error-message {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Title as large troll text */
+.fp-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+/* Description */
+.fp-description {
+    font-style: italic;
+}
+
+/* Footer */
+.fp-footer {
+    font-weight: bold;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.fp-btn-secondary:active {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    body::before {
+        border-width: 10px;
+    }
+
+    :root {
+        --fp-card-padding: 30px 20px;
+        --fp-card-border-width: 5px;
+    }
+}

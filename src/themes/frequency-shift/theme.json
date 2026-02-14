@@ -1,0 +1,71 @@
+{
+    "layout": "card-image",
+    "name": "Frequency Shift",
+    "image": "resources/frequency.jpg",
+    "imageAlt": "Emit Your Own Frequency",
+    "fonts": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap",
+    "buttons": {
+        "home": "Realign",
+        "back": "Return"
+    },
+    "titles": {
+        "400": "Distorted Signal",
+        "401": "Blocked Frequency",
+        "402": "Premium Wavelength",
+        "403": "Restricted Band",
+        "404": "Frequency Mismatch",
+        "405": "Wrong Channel",
+        "406": "Incompatible Wave",
+        "408": "Signal Faded",
+        "409": "Interference",
+        "410": "Signal Lost",
+        "413": "Overloaded Circuit",
+        "429": "Bandwidth Exceeded",
+        "500": "Frequency Collapse",
+        "502": "Channel Disrupted",
+        "503": "Transmitter Offline",
+        "504": "Signal Timeout",
+        "default": "Frequency Mismatch"
+    },
+    "messages": {
+        "400": "Your request carries a distorted signal. Calibrate your transmission, clear the static, and emit a cleaner frequency.",
+        "401": "This frequency is protected. You need the proper resonance key to access this wavelength. Attune yourself first.",
+        "402": "Access to this premium wavelength requires subscription. Invest in your vibrational alignment to proceed.",
+        "403": "This band is restricted. Your current frequency doesn't match the required resonance. Emit from a different source.",
+        "404": "This page resonates at a different frequency. You're not an imprint of external patterns\u2014emit your own vibration and find your path.",
+        "405": "That method doesn't resonate here. Tune to a different channel that matches your authentic frequency.",
+        "406": "Your wave pattern is incompatible with this system. Shift your vibration to find compatible resonance.",
+        "408": "The signal faded before completion. Sometimes frequencies need time to stabilize. Emit again with clarity.",
+        "409": "Interference detected between conflicting frequencies. Clear the noise, realign your signal, and try again.",
+        "410": "This frequency has been permanently silenced. It no longer exists in the spectrum. Tune to new wavelengths.",
+        "413": "Your signal is overloading the circuit. Reduce amplitude, focus your frequency, and transmit with precision.",
+        "429": "You're transmitting too many signals at once. Slow your emissions. Quality frequency over quantity.",
+        "500": "The frequency generator has collapsed. Our technicians are rebuilding the resonance field. Stay tuned.",
+        "502": "The channel between frequencies is disrupted. The relay station isn't responding. Stand by for reconnection.",
+        "503": "The transmitter is offline for maintenance. Your frequency will be received when broadcasting resumes.",
+        "504": "Signal timeout while establishing connection. The wavelength took too long to synchronize. Try again.",
+        "default": "This page resonates at a different frequency. You're not an imprint of external patterns\u2014emit your own vibration and find your path."
+    },
+    "descriptions": {
+        "default": ""
+    },
+    "footers": {
+        "400": "Transmit with clarity",
+        "401": "Resonate with permission",
+        "402": "Value your vibration",
+        "403": "Honor frequency boundaries",
+        "404": "Emit your own frequency",
+        "405": "Find your authentic channel",
+        "406": "Shift to compatible waves",
+        "408": "Patience stabilizes signals",
+        "409": "Clear your wavelength",
+        "410": "New frequencies await",
+        "413": "Precision over power",
+        "429": "Quality transmissions matter",
+        "500": "Resonance will return",
+        "502": "Channels reconnect",
+        "503": "Broadcasts resume soon",
+        "504": "Synchronization takes time",
+        "default": "Emit your own frequency"
+    }
+}

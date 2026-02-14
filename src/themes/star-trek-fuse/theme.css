@@ -1,0 +1,159 @@
+/*
+ * Star Trek Fuse — LCARS-inspired theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #000;
+    --fp-card-bg: rgba(0, 0, 0, 0.85);
+    --fp-text: #ff9966;
+    --fp-accent: #ff9966;
+    --fp-code-color: #ff9966;
+    --fp-title-color: #cc99ff;
+    --fp-message-color: #ff9966;
+    --fp-desc-color: #cc99ff;
+    --fp-footer-color: #ff9966;
+
+    /* Typography */
+    --fp-font-body: 'Orbitron', monospace;
+    --fp-font-display: 'Share Tech Mono', monospace;
+    --fp-code-size: clamp(65px, 12vw, 130px);
+    --fp-title-size: clamp(22px, 4vw, 36px);
+    --fp-message-size: clamp(15px, 2.5vw, 17px);
+    --fp-desc-size: clamp(12px, 2vw, 14px);
+    --fp-btn-size: clamp(13px, 2vw, 15px);
+
+    /* Card */
+    --fp-card-border-color: #ff9966;
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 20px;
+    --fp-card-shadow: 0 0 60px rgba(255, 153, 102, 0.5), inset 0 0 30px rgba(255, 153, 102, 0.1);
+    --fp-card-backdrop: blur(10px);
+    --fp-card-padding: clamp(35px, 5vw, 50px) clamp(25px, 4vw, 45px);
+
+    /* Badge */
+    --fp-badge-bg: rgba(0, 0, 0, 0.95);
+    --fp-badge-text: #ff3366;
+    --fp-badge-border: #ff9966;
+    --fp-badge-shadow: 0 0 20px rgba(255, 153, 102, 0.5);
+    --fp-badge-radius: 5px;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Image */
+    --fp-image-border: 3px solid #ff9966;
+    --fp-image-radius: 15px;
+    --fp-image-shadow: 0 0 40px rgba(255, 153, 102, 0.8);
+    --fp-image-max-width: 450px;
+
+    /* Buttons */
+    --fp-btn-radius: 30px;
+    --fp-btn-border-width: 2px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: linear-gradient(135deg, #ff9966, #ff6633);
+    --fp-btn-primary-text: #000;
+    --fp-btn-primary-border: #ff9966;
+    --fp-btn-primary-shadow: 0 0 25px rgba(255, 153, 102, 0.6);
+    --fp-btn-primary-hover-bg: #ff9966;
+    --fp-btn-primary-hover-shadow: 0 0 40px rgba(255, 153, 102, 1);
+    --fp-btn-secondary-bg: linear-gradient(135deg, #cc99ff, #9966cc);
+    --fp-btn-secondary-text: #000;
+    --fp-btn-secondary-border: #cc99ff;
+    --fp-btn-secondary-shadow: 0 0 25px rgba(204, 153, 255, 0.6);
+    --fp-btn-secondary-hover-bg: #cc99ff;
+    --fp-btn-secondary-hover-shadow: 0 0 40px rgba(204, 153, 255, 1);
+
+    /* Container */
+    --fp-container-width: min(90%, 850px);
+}
+
+/* Background gradient */
+body {
+    background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #000000 100%);
+    overflow: hidden;
+}
+
+/* LCARS border bars */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    background: linear-gradient(90deg, #cc99ff 0%, #9966cc 100%);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    width: 100%;
+    height: 40px;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 20px 20px;
+}
+
+body::after {
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Badge blinking animation */
+.fp-badge {
+    animation: blink-alert 1.5s infinite;
+    text-transform: uppercase;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+@keyframes blink-alert {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Error code styling */
+.fp-error-code {
+    font-weight: 800;
+    letter-spacing: 10px;
+    text-shadow: 0 0 30px rgba(255, 153, 102, 1), 0 0 60px rgba(255, 51, 102, 0.6);
+}
+
+/* Title styling */
+.fp-title {
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(204, 153, 255, 0.8);
+}
+
+/* Divider */
+.fp-card::after {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #ff9966, transparent);
+    margin: 25px auto;
+}
+
+/* Description styled as system log */
+.fp-description {
+    font-family: 'Share Tech Mono', monospace;
+    line-height: 1.8;
+    padding: 15px;
+    background: rgba(204, 153, 255, 0.1);
+    border-left: 4px solid #cc99ff;
+    text-align: left;
+    border-radius: 5px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 35px 25px;
+        --fp-code-size: clamp(65px, 15vw, 85px);
+    }
+}

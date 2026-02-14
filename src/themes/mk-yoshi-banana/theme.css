@@ -1,0 +1,182 @@
+/*
+ * Mario Kart - Yoshi Banana — Banana peel slip theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #4fc3f7 0%, #81d4fa 50%, #4fc3f7 100%);
+    --fp-card-bg: rgba(255, 255, 255, 0.95);
+    --fp-text: #000;
+    --fp-accent: #fdd835;
+    --fp-code-color: #fdd835;
+    --fp-title-color: #ef5350;
+    --fp-message-color: #66bb6a;
+    --fp-desc-color: #424242;
+    --fp-footer-color: #ef5350;
+
+    /* Typography */
+    --fp-font-body: 'Nunito', sans-serif;
+    --fp-font-display: 'Bangers', cursive;
+    --fp-code-size: clamp(60px, 12vw, 100px);
+    --fp-title-size: clamp(30px, 5vw, 48px);
+    --fp-message-size: clamp(24px, 4vw, 38px);
+    --fp-desc-size: clamp(18px, 2.5vw, 22px);
+    --fp-footer-size: 18px;
+    --fp-btn-size: clamp(20px, 3vw, 24px);
+
+    /* Card */
+    --fp-card-border-color: #fdd835;
+    --fp-card-border-width: 8px;
+    --fp-card-radius: 25px;
+    --fp-card-shadow: 0 10px 50px rgba(253, 216, 53, 0.6), inset 0 0 0 4px #ef5350;
+    --fp-card-padding: clamp(48px, 5vw, 48px) clamp(20px, 3vw, 30px) clamp(15px, 2vw, 15px);
+
+    /* Badge */
+    --fp-badge-bg: linear-gradient(135deg, #fdd835, #fbc02d);
+    --fp-badge-text: #000;
+    --fp-badge-border: #ef5350;
+    --fp-badge-shadow: 0 6px 20px rgba(239, 83, 80, 0.5);
+    --fp-badge-radius: 30px;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Image */
+    --fp-image-border: 6px solid #66bb6a;
+    --fp-image-radius: 15px;
+    --fp-image-shadow: 0 10px 40px rgba(102, 187, 106, 0.5);
+    --fp-image-max-width: 350px;
+
+    /* Buttons */
+    --fp-btn-radius: 50px;
+    --fp-btn-border-width: 5px;
+    --fp-btn-font-weight: 900;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #66bb6a;
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: #2e7d32;
+    --fp-btn-primary-shadow: 0 8px 0 #2e7d32, 0 12px 30px rgba(46, 125, 50, 0.4);
+    --fp-btn-primary-hover-bg: #81c784;
+    --fp-btn-primary-hover-shadow: 0 12px 0 #2e7d32, 0 16px 35px rgba(46, 125, 50, 0.5);
+    --fp-btn-secondary-bg: #fdd835;
+    --fp-btn-secondary-text: #000;
+    --fp-btn-secondary-border: #f57f17;
+    --fp-btn-secondary-shadow: 0 8px 0 #f57f17, 0 12px 30px rgba(245, 127, 23, 0.4);
+    --fp-btn-secondary-hover-bg: #ffee58;
+    --fp-btn-secondary-hover-shadow: 0 12px 0 #f57f17, 0 16px 35px rgba(245, 127, 23, 0.5);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+
+    /* Particles */
+    --fp-particle-color: #fdd835;
+}
+
+/* Body background */
+body {
+    background: linear-gradient(135deg, #4fc3f7 0%, #81d4fa 50%, #4fc3f7 100%);
+    overflow-y: hidden;
+}
+
+/* Racing stripes background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 50px,
+        rgba(255, 255, 255, 0.1) 50px,
+        rgba(255, 255, 255, 0.1) 100px
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: stripe-scroll 20s linear infinite;
+}
+
+@keyframes stripe-scroll {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
+}
+
+/* Title styling */
+.fp-title {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 0 #fdd835, 7px 7px 0 rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+}
+
+/* Error code */
+.fp-error-code {
+    font-weight: bold;
+    text-shadow: 5px 5px 0 #ef5350, 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Error message */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Description */
+.fp-description {
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+/* Image background */
+.fp-image {
+    background: #fff;
+}
+
+/* Footer */
+.fp-footer {
+    font-weight: 900;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #2e7d32, 0 8px 20px rgba(46, 125, 50, 0.3);
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #f57f17, 0 8px 20px rgba(245, 127, 23, 0.3);
+}
+
+/* Banana peel particle override */
+.fp-particle {
+    font-size: 40px !important;
+    background: none !important;
+    width: auto !important;
+    height: auto !important;
+    animation-name: float-banana !important;
+    opacity: 0.3;
+}
+
+@keyframes float-banana {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.3; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 35px 25px 15px 25px;
+    }
+
+    .fp-badge {
+        font-size: 13px;
+        padding: 8px 20px;
+    }
+}

@@ -1,0 +1,21 @@
+# Nginx Ingress example for exposing Fairer Pages.
+# Update host and ingressClassName to match your cluster.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fairer-pages
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: errors.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fairer-pages
+                port:
+                  number: 80

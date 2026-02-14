@@ -1,0 +1,193 @@
+/*
+ * Strange Presence — Supernatural seance theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #0a0a0a;
+    --fp-card-bg: rgba(20, 10, 30, 0.85);
+    --fp-text: #9b9b9b;
+    --fp-accent: #8a2be2;
+    --fp-code-color: #8a2be2;
+    --fp-title-color: #c896ff;
+    --fp-message-color: #9b9b9b;
+    --fp-desc-color: #ff6666;
+    --fp-footer-color: #4a2860;
+
+    /* Typography */
+    --fp-font-body: 'IM Fell English', serif;
+    --fp-font-display: 'Creepster', cursive;
+    --fp-code-size: clamp(50px, 10vw, 90px);
+    --fp-title-size: clamp(32px, 5vw, 44px);
+    --fp-message-size: clamp(22px, 3.5vw, 28px);
+    --fp-desc-size: clamp(20px, 3vw, 24px);
+    --fp-footer-size: 16px;
+    --fp-btn-size: clamp(18px, 2.5vw, 22px);
+
+    /* Card */
+    --fp-card-border-color: #4a2860;
+    --fp-card-border-width: 3px;
+    --fp-card-radius: 10px;
+    --fp-card-shadow: 0 0 60px rgba(138, 43, 226, 0.4), inset 0 0 40px rgba(0, 0, 0, 0.8);
+    --fp-card-backdrop: blur(10px);
+    --fp-card-padding: 35px 30px;
+
+    /* Badge */
+    --fp-badge-bg: #4a2860;
+    --fp-badge-text: #c896ff;
+    --fp-badge-border: #8a2be2;
+    --fp-badge-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+    --fp-badge-radius: 5px;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Image */
+    --fp-image-border: 3px solid #4a2860;
+    --fp-image-radius: 8px;
+    --fp-image-shadow: 0 0 40px rgba(138, 43, 226, 0.4);
+    --fp-image-max-width: 500px;
+
+    /* Buttons */
+    --fp-btn-radius: 5px;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #4a2860;
+    --fp-btn-primary-text: #c896ff;
+    --fp-btn-primary-border: #8a2be2;
+    --fp-btn-primary-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+    --fp-btn-primary-hover-bg: #5a3870;
+    --fp-btn-primary-hover-shadow: 0 0 30px rgba(138, 43, 226, 0.7);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #9b9b9b;
+    --fp-btn-secondary-border: #4a2860;
+    --fp-btn-secondary-shadow: 0 0 20px rgba(74, 38, 96, 0.4);
+    --fp-btn-secondary-hover-bg: rgba(74, 38, 96, 0.3);
+    --fp-btn-secondary-hover-shadow: 0 0 30px rgba(74, 38, 96, 0.7);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+
+    /* Particles */
+    --fp-particle-color: rgba(200, 150, 255, 0.3);
+}
+
+/* Dark fog background effect */
+body {
+    background: #0a0a0a;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(80, 20, 100, 0.15) 0%, transparent 70%);
+    animation: fog-pulse 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes fog-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* Flickering vignette */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    z-index: 0;
+    animation: flicker 4s infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    5%, 15%, 25% { opacity: 0.8; }
+    10%, 20% { opacity: 0.95; }
+}
+
+/* Badge glow pulse */
+.fp-badge {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(138, 43, 226, 0.6); }
+    50% { box-shadow: 0 0 40px rgba(138, 43, 226, 0.9); }
+}
+
+/* Title flickering */
+.fp-title {
+    font-family: 'Creepster', cursive;
+    text-shadow: 0 0 20px #8a2be2, 0 0 40px #4a2860;
+    line-height: 1.3;
+    animation: text-flicker 3s infinite;
+}
+
+@keyframes text-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+    75% { opacity: 0.9; }
+}
+
+/* Image dark filter */
+.fp-image {
+    filter: brightness(0.7) contrast(1.2) saturate(0.8);
+}
+
+/* Error code pulse */
+.fp-error-code {
+    font-family: 'Creepster', cursive;
+    text-shadow: 0 0 30px #8a2be2, 0 0 60px #4a2860;
+    animation: code-pulse 2s ease-in-out infinite;
+}
+
+@keyframes code-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Message styling */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Description as warning */
+.fp-description {
+    font-weight: bold;
+    animation: warning-blink 2s infinite;
+}
+
+@keyframes warning-blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.6; }
+}
+
+/* Footer styling */
+.fp-footer {
+    font-style: italic;
+}
+
+/* Secondary button hover color change */
+.fp-btn-secondary:hover {
+    color: #c896ff;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 35px 25px;
+    }
+}

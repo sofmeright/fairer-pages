@@ -1,0 +1,165 @@
+/*
+ * Hide Yo Dawg — Antoine Dodson meme theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(45deg, #1a1a1a 0%, #2d0a0a 50%, #1a1a1a 100%);
+    --fp-card-bg: rgba(0, 0, 0, 0.9);
+    --fp-text: #fff;
+    --fp-accent: #ff0000;
+    --fp-code-color: #ff0000;
+    --fp-title-color: #ffff00;
+    --fp-message-color: #ff6666;
+    --fp-desc-color: #ff6666;
+    --fp-footer-color: #888;
+
+    /* Typography */
+    --fp-font-body: 'Impact', 'Anton', sans-serif;
+    --fp-font-display: 'Impact', 'Anton', sans-serif;
+    --fp-code-size: clamp(65px, 14vw, 120px);
+    --fp-title-size: clamp(22px, 4vw, 32px);
+    --fp-message-size: clamp(16px, 3vw, 20px);
+    --fp-desc-size: clamp(16px, 2.5vw, 20px);
+    --fp-btn-size: clamp(18px, 3vw, 24px);
+
+    /* Card */
+    --fp-card-border-color: #ff0000;
+    --fp-card-border-width: 5px;
+    --fp-card-radius: 15px;
+    --fp-card-shadow: 0 0 40px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 0, 0, 0.2);
+    --fp-card-padding: 40px;
+
+    /* Image */
+    --fp-image-border: 5px solid #fff;
+    --fp-image-radius: 10px;
+    --fp-image-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --fp-image-max-width: 500px;
+
+    /* Buttons */
+    --fp-btn-radius: 10px;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #ff0000;
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: #fff;
+    --fp-btn-primary-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --fp-btn-primary-hover-bg: #cc0000;
+    --fp-btn-primary-hover-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
+    --fp-btn-secondary-bg: #ffff00;
+    --fp-btn-secondary-text: #000;
+    --fp-btn-secondary-border: #000;
+    --fp-btn-secondary-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --fp-btn-secondary-hover-bg: #cccc00;
+    --fp-btn-secondary-hover-shadow: 0 8px 20px rgba(255, 255, 0, 0.5);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+}
+
+/* Body background + warning stripes */
+body {
+    background: linear-gradient(45deg, #1a1a1a 0%, #2d0a0a 50%, #1a1a1a 100%);
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 0, 0, 0.1) 0px,
+        rgba(255, 0, 0, 0.1) 50px,
+        rgba(0, 0, 0, 0.1) 50px,
+        rgba(0, 0, 0, 0.1) 100px
+    );
+    animation: slide 20s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes slide {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(100px, 100px); }
+}
+
+/* Card pulse border animation */
+@keyframes pulse-border {
+    0%, 100% {
+        border-color: #ff0000;
+        box-shadow: 0 0 40px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 0, 0, 0.2);
+    }
+    50% {
+        border-color: #ff3333;
+        box-shadow: 0 0 60px rgba(255, 0, 0, 0.8), inset 0 0 30px rgba(255, 0, 0, 0.3);
+    }
+}
+
+.fp-card {
+    animation: pulse-border 2s infinite;
+}
+
+/* Warning title flicker */
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    41%, 43% { opacity: 0.8; }
+    45%, 47% { opacity: 1; }
+}
+
+/* Title styling */
+.fp-title {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 3px 3px 0 #000;
+    animation: flicker 3s infinite;
+    color: #ff0000;
+}
+
+/* Error code shake animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.fp-error-code {
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 5px 5px 0 #000;
+    animation: shake 0.5s infinite;
+}
+
+/* Error message */
+.fp-error-message {
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #000, 0 0 10px #ff0000;
+}
+
+/* Message (meme text) */
+.fp-message {
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #000, 0 0 15px #ffff00;
+    line-height: 1.4;
+}
+
+/* Description (warning message) */
+.fp-description {
+    text-transform: uppercase;
+}
+
+/* Button hover scale */
+.fp-btn-primary:hover,
+.fp-btn-secondary:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 30px 20px;
+    }
+}

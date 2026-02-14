@@ -1,0 +1,147 @@
+/*
+ * Salamancas — Breaking Bad cartel theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #1a0f0a 0%, #3d2817 50%, #1a0f0a 100%);
+    --fp-card-bg: rgba(30, 20, 15, 0.95);
+    --fp-text: #f4e4c1;
+    --fp-accent: #d4af37;
+    --fp-code-color: #ff4500;
+    --fp-title-color: #ff4500;
+    --fp-message-color: #d4af37;
+    --fp-desc-color: #f4e4c1;
+    --fp-footer-color: #8b4513;
+
+    /* Typography */
+    --fp-font-body: 'Oswald', sans-serif;
+    --fp-font-display: 'Russo One', sans-serif;
+    --fp-code-size: clamp(45px, 8vw, 65px);
+    --fp-title-size: clamp(24px, 4vw, 28px);
+    --fp-message-size: clamp(18px, 2.5vw, 22px);
+    --fp-desc-size: clamp(16px, 2vw, 18px);
+    --fp-btn-size: clamp(18px, 2.5vw, 22px);
+
+    /* Card */
+    --fp-card-border-color: #d4af37;
+    --fp-card-border-width: 6px;
+    --fp-card-radius: 3px;
+    --fp-card-shadow: 0 0 60px rgba(212, 175, 55, 0.4), inset 0 0 40px rgba(0, 0, 0, 0.8), 0 0 100px rgba(255, 69, 0, 0.3);
+    --fp-card-padding: clamp(45px, 5vw, 45px) clamp(15px, 3vw, 20px) clamp(15px, 2vw, 20px);
+
+    /* Badge */
+    --fp-badge-bg: linear-gradient(135deg, #ff4500, #ff6347);
+    --fp-badge-text: #000;
+    --fp-badge-border: #8b0000;
+    --fp-badge-shadow: 0 0 25px rgba(255, 69, 0, 0.9);
+    --fp-badge-radius: 3px;
+
+    /* Image */
+    --fp-image-border: 5px solid #d4af37;
+    --fp-image-radius: 3px;
+    --fp-image-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+    --fp-image-max-width: 400px;
+
+    /* Buttons */
+    --fp-btn-radius: 3px;
+    --fp-btn-border-width: 4px;
+    --fp-btn-font-weight: 900;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: linear-gradient(135deg, #ff4500, #ff6347);
+    --fp-btn-primary-text: #000;
+    --fp-btn-primary-border: #8b0000;
+    --fp-btn-primary-shadow: 0 8px 0 #8b0000, 0 0 30px rgba(255, 69, 0, 0.5);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #ff6347, #ff7f50);
+    --fp-btn-primary-hover-shadow: 0 12px 0 #8b0000, 0 0 40px rgba(255, 69, 0, 0.7);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #d4af37;
+    --fp-btn-secondary-border: #d4af37;
+    --fp-btn-secondary-shadow: 0 8px 0 rgba(139, 117, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.3);
+    --fp-btn-secondary-hover-bg: rgba(212, 175, 55, 0.2);
+    --fp-btn-secondary-hover-shadow: 0 12px 0 rgba(139, 117, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.5);
+
+    /* Container */
+    --fp-container-width: min(95%, 900px);
+}
+
+/* Body background */
+body {
+    background: linear-gradient(135deg, #1a0f0a 0%, #3d2817 50%, #1a0f0a 100%);
+    overflow-y: hidden;
+}
+
+/* Desert heat waves */
+@keyframes heat-wave {
+    0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.3; }
+    50% { transform: translateY(-10px) scaleY(0.95); opacity: 0.5; }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(0deg, rgba(255, 140, 0, 0.1) 0%, transparent 100%);
+    animation: heat-wave 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Title styling */
+.fp-title {
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #000, 0 0 30px rgba(255, 69, 0, 0.8);
+    line-height: 1.2;
+    letter-spacing: 2px;
+}
+
+/* Error code */
+.fp-error-code {
+    text-shadow: 4px 4px 0 #000, 0 0 40px rgba(255, 69, 0, 0.9);
+}
+
+/* Error message */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* Description (threat text) */
+.fp-description {
+    line-height: 1.4;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Image filter */
+.fp-image {
+    filter: saturate(0.9) brightness(0.95);
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #8b0000, 0 0 20px rgba(255, 69, 0, 0.4);
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 rgba(139, 117, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 15px 18px 15px;
+    }
+
+    .fp-badge {
+        font-size: 10px;
+        padding: 7px 12px;
+    }
+}

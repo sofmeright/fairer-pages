@@ -1,0 +1,136 @@
+/*
+ * Fake Rocky Ridge — Movie set facade theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(135deg, #2c2416 0%, #4a3f2a 50%, #2c2416 100%);
+    --fp-card-bg: rgba(210, 180, 140, 0.95);
+    --fp-text: #f4e4c1;
+    --fp-accent: #ff6b00;
+    --fp-code-color: #ff6b00;
+    --fp-title-color: #ff6b00;
+    --fp-message-color: #2c2416;
+    --fp-desc-color: #8b7355;
+    --fp-footer-color: #8b7355;
+
+    /* Typography */
+    --fp-font-body: 'Bebas Neue', sans-serif;
+    --fp-font-display: 'Rye', serif;
+    --fp-code-size: clamp(50px, 10vw, 75px);
+    --fp-title-size: clamp(28px, 5vw, 34px);
+    --fp-message-size: clamp(20px, 3vw, 26px);
+    --fp-desc-size: clamp(16px, 2.5vw, 20px);
+    --fp-btn-size: clamp(18px, 3vw, 22px);
+
+    /* Card */
+    --fp-card-border-color: #8b7355;
+    --fp-card-border-width: 8px;
+    --fp-card-radius: 5px;
+    --fp-card-shadow: 0 0 60px rgba(139, 115, 85, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.3);
+    --fp-card-padding: clamp(45px, 5vw, 45px) clamp(15px, 3vw, 20px) clamp(20px, 3vw, 25px);
+
+    /* Badge */
+    --fp-badge-bg: linear-gradient(135deg, #ff6b00, #ff8c00);
+    --fp-badge-text: #000;
+    --fp-badge-border: #cc5500;
+    --fp-badge-shadow: 0 0 25px rgba(255, 107, 0, 0.8);
+    --fp-badge-radius: 5px;
+
+    /* Image */
+    --fp-image-border: 6px solid #8b7355;
+    --fp-image-radius: 5px;
+    --fp-image-shadow: 0 0 40px rgba(139, 115, 85, 0.7);
+    --fp-image-max-width: 500px;
+
+    /* Buttons */
+    --fp-btn-radius: 5px;
+    --fp-btn-border-width: 4px;
+    --fp-btn-font-weight: 900;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: linear-gradient(135deg, #ff6b00, #ff8c00);
+    --fp-btn-primary-text: #000;
+    --fp-btn-primary-border: #cc5500;
+    --fp-btn-primary-shadow: 0 8px 0 #cc5500, 0 0 30px rgba(255, 107, 0, 0.5);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #ff8c00, #ffa500);
+    --fp-btn-primary-hover-shadow: 0 12px 0 #cc5500, 0 0 40px rgba(255, 107, 0, 0.7);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #8b7355;
+    --fp-btn-secondary-border: #8b7355;
+    --fp-btn-secondary-shadow: 0 8px 0 rgba(139, 115, 85, 0.5), 0 0 30px rgba(139, 115, 85, 0.3);
+    --fp-btn-secondary-hover-bg: rgba(139, 115, 85, 0.2);
+    --fp-btn-secondary-hover-shadow: 0 12px 0 rgba(139, 115, 85, 0.5), 0 0 40px rgba(139, 115, 85, 0.5);
+
+    /* Container */
+    --fp-container-width: min(95%, 900px);
+
+    /* Particles */
+    --fp-particle-color: rgba(244, 228, 193, 0.3);
+}
+
+/* Body background */
+body {
+    background: linear-gradient(135deg, #2c2416 0%, #4a3f2a 50%, #2c2416 100%);
+    overflow-y: hidden;
+}
+
+/* Card wood-plank texture overlay */
+.fp-card {
+    background-image:
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 50px,
+            rgba(139, 115, 85, 0.1) 50px,
+            rgba(139, 115, 85, 0.1) 52px);
+}
+
+/* Title styling */
+.fp-title {
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #000, 0 0 30px rgba(255, 107, 0, 0.8);
+    line-height: 1.2;
+}
+
+/* Error code text shadow */
+.fp-error-code {
+    text-shadow: 4px 4px 0 #000, 0 0 40px rgba(255, 107, 0, 0.9);
+}
+
+/* Error message styling */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #8b7355;
+}
+
+/* Description styling */
+.fp-description {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #cc5500, 0 0 20px rgba(255, 107, 0, 0.4);
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 rgba(139, 115, 85, 0.5), 0 0 20px rgba(139, 115, 85, 0.3);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 15px 20px 15px;
+    }
+
+    .fp-badge {
+        font-size: 11px;
+        padding: 7px 15px;
+    }
+}

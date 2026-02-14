@@ -1,0 +1,22 @@
+{
+    "layout": "card-image",
+    "name": "Jay and Silent Bob",
+    "badge": "\ud83c\udfac RST VIDEO \ud83c\udfac",
+    "image": "resources/video-store.png",
+    "imageAlt": "Outside the video store",
+    "fonts": "https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700;900&display=swap",
+    "buttons": {
+        "home": "GO HOME",
+        "back": "GO BACK"
+    },
+    "footer": "Snootchie Bootchies",
+    "titles": {
+        "default": "YO, THIS PAGE AIN'T HERE!"
+    },
+    "messages": {
+        "default": "Looks like you're in the wrong section, dude!"
+    },
+    "descriptions": {
+        "default": "Maybe try checkin' the main entrance instead of hanging around back here..."
+    }
+}

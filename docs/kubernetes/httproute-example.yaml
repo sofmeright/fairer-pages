@@ -1,0 +1,20 @@
+# Gateway API HTTPRoute example for exposing Fairer Pages.
+# Update parentRefs and hostnames to match your Gateway.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: fairer-pages
+spec:
+  parentRefs:
+    - name: my-gateway
+      sectionName: https
+  hostnames:
+    - "errors.example.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: fairer-pages
+          port: 80

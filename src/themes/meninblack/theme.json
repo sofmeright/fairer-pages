@@ -1,0 +1,22 @@
+{
+    "layout": "card-image",
+    "name": "Men In Black",
+    "badge": "🕴️ CLASSIFIED - MIB 🕴️",
+    "image": "resources/neuralyzer.jpg",
+    "imageAlt": "Neuralyzer",
+    "fonts": "https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap",
+    "buttons": {
+        "home": "Forget & Go Home",
+        "back": "Go Back"
+    },
+    "footer": "Protecting the Earth from the scum of the universe",
+    "titles": {
+        "default": "You Never Saw This Page"
+    },
+    "messages": {
+        "default": "Please look directly at the light... This page has been classified."
+    },
+    "descriptions": {
+        "default": "Your memory of this page will be erased. Return to your normal activities, citizen."
+    }
+}

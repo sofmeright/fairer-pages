@@ -1,0 +1,49 @@
+{
+    "layout": "card-bg",
+    "name": "Porco Rosso Pagoda",
+    "image": "resources/porco.jpg",
+    "imageAlt": "Porco Rosso Background",
+    "fonts": "https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&display=swap",
+    "buttons": {
+        "home": "Return Home",
+        "back": "Go Back"
+    },
+    "titles": {
+        "400": "Bad Request",
+        "401": "Unauthorized",
+        "402": "Payment Required",
+        "403": "Forbidden",
+        "404": "Not Found",
+        "405": "Method Not Allowed",
+        "406": "Not Acceptable",
+        "408": "Request Timeout",
+        "409": "Conflict",
+        "410": "Gone",
+        "413": "Payload Too Large",
+        "429": "Too Many Requests",
+        "500": "Internal Server Error",
+        "502": "Bad Gateway",
+        "503": "Service Unavailable",
+        "504": "Gateway Timeout",
+        "default": "Error"
+    },
+    "descriptions": {
+        "400": "The request could not be understood. Please check your input and try again.",
+        "401": "Authentication is required to access this resource. Please sign in to continue.",
+        "402": "Payment is required to access this content. Please complete the transaction.",
+        "403": "Access to this resource is restricted. You don't have permission to view this page.",
+        "404": "The page you're looking for has drifted beyond the horizon.",
+        "405": "The requested method is not supported for this resource.",
+        "406": "The server cannot provide a response in the format you requested.",
+        "408": "Your request took too long to complete. Please try again.",
+        "409": "There's a conflict with the current state of the resource.",
+        "410": "This resource is permanently gone and will not return.",
+        "413": "The request payload exceeds the maximum size allowed.",
+        "429": "You've made too many requests. Please slow down and try again later.",
+        "500": "An unexpected error occurred on our end. We're working to fix it.",
+        "502": "The gateway received an invalid response. Please try again shortly.",
+        "503": "The service is temporarily unavailable. Please check back soon.",
+        "504": "The gateway timed out waiting for a response. Please try again.",
+        "default": "An unexpected error has occurred."
+    }
+}

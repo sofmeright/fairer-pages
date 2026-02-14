@@ -1,0 +1,121 @@
+/*
+ * Lotus Petal — Fairer Pages Theme CSS
+ * Serene mountain/lotus aesthetic with soft purple-blue gradients
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #f8f9fa;
+    --fp-card-bg: rgba(255, 255, 255, 0.95);
+    --fp-text: #2c3e50;
+    --fp-accent: #667eea;
+    --fp-code-color: #667eea;
+    --fp-title-color: #4a5568;
+    --fp-message-color: #4a5568;
+    --fp-desc-color: #718096;
+    --fp-footer-color: #a0aec0;
+
+    /* Typography */
+    --fp-font-body: 'Inter', sans-serif;
+    --fp-font-display: 'Noto Serif', serif;
+    --fp-code-size: clamp(50px, 8vw, 90px);
+    --fp-title-size: clamp(20px, 3vw, 28px);
+    --fp-message-size: clamp(20px, 3vw, 28px);
+    --fp-desc-size: clamp(14px, 1.8vw, 17px);
+    --fp-btn-size: clamp(13px, 1.8vw, 15px);
+
+    /* Card */
+    --fp-card-border-color: rgba(255, 255, 255, 0.8);
+    --fp-card-border-width: 1px;
+    --fp-card-radius: 30px;
+    --fp-card-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+    --fp-card-backdrop: blur(20px);
+    --fp-card-padding: clamp(35px, 5vw, 60px) clamp(25px, 4vw, 50px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(240, 245, 250, 0.8),
+        rgba(255, 255, 255, 0.7));
+
+    /* Buttons */
+    --fp-btn-radius: 50px;
+    --fp-btn-border-width: 1px;
+    --fp-btn-font-weight: 400;
+    --fp-btn-letter-spacing: 0.5px;
+    --fp-btn-primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --fp-btn-primary-text: #fff;
+    --fp-btn-primary-border: transparent;
+    --fp-btn-primary-shadow: 0 10px 25px rgba(102, 126, 234, 0.25);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --fp-btn-primary-hover-shadow: 0 15px 35px rgba(102, 126, 234, 0.35);
+    --fp-btn-secondary-bg: rgba(255, 255, 255, 0.9);
+    --fp-btn-secondary-text: #667eea;
+    --fp-btn-secondary-border: rgba(102, 126, 234, 0.3);
+    --fp-btn-secondary-hover-bg: rgba(255, 255, 255, 1);
+    --fp-btn-secondary-hover-shadow: none;
+
+    /* Container */
+    --fp-container-width: min(90%, 700px);
+}
+
+/* Hide the title element — lotus-petal shows code first, then message as subtitle */
+.fp-title {
+    display: none;
+}
+
+/* Error code with gradient text */
+.fp-error-code {
+    font-weight: 300;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 3px;
+}
+
+/* Error message styled as the original "error-title" subtitle */
+.fp-error-message {
+    font-family: var(--fp-font-display);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* Divider between message and description */
+.fp-error-message::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e0, transparent);
+    margin: clamp(16px, 2.5vw, 30px) auto 0;
+}
+
+/* Description styled as the original "error-message" body text */
+.fp-description {
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer styled as italic serif text */
+.fp-footer {
+    font-family: var(--fp-font-display);
+    font-weight: 300;
+}
+
+/* Secondary button hover border */
+.fp-btn-secondary:hover {
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
+/* Particles act as snowflakes — already handled by framework particle system */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fp-btn {
+        padding: 12px 28px;
+    }
+}

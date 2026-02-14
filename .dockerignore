@@ -1,14 +1,19 @@
 # Exclude screenshots (only for GitHub/GitLab display)
-ss/
+docs/screenshots/
 
 # Git files
 .git
 .gitignore
 .gitlab-ci.yml
 
-# Documentation
+# Documentation (exclude markdown except root Readme and docs guides)
 *.md
 !Readme.md
+!docs/themes/**
+!docs/playlists/**
+!docs/docker/**
+!docs/kubernetes/**
+!docs/nginx/**
 
 # Development files
 .vscode/

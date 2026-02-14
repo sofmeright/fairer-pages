@@ -1,0 +1,52 @@
+{
+    "layout": "card",
+    "name": "Sun Tzu Chaos",
+    "fonts": "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif:wght@400;600&display=swap",
+    "badge": "☯",
+    "quote": {
+        "text": "In the midst of chaos, there is also opportunity.",
+        "author": "Sun Tzu, The Art of War"
+    },
+    "buttons": {
+        "home": "Seize Opportunity",
+        "back": "Retreat Wisely"
+    },
+    "descriptions": {
+        "400": "Your request was malformed, yet Sun Tzu teaches: 'In the midst of chaos, there is also opportunity.' Correct your approach and victory shall be yours.",
+        "401": "You lack the credentials to proceed. Remember: 'Know yourself and you will win all battles.' Authenticate yourself to continue.",
+        "402": "This resource requires payment. As the master said: 'The general who advances without coveting fame and retreats without fearing disgrace is the jewel of the kingdom.'",
+        "403": "Access is forbidden. 'The supreme art of war is to subdue the enemy without fighting.' Perhaps another path exists for you.",
+        "404": "The path you seek does not exist. But as the great strategist teaches us, every obstacle reveals a new path forward. This error is not failure\u2014it is redirection.",
+        "405": "This method is not permitted. 'All warfare is based on deception.' Try a different approach to achieve your objective.",
+        "406": "The format is not acceptable. 'Victorious warriors win first and then go to war.' Prepare your request properly before advancing.",
+        "408": "Time has expired. 'Rapidity is the essence of war.' Yet patience is also wisdom. Try again with swifter execution.",
+        "409": "A conflict has arisen. 'In the midst of chaos, there is also opportunity.' Resolve the contradiction and find harmony.",
+        "410": "This resource has been removed permanently. 'Let your plans be dark and impenetrable as night, and when you move, fall like a thunderbolt.' Move forward to new goals.",
+        "413": "Your request is too large. 'He who knows when to fight and when not to fight will be victorious.' Reduce your demands.",
+        "429": "You make too many requests. 'Ponder and deliberate before you make a move.' Patience brings clarity; haste brings confusion.",
+        "500": "The server encounters internal chaos. 'In the midst of chaos, there is also opportunity.' Those who manage the server will restore order.",
+        "502": "The gateway fails to respond correctly. 'Strategy without tactics is the slowest route to victory.' The connection must be repaired.",
+        "503": "The service is currently unavailable. 'To know when to march and when to rest is the secret of victory.' Return when service resumes.",
+        "504": "The gateway timed out. 'Speed is the essence of war,' yet even the swiftest warrior must wait for the right moment. Try again.",
+        "default": "An error has occurred. Seek opportunity within this chaos."
+    },
+    "footers": {
+        "400": "Strategy without tactics is the slowest route to victory",
+        "401": "Know yourself and you will win all battles",
+        "402": "Regard your soldiers as your children",
+        "403": "The wise warrior avoids the battle",
+        "404": "The wise warrior avoids the battle",
+        "405": "All warfare is based on deception",
+        "406": "Victorious warriors win first and then go to war",
+        "408": "Rapidity is the essence of war",
+        "409": "Invincibility lies in the defense",
+        "410": "When you move, fall like a thunderbolt",
+        "413": "He who knows when to fight will be victorious",
+        "429": "Ponder and deliberate before you make a move",
+        "500": "Order or disorder depends on organization",
+        "502": "Strategy without tactics is the slowest route",
+        "503": "To know when to rest is the secret of victory",
+        "504": "Speed is the essence of war",
+        "default": "The wise warrior avoids the battle"
+    }
+}

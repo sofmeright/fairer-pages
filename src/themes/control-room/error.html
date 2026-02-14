@@ -77,7 +77,7 @@
             box-shadow: 0 0 60px rgba(0, 212, 255, 0.6),
                         inset 0 0 40px rgba(0, 212, 255, 0.1);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
             width: 100%;
             box-sizing: border-box;
         }
@@ -85,9 +85,9 @@
         .terminal-box::before {
             content: '⬡ INSTALLATION 04 - CONTROL ROOM ⬡';
             position: absolute;
-            top: 10px;
+            top: 0;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             background: rgba(0, 20, 40, 0.95);
             color: #00d4ff;
             padding: 8px 20px;

@@ -1,0 +1,101 @@
+/* Chill Wallhaven — Theme CSS */
+
+:root {
+    /* Colors */
+    --fp-bg: #1a1a1a;
+    --fp-card-bg: rgba(30, 30, 30, 0.85);
+    --fp-text: #ffffff;
+    --fp-accent: #ffffff;
+    --fp-code-color: #ffffff;
+    --fp-title-color: #e0e0e0;
+    --fp-message-color: #d0d0d0;
+    --fp-desc-color: #b0b0b0;
+    --fp-footer-color: rgba(255, 255, 255, 0.4);
+
+    /* Typography */
+    --fp-font-body: 'Inter', sans-serif;
+    --fp-font-display: 'Sora', sans-serif;
+    --fp-code-size: clamp(50px, 8vw, 80px);
+    --fp-title-size: clamp(20px, 3.5vw, 28px);
+    --fp-message-size: clamp(13px, 1.8vw, 15px);
+    --fp-desc-size: clamp(14px, 2vw, 17px);
+    --fp-footer-size: clamp(10px, 1.5vw, 13px);
+
+    /* Card */
+    --fp-card-border-color: rgba(255, 255, 255, 0.1);
+    --fp-card-border-width: 1px;
+    --fp-card-radius: 20px;
+    --fp-card-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    --fp-card-backdrop: blur(2px);
+    --fp-card-padding: clamp(30px, 5vw, 50px) clamp(25px, 4vw, 40px);
+    --fp-container-width: min(90%, 700px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(135deg,
+        rgba(26, 26, 26, 0.4),
+        rgba(40, 40, 40, 0.4));
+    --fp-bg-image-opacity: 0.9;
+
+    /* Buttons */
+    --fp-btn-primary-bg: #ffffff;
+    --fp-btn-primary-text: #1a1a1a;
+    --fp-btn-primary-border: #ffffff;
+    --fp-btn-primary-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    --fp-btn-primary-hover-bg: #ffffff;
+    --fp-btn-primary-hover-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #ffffff;
+    --fp-btn-secondary-border: rgba(255, 255, 255, 0.3);
+    --fp-btn-secondary-hover-bg: rgba(255, 255, 255, 0.1);
+    --fp-btn-radius: 12px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-border-width: 1px;
+    --fp-btn-letter-spacing: 0.5px;
+}
+
+/* Error code — light weight, letter-spaced */
+.fp-error-code {
+    font-weight: 300;
+    letter-spacing: 4px;
+}
+
+/* Title styling */
+.fp-title {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Error message styled as mindful affirmation box */
+.fp-error-message {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 18px;
+    font-size: var(--fp-message-size);
+    font-weight: 400;
+}
+
+/* Description — zen text styling */
+.fp-description {
+    font-weight: 300;
+    line-height: 1.9;
+}
+
+/* Footer — light weight */
+.fp-footer {
+    font-weight: 300;
+}
+
+/* Button font */
+.fp-btn {
+    font-family: 'Sora', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-code-size: clamp(45px, 8vw, 65px);
+        --fp-title-size: clamp(18px, 4vw, 24px);
+        --fp-desc-size: clamp(13px, 2vw, 16px);
+    }
+}

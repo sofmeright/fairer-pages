@@ -1,0 +1,90 @@
+/* Steilacoom Park — Nature/forest theme with calming greens */
+
+:root {
+    /* Typography */
+    --fp-font-body: 'Lato', sans-serif;
+    --fp-font-display: 'Merriweather', serif;
+
+    /* Colors */
+    --fp-bg: #1a1a1a;
+    --fp-card-bg: rgba(25, 45, 35, 0.85);
+    --fp-text: #ffffff;
+    --fp-accent: #90c090;
+    --fp-code-color: #90c090;
+    --fp-title-color: #b8d8b8;
+    --fp-message-color: #b8d8b8;
+    --fp-desc-color: #d0e0d0;
+    --fp-footer-color: rgba(200, 220, 200, 0.5);
+
+    /* Card */
+    --fp-card-border-color: rgba(100, 150, 100, 0.3);
+    --fp-card-border-width: 2px;
+    --fp-card-radius: 20px;
+    --fp-card-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    --fp-card-backdrop: blur(3px);
+    --fp-card-padding: 50px 40px;
+    --fp-container-width: min(90%, 750px);
+
+    /* Overlay */
+    --fp-overlay-bg: linear-gradient(135deg, rgba(34, 70, 34, 0.3), rgba(50, 80, 100, 0.3));
+    --fp-bg-image-opacity: 0.85;
+
+    /* Buttons */
+    --fp-btn-radius: 12px;
+    --fp-btn-border-width: 1px;
+    --fp-btn-font-weight: 600;
+    --fp-btn-letter-spacing: 0.5px;
+    --fp-btn-primary-bg: rgba(100, 150, 100, 0.8);
+    --fp-btn-primary-text: #ffffff;
+    --fp-btn-primary-border: rgba(100, 150, 100, 0.5);
+    --fp-btn-primary-shadow: 0 4px 15px rgba(100, 150, 100, 0.3);
+    --fp-btn-primary-hover-bg: rgba(120, 170, 120, 0.9);
+    --fp-btn-primary-hover-shadow: 0 6px 20px rgba(100, 150, 100, 0.4);
+    --fp-btn-secondary-bg: transparent;
+    --fp-btn-secondary-text: #b8d8b8;
+    --fp-btn-secondary-border: rgba(100, 150, 100, 0.5);
+    --fp-btn-secondary-hover-bg: rgba(100, 150, 100, 0.2);
+}
+
+/* Error code styling */
+.fp-error-code {
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Title styling */
+.fp-title {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Message styling (tranquil box) */
+.fp-error-message {
+    background: rgba(100, 150, 100, 0.15);
+    border: 1px solid rgba(100, 150, 100, 0.3);
+    border-radius: 12px;
+    padding: 18px;
+    font-size: clamp(13px, 1.6vw, 15px);
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Description styling */
+.fp-description {
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+/* Footer styling */
+.fp-footer {
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 40px 30px;
+    }
+}

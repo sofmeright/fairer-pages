@@ -1,0 +1,154 @@
+/*
+ * Still Waiting — The Matrix Construct theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 50%, #f5f5f5 100%);
+    --fp-card-bg: rgba(255, 255, 255, 0.98);
+    --fp-text: #2d2d2d;
+    --fp-accent: #00ff41;
+    --fp-code-color: #00ff41;
+    --fp-title-color: #2d2d2d;
+    --fp-message-color: #505050;
+    --fp-desc-color: #2d2d2d;
+    --fp-footer-color: #909090;
+
+    /* Typography */
+    --fp-font-body: 'Courier Prime', monospace;
+    --fp-font-display: 'Share Tech Mono', monospace;
+    --fp-code-size: clamp(50px, 8vw, 70px);
+    --fp-title-size: clamp(18px, 2.5vw, 22px);
+    --fp-message-size: clamp(14px, 2vw, 18px);
+    --fp-desc-size: clamp(15px, 2vw, 17px);
+    --fp-footer-size: clamp(12px, 1.5vw, 13px);
+    --fp-btn-size: clamp(14px, 2vw, 16px);
+
+    /* Card */
+    --fp-card-border-color: #c0c0c0;
+    --fp-card-border-width: 2px;
+    --fp-card-radius: 0;
+    --fp-card-shadow: 0 10px 50px rgba(0, 0, 0, 0.1), inset 0 0 100px rgba(0, 255, 65, 0.02);
+    --fp-card-padding: 50px 20px 18px 20px;
+
+    /* Badge */
+    --fp-badge-bg: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+    --fp-badge-text: #00ff41;
+    --fp-badge-border: #00ff41;
+    --fp-badge-shadow: 0 0 20px rgba(0, 255, 65, 0.3), inset 0 0 10px rgba(0, 255, 65, 0.1);
+    --fp-badge-radius: 0;
+    --fp-badge-letter-spacing: 3px;
+
+    /* Image */
+    --fp-image-border: 3px solid #d0d0d0;
+    --fp-image-radius: 0;
+    --fp-image-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+    --fp-image-max-width: 600px;
+
+    /* Buttons */
+    --fp-btn-radius: 0;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: 700;
+    --fp-btn-letter-spacing: 1px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: linear-gradient(135deg, #00ff41, #00cc33);
+    --fp-btn-primary-text: #000;
+    --fp-btn-primary-border: #00cc33;
+    --fp-btn-primary-shadow: 0 6px 0 #009922, 0 0 20px rgba(0, 255, 65, 0.3);
+    --fp-btn-primary-hover-bg: linear-gradient(135deg, #00ff55, #00dd44);
+    --fp-btn-primary-hover-shadow: 0 10px 0 #009922, 0 0 30px rgba(0, 255, 65, 0.5);
+    --fp-btn-secondary-bg: rgba(255, 68, 68, 0.15);
+    --fp-btn-secondary-text: #ff4444;
+    --fp-btn-secondary-border: #ff4444;
+    --fp-btn-secondary-shadow: 0 6px 0 rgba(255, 68, 68, 0.3), 0 0 20px rgba(255, 68, 68, 0.2);
+    --fp-btn-secondary-hover-bg: rgba(255, 68, 68, 0.25);
+    --fp-btn-secondary-hover-shadow: 0 10px 0 rgba(255, 68, 68, 0.3), 0 0 30px rgba(255, 68, 68, 0.3);
+
+    /* Container */
+    --fp-container-width: min(95%, 900px);
+}
+
+/* Background */
+body {
+    background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 50%, #f5f5f5 100%);
+    overflow: hidden;
+}
+
+/* Badge styling */
+.fp-badge {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* Title */
+.fp-title {
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* Error code */
+.fp-error-code {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 700;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Image opacity */
+.fp-image {
+    opacity: 0.95;
+}
+
+/* Message */
+.fp-error-message {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* Description styled as Morpheus wisdom quote */
+.fp-description {
+    background: rgba(0, 0, 0, 0.03);
+    border-left: 4px solid #00ff41;
+    padding: 15px 18px;
+    text-align: left;
+    border-radius: 0;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+/* Footer styling */
+.fp-footer {
+    font-style: italic;
+    padding-top: 8px;
+}
+
+/* Button active states */
+.fp-btn-primary:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #009922, 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+.fp-btn-secondary:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 rgba(255, 68, 68, 0.3), 0 0 15px rgba(255, 68, 68, 0.2);
+}
+
+/* Secondary button hover color */
+.fp-btn-secondary:hover {
+    color: #ff6666;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 45px 15px 15px 15px;
+    }
+
+    .fp-badge {
+        font-size: 10px;
+        padding: 7px 12px;
+    }
+}

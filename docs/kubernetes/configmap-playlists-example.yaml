@@ -1,0 +1,46 @@
+# ConfigMap + Deployment patch for custom playlists in Kubernetes.
+# Edit the playlists below, then apply alongside deployment.yaml and service.yaml.
+# See default-playlists.yml in the repo root for the full syntax reference.
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fairer-pages-playlists
+data:
+  playlists.yml: |
+    playlists:
+      default:
+        ANY:
+          - serene-shores
+          - lotus-petal
+          - peaceful-waterfalls
+          - chill-wallhaven
+      work:
+        ANY:
+          - churchill-courage
+          - venn-diagram
+          - serene-shores
+---
+# Patch for the fairer-pages Deployment to mount the ConfigMap.
+# Apply with: kubectl apply -f configmap-playlists-example.yaml
+# Then patch: kubectl patch deployment fairer-pages --patch-file=<this-file's-second-document>
+# Or merge into your own kustomization overlay.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fairer-pages
+spec:
+  template:
+    spec:
+      containers:
+        - name: fairer-pages
+          env:
+            - name: FAIRER_PLAYLIST_FILE
+              value: /etc/fairer-pages/playlists.yml
+          volumeMounts:
+            - name: playlists
+              mountPath: /etc/fairer-pages
+      volumes:
+        - name: playlists
+          configMap:
+            name: fairer-pages-playlists

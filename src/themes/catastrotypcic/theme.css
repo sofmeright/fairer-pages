@@ -1,0 +1,180 @@
+/*
+ * Catastrotypcic — Cat typing panic / matrix terminal theme
+ * Layout: card-image
+ */
+
+:root {
+    /* Colors */
+    --fp-bg: #000;
+    --fp-card-bg: rgba(0, 0, 0, 0.95);
+    --fp-text: #0f0;
+    --fp-accent: #0f0;
+    --fp-code-color: #ff0000;
+    --fp-title-color: #ff0000;
+    --fp-message-color: #0f0;
+    --fp-desc-color: #ffff00;
+    --fp-footer-color: #0f0;
+
+    /* Typography */
+    --fp-font-body: 'VT323', monospace;
+    --fp-font-display: 'VT323', monospace;
+    --fp-code-size: clamp(90px, 14vw, 100px);
+    --fp-title-size: clamp(38px, 6vw, 42px);
+    --fp-message-size: clamp(30px, 4vw, 32px);
+    --fp-desc-size: clamp(24px, 3.5vw, 28px);
+    --fp-btn-size: clamp(20px, 3vw, 24px);
+
+    /* Card */
+    --fp-card-border-color: #0f0;
+    --fp-card-border-width: 4px;
+    --fp-card-radius: 10px;
+    --fp-card-shadow: 0 0 50px rgba(0, 255, 0, 0.5), inset 0 0 30px rgba(0, 255, 0, 0.1);
+    --fp-card-padding: clamp(20px, 3vw, 30px) clamp(15px, 3vw, 20px) clamp(20px, 3vw, 30px);
+
+    /* Image */
+    --fp-image-border: 4px solid #0f0;
+    --fp-image-radius: 10px;
+    --fp-image-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+    --fp-image-max-width: 350px;
+
+    /* Buttons */
+    --fp-btn-radius: 5px;
+    --fp-btn-border-width: 3px;
+    --fp-btn-font-weight: bold;
+    --fp-btn-letter-spacing: 2px;
+    --fp-btn-text-transform: uppercase;
+    --fp-btn-primary-bg: #0f0;
+    --fp-btn-primary-text: #000;
+    --fp-btn-primary-border: #0f0;
+    --fp-btn-primary-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    --fp-btn-primary-hover-bg: #00ff00;
+    --fp-btn-primary-hover-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+    --fp-btn-secondary-bg: #000;
+    --fp-btn-secondary-text: #ff0000;
+    --fp-btn-secondary-border: #ff0000;
+    --fp-btn-secondary-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    --fp-btn-secondary-hover-bg: #ff0000;
+    --fp-btn-secondary-hover-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+
+    /* Container */
+    --fp-container-width: min(90%, 900px);
+
+    /* Particles */
+    --fp-particle-color: #0f0;
+}
+
+/* Body */
+body {
+    background: linear-gradient(180deg, #000 0%, #001a00 100%);
+    overflow: hidden;
+}
+
+/* Scanlines overlay on card */
+.fp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0.03) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 3px
+    );
+    pointer-events: none;
+    animation: scan 8s linear infinite;
+    border-radius: 10px;
+}
+
+@keyframes scan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100%); }
+}
+
+/* Container glitch */
+.fp-container {
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+}
+
+/* Title (panic red blinking) */
+.fp-title {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    animation: blink 0.5s infinite, shake-title 0.2s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.3; }
+}
+
+@keyframes shake-title {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-3px) rotate(-1deg); }
+    20% { transform: translateX(3px) rotate(1deg); }
+    30% { transform: translateX(-3px) rotate(-1deg); }
+    40% { transform: translateX(3px) rotate(1deg); }
+    50% { transform: translateX(-2px) rotate(-1deg); }
+    60% { transform: translateX(2px) rotate(1deg); }
+    70% { transform: translateX(-2px) rotate(-1deg); }
+    80% { transform: translateX(2px) rotate(1deg); }
+    90% { transform: translateX(-1px) rotate(0deg); }
+}
+
+/* Error code */
+.fp-error-code {
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 3px 3px 0 #0f0;
+    animation: glitch-text 0.5s infinite;
+}
+
+@keyframes glitch-text {
+    0% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 3px 3px 0 #0f0; }
+    25% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, -3px -3px 0 #f0f; }
+    50% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 3px -3px 0 #00f; }
+    75% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, -3px 3px 0 #0ff; }
+}
+
+/* Error message */
+.fp-error-message {
+    text-shadow: 0 0 10px #0f0;
+    font-weight: bold;
+}
+
+/* Description (typing text - color cycling) */
+.fp-description {
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 1.3;
+    animation: color-cycle 1s infinite;
+}
+
+@keyframes color-cycle {
+    0% { color: #ffff00; text-shadow: 0 0 15px #ffff00; }
+    33% { color: #ff00ff; text-shadow: 0 0 15px #ff00ff; }
+    66% { color: #00ffff; text-shadow: 0 0 15px #00ffff; }
+    100% { color: #ffff00; text-shadow: 0 0 15px #ffff00; }
+}
+
+/* Secondary button hover text color */
+.fp-btn-secondary:hover {
+    color: #000;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --fp-card-padding: 30px 20px;
+    }
+}
