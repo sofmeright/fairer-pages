@@ -498,6 +498,33 @@
         document.querySelectorAll('img[src^="resources/"]').forEach(img => {
             img.src = '/fairer-pages/' + themeName + '/' + img.getAttribute('src');
         });
+
+        // Best-fit scaling
+        function fitToViewport() {
+            const c = document.querySelector('.error-container');
+            if (!c) return;
+            c.style.zoom = '';
+            c.style.maxHeight = 'none';
+            c.style.overflowY = 'visible';
+            const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+            const h = c.scrollHeight;
+            if (h > vh) {
+                c.style.zoom = (vh / h) * 0.95;
+                document.body.style.height = vh + 'px';
+                document.body.style.minHeight = vh + 'px';
+                document.body.style.overflow = 'hidden';
+                document.documentElement.style.overflow = 'hidden';
+            } else {
+                c.style.maxHeight = '';
+                c.style.overflowY = '';
+            }
+        }
+        fitToViewport();
+        setTimeout(fitToViewport, 200);
+        setTimeout(fitToViewport, 600);
+        setTimeout(fitToViewport, 1500);
+        setTimeout(fitToViewport, 3000);
+        window.addEventListener('resize', fitToViewport);
     </script>
 </body>
 </html>

@@ -508,6 +508,28 @@ ul li::before {
       li.textContent = reason;
       listElement.appendChild(li);
     });
+
+    // Best-fit scaling
+    function fitToViewport() {
+      const c = document.querySelector('.container');
+      if (!c) return;
+      c.style.zoom = '';
+      const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      const h = c.scrollHeight;
+      if (h > vh) {
+        c.style.zoom = (vh / h) * 0.95;
+        document.body.style.height = vh + 'px';
+        document.body.style.minHeight = vh + 'px';
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      }
+    }
+    fitToViewport();
+    setTimeout(fitToViewport, 200);
+    setTimeout(fitToViewport, 600);
+    setTimeout(fitToViewport, 1500);
+    setTimeout(fitToViewport, 3000);
+    window.addEventListener('resize', fitToViewport);
   </script>
 </body>
 </html>
