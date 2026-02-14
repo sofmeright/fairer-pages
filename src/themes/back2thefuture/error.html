@@ -19,14 +19,15 @@ body {
     font-family: 'Press Start 2P', cursive;
     background-color: #000000;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%23dddcdd' fill-opacity='0.23'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: min(20px, 2vh);
     color: #FFFFFF;
     position: relative;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 body::before {
@@ -106,11 +107,12 @@ body::before {
 
 .container {
     max-width: 1200px;
+    max-height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: min(50px, 3vh);
     position: relative;
     z-index: 1;
 }
@@ -119,14 +121,16 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    flex: 0 0 auto;
+    gap: min(20px, 1.5vh);
+    flex: 0 1 auto;
+    min-height: 0;
 }
 
 .logo-img {
     max-width: 700px;
     width: 100%;
-    height: auto;
+    max-height: 20vh;
+    object-fit: contain;
     filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.6));
     animation: glow 2s ease-in-out infinite alternate;
 }
@@ -143,20 +147,22 @@ body::before {
 .delorean-img {
     max-width: 700px;
     width: 100%;
-    height: auto;
+    max-height: 20vh;
+    object-fit: contain;
     filter: drop-shadow(0 0 15px rgba(0, 200, 255, 0.4));
 }
 
 .error-section {
-    flex: 1;
+    flex: 1 1 auto;
     text-align: center;
     max-width: 700px;
+    min-height: 0;
 }
 
 .error-code {
     color: #FF0000;
-    font-size: 200px;
-    margin-bottom: 20px;
+    font-size: clamp(40px, 15vh, 200px);
+    margin-bottom: min(20px, 1.5vh);
     line-height: 1;
     text-shadow: 0 0 20px rgba(255, 0, 0, 0.8),
                  0 0 40px rgba(255, 0, 0, 0.6);
@@ -172,24 +178,24 @@ body::before {
 
 .error-message {
     color: #00FFFF;
-    font-size: 50px;
-    margin-bottom: 30px;
+    font-size: clamp(16px, 5vh, 50px);
+    margin-bottom: min(30px, 2vh);
     line-height: 1.4;
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
 }
 
 .error-description {
     color: #FFFFFF;
-    font-size: 22px;
-    line-height: 1.8;
-    margin-bottom: 40px;
+    font-size: clamp(11px, 2.5vh, 22px);
+    line-height: 1.6;
+    margin-bottom: min(40px, 3vh);
     text-align: center;
 }
 
 .question {
     color: #FFFFFF;
-    font-size: 34px;
-    margin-bottom: 30px;
+    font-size: clamp(13px, 3.5vh, 34px);
+    margin-bottom: min(30px, 2vh);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
@@ -201,9 +207,9 @@ body::before {
 }
 
 .btn {
-    padding: 15px 40px;
+    padding: clamp(8px, 1.5vh, 15px) clamp(20px, 3vh, 40px);
     font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
+    font-size: clamp(10px, 2vh, 16px);
     text-decoration: none;
     border: 3px solid;
     background: transparent;
@@ -241,7 +247,7 @@ body::before {
 @media only screen and (max-width: 900px) {
     .container {
         flex-direction: column;
-        gap: 30px;
+        gap: min(20px, 2vh);
     }
 
     .logo-img {
@@ -250,27 +256,6 @@ body::before {
 
     .delorean-img {
         max-width: 500px;
-    }
-
-    .error-code {
-        font-size: 120px;
-    }
-
-    .error-message {
-        font-size: 36px;
-    }
-
-    .error-description {
-        font-size: 18px;
-    }
-
-    .question {
-        font-size: 28px;
-    }
-
-    .btn {
-        font-size: 16px;
-        padding: 14px 35px;
     }
 }
 
@@ -282,34 +267,6 @@ body::before {
     .delorean-img {
         max-width: 260px;
     }
-
-    .error-code {
-        font-size: 56px;
-    }
-
-    .error-message {
-        font-size: 18px;
-    }
-
-    .error-description {
-        font-size: 13px;
-        line-height: 1.6;
-        margin-bottom: 25px;
-    }
-
-    .question {
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-
-    .btn {
-        font-size: 12px;
-        padding: 10px 20px;
-    }
-
-    .left-section {
-        gap: 12px;
-    }
 }
 
 @media only screen and (max-width: 360px) {
@@ -319,27 +276,6 @@ body::before {
 
     .delorean-img {
         max-width: 200px;
-    }
-
-    .error-code {
-        font-size: 44px;
-    }
-
-    .error-message {
-        font-size: 14px;
-    }
-
-    .error-description {
-        font-size: 11px;
-    }
-
-    .question {
-        font-size: 13px;
-    }
-
-    .btn {
-        font-size: 11px;
-        padding: 8px 16px;
     }
 }
 </style>
@@ -423,6 +359,24 @@ body::before {
         document.querySelectorAll('img[src^="resources/"]').forEach(img => {
             img.src = '/fairer-pages/' + themeName + '/' + img.getAttribute('src');
         });
+
+        // Best-fit scaling — zoom container to fit viewport
+        function fitToViewport() {
+            const container = document.querySelector('.container');
+            if (!container) return;
+            container.style.zoom = '';
+            const available = document.body.clientHeight;
+            const contentHeight = container.scrollHeight;
+            if (contentHeight > available) {
+                container.style.zoom = (available / contentHeight) * 0.97;
+            }
+        }
+        fitToViewport();
+        setTimeout(fitToViewport, 200);
+        setTimeout(fitToViewport, 600);
+        setTimeout(fitToViewport, 1500);
+        setTimeout(fitToViewport, 3000);
+        window.addEventListener('resize', fitToViewport);
     </script>
 </body>
 </html>

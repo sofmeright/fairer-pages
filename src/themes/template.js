@@ -304,11 +304,28 @@
             });
     }
 
+    // ── Best-fit scaling — zoom container to fit viewport ──
+    function fitToViewport() {
+        var container = document.querySelector('.fp-container');
+        if (!container) return;
+        container.style.zoom = '';
+        var available = document.body.clientHeight;
+        var contentHeight = container.scrollHeight;
+        if (contentHeight > available) {
+            container.style.zoom = (available / contentHeight) * 0.97;
+        }
+    }
+
     function revealPage() {
-        // Small delay to let CSS apply before showing
         requestAnimationFrame(function () {
             document.body.classList.remove('fp-loading');
             document.body.classList.add('fp-ready');
+            fitToViewport();
+            setTimeout(fitToViewport, 200);
+            setTimeout(fitToViewport, 600);
+            setTimeout(fitToViewport, 1500);
+            setTimeout(fitToViewport, 3000);
+            window.addEventListener('resize', fitToViewport);
         });
     }
 

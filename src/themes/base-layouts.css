@@ -108,10 +108,11 @@
 body {
     font-family: var(--fp-font-body);
     background: var(--fp-bg);
-    min-height: 100vh;
+    height: 100vh;
+    height: 100svh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: safe center;
     color: var(--fp-text);
     overflow: hidden;
     position: relative;
@@ -122,10 +123,6 @@ body.fp-loading > .fp-container,
 body.fp-loading > .fp-bg-image,
 body.fp-loading > .fp-overlay {
     opacity: 0;
-}
-
-body.fp-ready {
-    overflow-y: auto;
 }
 
 body.fp-ready > .fp-container,
@@ -217,7 +214,7 @@ body[data-layout="full-bleed"] .fp-card {
 
 /* ── Inline Image (card-image layout) ── */
 .fp-inline-image {
-    max-width: var(--fp-image-max-width);
+    max-width: min(var(--fp-image-max-width), 100%);
     max-height: var(--fp-image-max-height);
     border: var(--fp-image-border);
     border-radius: var(--fp-image-radius);
@@ -441,5 +438,50 @@ body[data-layout="full-bleed"] .fp-card {
     .fp-badge {
         font-size: clamp(8px, 2.5vw, 12px);
         padding: 6px 12px;
+    }
+}
+
+/* Short viewports — scale down to fit without overflowing */
+@media (max-height: 800px) {
+    :root {
+        --fp-code-size: clamp(40px, 8vh, 100px);
+        --fp-title-size: clamp(18px, 3.5vh, 36px);
+        --fp-message-size: clamp(14px, 2.5vh, 24px);
+        --fp-desc-size: clamp(12px, 2vh, 20px);
+        --fp-card-padding: clamp(15px, 3vh, 50px);
+        --fp-gap: clamp(6px, 1.2vh, 16px);
+        --fp-image-max-height: min(25vh, 180px);
+    }
+}
+
+@media (max-height: 600px) {
+    :root {
+        --fp-code-size: clamp(30px, 7vh, 70px);
+        --fp-title-size: clamp(14px, 3vh, 28px);
+        --fp-message-size: clamp(12px, 2vh, 18px);
+        --fp-desc-size: clamp(10px, 1.8vh, 16px);
+        --fp-footer-size: clamp(9px, 1.5vh, 13px);
+        --fp-card-padding: clamp(10px, 2.5vh, 30px);
+        --fp-gap: clamp(4px, 1vh, 10px);
+        --fp-image-max-height: min(18vh, 120px);
+        --fp-btn-padding-y: clamp(6px, 1vh, 12px);
+        --fp-btn-padding-x: clamp(14px, 2.5vh, 30px);
+        --fp-btn-size: clamp(12px, 1.8vh, 18px);
+    }
+}
+
+@media (max-height: 450px) {
+    :root {
+        --fp-code-size: clamp(24px, 6vh, 50px);
+        --fp-title-size: clamp(12px, 2.5vh, 20px);
+        --fp-message-size: clamp(10px, 1.8vh, 14px);
+        --fp-desc-size: clamp(9px, 1.5vh, 13px);
+        --fp-footer-size: clamp(8px, 1.2vh, 11px);
+        --fp-card-padding: clamp(8px, 2vh, 20px);
+        --fp-gap: clamp(3px, 0.8vh, 8px);
+        --fp-image-max-height: min(12vh, 80px);
+        --fp-btn-padding-y: clamp(4px, 0.8vh, 8px);
+        --fp-btn-padding-x: clamp(10px, 2vh, 20px);
+        --fp-btn-size: clamp(10px, 1.5vh, 14px);
     }
 }
