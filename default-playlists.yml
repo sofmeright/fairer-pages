@@ -128,7 +128,7 @@ playlists:
       - neeko-shapeshifter
       - shadowheart-shar
       - xbox-bootup
-  
+
   # Holidays:
   # christmas:
   #   ANY:
@@ -185,7 +185,7 @@ playlists:
       - sun-tzu-chaos
 
   nature:
-    ANY: 
+    ANY:
       - lotus-petal
       - peaceful-waterfalls
       - porco-rosso-pagoda

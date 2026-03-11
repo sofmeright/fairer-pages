@@ -39,12 +39,12 @@ echo -e "${BLUE}[Test 1]${NC} Testing container endpoints via ${YELLOW}${CONTAIN
 test_container_playlist() {
     local playlist=$1
     local code=$2
-    
+
     TOTAL_TESTS=$((TOTAL_TESTS + 1))
-    
+
     local url="${CONTAINER_URL}/fairer-pages/playlist/${playlist}/${code}.html"
     local redirect=$(curl -sI "$url" 2>&1 | grep -i "^Location:" | awk '{print $2}' | tr -d '\r')
-    
+
     if [[ $redirect =~ /fairer-pages/random/${code}\.html\?playlist=${playlist} ]]; then
         echo -e "${GREEN}✓${NC} Container: playlist '${playlist}' code ${code} redirects correctly"
         PASSED_TESTS=$((PASSED_TESTS + 1))
@@ -71,14 +71,14 @@ test_domain() {
     local domain=$1
     local expected_playlist=$2
     local test_path="/nonexistent-test-page-$(date +%s)"
-    
+
     TOTAL_TESTS=$((TOTAL_TESTS + 1))
-    
+
     echo -e "  Testing ${YELLOW}${domain}${NC} (expects playlist: ${expected_playlist})..."
-    
+
     # Make request to non-existent page
     local response=$(curl -sIL "${domain}${test_path}" 2>&1)
-    
+
     # Check if it redirects through the playlist system
     if echo "$response" | grep -q "location.*random.*playlist=${expected_playlist}"; then
         echo -e "${GREEN}✓${NC} ${domain} routes to playlist '${expected_playlist}'"
