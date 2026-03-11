@@ -339,6 +339,15 @@ narrator:
 
 lint:
   level: full
+  exclude:
+    - "src/themes/*/resources/*.png"
+    - "src/themes/*/resources/*.jpg"
+    - "src/themes/*/resources/*.gif"
+    - "src/themes/*/resources/*.svg"
+    - "src/themes/*/resources/*.ico"
+    - "src/themes/*/resources/*.webp"
+    - "docs/screenshots/**/*.png"
+    - "docs/screenshots/banner.png"
 
 security:
   enabled: true
