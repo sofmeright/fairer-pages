@@ -337,6 +337,14 @@ narrator:
         output: ".stagefreight/badges/dev-size.svg"
         link: "https://hub.docker.com/r/{var:org}/{var:repo}/tags?name=latest-dev"
 
+lint:
+  level: full
+
+security:
+  enabled: true
+  sbom: true
+  release_detail: full
+
 commit:
   default_type: docs
   conventional: true
