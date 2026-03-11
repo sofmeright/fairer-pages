@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1.7
 FROM docker.io/library/alpine:3.23.3
 
-RUN apk add --no-cache nginx python3 py3-yaml gettext && \
+RUN apk upgrade --no-cache && \
+    apk add --no-cache nginx python3 py3-yaml gettext && \
     # Create non-root user
     addgroup -g 10000 -S fairer && \
     adduser -u 10000 -S -G fairer -H -s /sbin/nologin fairer && \
