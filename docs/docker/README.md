@@ -52,7 +52,7 @@ See [default-playlists.yml](../../default-playlists.yml) for the full default co
 ## Building from Source
 
 ```bash
-git clone https://github.com/prplanit/fairer-pages && cd fairer-pages
+git clone https://github.com/PrPlanIT/fairer-pages && cd fairer-pages
 docker build -t fairer-pages .
 docker run -d -p 8023:8080 fairer-pages
 curl http://localhost:8023/fairer-pages/back2thefuture/404.html
